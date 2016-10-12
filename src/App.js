@@ -8,7 +8,8 @@ class App extends Component {
         return (
             <div>
                 <p>
-                    <Link to={`/products`}>Products</Link>
+                    <Link to={`/all-products`}>Wybór produktów</Link>
+                    <Link to={`/shopping-lists`}>Twoje listy zakupów</Link>
                 </p>
                 {this.props.children}
             </div>
