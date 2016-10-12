@@ -7,10 +7,10 @@ class App extends Component {
     render() {
         return (
             <div>
-                <p>
-                    <Link to={`/all-products`}>Wybór produktów</Link>
-                    <Link to={`/shopping-lists`}>Twoje listy zakupów</Link>
-                </p>
+                <ul>
+                    <li><Link to={`/all-products`}>Wybór produktów</Link></li>
+                    <li><Link to={`/shopping-lists`}>Twoje listy zakupów</Link></li>
+                </ul>
                 {this.props.children}
             </div>
         );
