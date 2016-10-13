@@ -8,8 +8,9 @@ class App extends Component {
         return (
             <div>
                 <ul>
-                    <li><Link to={`/all-products`}>Wybór produktów</Link></li>
-                    <li><Link to={`/shopping-lists`}>Twoje listy zakupów</Link></li>
+                    <li><Link to={`/shopping-manager`}>Planer zakupowy</Link></li>
+                    {/*Ten komponent zostanie wykorzystany, jeżeli pojawią się kolejne
+                     funkcjonalności aplikacji (mapa, kalendarz itd.)*/}
                 </ul>
                 {this.props.children}
             </div>
