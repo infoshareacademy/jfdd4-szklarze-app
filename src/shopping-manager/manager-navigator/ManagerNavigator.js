@@ -12,6 +12,7 @@ export default class ManagerNavigator extends React.Component {
     render() {
         return (
             <Nav bsStyle="tabs" onSelect={this.handleSelect}>
+                <NavItem eventKey="/">Start</NavItem>
                 <NavItem eventKey="/all-products">Produkty</NavItem>
                 <NavItem eventKey="/shopping-lists">Listy zakupów</NavItem>
             </Nav>
