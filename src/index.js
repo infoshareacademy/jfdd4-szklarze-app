@@ -4,6 +4,8 @@ import App from './App';
 import AllProducts from './all-products/AllProducts'
 import ShoppingLists from './shopping-lists/ShoppingLists'
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
 
 import { Router, Route, browserHistory } from 'react-router'
 
