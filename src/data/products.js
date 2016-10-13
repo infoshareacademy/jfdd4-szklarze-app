@@ -1,4 +1,4 @@
-export default products = [
+var products = [
     {
         productName: "Kajzerka",
         price: 0.4,
@@ -126,3 +126,5 @@ export default products = [
         favorite: false
     }
 ]
+
+export default products
