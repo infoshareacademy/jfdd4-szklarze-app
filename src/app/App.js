@@ -1,16 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
 
-import { Link } from 'react-router'
+import ShoppingManager from '../shopping-manager/ShoppingManager'
 
 class App extends Component {
     render() {
         return (
             <div>
-                <p>
-                    <Link to={`/all-products`}>Wybór produktów</Link>
-                    <Link to={`/shopping-lists`}>Twoje listy zakupów</Link>
-                </p>
+                <ShoppingManager/>
                 {this.props.children}
             </div>
         );

@@ -1,4 +1,4 @@
-export default products = [
+var products = [
     {
         productName: "Kajzerka",
         price: 0.4,
@@ -125,4 +125,5 @@ export default products = [
         category: "Artykuły budowlane",
         favorite: false
     }
-]
+];
+export default products;
