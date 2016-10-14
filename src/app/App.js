@@ -1,17 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
 
-import { Link } from 'react-router'
+import ShoppingManager from '../shopping-manager/ShoppingManager'
 
 class App extends Component {
     render() {
         return (
             <div>
-                <ul>
-                    <li><Link to={`/shopping-manager`}>Planer zakupowy</Link></li>
-                    {/*Ten komponent zostanie wykorzystany, jeżeli pojawią się kolejne
-                     funkcjonalności aplikacji (mapa, kalendarz itd.)*/}
-                </ul>
+                <ShoppingManager/>
                 {this.props.children}
             </div>
         );
