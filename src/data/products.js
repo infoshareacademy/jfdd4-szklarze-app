@@ -12,7 +12,7 @@ var products = [
         favorite: false
     },
     {
-        productName: "Chleb oliwki",
+        productName: "Chleb oliwski",
         price: 2.0,
         category: "Pieczywo",
         favorite: false
