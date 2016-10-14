@@ -1,3 +1,3 @@
 import React from 'react'
 
-export default (props) => <h1>Twoje listy zakupów</h1>
+export default (props) => <h3>Twoje listy zakupów</h3>
