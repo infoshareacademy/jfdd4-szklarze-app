@@ -1,10 +1,11 @@
-import React from 'react'
-import products from '../data/products'
+import React from 'react';
+import products from '../data/products';
+import stylesheet from './AllProducts.css';
 import {
     ListGroup,
     ListGroupItem
 }
-    from 'react-bootstrap'
+    from 'react-bootstrap';
 
 export default class AllProducts extends React.Component {
     constructor() {
@@ -30,7 +31,13 @@ export default class AllProducts extends React.Component {
                     {this.state.productsToDisplay.map(function (product) {
                         return (
                             <ListGroupItem key={product.productName}>
-                                {product.productName}
+                               <ul>
+                                   <li> {product.productName} </li>
+                                   <li> {product.price} </li>
+                                    <li> {product.category} </li>
+                                   {product.favorite ?
+                                    <li> <img src={require('./images/icon-heart-full.svg')}/> </li> : null}
+                                   </ul>
                             </ListGroupItem>
                         )
                     })}

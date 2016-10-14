@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import AllProducts from './all-products/AllProducts'
-import ShoppingLists from './shopping-lists/ShoppingLists'
+import AllProducts from './shopping-manager/all-products/AllProducts'
+import ShoppingLists from './shopping-manager/shopping-lists/ShoppingLists'
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
