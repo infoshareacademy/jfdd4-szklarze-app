@@ -1,6 +1,6 @@
 import React from 'react'
 
-var favorites = [];
+var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
 export default class FavoriteMarker extends React.Component {
 
@@ -19,7 +19,12 @@ export default class FavoriteMarker extends React.Component {
             return id !== productId;
         });
 
-        console.log(favorites)
+        console.log(favorites);
+        this.updateLocalStorage(favorites);
+    }
+
+    updateLocalStorage(favorites) {
+        localStorage.setItem('favorites', JSON.stringify(favorites));
     }
 
     render () {
