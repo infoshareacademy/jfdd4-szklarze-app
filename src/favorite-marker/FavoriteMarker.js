@@ -11,7 +11,14 @@ export default class FavoriteMarker extends React.Component {
     }
 
     markAsFavorite() {
-        favorites.push(this.props.productId);
+        var productId = this.props.productId;
+
+        if (favorites.indexOf(productId) === -1)
+        favorites.push(productId);
+        else favorites = favorites.filter(function(id) {
+            return id !== productId;
+        });
+
         console.log(favorites)
     }
 
