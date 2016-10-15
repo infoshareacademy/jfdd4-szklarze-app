@@ -9,7 +9,7 @@ export default (props) =>
             return(
                 <div>
                     <p>{product.productName}</p>
-                    <FavoriteMarker productId={product.productId}/>
+                    <FavoriteMarker productId={product.productId} />
                 </div>
 
             )
