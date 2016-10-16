@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button, ButtonToolbar } from 'react-bootstrap'
-import './FavoriteMarker.css'
 
 var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
@@ -42,7 +41,6 @@ export default class FavoriteMarker extends React.Component {
             })
         }
 
-        console.log(favorites);
         this.updateLocalStorage(favorites);
     }
 
@@ -60,7 +58,6 @@ export default class FavoriteMarker extends React.Component {
                     {"<3"}
                 </Button>
             </ButtonToolbar>
-
         )
     }
 }
