@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button, ButtonToolbar } from 'react-bootstrap'
 import './FavoriteMarker.css'
 
 var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -8,11 +9,19 @@ export default class FavoriteMarker extends React.Component {
     constructor() {
         super()
 
-        this.setState({
-            className: 'not-favorite'
-        })
+        this.state = {
+            marked: 'default',
+        }
 
         this.markAsFavorite = this.markAsFavorite.bind(this)
+    }
+
+    componentWillMount() {
+        if (favorites.indexOf(this.props.productId) !== -1) {
+            this.setState({
+                marked: 'danger',
+            })
+        }
     }
 
     markAsFavorite() {
@@ -20,12 +29,17 @@ export default class FavoriteMarker extends React.Component {
 
         if (favorites.indexOf(productId) === -1) {
             favorites.push(productId);
-            // this.setState.className = 'favorites'
+            this.setState({
+                marked: 'danger',
+            })
+
         } else {
             favorites = favorites.filter(function(id) {
                 return id !== productId;
             });
-            // this.setState.className = 'not-favorites'
+            this.setState({
+                marked: 'default',
+            })
         }
 
         console.log(favorites);
@@ -38,10 +52,15 @@ export default class FavoriteMarker extends React.Component {
 
     render () {
         return (
-            <div
-                onClick={this.markAsFavorite}
-                className={this.state.className}>
-            </div>
+            <ButtonToolbar>
+                <Button
+                    bsStyle={this.state.marked}
+                    bsSize="xsmall"
+                    onClick={this.markAsFavorite}>
+                    {"<3"}
+                </Button>
+            </ButtonToolbar>
+
         )
     }
 }
