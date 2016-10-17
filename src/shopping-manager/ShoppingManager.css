@@ -1,13 +1,15 @@
 div.page-header {
-    background: #ffc10e;
     margin: 0;
-    padding: 15px 0;
+    padding: 1.5em 0.5em 1em;
+    background: #ffc10e url("../styles/images/intro-background.svg") repeat center;
+    background-size: 10em;
+    border-bottom: 1px solid #ffc10e;
 }
 
-div.page-header h1:before {
-    content: '';
-    background: url("../styles/images/icon-white-janusz.svg") no-repeat center;
-    background-size: cover;
-    width: 60px;
-    height: 60px;
+div.page-header small {
+   color: #465676;
+}
+
+div.nav-tabs {
+    border-bottom: none;
 }
