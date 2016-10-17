@@ -15,4 +15,5 @@ body {
 #root {
   height: 100%;
   background: #ffc10e;
+  border: 1px solid #ffc10e;
 }
