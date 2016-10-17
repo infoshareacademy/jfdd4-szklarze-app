@@ -1,0 +1,13 @@
+div.page-header {
+    background: #ffc10e;
+    margin: 0;
+    padding: 15px 0;
+}
+
+div.page-header h1:before {
+    content: '';
+    background: url("../styles/images/icon-white-janusz.svg") no-repeat center;
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+}

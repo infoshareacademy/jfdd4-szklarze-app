@@ -1,9 +1,11 @@
+@import 'shopping-manager/ShoppingManager.css';
+
 html, body {
   margin: 0;
   height: 100%;
 }
 
-body {
+html body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -14,6 +16,7 @@ body {
 
 #root {
   height: 100%;
-  background: #ffc10e;
-  border: 1px solid #ffc10e;
+  background: #fff;
+  border: 1px solid #fff;
 }
+
