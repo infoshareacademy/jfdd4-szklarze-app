@@ -20,7 +20,7 @@ export default (props) => (
                     <Counter />
                 </div>
                 <div>
-                    <FavoriteMarker {props.product.productId} />
+                    <FavoriteMarker productId={props.productId} />
                 </div>
             </Col>
 
