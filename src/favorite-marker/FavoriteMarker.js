@@ -1,58 +1,26 @@
 import React from 'react'
 import { Button, ButtonToolbar } from 'react-bootstrap'
-
-var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+import { addIdToFavorites, getFavoriteProducts} from '../favorites/Favorites'
 
 export default class FavoriteMarker extends React.Component {
 
     constructor() {
         super()
 
-        this.state = {
-            marked: 'default',
-        }
-
-        this.markAsFavorite = this.markAsFavorite.bind(this)
-    }
-
-    componentWillMount() {
-        if (favorites.indexOf(this.props.productId) !== -1) {
-            this.setState({
-                marked: 'danger',
-            })
-        }
+        this.markAsFavorite = this.markAsFavorite.bind(this);
     }
 
     markAsFavorite() {
-        var productId = this.props.productId;
-
-        if (favorites.indexOf(productId) === -1) {
-            favorites.push(productId);
-            this.setState({
-                marked: 'danger',
-            })
-
-        } else {
-            favorites = favorites.filter(function(id) {
-                return id !== productId;
-            });
-            this.setState({
-                marked: 'default',
-            })
-        }
-
-        this.updateLocalStorage(favorites);
-    }
-
-    updateLocalStorage(favorites) {
-        localStorage.setItem('favorites', JSON.stringify(favorites));
+        addIdToFavorites(this.props.productId);
+        this.forceUpdate();
     }
 
     render () {
+        var favorites = getFavoriteProducts();
         return (
             <ButtonToolbar>
                 <Button
-                    bsStyle={this.state.marked}
+                    bsStyle={favorites.indexOf(this.props.productId) !== -1 ? 'danger' : 'default'}
                     bsSize="xsmall"
                     onClick={this.markAsFavorite}>
                     {"<3"}
