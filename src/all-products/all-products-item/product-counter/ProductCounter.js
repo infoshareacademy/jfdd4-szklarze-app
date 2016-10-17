@@ -3,14 +3,13 @@ import React from 'react'
 export default (props) => (
     <div>
 
-        <p>
-            0
-        </p>
+
         <button>
-            Minus
+            -
         </button>
+        <span>  0  </span>
         <button>
-            Plus
+            +
         </button>
     </div>
 )

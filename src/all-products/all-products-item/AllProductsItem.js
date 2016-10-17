@@ -1,21 +1,23 @@
 import React from 'react'
-import heartFull from './images/icon-heart-full.svg'
-import heartAdd from './images/icon-heart-add.svg'
+import {Row, Col} from 'react-bootstrap'
 import Counter from './product-counter/ProductCounter'
 
 export default (props) => (
-    <div>
-        <ul>
-            <li> {props.productName} </li>
-            <li> {props.price} </li>
-            <li> {props.category} </li>
-            {props.favorite ?
-                <li><img src={heartFull}/></li> :
-                <li><img src={heartAdd}/></li>}
-        </ul>
+    <Row>
         <div>
-            <Counter />
-        </div>
+            <Col md={8}>
+                <ul>
+                    <li> {props.productName} </li>
+                    <li> {props.price} </li>
+                    <li> {props.category} </li>
+                </ul>
+            </Col>
+            <Col md={4}>
+                <div>
+                    <Counter />
+                </div>
+            </Col>
 
-    </div>
+        </div>
+    </Row>
 )
