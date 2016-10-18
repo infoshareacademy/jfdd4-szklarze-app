@@ -1,6 +1,6 @@
 import React from 'react'
 import {Row, Col} from 'react-bootstrap'
-import Counter from './product-counter/ProductCounter'
+import ProductCounter from './product-counter/ProductCounter'
 import FavoriteMarker from '../../favorite-marker/FavoriteMarker'
 
 
@@ -18,7 +18,7 @@ export default (props) => (
             </Col>
             <Col md={2}>
                 <div>
-                    <Counter />
+                    <ProductCounter />
                 </div>
             </Col>
             <Col md={2}>
