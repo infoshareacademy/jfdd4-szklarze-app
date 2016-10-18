@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button, ButtonToolbar} from 'react-bootstrap'
+import { toggleFavoriteFilter, setCategoryFilter, removeCategoryFilter} from './actionCreators'
 
 const mapStateToProps = (state) => ({
     products: state.products,
