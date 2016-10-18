@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Button, ButtonToolbar} from 'react-bootstrap'
 
 const mapStateToProps = (state) => ({
     products: state.products,
@@ -15,9 +16,21 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Filters = ({categories}) => (
     <div>
-        {categories.map(category =>
-        <button>{category}</button>
-        )}
+        <p>Pokaż produkty:</p>
+        <ButtonToolbar>
+            <Button>Wszystkie</Button>
+            <Button>Ulubione</Button>
+        </ButtonToolbar>
+        <p>Filtruj:</p>
+        <ButtonToolbar>
+            {categories.map((category, index) =>
+                <Button key={index}>{category}</Button>
+            )}
+        </ButtonToolbar>
+        <ButtonToolbar>
+            <Button>Usuń filtry</Button>
+        </ButtonToolbar>
+
     </div>
 )
 
