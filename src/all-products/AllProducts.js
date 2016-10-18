@@ -1,6 +1,7 @@
 import React from 'react'
 import products from '../data/products'
 import stylesheet from './AllProducts.css'
+import Filters from '../filters/Filters'
 
 
 import {
@@ -27,6 +28,7 @@ export default class AllProducts extends React.Component {
         return (
             <div className="all-products">
                 <h1>Wybór produktów</h1>
+                <Filters />
                 <ListGroup>
                     {this.state.productsToDisplay.map(function (product) {
                         return (
