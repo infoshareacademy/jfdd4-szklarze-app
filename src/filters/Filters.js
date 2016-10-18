@@ -2,18 +2,22 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
-    products: state.products.products
+    products: state.products.products,
+    productCategories: state.products.map(product => state.products.category)
 })
 
 const mapDispatchToProps = (dispatch) => ({
 
 })
 
-const Filters = ({props}) => (
+const Filters = ({
+    products,
+    productCategories
+}) => (
     <div>
-        <button>Kategoria 1</button>
-        <button>Kategoria 2</button>
-        <button>Kategoria 3</button>
+        {productCategories.map(category =>
+        <button>{category}</button>
+        )}
     </div>
 )
 
