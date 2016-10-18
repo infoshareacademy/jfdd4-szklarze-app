@@ -3,7 +3,7 @@ import products from '../data/products'
 import FavoriteMarker from '../favorite-marker/FavoriteMarker'
 
 export default (props) =>
-    <div>
+    <div className="all-products">
         <h3>Wybór produktów</h3>
         {products.map(function (product) {
             return(

@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default (props) =>
-    <div>
+    <div className="introduction">
         <h2>Idź na zakupy z Januszem!</h2>
         <h3>Produkty</h3>
         <p>Wybierz tę kartę, aby przejść do widoku wybierania produktów. Janusz
