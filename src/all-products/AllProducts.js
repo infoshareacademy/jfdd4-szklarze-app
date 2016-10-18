@@ -1,6 +1,6 @@
 import React from 'react'
 import products from '../data/products'
-import FavoriteMarker from '../favorite-marker/FavoriteMarker'
+import stylesheet from './AllProducts.css'
 
 
 import {
@@ -36,8 +36,12 @@ export default class AllProducts extends React.Component {
                         )
                     })}
                 </ListGroup>
+                <div>
+                    <button>
+                        Stwórz listę
+                    </button>
+                </div>
             </div>
-
         )
     }
 
