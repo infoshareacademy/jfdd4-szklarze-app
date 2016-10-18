@@ -1,18 +1,49 @@
 import React from 'react'
 import products from '../data/products'
-import FavoriteMarker from '../favorite-marker/FavoriteMarker'
-import Filters from '../filters/Filters'
+import stylesheet from './AllProducts.css'
 
-export default (props) =>
-    <div className="all-products">
-        <h3>Wybór produktów</h3>
-        <Filters/>
-        {products.map(function (product) {
-            return(
+
+import {
+    ListGroup,
+    ListGroupItem
+} from 'react-bootstrap';
+import ProductItem from './all-products-item/AllProductsItem'
+
+export default class AllProducts extends React.Component {
+    constructor() {
+        super()
+
+        this.state = {
+            productsToDisplay: []
+        }
+    }
+
+    componentWillMount() {
+        this.setState({productsToDisplay: products})
+    }
+
+
+    render() {
+        return (
+            <div className="all-products">
+                <h1>Wybór produktów</h1>
+                <ListGroup>
+                    {this.state.productsToDisplay.map(function (product) {
+                        return (
+                            <ListGroupItem key={product.productName}>
+                                <ProductItem {...product}/>
+                            </ListGroupItem>
+                        )
+                    })}
+                </ListGroup>
                 <div>
-                    <p>{product.productName}</p>
-                    <FavoriteMarker productId={product.productId} />
+                    <button>
+                        Stwórz listę
+                    </button>
                 </div>
-            )
-        })}
-    </div>
+            </div>
+        )
+    }
+
+}
+
