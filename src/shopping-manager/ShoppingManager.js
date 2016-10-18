@@ -5,7 +5,7 @@ import ManagerNavigator from '../manager-navigator/ManagerNavigator'
 
 export default (props) =>
     <div>
-        <PageHeader>Planer zakupowy</PageHeader>
+        <PageHeader>JANUSZ <small>Planer zakupowy</small></PageHeader>
         <ManagerNavigator/>
         {props.children}
     </div>

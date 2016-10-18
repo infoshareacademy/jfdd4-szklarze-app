@@ -1,6 +1,6 @@
-import React from 'react';
-import products from '../data/products';
-import stylesheet from './AllProducts.css';
+import React from 'react'
+import products from '../data/products'
+import FavoriteMarker from '../favorite-marker/FavoriteMarker'
 
 
 import {
@@ -25,20 +25,16 @@ export default class AllProducts extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="all-products">
                 <h1>Wybór produktów</h1>
-
                 <ListGroup>
-
                     {this.state.productsToDisplay.map(function (product) {
                         return (
                             <ListGroupItem key={product.productName}>
                                 <ProductItem {...product}/>
-
                             </ListGroupItem>
                         )
                     })}
-
                 </ListGroup>
             </div>
 

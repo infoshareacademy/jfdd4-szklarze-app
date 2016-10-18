@@ -1,3 +1,6 @@
 import React from 'react'
 
-export default (props) => <h3>Twoje listy zakupów</h3>
+export default (props) =>
+    <div className="shopping-lists">
+        <h3>Twoje listy zakupów</h3>
+    </div>
