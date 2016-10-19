@@ -14,7 +14,8 @@ export default class AllProducts extends React.Component {
         super()
 
         this.state = {
-            productsToDisplay: []
+            productsToDisplay: [],
+            shoppingList: []
         }
     }
 
@@ -38,7 +39,7 @@ export default class AllProducts extends React.Component {
                 </ListGroup>
                 <div>
                     <button>
-                        Stwórz listę
+                        Stwórz nową listę
                     </button>
                 </div>
             </div>
