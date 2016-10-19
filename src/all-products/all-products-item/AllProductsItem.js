@@ -16,11 +16,11 @@ let AllProductsItem = (props) => (
             </Col>
             <Col md={2}>
                 <div>
-                    <button onClick={() => props.increaseAmount(props.product.productId)}>
+                    <button onClick={() => props.decreaseAmount(props.product.productId)}>
                         -
                     </button>
                     <span>  {props.counterValue}  </span>
-                    <button onClick={() => props.decreaseAmount(props.product.productId)}>
+                    <button onClick={() => props.increaseAmount(props.product.productId)}>
                         +
                     </button>
                 </div>
