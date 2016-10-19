@@ -1,18 +1,16 @@
 import React from 'react'
 import {Row, Col} from 'react-bootstrap'
-import ProductCounter from './product-counter/ProductCounter'
 import FavoriteMarker from '../../favorite-marker/FavoriteMarker'
 import { increaseAmount, decreaseAmount } from './actionCreators'
+import { connect } from 'react-redux'
 
-const mapStateToProps = (state) => {
-    return {
+const mapStateToProps = (state) => ({
 
-    }
-}
+})
 
 const mapDispatchToProps = (dispatch) => ({
-    increaseAmount: (newAmount) => dispatch(increaseAmount(newAmount)),
-    decreaseAmount: (newAmount) => dispatch(decreaseAmount(newAmount))
+    increaseAmount: (productId) => dispatch(increaseAmount(productId)),
+    decreaseAmount: (productId) => dispatch(decreaseAmount(productId))
 })
 
 
@@ -28,13 +26,11 @@ let AllProductsItem = (props) => (
             </Col>
             <Col md={2}>
                 <div>
-                    <button onClick={this.state.counter !== 0 ?
-                        this.decrementCounter : null
-                    }>
+                    <button onClick={() => props.increaseAmount(props.productId)}>
                         -
                     </button>
-                    <span>  {this.state.counter}  </span>
-                    <button onClick={this.incrementCounter}>
+                    <span>  {0}  </span>
+                    <button onClick={() => props.decreaseAmount(props.productId)}>
                         +
                     </button>
                 </div>

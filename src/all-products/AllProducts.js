@@ -7,7 +7,8 @@ import {
     ListGroup,
     ListGroupItem
 } from 'react-bootstrap';
-import ProductItem from './all-products-item/AllProductsItem'
+
+import AllProductsItem from './all-products-item/AllProductsItem'
 
 export default class AllProducts extends React.Component {
     constructor() {
@@ -32,7 +33,7 @@ export default class AllProducts extends React.Component {
                     {this.state.productsToDisplay.map(function (product) {
                         return (
                             <ListGroupItem key={product.productName}>
-                                <ProductItem {...product}/>
+                                <AllProductsItem {...product}/>
                             </ListGroupItem>
                         )
                     })}

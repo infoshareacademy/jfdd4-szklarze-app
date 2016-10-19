@@ -1,15 +1,15 @@
 import { INCREASE_AMOUNT, DECREASE_AMOUNT } from './actionTypes'
 
-export function increaseAmount(newAmount) {
+export function increaseAmount(productId) {
     return {
         type: INCREASE_AMOUNT,
-        newAmount: newAmount
+        productId: productId
     }
 }
 
-export function decreaseAmount(newAmount) {
+export function decreaseAmount(productId) {
     return {
         type: DECREASE_AMOUNT,
-        newAmount: newAmount
+        productId: productId
     }
 }
