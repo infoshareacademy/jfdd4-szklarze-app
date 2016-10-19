@@ -1,8 +1,7 @@
 import React from 'react'
 import products from '../data/products'
-import stylesheet from './AllProducts.css'
 import Filters from '../filters/Filters'
-
+import './AllProducts.css'
 
 import {
     ListGroup,
@@ -22,7 +21,6 @@ export default class AllProducts extends React.Component {
     componentWillMount() {
         this.setState({productsToDisplay: products})
     }
-
 
     render() {
         return (
