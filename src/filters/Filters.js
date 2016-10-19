@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button, ButtonToolbar} from 'react-bootstrap'
-import { toggleFavoriteFilter, setCategoryFilter, removeCategoryFilter} from './actionCreators'
+import { toggleFavoriteFilter, setCategoryFilter, removeCategoryFilter, removeSingleFilter} from './actionCreators'
 
 const mapStateToProps = (state) => ({
     products: state.products,
@@ -12,24 +12,38 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-
+    toggleFavoriteFilter: () => dispatch(toggleFavoriteFilter()),
+    setCategoryFilter: (category) => dispatch(setCategoryFilter(category)),
+    removeCategoryFilter: () => dispatch(removeCategoryFilter()),
+    removeSingleFilter: (category) => dispatch(removeSingleFilter())
 })
 
-const Filters = ({categories}) => (
+const Filters = ({
+    categories,
+    toggleFavoriteFilter,
+    setCategoryFilter,
+    removeCategoryFilter
+}) => (
     <div>
         <p>Pokaż produkty:</p>
         <ButtonToolbar>
-            <Button>Wszystkie</Button>
-            <Button>Ulubione</Button>
+            <Button onClick={() => toggleFavoriteFilter()}>Wszystkie</Button>
+            <Button onClick={() => toggleFavoriteFilter()}>Ulubione</Button>
         </ButtonToolbar>
         <p>Filtruj:</p>
         <ButtonToolbar>
             {categories.map((category, index) =>
-                <Button key={index}>{category}</Button>
+                <Button key={index}
+                        onClick={() => setCategoryFilter(category)}>
+                    {category}
+                </Button>
             )}
         </ButtonToolbar>
         <ButtonToolbar>
-            <Button>Usuń filtry</Button>
+            <Button
+                onClick={() => removeCategoryFilter()}>
+                Usuń filtry
+            </Button>
         </ButtonToolbar>
 
     </div>
