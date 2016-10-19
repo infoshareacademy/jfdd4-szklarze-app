@@ -7,14 +7,28 @@ import {
     ListGroup,
     ListGroupItem
 } from 'react-bootstrap';
-import ProductItem from './all-products-item/AllProductsItem'
 
-export default class AllProducts extends React.Component {
+import AllProductsItem from './all-products-item/AllProductsItem'
+
+import { increaseAmount, decreaseAmount } from './actionCreators'
+import { connect } from 'react-redux'
+
+const mapStateToProps = (state) => ({
+
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    increaseAmount: (productId) => dispatch(increaseAmount(productId)),
+    decreaseAmount: (productId) => dispatch(decreaseAmount(productId))
+})
+
+class AllProducts extends React.Component {
     constructor() {
         super()
 
         this.state = {
-            productsToDisplay: []
+            productsToDisplay: [],
+            shoppingList: []
         }
     }
 
@@ -23,6 +37,7 @@ export default class AllProducts extends React.Component {
     }
 
     render() {
+        var props = this.props
         return (
             <div className="all-products">
                 <h1>Wybór produktów</h1>
@@ -31,14 +46,17 @@ export default class AllProducts extends React.Component {
                     {this.state.productsToDisplay.map(function (product) {
                         return (
                             <ListGroupItem key={product.productName}>
-                                <ProductItem {...product}/>
+                                <AllProductsItem increaseAmount={props.increaseAmount}
+                                                 decreaseAmount={props.decreaseAmount}
+                                                 product={product}
+                                                 counterValue={0}/>
                             </ListGroupItem>
                         )
                     })}
                 </ListGroup>
                 <div>
                     <button>
-                        Stwórz listę
+                        Stwórz nową listę
                     </button>
                 </div>
             </div>
@@ -47,3 +65,4 @@ export default class AllProducts extends React.Component {
 
 }
 
+export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)
