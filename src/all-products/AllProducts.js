@@ -1,5 +1,4 @@
 import React from 'react'
-import products from '../data/products/products'
 import Filters from '../filters/Filters'
 import './AllProducts.css'
 
@@ -14,9 +13,13 @@ import { increaseAmount, decreaseAmount } from './actionCreators'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
-    favoritesFilter: state.filters.favoritesFilter,
-    categoryFilter: state.filters.categoryFilter,
-    productsToDisplay: state.products
+    categoryFilterArray: state.filters.categoryFilter,
+    productsToDisplay:
+        state.filters.favoritesFilter ?
+            state.products
+                .filter(product =>
+                localStorage.favorites.indexOf(product.productId) !== -1) :
+            state.products
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -25,8 +28,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const AllProducts = ({
-    favoritesFilter,
-    categoryFilter,
+    categoryFilterArray,
     productsToDisplay,
     increaseAmount,
     decreaseAmount
@@ -34,6 +36,9 @@ const AllProducts = ({
             <div className="all-products">
                 <h1>Wybór produktów</h1>
                 <Filters />
+                {console.log (
+                    categoryFilterArray,
+                    productsToDisplay)}
                 <ListGroup>
                     {productsToDisplay.map(function (product) {
                         return (
@@ -53,6 +58,5 @@ const AllProducts = ({
                 </div>
             </div>
 )
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)
