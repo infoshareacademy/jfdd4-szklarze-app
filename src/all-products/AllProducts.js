@@ -12,9 +12,9 @@ import AllProductsItem from './all-products-item/AllProductsItem'
 import { increaseAmount, decreaseAmount } from './actionCreators'
 import { connect } from 'react-redux'
 
-const mapStateToProps = (state) => ({
-
-})
+const mapStateToProps = (state) => {
+        return { itemsToBuy: state.itemsToBuy }
+}
 
 const mapDispatchToProps = (dispatch) => ({
     increaseAmount: (productId) => dispatch(increaseAmount(productId)),
@@ -26,8 +26,7 @@ class AllProducts extends React.Component {
         super()
 
         this.state = {
-            productsToDisplay: [],
-            shoppingList: []
+            productsToDisplay: []
         }
     }
 
@@ -48,7 +47,11 @@ class AllProducts extends React.Component {
                                 <AllProductsItem increaseAmount={props.increaseAmount}
                                                  decreaseAmount={props.decreaseAmount}
                                                  product={product}
-                                                 counterValue={0}/>
+                                                 counterValue={props.itemsToBuy.map(function (item) {
+                                                    if (props.itemsToBuy.productId === product.productId){
+                                                        return this.props.itemsToBuy.quantity
+                                                    }
+                                                 })}/>
                             </ListGroupItem>
                         )
                     })}
