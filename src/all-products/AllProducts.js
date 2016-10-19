@@ -13,7 +13,6 @@ import { increaseAmount, decreaseAmount } from './actionCreators'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
-        return { itemsToBuy: state.itemsToBuy }
 }
 
 const mapDispatchToProps = (dispatch) => ({
@@ -47,11 +46,7 @@ class AllProducts extends React.Component {
                                 <AllProductsItem increaseAmount={props.increaseAmount}
                                                  decreaseAmount={props.decreaseAmount}
                                                  product={product}
-                                                 counterValue={props.itemsToBuy.map(function (item) {
-                                                    if (props.itemsToBuy.productId === product.productId){
-                                                        return this.props.itemsToBuy.quantity
-                                                    }
-                                                 })}/>
+                                                />
                             </ListGroupItem>
                         )
                     })}
