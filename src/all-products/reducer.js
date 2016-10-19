@@ -1,7 +1,8 @@
 import {INCREASE_AMOUNT, DECREASE_AMOUNT} from './actionTypes'
 
 const initialState = {
-    itemsToBuy: []
+    itemsToBuy: [],
+    productsToDisplay: [],
 }
 
 export default (state = initialState, action) => {

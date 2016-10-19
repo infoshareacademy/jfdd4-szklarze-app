@@ -14,7 +14,9 @@ import { increaseAmount, decreaseAmount } from './actionCreators'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
-
+    favoritesFilter: state.filters.favoritesFilter,
+    categoryFilter: state.filters.categoryFilter,
+    productsToDisplay: state.products
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -22,32 +24,22 @@ const mapDispatchToProps = (dispatch) => ({
     decreaseAmount: (productId) => dispatch(decreaseAmount(productId))
 })
 
-class AllProducts extends React.Component {
-    constructor() {
-        super()
-
-        this.state = {
-            productsToDisplay: [],
-            shoppingList: []
-        }
-    }
-
-    componentWillMount() {
-        this.setState({productsToDisplay: products})
-    }
-
-    render() {
-        var props = this.props
-        return (
+const AllProducts = ({
+    favoritesFilter,
+    categoryFilter,
+    productsToDisplay,
+    increaseAmount,
+    decreaseAmount
+}) => (
             <div className="all-products">
                 <h1>Wybór produktów</h1>
                 <Filters />
                 <ListGroup>
-                    {this.state.productsToDisplay.map(function (product) {
+                    {productsToDisplay.map(function (product) {
                         return (
                             <ListGroupItem key={product.productName}>
-                                <AllProductsItem increaseAmount={props.increaseAmount}
-                                                 decreaseAmount={props.decreaseAmount}
+                                <AllProductsItem increaseAmount={increaseAmount}
+                                                 decreaseAmount={decreaseAmount}
                                                  product={product}
                                                  counterValue={0}/>
                             </ListGroupItem>
@@ -60,9 +52,7 @@ class AllProducts extends React.Component {
                     </button>
                 </div>
             </div>
-        )
-    }
+)
 
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)
