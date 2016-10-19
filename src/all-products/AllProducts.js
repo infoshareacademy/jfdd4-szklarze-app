@@ -19,13 +19,25 @@ const mapStateToProps = (state) => ({
             state.products
                 .filter(product =>
                 localStorage.favorites.indexOf(product.productId) !== -1) :
-            state.products
+            state.products,
+
 })
 
 const mapDispatchToProps = (dispatch) => ({
     increaseAmount: (productId) => dispatch(increaseAmount(productId)),
     decreaseAmount: (productId) => dispatch(decreaseAmount(productId))
 })
+
+function generateProductItems(product, increaseAmount, decreaseAmount) {
+    return (
+        <ListGroupItem key={product.productId}>
+            <AllProductsItem increaseAmount={increaseAmount}
+                             decreaseAmount={decreaseAmount}
+                             product={product}
+                             counterValue={0}/>
+        </ListGroupItem>
+    )
+}
 
 const AllProducts = ({
     categoryFilterArray,
@@ -36,20 +48,18 @@ const AllProducts = ({
             <div className="all-products">
                 <h1>Wybór produktów</h1>
                 <Filters />
-                {console.log (
-                    categoryFilterArray,
-                    productsToDisplay)}
                 <ListGroup>
-                    {productsToDisplay.map(function (product) {
-                        return (
-                            <ListGroupItem key={product.productName}>
-                                <AllProductsItem increaseAmount={increaseAmount}
-                                                 decreaseAmount={decreaseAmount}
-                                                 product={product}
-                                                 counterValue={0}/>
-                            </ListGroupItem>
-                        )
-                    })}
+                    {categoryFilterArray.indexOf('none') !== -1 ?
+                        productsToDisplay
+                            .map( product =>
+                                generateProductItems(product, increaseAmount, decreaseAmount))
+                        :
+                        productsToDisplay
+                            .filter( product =>
+                                (categoryFilterArray.indexOf(product.category) !== -1))
+                            .map( product =>
+                                generateProductItems(product, increaseAmount, decreaseAmount))
+                    }
                 </ListGroup>
                 <div>
                     <button>
