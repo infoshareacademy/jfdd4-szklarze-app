@@ -2,7 +2,9 @@ import React from 'react'
 import ProductsToBuy from'../products-to-buy/ProductsToBuy'
 import {Grid,
         Col,
-        Row} from 'react-bootstrap'
+        Row,
+        Button,
+        ButtonGroup} from 'react-bootstrap'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
@@ -23,21 +25,25 @@ class ShoppingLists extends React.Component {
                     <Col xs={12} md={7}>
                         <div className="shopping-lists">
                             <h1>Shopping Lists</h1>
-                            {shoppingList.length > 0 ?
-                           console.log(shoppingList): 'Nie stowrzyłeś jeszcze listy zakupów' }
+                            {shoppingList.length > 0 ? ''
+                                : 'Nie stowrzyłeś jeszcze listy zakupów' }
                         </div>
+                        <ButtonGroup vertical block>
+                            <Button>Lista nr 1</Button>
+                            <Button>Lista nr 2</Button>
+                        </ButtonGroup>
                     </Col>
 
                     <Col xs={12} md={5}>
                         <div className="shopping-lists">
-                            <ProductsToBuy/>
-                            {shoppingList.map(item =>item)}
+                            <ProductsToBuy{...shoppingList}/>
                         </div>
                     </Col>
                 </Row>
             </Grid>
 
-        )
+
+    )
     }
 }
 export default connect(mapStateToProps)(ShoppingLists)
