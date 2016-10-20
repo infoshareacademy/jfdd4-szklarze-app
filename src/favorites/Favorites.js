@@ -1,6 +1,9 @@
-export default function getFavoriteProducts() {
+export function getFavoriteProducts() {
     return JSON.parse(localStorage.getItem('favorites')) || [];
 }
+
+const currentFavorites = getFavoriteProducts()
+export default currentFavorites;
 
 export function addIdToFavorites(productId) {
 
