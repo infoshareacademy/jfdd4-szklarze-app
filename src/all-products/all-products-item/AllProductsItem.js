@@ -18,9 +18,9 @@ let AllProductsItem = (props) =>(
                     <button onClick={() => props.decreaseAmount(props.product.productId)}>
                         -
                     </button>
-                    <p>
+                    <div>
                         {props.currentCounterValue}
-                    </p>
+                    </div>
                     <button onClick={() => props.increaseAmount(props.product.productId)}>
                         +
                     </button>

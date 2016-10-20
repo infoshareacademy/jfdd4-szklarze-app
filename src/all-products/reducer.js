@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
                 state.itemsToBuy.map(item => (item.productId === action.productId ?
                 {productId: item.productId, quantity: item.quantity - 1} : item)) : state.itemsToBuy;
             return Object.assign({}, state, {
-                itemsToBuy: itemsToBuy
+                itemsToBuy: itemsToBuy.filter( item => item.quantity > 0)
             })
         default:
             return state

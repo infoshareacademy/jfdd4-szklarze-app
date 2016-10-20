@@ -44,7 +44,7 @@ class AllProducts extends React.Component {
                     {this.state.productsToDisplay.map(function (product) {
                         var currentCounterValue = props.itemsToBuy.filter(item => item.productId === product.productId).length > 0 ?
                             props.itemsToBuy.map(item => (item.productId === product.productId ?
-                            {currentCounterValue: item.quantity} : currentCounterValue)) :
+                            item.quantity : null)) :
                             0;
                         return (
                             <ListGroupItem key={product.productName}>
