@@ -28,7 +28,7 @@ export default (state = initialState, action) => {
             })
         case SAVE_NEW_LIST:
             return Object.assign({}, state, {
-                shoppingLists: state.shoppingLists.concat(state.itemsToBuy),
+                shoppingLists: state.shoppingLists.concat([state.itemsToBuy]),
                 itemsToBuy: []
             })
         default:
