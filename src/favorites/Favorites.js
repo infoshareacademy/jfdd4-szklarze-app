@@ -1,4 +1,4 @@
-export function getFavoriteProducts() {
+export default function getFavoriteProducts() {
     return JSON.parse(localStorage.getItem('favorites')) || [];
 }
 
@@ -15,7 +15,7 @@ export function addIdToFavorites(productId) {
         });
     }
 
-    updateLocalStorage(favorites.sort());
+    updateLocalStorage(favorites);
 }
 
 function updateLocalStorage(favorites) {

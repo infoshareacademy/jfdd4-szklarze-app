@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button, ButtonToolbar} from 'react-bootstrap'
-import { toggleFavoriteFilter, setCategoryFilter, removeCategoryFilter, removeSingleFilter, disableButton} from './actionCreators'
+import { toggleFavoriteFilter, setCategoryFilter, removeCategoryFilter, removeSingleFilter} from './actionCreators'
 
 const mapStateToProps = (state) => ({
     products: state.products,
@@ -18,11 +18,6 @@ const mapDispatchToProps = (dispatch) => ({
     removeSingleFilter: (category) => dispatch(removeSingleFilter())
 })
 
-function switchFavoriteButton() {
-    toggleFavoriteFilter();
-    disableButton()
-}
-
 const Filters = ({
     categories,
     toggleFavoriteFilter,
@@ -33,13 +28,11 @@ const Filters = ({
         <p>Pokaż produkty:</p>
         <ButtonToolbar>
             <Button
-                onClick={() =>  switchFavoriteButton()}
-                bsStyle='primary'
-                active>
+                onClick={() =>  toggleFavoriteFilter()}>
                 Wszystkie
             </Button>
             <Button
-                onClick={() =>  switchFavoriteButton()}>
+                onClick={() =>  toggleFavoriteFilter()}>
                 Ulubione
             </Button>
         </ButtonToolbar>
