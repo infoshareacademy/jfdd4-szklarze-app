@@ -1,5 +1,4 @@
 import React from 'react'
-import products from '../data/products'
 import Filters from '../filters/Filters'
 import './AllProducts.css'
 
@@ -7,43 +6,67 @@ import {
     ListGroup,
     ListGroupItem
 } from 'react-bootstrap';
-import ProductItem from './all-products-item/AllProductsItem'
 
-export default class AllProducts extends React.Component {
-    constructor() {
-        super()
+import AllProductsItem from './all-products-item/AllProductsItem'
 
-        this.state = {
-            productsToDisplay: []
-        }
-    }
+import { increaseAmount, decreaseAmount } from './actionCreators'
+import { connect } from 'react-redux'
 
-    componentWillMount() {
-        this.setState({productsToDisplay: products})
-    }
+const mapStateToProps = (state) => ({
+    categoryFilterArray: state.filters.categoryFilter,
+    productsToDisplay:
+        state.filters.favoritesFilter ?
+            state.products
+                .filter(product =>
+                localStorage.favorites.indexOf(product.productId) !== -1) :
+            state.products,
 
-    render() {
-        return (
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    increaseAmount: (productId) => dispatch(increaseAmount(productId)),
+    decreaseAmount: (productId) => dispatch(decreaseAmount(productId))
+})
+
+function generateProductItems(product, increaseAmount, decreaseAmount) {
+    return (
+        <ListGroupItem key={product.productId}>
+            <AllProductsItem increaseAmount={increaseAmount}
+                             decreaseAmount={decreaseAmount}
+                             product={product}
+                             counterValue={0}/>
+        </ListGroupItem>
+    )
+}
+
+const AllProducts = ({
+    categoryFilterArray,
+    productsToDisplay,
+    increaseAmount,
+    decreaseAmount
+}) => (
             <div className="all-products">
                 <h1>Wybór produktów</h1>
                 <Filters />
                 <ListGroup>
-                    {this.state.productsToDisplay.map(function (product) {
-                        return (
-                            <ListGroupItem key={product.productName}>
-                                <ProductItem {...product}/>
-                            </ListGroupItem>
-                        )
-                    })}
+                    {categoryFilterArray.indexOf('none') !== -1 ?
+                        productsToDisplay
+                            .map( product =>
+                                generateProductItems(product, increaseAmount, decreaseAmount))
+                        :
+                        productsToDisplay
+                            .filter( product =>
+                                (categoryFilterArray.indexOf(product.category) !== -1))
+                            .map( product =>
+                                generateProductItems(product, increaseAmount, decreaseAmount))
+                    }
                 </ListGroup>
                 <div>
                     <button>
-                        Stwórz listę
+                        Stwórz nową listę
                     </button>
                 </div>
             </div>
-        )
-    }
+)
 
-}
-
+export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)
