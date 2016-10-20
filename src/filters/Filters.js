@@ -31,12 +31,12 @@ const Filters = ({
         <ButtonToolbar>
             <Button
                 onClick={() =>  toggleFavoriteFilter()}
-                active={!isFavoriteFilterActive}>
+                disabled={!isFavoriteFilterActive}>
                 Wszystkie
             </Button>
             <Button
                 onClick={() =>  toggleFavoriteFilter()}
-                active={isFavoriteFilterActive}>
+                disabled={isFavoriteFilterActive}>
                 Ulubione
             </Button>
         </ButtonToolbar>
