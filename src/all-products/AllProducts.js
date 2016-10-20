@@ -45,7 +45,7 @@ class AllProducts extends React.Component {
                         var currentCounterValue = props.itemsToBuy.filter(item => item.productId === product.productId).length > 0 ?
                             props.itemsToBuy.map(item => (item.productId === product.productId ?
                             {currentCounterValue: item.quantity} : currentCounterValue)) :
-                            {currentCounterValue: 0};
+                            0;
                         return (
                             <ListGroupItem key={product.productName}>
                                 <AllProductsItem increaseAmount={props.increaseAmount}
