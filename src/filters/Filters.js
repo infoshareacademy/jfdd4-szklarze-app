@@ -8,7 +8,8 @@ const mapStateToProps = (state) => ({
     categories: state.products.map(product => product.category).sort().filter(
         (category, index, allCategories) => {
             return allCategories[index] !== allCategories[index-1]
-        })
+        }),
+    isFavoriteFilterActive: state.filters.favoritesFilter
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -22,17 +23,20 @@ const Filters = ({
     categories,
     toggleFavoriteFilter,
     setCategoryFilter,
-    removeCategoryFilter
+    removeCategoryFilter,
+    isFavoriteFilterActive
 }) => (
     <div>
         <p>Pokaż produkty:</p>
         <ButtonToolbar>
             <Button
-                onClick={() =>  toggleFavoriteFilter()}>
+                onClick={() =>  toggleFavoriteFilter()}
+                active={!isFavoriteFilterActive}>
                 Wszystkie
             </Button>
             <Button
-                onClick={() =>  toggleFavoriteFilter()}>
+                onClick={() =>  toggleFavoriteFilter()}
+                active={isFavoriteFilterActive}>
                 Ulubione
             </Button>
         </ButtonToolbar>
