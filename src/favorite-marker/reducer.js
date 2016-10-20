@@ -2,7 +2,11 @@ import { MARK_FAVORITE_PRODUCT } from './actionTypes'
 import store from '../store'
 
 const initialState = {
-    favoriteProductIds: JSON.parse(localStorage.getItem('favoriteProductIds'))
+    favoriteProductIds:
+        typeof localStorage.getItem('favoriteProductIds') !== 'undefined' &&
+        localStorage.getItem('favoriteProductIds') !== null ?
+            JSON.parse(localStorage.getItem('favoriteProductIds')) :
+            []
 }
 
 export default (state = initialState, action) => {
