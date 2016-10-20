@@ -9,7 +9,6 @@ const mapStateToProps = (state) => ({
     shoppingList: state.allProducts.shoppingLists
 })
 
-
 class ShoppingLists extends React.Component {
 
     render(){
@@ -24,13 +23,16 @@ class ShoppingLists extends React.Component {
                     <Col xs={12} md={7}>
                         <div className="shopping-lists">
                             <h1>Shopping Lists</h1>
-                            </div>
+                            {shoppingList.length > 0 ?
+                           console.log(shoppingList): 'Nie stowrzyłeś jeszcze listy zakupów' }
+                        </div>
                     </Col>
 
-                    <Col xs={6} md={5}>
+                    <Col xs={12} md={5}>
                         <div className="shopping-lists">
-                        <ProductsToBuy/>
-                            </div>
+                            <ProductsToBuy/>
+                            {shoppingList.map(item =>item)}
+                        </div>
                     </Col>
                 </Row>
             </Grid>
