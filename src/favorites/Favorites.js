@@ -1,5 +1,5 @@
 export function getFavoriteProducts() {
-    return JSON.parse(localStorage.getItem('favorites')) || [];
+    return JSON.parse(localStorage.getItem('favoriteProductIds')) || [];
 }
 
 const currentFavorites = getFavoriteProducts()
@@ -7,20 +7,18 @@ export default currentFavorites;
 
 export function addIdToFavorites(productId) {
 
-    var favorites = getFavoriteProducts();
+    var favoriteProductIds = getFavoriteProducts();
 
-    if (favorites.indexOf(productId) === -1) {
-        favorites.push(productId);
-
-    } else {
-        favorites = favorites.filter(function(id) {
+    favoriteProductIds.indexOf(productId) === -1 ?
+        favoriteProductIds.push(productId) :
+        favoriteProductIds = favoriteProductIds.filter(function(id) {
             return id !== productId;
         });
-    }
 
-    updateLocalStorage(favorites);
+
+    updateLocalStorage(favoriteProductIds);
 }
 
-function updateLocalStorage(favorites) {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+function updateLocalStorage(favoriteProductIds) {
+    localStorage.setItem('favoriteProductIds', JSON.stringify(favoriteProductIds));
 }
