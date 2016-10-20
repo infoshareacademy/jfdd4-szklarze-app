@@ -9,7 +9,7 @@ import {
 
 import AllProductsItem from './all-products-item/AllProductsItem'
 
-import { increaseAmount, decreaseAmount } from './actionCreators'
+import { increaseAmount, decreaseAmount, saveNewList } from './actionCreators'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
@@ -18,7 +18,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     increaseAmount: (productId) => dispatch(increaseAmount(productId)),
-    decreaseAmount: (productId) => dispatch(decreaseAmount(productId))
+    decreaseAmount: (productId) => dispatch(decreaseAmount(productId)),
+    saveNewList: () => dispatch(saveNewList())
 })
 
 class AllProducts extends React.Component {
@@ -59,7 +60,7 @@ class AllProducts extends React.Component {
                     })}
                 </ListGroup>
                 <div>
-                    <button>
+                    <button onClick={() => props.saveNewList()}>
                         Stwórz nową listę
                     </button>
                 </div>
