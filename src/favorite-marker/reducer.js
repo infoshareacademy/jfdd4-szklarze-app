@@ -1,18 +1,23 @@
 import { MARK_FAVORITE_PRODUCT } from './actionTypes'
+import store from '../store'
 
 const initialState = {
-    favoriteProductIds: [] || JSON.parse(localStorage.getItem('favoriteProductIds'))
+    favoriteProductIds: JSON.parse(localStorage.getItem('favoriteProductIds'))
 }
 
 export default (state = initialState, action) => {
-    let productIds = state.favoriteProductIds;
+    let productIds = state.favoriteProductIds,
+        favoriteProductIds = productIds.indexOf(action.productId) === -1 ?
+            productIds.concat([action.productId]) :
+            productIds.filter((id) => id !== action.productId);
+
     switch (action.type) {
         case MARK_FAVORITE_PRODUCT:
+            store.subscribe(() => {
+                localStorage.setItem('favoriteProductIds', JSON.stringify(store.getState().favorites.favoriteProductIds || []))
+            })
             return Object.assign({}, state, {
-                favoriteProductIds:
-                    productIds.indexOf(action.productId) === -1 ?
-                        productIds.concat([action.productId]) :
-                        productIds.filter((id) => id !== action.productId)
+                favoriteProductIds: favoriteProductIds
             })
         default:
             return state

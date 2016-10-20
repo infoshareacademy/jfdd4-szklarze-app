@@ -14,12 +14,12 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
     categoryFilterArray: state.filters.categoryFilter,
-    favoriteProductsIds: state.favorites,
+    favoriteProductsIds: state.favorites.favoriteProductIds,
     productsToDisplay:
         state.filters.favoritesFilter ?
             state.products
                 .filter(product =>
-                state.favorites.indexOf(product.productId) !== -1) :
+                state.favorites.favoriteProductIds.indexOf(product.productId) !== -1) :
             state.products,
 
 })
