@@ -1,17 +1,6 @@
 import React from 'react'
 import {Row, Col} from 'react-bootstrap'
 import FavoriteMarker from '../../favorite-marker/FavoriteMarker'
-import { getAmount } from './actionCreators'
-import {connect} from 'react-redux'
-
-const mapStateToProps = (state) => ({
-    itemsToBuy: state.allProducts.itemsToBuy,
-    currentCounterValue: state.allProductsItem.currentCounterValue
-})
-
-const mapDispatchToProps = (dispatch) => ({
-
-})
 
 
 let AllProductsItem = (props) =>(
@@ -29,9 +18,9 @@ let AllProductsItem = (props) =>(
                     <button onClick={() => props.decreaseAmount(props.product.productId)}>
                         -
                     </button>
-                    <p>
+                    <span>
                         {props.currentCounterValue}
-                    </p>
+                    </span>
                     <button onClick={() => props.increaseAmount(props.product.productId)}>
                         +
                     </button>
@@ -47,4 +36,4 @@ let AllProductsItem = (props) =>(
     </Row>
 )
 
-export default connect(mapStateToProps)(AllProductsItem)
+export default AllProductsItem

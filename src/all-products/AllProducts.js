@@ -42,11 +42,16 @@ class AllProducts extends React.Component {
                 <h1>Wybór produktów</h1>
                 <ListGroup>
                     {this.state.productsToDisplay.map(function (product) {
+                        var currentCounterValue = props.itemsToBuy.filter(item => item.productId === product.productId).length > 0 ?
+                            props.itemsToBuy.map(item => (item.productId === product.productId ?
+                            {currentCounterValue: item.quantity} : currentCounterValue)) :
+                            {currentCounterValue: 0};
                         return (
                             <ListGroupItem key={product.productName}>
                                 <AllProductsItem increaseAmount={props.increaseAmount}
                                                  decreaseAmount={props.decreaseAmount}
                                                  product={product}
+                                                 currentCounterValue={currentCounterValue}
                                                  itemsToBuy={props.itemsToBuy}
                                                 />
                             </ListGroupItem>
