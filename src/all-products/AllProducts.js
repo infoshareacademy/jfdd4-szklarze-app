@@ -1,6 +1,6 @@
 import React from 'react'
 import products from '../data/products'
-import stylesheet from './AllProducts.css'
+import './AllProducts.css'
 
 import {
     ListGroup,
@@ -12,8 +12,9 @@ import AllProductsItem from './all-products-item/AllProductsItem'
 import { increaseAmount, decreaseAmount } from './actionCreators'
 import { connect } from 'react-redux'
 
-const mapStateToProps = (state) => {
-}
+const mapStateToProps = (state) => ({
+    itemsToBuy: state.allProducts.itemsToBuy,
+})
 
 const mapDispatchToProps = (dispatch) => ({
     increaseAmount: (productId) => dispatch(increaseAmount(productId)),
@@ -46,6 +47,7 @@ class AllProducts extends React.Component {
                                 <AllProductsItem increaseAmount={props.increaseAmount}
                                                  decreaseAmount={props.decreaseAmount}
                                                  product={product}
+                                                 itemsToBuy={props.itemsToBuy}
                                                 />
                             </ListGroupItem>
                         )

@@ -1,0 +1,1 @@
+export const GET_AMOUNT = 'all-products-item/GET_AMOUNT'
