@@ -18,7 +18,13 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case MARK_FAVORITE_PRODUCT:
             store.subscribe(() => {
-                localStorage.setItem('favoriteProductIds', JSON.stringify(store.getState().favorites.favoriteProductIds || []))
+                localStorage
+                    .setItem(
+                        'favoriteProductIds',
+                        JSON.stringify(
+                            store.getState().favorites.favoriteProductIds || []
+                        )
+                    )
             })
             return Object.assign({}, state, {
                 favoriteProductIds: favoriteProductIds

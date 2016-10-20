@@ -2,7 +2,7 @@ import {
     TOGGLE_FAVORITE_FILTER,
     SET_CATEGORY_FILTER,
     REMOVE_CATEGORY_FILTERS,
-    REMOVE_SINGLE_FILTER} from './actionTypes'
+    } from './actionTypes'
 
 export function toggleFavoriteFilter() {
     return {
@@ -20,11 +20,5 @@ export function setCategoryFilter(category) {
 export function removeCategoryFilter() {
     return {
         type: REMOVE_CATEGORY_FILTERS
-    }
-}
-
-export function removeSingleFilter() {
-    return {
-        type: REMOVE_SINGLE_FILTER
     }
 }
