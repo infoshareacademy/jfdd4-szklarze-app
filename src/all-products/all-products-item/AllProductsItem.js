@@ -3,8 +3,7 @@ import {Row, Col} from 'react-bootstrap'
 import FavoriteMarker from '../../favorite-marker/FavoriteMarker'
 
 
-
-let AllProductsItem = (props) => (
+let AllProductsItem = (props) =>(
     <Row>
         <div>
             <Col md={8}>
@@ -19,7 +18,9 @@ let AllProductsItem = (props) => (
                     <button onClick={() => props.decreaseAmount(props.product.productId)}>
                         -
                     </button>
-                    <span>  {props.counterValue}  </span>
+                    <div>
+                        {props.currentCounterValue}
+                    </div>
                     <button onClick={() => props.increaseAmount(props.product.productId)}>
                         +
                     </button>
@@ -27,7 +28,7 @@ let AllProductsItem = (props) => (
             </Col>
             <Col md={2}>
                 <div className="favorite_marker">
-                    <FavoriteMarker productId={props.product.productId} />
+                    <FavoriteMarker productId={props.product.productId}/>
                 </div>
             </Col>
 

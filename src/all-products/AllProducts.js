@@ -1,6 +1,6 @@
 import React from 'react'
 import products from '../data/products'
-import stylesheet from './AllProducts.css'
+import './AllProducts.css'
 
 import {
     ListGroup,
@@ -9,16 +9,17 @@ import {
 
 import AllProductsItem from './all-products-item/AllProductsItem'
 
-import { increaseAmount, decreaseAmount } from './actionCreators'
+import { increaseAmount, decreaseAmount, saveNewList } from './actionCreators'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
-
+    itemsToBuy: state.allProducts.itemsToBuy,
 })
 
 const mapDispatchToProps = (dispatch) => ({
     increaseAmount: (productId) => dispatch(increaseAmount(productId)),
-    decreaseAmount: (productId) => dispatch(decreaseAmount(productId))
+    decreaseAmount: (productId) => dispatch(decreaseAmount(productId)),
+    saveNewList: () => dispatch(saveNewList())
 })
 
 class AllProducts extends React.Component {
@@ -26,8 +27,7 @@ class AllProducts extends React.Component {
         super()
 
         this.state = {
-            productsToDisplay: [],
-            shoppingList: []
+            productsToDisplay: []
         }
     }
 
@@ -43,18 +43,24 @@ class AllProducts extends React.Component {
                 <h1>Wybór produktów</h1>
                 <ListGroup>
                     {this.state.productsToDisplay.map(function (product) {
+                        var currentCounterValue = props.itemsToBuy.filter(item => item.productId === product.productId).length > 0 ?
+                            props.itemsToBuy.map(item => (item.productId === product.productId ?
+                            item.quantity : null)) :
+                            0;
                         return (
                             <ListGroupItem key={product.productName}>
                                 <AllProductsItem increaseAmount={props.increaseAmount}
                                                  decreaseAmount={props.decreaseAmount}
                                                  product={product}
-                                                 counterValue={0}/>
+                                                 currentCounterValue={currentCounterValue}
+                                                 itemsToBuy={props.itemsToBuy}
+                                                />
                             </ListGroupItem>
                         )
                     })}
                 </ListGroup>
                 <div>
-                    <button>
+                    <button onClick={() => props.saveNewList()}>
                         Stwórz nową listę
                     </button>
                 </div>
