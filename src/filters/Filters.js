@@ -32,12 +32,14 @@ const Filters = ({
         <ButtonToolbar>
             <Button
                 onClick={() =>  toggleFavoriteFilter()}
-                disabled={!isFavoriteFilterActive}>
+                disabled={!isFavoriteFilterActive}
+                bsStyle={!isFavoriteFilterActive ? 'success' : 'default'}>
                 Wszystkie
             </Button>
             <Button
                 onClick={() =>  toggleFavoriteFilter()}
-                disabled={isFavoriteFilterActive}>
+                disabled={isFavoriteFilterActive}
+                bsStyle={isFavoriteFilterActive ? 'success' : 'default'}>
                 Ulubione
             </Button>
         </ButtonToolbar>
@@ -46,14 +48,16 @@ const Filters = ({
             {categories.map((category, index) =>
                 <Button key={index}
                         onClick={() => setCategoryFilter(category)}
-                        active={CategoryFilterArray.indexOf(category) !== -1}>
+                        active={CategoryFilterArray.indexOf(category) !== -1}
+                        bsStyle={CategoryFilterArray.indexOf(category) !== -1 ? 'primary' : 'default'}>
                     {category}
                 </Button>
             )}
         </ButtonToolbar>
         <ButtonToolbar>
             <Button
-                onClick={() => removeCategoryFilter()}>
+                onClick={() => removeCategoryFilter()}
+                bsStyle='danger'>
                 Usuń filtry
             </Button>
         </ButtonToolbar>
