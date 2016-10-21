@@ -5,59 +5,61 @@
 @import 'shopping-lists/ShoppingLists.css';
 
 html, body {
-  margin: 0;
-  height: 100%;
+    margin: 0;
+    height: 100%;
 }
 
 html body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.4em;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4em;
+    color: #262e3e;
 }
 
 html body h1 {
-  font-size: 2.4em;
+    font-size: 2.4em;
 }
 
 html body h2 {
-  font-size: 2em;
+    font-size: 2em;
 }
 
 html body h3 {
-  font-size: 1.8em;
+    font-size: 1.8em;
 }
 
 html body h4 {
-  font-size: 1.6em;
+    font-size: 1.6em;
 }
 
 html body h5 {
-  font-size: 1.4em;
+    font-size: 1.4em;
 }
 
 html body h6 {
-  font-size: 1.2em;
+    font-size: 1.2em;
 }
 
 html body p {
-  margin: 0.2em 0;
+    margin: 0.2em 0;
 }
 
 #root {
-  height: 100%;
-  background: #fff;
-  border: 1px solid #fff;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #fff;
 }
 
 .navbar-default {
-  background: #262e3e;
+    background: #ffc10e;
     border: none;
-    box-shadow: 0;
     border-radius: 0;
+    margin: 0;
+    box-shadow: none;
 }
 
-.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus  {
+.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
     color: white;
     text-shadow: none;
     font-weight: bold;
@@ -70,12 +72,44 @@ html body p {
 }
 
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    color: white;
+    color: #262e3e;
     text-shadow: none;
     font-weight: bold;
     padding: 20px;
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-    background-color: #303a4f;
+    background-color: #dda20e;
+}
+
+.jumbotron {
+    text-align: center;
+    height: 100vh;
+    padding-left: 10%;
+    padding-right: 10%;
+    background: #ffc10e url('./images/intro-background.svg') center bottom;
+    background-size: 360px 150px;
+}
+
+.jumbotron h1 {
+    font-size: 2.4em;
+    font-weight: 700;
+}
+
+span {
+    font-weight: bolder;
+}
+
+.jumbotron h4 {
+    font-size: 1.6em;
+}
+
+.jumbotron .intro-logo {
+    background: white url('./images/icon-blue-janusz.svg') no-repeat center;
+    box-sizing: border-box;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-size: 140px;
+    margin: 20px auto;
 }
