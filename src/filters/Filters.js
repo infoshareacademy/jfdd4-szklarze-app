@@ -9,7 +9,8 @@ const mapStateToProps = (state) => ({
         (category, index, allCategories) => {
             return allCategories[index] !== allCategories[index-1]
         }),
-    isFavoriteFilterActive: state.filters.favoritesFilter
+    isFavoriteFilterActive: state.filters.favoritesFilter,
+    CategoryFilterArray: state.filters.categoryFilter
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -23,7 +24,8 @@ const Filters = ({
     toggleFavoriteFilter,
     setCategoryFilter,
     removeCategoryFilter,
-    isFavoriteFilterActive
+    isFavoriteFilterActive,
+    CategoryFilterArray
 }) => (
     <div>
         <p>Pokaż produkty:</p>
@@ -43,7 +45,8 @@ const Filters = ({
         <ButtonToolbar>
             {categories.map((category, index) =>
                 <Button key={index}
-                        onClick={() => setCategoryFilter(category)}>
+                        onClick={() => setCategoryFilter(category)}
+                        active={CategoryFilterArray.indexOf(category) !== -1}>
                     {category}
                 </Button>
             )}

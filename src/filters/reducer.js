@@ -15,7 +15,19 @@ export default (state = initialState, action) => {
             })
 
         case SET_CATEGORY_FILTER:
-            return Object.assign({}, state, {
+            let isCategoryFilterActive = state.categoryFilter
+                                            .indexOf(action.category) !== -1;
+
+            return isCategoryFilterActive  ?
+                Object.assign({}, state, {
+                    categoryFilter: state.categoryFilter.length > 1 ?
+                                    state.categoryFilter
+                                        .filter(category => category !== action.category) :
+                                    state.categoryFilter
+                                        .filter(category => category !== action.category)
+                                        .concat('none')
+                }) :
+            Object.assign({}, state, {
                 categoryFilter: state.categoryFilter
                     .concat(action.category)
                     .filter(category => category !== 'none')
@@ -35,23 +47,3 @@ export default (state = initialState, action) => {
             return state
     }
 }
-        // case SET_CATEGORY_FILTER:
-        //     let isCategoryFilterActive = state.filters.categoryFilter
-        //                                     .indexOf(action.category) !== -1;
-        //     return
-        //     isCategoryFilterActive  ?
-        //         Object.assign({}, state, {
-        //             categoryFilter: state.categoryFilter
-        //                             .filter(category => category !== action.category)
-        //         }) :
-        //     Object.assign({}, state, {
-        //         categoryFilter: state.categoryFilter
-        //             .concat(action.category)
-        //             .filter(category => category !== 'none')
-        //             .sort()
-        //             .filter(
-        //                 (category, index, allCategories) => {
-        //                     return allCategories[index] !== allCategories[index-1]
-        //                 })
-        //     })
-
