@@ -1,31 +1,25 @@
 import React from 'react'
 import { Button, ButtonToolbar } from 'react-bootstrap'
-import { addIdToFavorites, getFavoriteProducts} from '../favorites/Favorites'
+import { connect } from 'react-redux'
+import { markFavoriteProduct } from './actionCreators'
 
-export default class FavoriteMarker extends React.Component {
+const mapStateToProps = (state) => ({
+    favorites: state.favorites.favoriteProductIds
+})
 
-    constructor() {
-        super()
+const mapDispatchToProps = (dispatch) => ({
+    markFavoriteProduct: (productId) => dispatch(markFavoriteProduct(productId))
+})
 
-        this.markAsFavorite = this.markAsFavorite.bind(this);
-    }
+const FavoriteMarker = ({markFavoriteProduct, favorites, productId}) => (
+    <ButtonToolbar>
+        <Button
+            bsStyle={favorites.indexOf(productId) !== -1 ? 'danger' : 'default'}
+            bsSize="xsmall"
+            onClick={() => markFavoriteProduct(productId)}>
+            {"<3"}
+        </Button>
+    </ButtonToolbar>
+)
 
-    markAsFavorite() {
-        addIdToFavorites(this.props.productId);
-        this.forceUpdate();
-    }
-
-    render () {
-        var favorites = getFavoriteProducts();
-        return (
-            <ButtonToolbar>
-                <Button
-                    bsStyle={favorites.indexOf(this.props.productId) !== -1 ? 'danger' : 'default'}
-                    bsSize="xsmall"
-                    onClick={this.markAsFavorite}>
-                    {"<3"}
-                </Button>
-            </ButtonToolbar>
-        )
-    }
-}
+export default connect(mapStateToProps, mapDispatchToProps)(FavoriteMarker)
