@@ -42,7 +42,7 @@ class AllProducts extends React.Component {
         return (
             <Jumbotron>
                 <div className="all-products">
-                    <h1>Co chcesz kupić?</h1>
+                    <h2>Co chcesz kupić?</h2>
                     <ListGroup>
                         {this.state.productsToDisplay.map(function (product) {
                             var currentCounterValue = props.itemsToBuy.filter(item => item.productId === product.productId).length > 0 ?
