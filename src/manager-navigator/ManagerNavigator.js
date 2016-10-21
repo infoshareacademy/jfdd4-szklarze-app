@@ -15,7 +15,7 @@ export default class ManagerNavigator extends React.Component {
         <Navbar>
             <Navbar.Header>
                 <Navbar.Brand>
-                    <a href="/"><div className="nav-logo"></div><div>JANUSZ</div></a>
+                    <a href="/"><div className="nav-logo"></div><div>Janusz</div></a>
                 </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>
