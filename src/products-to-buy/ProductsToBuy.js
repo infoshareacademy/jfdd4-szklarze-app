@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import products from '../data/products'
+import {ListGroupItem,
+        ListGroup} from 'react-bootstrap'
 
 const mapStateToProps = (state) => ({
     shoppingList: state.allProducts.shoppingLists
@@ -11,10 +13,12 @@ class ProductsToBuy extends React.Component {
         var {
             shoppingList
         } = this.props
-        let list =shoppingList[0];
+        let i= 0
+        let list =shoppingList[i];
         return (
             <div>
                 <h1>ProductsToBuy</h1>
+                <ListGroup>
                 {shoppingList.length > 0 ?
                     list.map(function (prod) {
                     return prod
@@ -29,10 +33,11 @@ class ProductsToBuy extends React.Component {
                                 console.log(cos.productName)
                                 return cos.productName
                             })
-                         return <p>{result}</p>
+                         return<ListGroupItem>{result}</ListGroupItem>
                         })
                     : ''}
 
+                </ListGroup>
                 </div>
 
 
