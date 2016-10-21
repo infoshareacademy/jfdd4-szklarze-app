@@ -61,7 +61,7 @@ const AllProducts = ({
 }) => (
     <Jumbotron>
             <div className="all-products">
-                <h1>Wybór produktów</h1>
+                <h2>Co chcesz kupić?</h2>
                 <Filters />
                 <ListGroup>
                     {categoryFilterArray.indexOf('none') !== -1 ?

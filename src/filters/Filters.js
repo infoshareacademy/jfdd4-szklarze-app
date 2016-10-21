@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Button, ButtonToolbar} from 'react-bootstrap'
 import { toggleFavoriteFilter, setCategoryFilter, removeCategoryFilter } from './actionCreators'
+import './Filters.css'
 
 const mapStateToProps = (state) => ({
     products: state.products,
@@ -28,7 +29,7 @@ const Filters = ({
     CategoryFilterArray
 }) => (
     <div>
-        <p>Pokaż produkty:</p>
+        <p className="show-favorite-caption">Pokaż produkty:</p>
         <ButtonToolbar>
             <Button
                 onClick={() =>  toggleFavoriteFilter()}
@@ -43,7 +44,7 @@ const Filters = ({
                 Ulubione
             </Button>
         </ButtonToolbar>
-        <p>Filtruj:</p>
+        <p className="show-favorite-caption">Filtruj:</p>
         <ButtonToolbar>
             {categories.map((category, index) =>
                 <Button key={index}
