@@ -14,7 +14,8 @@ class ProductsToBuy extends React.Component {
         var {
             shoppingList
         } = this.props
-        let i= 0
+
+        let i= this.props.params.listId
         let list =shoppingList[i];
         console.log(list)
         return (
@@ -29,6 +30,7 @@ class ProductsToBuy extends React.Component {
                             console.log(item.quantity, item.productId)
                             return item.productId})
                             .map(function (productid) {
+                                (console.log(productid.quantity))
                                 var result = products
                                     .filter(function (prod) {
                                         return prod.productId === productid})

@@ -6,6 +6,7 @@ import {Grid,
         Button,
         ButtonGroup} from 'react-bootstrap'
 import {connect} from 'react-redux'
+import {Link} from 'react-router'
 
 const mapStateToProps = (state) => ({
     shoppingList: state.allProducts.shoppingLists
@@ -30,7 +31,8 @@ class ShoppingLists extends React.Component {
                         </div>
                         <ButtonGroup vertical block>
                             {console.log(shoppingList)}
-                            {shoppingList.map(list => <Button>list</Button>)}
+                            {shoppingList.map((list, index) => <Link to={`/shopping-lists/`+ index}>
+                                <Button >Lista zakupów nr {index +1}</Button> </Link>)}
                         </ButtonGroup>
                     </Col>
 
