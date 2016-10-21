@@ -2,8 +2,9 @@
     background: #ffc10e;
     border: none;
     border-radius: 0;
-    margin: 0;
-    box-shadow: none;
+    margin: 0 auto;
+
+
 }
 
 .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {

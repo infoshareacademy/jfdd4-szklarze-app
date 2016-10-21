@@ -12,7 +12,7 @@ export default class ManagerNavigator extends React.Component {
 
     render() {
         return (
-        <Navbar>
+        <Navbar fixedTop>
             <Navbar.Header>
                 <Navbar.Brand>
                     <a href="/"><div className="nav-logo"></div><div>Janusz</div></a>
