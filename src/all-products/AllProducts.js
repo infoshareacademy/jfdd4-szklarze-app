@@ -1,5 +1,4 @@
 import React from 'react'
-import products from '../data/products'
 import Filters from '../filters/Filters'
 import './AllProducts.css'
 
@@ -24,6 +23,7 @@ const mapStateToProps = (state) => ({
                 state.favorites.favoriteProductIds.indexOf(product.productId) !== -1) :
             state.products,
     itemsToBuy: state.allProducts.itemsToBuy,
+
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -32,18 +32,20 @@ const mapDispatchToProps = (dispatch) => ({
     saveNewList: () => dispatch(saveNewList())
 })
 
-function generateProductItems(product, increaseAmount, decreaseAmount) {
-    this.state.productsToDisplay.map(function (product) {
-        var currentCounterValue = props.itemsToBuy.filter(item => item.productId === product.productId).length > 0 ?
-            props.itemsToBuy.map(item => (item.productId === product.productId ?
-                item.quantity : null)) :
+function generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy) {
+    var currentCounterValue =
+        itemsToBuy
+            .filter(item => item.productId === product.productId).length > 0 ?
+            itemsToBuy
+                .map(item => (item.productId === product.productId ? item.quantity : null)) :
             0;
     return (
         <ListGroupItem key={product.productId}>
             <AllProductsItem increaseAmount={increaseAmount}
                              decreaseAmount={decreaseAmount}
                              currentCounterValue={currentCounterValue}
-                             itemsToBuy={props.itemsToBuy}/>
+                             itemsToBuy={itemsToBuy}
+                             product={product}/>
         </ListGroupItem>
     )
 }
@@ -52,7 +54,9 @@ const AllProducts = ({
     categoryFilterArray,
     productsToDisplay,
     increaseAmount,
-    decreaseAmount
+    decreaseAmount,
+    itemsToBuy,
+    saveNewList
 }) => (
             <div className="all-products">
                 <h1>Wybór produktów</h1>
@@ -61,17 +65,17 @@ const AllProducts = ({
                     {categoryFilterArray.indexOf('none') !== -1 ?
                         productsToDisplay
                             .map( product =>
-                                generateProductItems(product, increaseAmount, decreaseAmount))
+                                generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
                         :
                         productsToDisplay
                             .filter( product =>
                                 (categoryFilterArray.indexOf(product.category) !== -1))
                             .map( product =>
-                                generateProductItems(product, increaseAmount, decreaseAmount))
+                                generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
                     }
                 </ListGroup>
                 <div>
-                    <button onClick={() => props.saveNewList()}>
+                    <button onClick={() => saveNewList()}>
                         Stwórz nową listę
                     </button>
                 </div>
@@ -79,51 +83,3 @@ const AllProducts = ({
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)
-
-    // class AllProducts extends React.Component {
-    //     constructor() {
-    //         super()
-    //
-    //         this.state = {
-    //             productsToDisplay: []
-    //         }
-    //     }
-    //
-    //     componentWillMount() {
-    //         this.setState({productsToDisplay: products})
-    //     }
-    //
-    //
-    //     render() {
-    //         var props = this.props
-    //         return (
-    //             <div className="all-products">
-    //                 <h1>Wybór produktów</h1>
-    //                 <ListGroup>
-    //                     {this.state.productsToDisplay.map(function (product) {
-    //                         var currentCounterValue = props.itemsToBuy.filter(item => item.productId === product.productId).length > 0 ?
-    //                             props.itemsToBuy.map(item => (item.productId === product.productId ?
-    //                                 item.quantity : null)) :
-    //                             0;
-    //                         return (
-    //                             <ListGroupItem key={product.productName}>
-    //                                 <AllProductsItem increaseAmount={props.increaseAmount}
-    //                                                  decreaseAmount={props.decreaseAmount}
-    //                                                  product={product}
-    //                                                  currentCounterValue={currentCounterValue}
-    //                                                  itemsToBuy={props.itemsToBuy}
-    //                                 />
-    //                             </ListGroupItem>
-    //                         )
-    //                     })}
-    //                 </ListGroup>
-    //                 <div>
-    //                     <button onClick={() => props.saveNewList()}>
-    //                         Stwórz nową listę
-    //                     </button>
-    //                 </div>
-    //             </div>
-    //         )
-    //     }
-    //
-    // }

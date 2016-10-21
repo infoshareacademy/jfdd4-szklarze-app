@@ -9,7 +9,6 @@ const initialState = {
 export default (state = initialState, action) => {
     let itemsToBuyContainsGivenItem = state.itemsToBuy.filter(item => item.productId === action.productId).length > 0;
     let itemsToBuy;
-    let shoppingLists;
 
     switch (action.type) {
         case INCREASE_AMOUNT:
