@@ -1,6 +1,7 @@
 import React from 'react'
 import {Navbar, Nav, NavItem} from 'react-bootstrap'
 import {browserHistory} from 'react-router'
+import './ManagerNavigation.css'
 
 export default class ManagerNavigator extends React.Component {
 
@@ -11,10 +12,10 @@ export default class ManagerNavigator extends React.Component {
 
     render() {
         return (
-        <Navbar inverse>
+        <Navbar>
             <Navbar.Header>
                 <Navbar.Brand>
-                    <a href="/">Janusz</a>
+                    <a href="/">JANUSZ</a>
                 </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>

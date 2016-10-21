@@ -14,7 +14,6 @@ html body {
   font-size: 16px;
   font-weight: 500;
   line-height: 1.4em;
-  color: #262e3e;
 }
 
 html body h1 {
@@ -51,3 +50,27 @@ html body p {
   border: 1px solid #fff;
 }
 
+.navbar-default {
+  background: #262e3e;
+    border: none;
+    box-shadow: 0;
+    border-radius: 0;
+}
+
+.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus  {
+    color: white;
+    text-shadow: none;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: white;
+    text-shadow: none;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    background-color: #303a4f;
+}
