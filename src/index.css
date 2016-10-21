@@ -48,7 +48,8 @@ html body p {
 #root {
     height: 100%;
     background: #fff;
-    border: 1px solid #fff;
+    margin: 0;
+    padding: 0;
 }
 
 .jumbotron {
