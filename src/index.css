@@ -50,3 +50,20 @@ html body p {
     background: #fff;
     border: 1px solid #fff;
 }
+
+.jumbotron {
+    text-align: center;
+    height: 95vh;
+    padding-top: 100px;
+    padding-left: 10%;
+    padding-right: 10%;
+    background: #f5f5f5;
+}
+
+.jumbotron h1 {
+    font-size: 2.4em;
+    font-weight: 700;
+}
+
+
+

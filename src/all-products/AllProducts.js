@@ -1,5 +1,6 @@
 import React from 'react'
 import products from '../data/products'
+import {Jumbotron} from 'react-bootstrap'
 import './AllProducts.css'
 
 import {
@@ -9,8 +10,8 @@ import {
 
 import AllProductsItem from './all-products-item/AllProductsItem'
 
-import { increaseAmount, decreaseAmount, saveNewList } from './actionCreators'
-import { connect } from 'react-redux'
+import {increaseAmount, decreaseAmount, saveNewList} from './actionCreators'
+import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
     itemsToBuy: state.allProducts.itemsToBuy,
@@ -39,32 +40,34 @@ class AllProducts extends React.Component {
     render() {
         var props = this.props
         return (
-            <div className="all-products">
-                <h1>Wybór produktów</h1>
-                <ListGroup>
-                    {this.state.productsToDisplay.map(function (product) {
-                        var currentCounterValue = props.itemsToBuy.filter(item => item.productId === product.productId).length > 0 ?
-                            props.itemsToBuy.map(item => (item.productId === product.productId ?
-                            item.quantity : null)) :
-                            0;
-                        return (
-                            <ListGroupItem key={product.productName}>
-                                <AllProductsItem increaseAmount={props.increaseAmount}
-                                                 decreaseAmount={props.decreaseAmount}
-                                                 product={product}
-                                                 currentCounterValue={currentCounterValue}
-                                                 itemsToBuy={props.itemsToBuy}
-                                                />
-                            </ListGroupItem>
-                        )
-                    })}
-                </ListGroup>
-                <div>
-                    <button onClick={() => props.saveNewList()}>
-                        Stwórz nową listę
-                    </button>
+            <Jumbotron>
+                <div className="all-products">
+                    <h1>Co chcesz kupić?</h1>
+                    <ListGroup>
+                        {this.state.productsToDisplay.map(function (product) {
+                            var currentCounterValue = props.itemsToBuy.filter(item => item.productId === product.productId).length > 0 ?
+                                props.itemsToBuy.map(item => (item.productId === product.productId ?
+                                    item.quantity : null)) :
+                                0;
+                            return (
+                                <ListGroupItem key={product.productName}>
+                                    <AllProductsItem increaseAmount={props.increaseAmount}
+                                                     decreaseAmount={props.decreaseAmount}
+                                                     product={product}
+                                                     currentCounterValue={currentCounterValue}
+                                                     itemsToBuy={props.itemsToBuy}
+                                    />
+                                </ListGroupItem>
+                            )
+                        })}
+                    </ListGroup>
+                    <div>
+                        <button onClick={() => props.saveNewList()}>
+                            Stwórz nową listę
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </Jumbotron>
         )
     }
 
