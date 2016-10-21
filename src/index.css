@@ -50,37 +50,3 @@ html body p {
     background: #fff;
     border: 1px solid #fff;
 }
-
-
-
-.jumbotron {
-    text-align: center;
-    height: 100vh;
-    padding-left: 10%;
-    padding-right: 10%;
-    background: #f5f5f5;
-    background-size: 360px 150px;
-}
-
-.jumbotron h1 {
-    font-size: 2.4em;
-    font-weight: 700;
-}
-
-span {
-    font-weight: bolder;
-}
-
-.jumbotron h4 {
-    font-size: 1.6em;
-}
-
-.jumbotron .intro-logo {
-    background: white url('./images/icon-blue-janusz.svg') no-repeat center;
-    box-sizing: border-box;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-size: 140px;
-    margin: 20px auto;
-}
