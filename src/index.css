@@ -61,9 +61,10 @@ html body p {
     color: white;
     text-shadow: none;
     font-weight: bold;
-    padding: 20px 20px 20px 35px;
+    padding: 20px 20px 20px 40px;
     background: url('images/icon-white-janusz.svg') no-repeat left center;
     background-size: 25px;
+    background-position-x: 10%;
     background-position-y: 65%;
     font-size: 20px;
 }
