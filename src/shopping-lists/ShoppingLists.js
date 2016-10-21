@@ -29,8 +29,8 @@ class ShoppingLists extends React.Component {
                                 : 'Nie stowrzyłeś jeszcze listy zakupów' }
                         </div>
                         <ButtonGroup vertical block>
-                            <Button>Lista nr 1</Button>
-                            <Button>Lista nr 2</Button>
+                            {console.log(shoppingList)}
+                            {shoppingList.map(list => <Button>list</Button>)}
                         </ButtonGroup>
                     </Col>
 
