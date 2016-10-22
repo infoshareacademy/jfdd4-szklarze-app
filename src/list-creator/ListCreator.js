@@ -3,16 +3,20 @@ import { saveNewList } from './actionCreators'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
+    itemsToBuy: state.allProducts.itemsToBuy
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    saveNewList: () => dispatch(saveNewList())
+    saveNewList: (itemsToBuy) => dispatch(saveNewList(itemsToBuy))
 
 })
 
-const ListCreator = (props) => (
+const ListCreator = ({
+    itemsToBuy,
+    saveNewList
+}) => (
     <div>
-        <button onClick={() => saveNewList()}>
+        <button onClick={() => saveNewList({itemsToBuy})}>
             Stwórz nową listę
         </button>
     </div>

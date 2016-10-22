@@ -75,7 +75,7 @@ const AllProducts = ({
                     }
                 </ListGroup>
 
-                <ListCreator />
+                <ListCreator itemsToBuy={itemsToBuy}/>
 
             </div>
 )
