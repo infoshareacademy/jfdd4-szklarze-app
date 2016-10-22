@@ -17,7 +17,6 @@ ReactDOM.render(
         <Router history={browserHistory}>
             <Route path="/" component={App}>
                 <IndexRoute component={Introduction}/>
-                <Route path="/products-to-buy" component={ProductsToBuy} />
                 <Route path="/all-products" component={AllProducts} />
                 <Route path="/shopping-lists" component={ShoppingLists}>
                     <Route path="/shopping-lists/:listId" component={ProductsToBuy}/>

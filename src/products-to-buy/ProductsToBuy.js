@@ -48,9 +48,6 @@ class ProductsToBuy extends React.Component {
                             }) : ''}
                     </ListGroup>}
                 </div>
-
-
-
         )
     }
 }
