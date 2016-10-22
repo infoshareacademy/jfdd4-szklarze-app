@@ -61,5 +61,21 @@ html body p {
     margin: 0;
 }
 
+.blue-button {
+    border-radius: 27px;
+    background-color: #262e3e;
+    color: #fff;
+    cursor: pointer;
+    font-weight: normal;
+    padding: 0.3em 0.7em;
+    font-size: 0.8em;
+    box-shadow: none;
+    border: none;
+}
+
+.blue-button:hover {
+    background-color: #465676;
+}
+
 
 

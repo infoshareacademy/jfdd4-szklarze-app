@@ -6,8 +6,8 @@ export default (props) =>
         <div className="intro-logo"></div>
         <h1>Janusz wie lepiej, zawsze.</h1>
         <ul className="intro-caption">
-            <li>W zakładce <span>Stwórz listę</span> wybierz jakie produkty chcesz kupić</li>
-            <li>W zakładce <span>Twoje listy zakupów</span> obejrzyj swoje listy</li>
-            <li>Ruszaj do sklepu!</li>
+            <p>W zakładce <button className="blue-button">Stwórz listę</button> wybierz jakie produkty chcesz kupić</p>
+            <p>W zakładce <button className="blue-button">Twoje listy zakupów</button> obejrzyj swoje listy</p>
+            <p>Wyświetl listę na telefonie i uszaj do sklepu!</p>
         </ul>
     </Jumbotron>
