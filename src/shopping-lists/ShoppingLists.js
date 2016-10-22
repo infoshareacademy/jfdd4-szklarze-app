@@ -38,7 +38,7 @@ class ShoppingLists extends React.Component {
 
                     <Col xs={12} md={5}>
                         <div className="shopping-lists">
-                            <ProductsToBuy{...shoppingList}/>
+                            <ProductsToBuy{...this.props}/>
                         </div>
                     </Col>
                 </Row>
