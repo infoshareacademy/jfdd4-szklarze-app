@@ -31,8 +31,14 @@ class ShoppingLists extends React.Component {
                         </div>
                         <ButtonGroup vertical block>
                             {console.log(shoppingList)}
-                            {shoppingList.map((list, index) => <Link to={`/shopping-lists/`+ index}>
-                                <Button >Lista zakupów nr {index +1}</Button> </Link>)}
+                            {shoppingList.filter(list => list.length >0).map(
+                                    (list, index) => <div>
+                                        <Link to={`/shopping-lists/`+ index}>
+                                            <Button>
+                                                Lista zakupów nr {index +1}
+                                            </Button>
+                                        </Link>
+                                                    </div>)}
                         </ButtonGroup>
                     </Col>
 

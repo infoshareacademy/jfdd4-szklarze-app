@@ -18,7 +18,6 @@ class ProductsToBuy extends React.Component {
 
         let i= this.props.params.listId
         let list =shoppingList[i];
-        console.log(list)
         return (
             <div>
                 <h1>ProductsToBuy</h1>
