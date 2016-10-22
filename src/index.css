@@ -71,6 +71,8 @@ html body p {
     font-size: 0.8em;
     box-shadow: none;
     border: none;
+    display: inline-block;
+    margin: 0 0.4em;
 }
 
 .blue-button:hover {
