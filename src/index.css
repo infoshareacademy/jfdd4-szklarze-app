@@ -67,7 +67,7 @@ html body p {
     color: #fff;
     cursor: pointer;
     font-weight: normal;
-    padding: 0.3em 0.7em;
+    padding: 0.2em 0.7em;
     font-size: 0.8em;
     box-shadow: none;
     border: none;
@@ -75,7 +75,10 @@ html body p {
 
 .blue-button:hover {
     background-color: #465676;
+    text-decoration: none;
+    color: white;
 }
+
 
 
 
