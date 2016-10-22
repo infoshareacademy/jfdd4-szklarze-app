@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
 
-import ShoppingManager from '../shopping-manager/ShoppingManager'
+import ManagerNavigator from '../manager-navigator/ManagerNavigator'
 
 class App extends Component {
     render() {
         return (
             <div>
-                <ShoppingManager/>
+                <ManagerNavigator/>
                 {this.props.children}
             </div>
         );
