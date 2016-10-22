@@ -1,0 +1,1 @@
+export const MARK_FAVORITE_PRODUCT = 'favorite-marker/ADD_PRODUCT_ID_TO_FAVORITES'

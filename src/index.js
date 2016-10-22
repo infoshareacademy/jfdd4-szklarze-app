@@ -8,9 +8,9 @@ import AllProducts from './all-products/AllProducts'
 import ShoppingLists from './shopping-lists/ShoppingLists'
 import Introduction from './introduction/Introduction'
 import ProductsToBuy from './products-to-buy/ProductsToBuy'
-import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
+import './index.css';
 
 ReactDOM.render(
     <Provider store={store}>

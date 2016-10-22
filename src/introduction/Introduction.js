@@ -1,14 +1,10 @@
 import React from 'react'
+import {Jumbotron} from 'react-bootstrap'
 
 export default (props) =>
-    <div className="introduction">
-        <h2>Idź na zakupy z Januszem!</h2>
-        <h3>Produkty</h3>
-        <p>Wybierz tę kartę, aby przejść do widoku wybierania produktów. Janusz
-            przygotował dla ciebie listę najciekawszych produktów, na podstawie której
-            będziesz mógł/mogła utworzyć w wygodny sposób twoją własną interaktywną listę
-            zakupów</p>
-        <h3>Lista zakupów</h3>
-        <p>Tutaj znajdziesz wszystkie stworzone przez Ciebie listy zakupów. Wybierz
-            interesującą Cię listę, aby ją rozwinąć i oznaczać kupione już produkty</p>
-    </div>
+    <Jumbotron className="intro">
+        <div className="intro-logo"></div>
+        <h1>Janusz wie lepiej, zawsze.</h1>
+                <h4>W zakładce <span>Stwórz listę</span> wybierz jakie produkty chcesz kupić</h4>
+                <h4>W zakładce <span>Twoje listy zakupów</span> obejrzyj swoje listy i ruszaj do sklepu</h4>
+    </Jumbotron>

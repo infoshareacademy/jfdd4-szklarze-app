@@ -2,13 +2,13 @@ import {INCREASE_AMOUNT, DECREASE_AMOUNT, SAVE_NEW_LIST } from './actionTypes'
 
 const initialState = {
     itemsToBuy: [],
+    productsToDisplay: [],
     shoppingLists: []
 }
 
 export default (state = initialState, action) => {
     let itemsToBuyContainsGivenItem = state.itemsToBuy.filter(item => item.productId === action.productId).length > 0;
     let itemsToBuy;
-    let shoppingLists;
 
     switch (action.type) {
         case INCREASE_AMOUNT:

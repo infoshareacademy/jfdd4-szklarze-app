@@ -1,6 +1,7 @@
 import React from 'react'
-import products from '../data/products'
+import Filters from '../filters/Filters'
 import './AllProducts.css'
+
 
 import {
     ListGroup,
@@ -13,7 +14,16 @@ import { increaseAmount, decreaseAmount, saveNewList } from './actionCreators'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
+    categoryFilterArray: state.filters.categoryFilter,
+    favoriteProductsIds: state.favorites.favoriteProductIds,
+    productsToDisplay:
+        state.filters.favoritesFilter ?
+            state.products
+                .filter(product =>
+                state.favorites.favoriteProductIds.indexOf(product.productId) !== -1) :
+            state.products,
     itemsToBuy: state.allProducts.itemsToBuy,
+
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -22,52 +32,54 @@ const mapDispatchToProps = (dispatch) => ({
     saveNewList: () => dispatch(saveNewList())
 })
 
-class AllProducts extends React.Component {
-    constructor() {
-        super()
+function generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy) {
+    var currentCounterValue =
+        itemsToBuy
+            .filter(item => item.productId === product.productId).length > 0 ?
+            itemsToBuy
+                .map(item => (item.productId === product.productId ? item.quantity : null)) :
+            0;
+    return (
+        <ListGroupItem key={product.productId}>
+            <AllProductsItem increaseAmount={increaseAmount}
+                             decreaseAmount={decreaseAmount}
+                             currentCounterValue={currentCounterValue}
+                             itemsToBuy={itemsToBuy}
+                             product={product}/>
+        </ListGroupItem>
+    )
+}
 
-        this.state = {
-            productsToDisplay: []
-        }
-    }
-
-    componentWillMount() {
-        this.setState({productsToDisplay: products})
-    }
-
-
-    render() {
-        var props = this.props
-        return (
+const AllProducts = ({
+    categoryFilterArray,
+    productsToDisplay,
+    increaseAmount,
+    decreaseAmount,
+    itemsToBuy,
+    saveNewList
+}) => (
             <div className="all-products">
                 <h1>Wybór produktów</h1>
+                <Filters />
                 <ListGroup>
-                    {this.state.productsToDisplay.map(function (product) {
-                        var currentCounterValue = props.itemsToBuy.filter(item => item.productId === product.productId).length > 0 ?
-                            props.itemsToBuy.map(item => (item.productId === product.productId ?
-                            item.quantity : null)) :
-                            0;
-                        return (
-                            <ListGroupItem key={product.productName}>
-                                <AllProductsItem increaseAmount={props.increaseAmount}
-                                                 decreaseAmount={props.decreaseAmount}
-                                                 product={product}
-                                                 currentCounterValue={currentCounterValue}
-                                                 itemsToBuy={props.itemsToBuy}
-                                                />
-                            </ListGroupItem>
-                        )
-                    })}
+                    {categoryFilterArray.indexOf('none') !== -1 ?
+                        productsToDisplay
+                            .map( product =>
+                                generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
+                        :
+                        productsToDisplay
+                            .filter( product =>
+                                (categoryFilterArray.indexOf(product.category) !== -1))
+                            .map( product =>
+                                generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
+                    }
                 </ListGroup>
                 <div>
-                    <button onClick={() => props.saveNewList()}>
+                    <button onClick={() => saveNewList()}>
                         Stwórz nową listę
                     </button>
                 </div>
             </div>
-        )
-    }
-
-}
+)
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)
