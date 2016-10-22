@@ -1,5 +1,6 @@
 import React from 'react'
 import Filters from '../filters/Filters'
+import ListCreator from '../list-creator/ListCreator'
 import './AllProducts.css'
 
 
@@ -29,7 +30,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     increaseAmount: (productId) => dispatch(increaseAmount(productId)),
     decreaseAmount: (productId) => dispatch(decreaseAmount(productId)),
-    saveNewList: () => dispatch(saveNewList())
 })
 
 function generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy) {
@@ -74,11 +74,9 @@ const AllProducts = ({
                                 generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
                     }
                 </ListGroup>
-                <div>
-                    <button onClick={() => saveNewList()}>
-                        Stwórz nową listę
-                    </button>
-                </div>
+
+                <ListCreator />
+
             </div>
 )
 

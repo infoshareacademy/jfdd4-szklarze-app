@@ -4,7 +4,6 @@ import allProductsReducer from './all-products/reducer'
 import productsReducer from './data/products/reducer'
 import favoritesReducer from './favorite-marker/reducer'
 
-
 let reducer = combineReducers({
     products: productsReducer,
     filters: filterReducer,
