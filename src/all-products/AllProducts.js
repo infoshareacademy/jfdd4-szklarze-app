@@ -1,6 +1,5 @@
 import React from 'react'
 import Filters from '../filters/Filters'
-import {Jumbotron} from 'react-bootstrap'
 import './AllProducts.css'
 
 
@@ -11,18 +10,21 @@ import {
 
 import AllProductsItem from './all-products-item/AllProductsItem'
 
-import {increaseAmount, decreaseAmount, saveNewList} from './actionCreators'
+import {
+    increaseAmount,
+    decreaseAmount,
+    saveNewList
+} from './actionCreators'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
     categoryFilterArray: state.filters.categoryFilter,
     favoriteProductsIds: state.favorites.favoriteProductIds,
-    productsToDisplay:
-        state.filters.favoritesFilter ?
-            state.products
-                .filter(product =>
-                state.favorites.favoriteProductIds.indexOf(product.productId) !== -1) :
-            state.products,
+    productsToDisplay: state.filters.favoritesFilter ?
+        state.products
+            .filter(product =>
+            state.favorites.favoriteProductIds.indexOf(product.productId) !== -1) :
+        state.products,
     itemsToBuy: state.allProducts.itemsToBuy,
 
 })
@@ -42,11 +44,12 @@ function generateProductItems(product, increaseAmount, decreaseAmount, itemsToBu
             0;
     return (
         <ListGroupItem key={product.productId}>
-            <AllProductsItem increaseAmount={increaseAmount}
-                             decreaseAmount={decreaseAmount}
-                             currentCounterValue={currentCounterValue}
-                             itemsToBuy={itemsToBuy}
-                             product={product}/>
+            <AllProductsItem
+                increaseAmount={increaseAmount}
+                decreaseAmount={decreaseAmount}
+                currentCounterValue={currentCounterValue}
+                itemsToBuy={itemsToBuy}
+                product={product}/>
         </ListGroupItem>
     )
 }
@@ -59,30 +62,31 @@ const AllProducts = ({
     itemsToBuy,
     saveNewList
 }) => (
-    <Jumbotron>
-            <div className="all-products">
-                <h2>Co chcesz kupić?</h2>
-                <Filters />
-                <ListGroup>
-                    {categoryFilterArray.indexOf('none') !== -1 ?
-                        productsToDisplay
-                            .map( product =>
-                                generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
-                        :
-                        productsToDisplay
-                            .filter( product =>
-                                (categoryFilterArray.indexOf(product.category) !== -1))
-                            .map( product =>
-                                generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
-                    }
-                </ListGroup>
-                <div>
-                    <button onClick={() => saveNewList()}>
-                        Stwórz nową listę
-                    </button>
-                </div>
+    <div className="background">
+        <div className="all-products">
+            <h2>Co chcesz kupić?</h2>
+            <Filters />
+            <ListGroup>
+                {categoryFilterArray.indexOf('none') !== -1 ?
+                    productsToDisplay
+                        .map(product =>
+                            generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
+                    :
+                    productsToDisplay
+                        .filter(product =>
+                            (categoryFilterArray.indexOf(product.category) !== -1))
+                        .map(product =>
+                            generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
+                }
+            </ListGroup>
+            <div>
+                <button
+                    onClick={() => saveNewList()}>
+                    Stwórz nową listę
+                </button>
             </div>
-        </Jumbotron>
+        </div>
+    </div>
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)

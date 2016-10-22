@@ -1,6 +1,8 @@
 import React from 'react'
 
 export default (props) =>
+<div className="background">
     <div className="shopping-lists">
-        <h3>Twoje listy zakupów</h3>
+        <h2>Wybierz listę</h2>
     </div>
+</div>
