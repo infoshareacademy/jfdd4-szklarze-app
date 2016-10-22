@@ -1,11 +1,12 @@
 import React from 'react'
 import {Row, Col} from 'react-bootstrap'
 import FavoriteMarker from '../../favorite-marker/FavoriteMarker'
+import './AllProductsItem.css'
 
 
 let AllProductsItem = (props) =>(
     <Row>
-        <div>
+        <div className="product-item">
             <Col md={8}>
                 <ul>
                     <li> {props.product.productName} </li>

@@ -1,28 +1,29 @@
 .jumbotron {
     text-align: center;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
     padding-top: 100px;
     padding-left: 10%;
     padding-right: 10%;
     background: #f5f5f5;
-    background-size: 360px 150px;
+    margin-bottom: 0;
 }
 
 .jumbotron h1 {
-    font-size: 2.4em;
+
     font-weight: 700;
 }
 
-span {
-    font-weight: bolder;
-}
-
-.jumbotron h4 {
+.intro-caption > p {
     font-size: 1.6em;
+    padding: 10px;
+    margin: 0;
+    font-weight: bold;
 }
 
-.jumbotron .intro-logo {
+.intro-logo {
     background: white url('./../images/icon-blue-janusz.svg') no-repeat center;
+    border: 5px solid #ffc10e;
     box-sizing: border-box;
     width: 200px;
     height: 200px;
