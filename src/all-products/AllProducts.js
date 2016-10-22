@@ -11,7 +11,7 @@ import {
 
 import AllProductsItem from './all-products-item/AllProductsItem'
 
-import { increaseAmount, decreaseAmount, saveNewList } from './actionCreators'
+import { increaseAmount, decreaseAmount} from '../list-creator/actionCreators'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
@@ -60,7 +60,9 @@ const AllProducts = ({
 }) => (
             <div className="all-products">
                 <h1>Wybór produktów</h1>
+
                 <Filters />
+
                 <ListGroup>
                     {categoryFilterArray.indexOf('none') !== -1 ?
                         productsToDisplay
@@ -75,7 +77,7 @@ const AllProducts = ({
                     }
                 </ListGroup>
 
-                <ListCreator itemsToBuy={itemsToBuy}/>
+                <ListCreator />
 
             </div>
 )

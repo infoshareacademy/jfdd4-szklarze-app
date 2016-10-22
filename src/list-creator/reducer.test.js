@@ -1,5 +1,5 @@
 import reducer from './reducer'
-import { SAVE_NEW_LIST } from './actionTypes'
+import {INCREASE_AMOUNT, DECREASE_AMOUNT, SAVE_NEW_LIST } from './actionTypes'
 
 describe('review list creator reducer'), () => {
     it('should return the initial state'), () => {
@@ -7,18 +7,30 @@ describe('review list creator reducer'), () => {
             reducer(undefined, {})
         ).toEqual(
             {
-                shoppingLists: [],
+                itemsToBuy: [],
+                shoppingLists: []
             }
         )
     }
 
-    it('should handle SAVE_NEW_LIST'), () => {
+    it('should handle INCREASE_AMOUNT'), () => {
         expect(
-            reducer({
-                shoppingLists: [],
-            }, {
-                type: SAVE_NEW_LIST
-            }).toEqual({
+            reducer(
+                {
+                    itemsToBuy: [],
+                    shoppingLists: []
+                },
+                {
+                    type: INCREASE_AMOUNT,
+                    productId: 1
+                }
+            ).toEqual({
+                itemsToBuy: [
+                    {
+                        productId: 1,
+                        quantity: 1
+                    }
+                ],
                 shoppingLists: [],
             })
         )
