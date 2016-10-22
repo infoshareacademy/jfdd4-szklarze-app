@@ -14,10 +14,12 @@ const mapDispatchToProps = (dispatch) => ({
 
 const ListCreator = ({
     saveNewList,
+    setCurrentListName,
     itemsToBuy
 }) => (
     <div>
-        <input defaultValue={1} placeholder="Wpisz nazwę listy" onChange={(event) => console.log(event.target.value)}/>
+        <input placeholder="Wpisz nazwę twojej listy"
+               onChange={(event) => setCurrentListName(event.target.value)}/>
         <button onClick={() =>
             itemsToBuy.length === 0 ?
                 alert('Wybierz produkt, aby stworzyć listę') :

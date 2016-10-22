@@ -3,12 +3,12 @@ import {INCREASE_AMOUNT, DECREASE_AMOUNT, SAVE_NEW_LIST, SET_CURRENT_LIST_NAME }
 const initialState = {
     itemsToBuy: [],
     shoppingLists: [],
-    shoppingListsNames: []
+    currentListName: []
 }
 
 export default (state = initialState, action) => {
     let itemsToBuyContainsGivenItem = state.itemsToBuy.filter(item => item.productId === action.productId).length > 0;
-    let itemsToBuy;
+    let itemsToBuy = state.itemsToBuy.concat(state.currentListName);
 
     switch (action.type) {
         case INCREASE_AMOUNT:
@@ -28,12 +28,14 @@ export default (state = initialState, action) => {
             })
         case SAVE_NEW_LIST:
             return Object.assign({}, state, {
-                shoppingLists: state.shoppingLists.concat([state.itemsToBuy]),
-                itemsToBuy: []
+                shoppingLists: state.shoppingLists
+                                    .concat([itemsToBuy]),
+                itemsToBuy: [],
+                currentListName: []
             })
         case SET_CURRENT_LIST_NAME:
             return Object.assign({}, state, {
-                shoppingListsNames: state.shoppingListsNames.concat([action.listName])
+                currentListName: action.listName
             })
         default:
             return state

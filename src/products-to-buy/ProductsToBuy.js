@@ -5,29 +5,30 @@ import {ListGroupItem,
         } from 'react-bootstrap'
 
 const mapStateToProps = (state) => ({
-    shoppingList: state.allProducts.shoppingLists,
+    shoppingLists: state.allProducts.shoppingLists,
     products: state.products
 })
 
 class ProductsToBuy extends React.Component {
     render() {
         var {
-            shoppingList,
+            shoppingLists,
             products
         } = this.props
 
         let i= this.props.params.listId
-        let list =shoppingList[i];
+        let list =shoppingLists[i];
         return (
             <div>
                 <h1>ProductsToBuy</h1>
                 {i === undefined ?
                     <div>Tu wyświetli się twoja lista produktów</div> :
                     <ListGroup>
-                        {shoppingList.length > 0 ?
+                        {shoppingLists.length > 0 ?
                             list
-                                .map(function (prod) {
-                                return prod})
+                                .filter(function (product, index) {
+                                    return index !== list.length-1
+                                })
                                 .map(function (item) {
                                 console.log(item.quantity, item.productId)
                                 return item.productId})
