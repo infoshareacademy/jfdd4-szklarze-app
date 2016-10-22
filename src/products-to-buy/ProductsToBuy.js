@@ -39,10 +39,10 @@ class ProductsToBuy extends React.Component {
                                         <ListGroupItem>
                                             <Row>
                                                 <Col md={8}>
-                                                    {result}
+                                                    <button>{result}</button>
                                                 </Col>
                                                 <Col md={4}>
-                                                    {quantity +' ' + 'sztuki'}
+                                                    {quantity +' ' + 'szt.'}
                                                     </Col>
                                                 </Row>
                                             </ListGroupItem>
