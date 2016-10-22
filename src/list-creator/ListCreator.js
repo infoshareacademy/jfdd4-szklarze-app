@@ -1,5 +1,5 @@
 import React from 'react'
-import { saveNewList } from './actionCreators'
+import { saveNewList, setCurrentListName } from './actionCreators'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    saveNewList: () => dispatch(saveNewList())
+    saveNewList: () => dispatch(saveNewList()),
     setCurrentListName: (listName) => dispatch(setCurrentListName(listName))
 
 })
@@ -16,7 +16,7 @@ const ListCreator = ({
     saveNewList
 }) => (
     <div>
-        <input onChange={(event) => setCurrentListName(event.target.value)}
+        <input defaultValue={1} placeholder="Wpisz nazwę listy" onChange={(event) => console.log(event.target.value)}/>
         <button onClick={() => saveNewList()}>
             Stwórz nową listę
         </button>

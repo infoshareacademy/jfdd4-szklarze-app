@@ -1,8 +1,9 @@
-import {INCREASE_AMOUNT, DECREASE_AMOUNT, SAVE_NEW_LIST } from './actionTypes'
+import {INCREASE_AMOUNT, DECREASE_AMOUNT, SAVE_NEW_LIST, SET_CURRENT_LIST_NAME } from './actionTypes'
 
 const initialState = {
     itemsToBuy: [],
-    shoppingLists: []
+    shoppingLists: [],
+    shoppingListsNames: []
 }
 
 export default (state = initialState, action) => {
@@ -29,6 +30,10 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 shoppingLists: state.shoppingLists.concat([state.itemsToBuy]),
                 itemsToBuy: []
+            })
+        case SET_CURRENT_LIST_NAME:
+            return Object.assign({}, state, {
+                shoppingListsNames: state.shoppingListsNames.concat([action.listName])
             })
         default:
             return state

@@ -1,4 +1,9 @@
-import { INCREASE_AMOUNT, DECREASE_AMOUNT, SAVE_NEW_LIST } from './actionTypes'
+import {
+    INCREASE_AMOUNT,
+    DECREASE_AMOUNT,
+    SAVE_NEW_LIST,
+    SET_CURRENT_LIST_NAME
+} from './actionTypes'
 
 export function saveNewList(){
     return {
@@ -17,5 +22,12 @@ export function decreaseAmount(productId) {
     return {
         type: DECREASE_AMOUNT,
         productId: productId
+    }
+}
+
+export function setCurrentListName(listName) {
+    return {
+        type: SET_CURRENT_LIST_NAME,
+        listName: listName
     }
 }
