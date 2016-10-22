@@ -13,6 +13,6 @@ export default (props) =>
             <p>W zakładce
                 <Link to={`/shopping-lists`}><div className="blue-button">Twoje listy zakupów</div></Link>
                 obejrzyj swoje listy</p>
-            <p>Wyświetl listę na telefonie i uszaj do sklepu!</p>
+            <p>Wyświetl listę na telefonie i ruszaj do sklepu!</p>
         </ul>
     </Jumbotron>
