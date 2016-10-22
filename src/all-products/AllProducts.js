@@ -75,7 +75,10 @@ const AllProducts = ({
                     }
                 </ListGroup>
                 <div>
-                    <button onClick={() => saveNewList()}>
+                    <button onClick={() =>
+                        itemsToBuy.length === 0 ?
+                            alert('Wybierz produkt, aby stworzyć listę') :
+                            saveNewList()}>
                         Stwórz nową listę
                     </button>
                 </div>
