@@ -30,16 +30,17 @@ class ProductsToBuy extends React.Component {
 
                             list
                                 .map((product) => ([product.productId, product.quantity]))
-                                .map(function (productId) {
-                                    var quantity = productId[1],
-                                    result = products
-                                        .filter((product) => product.productId === productId[0])
+                                .map(function (item) {
+                                    var id=item[0],
+                                        quantity = item[1],
+                                        result = products
+                                            .filter((product) => product.productId === item[0])
                                             .map((item) => item.productName)
                                     return(
-                                        <ListGroupItem>
+                                        <ListGroupItem key={id}>
                                             <Row>
                                                 <Col md={8}>
-                                                    <button>{result}</button>
+                                                    {result}
                                                 </Col>
                                                 <Col md={4}>
                                                     {quantity +' ' + 'szt.'}
