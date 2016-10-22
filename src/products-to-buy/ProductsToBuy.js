@@ -16,7 +16,7 @@ class ProductsToBuy extends React.Component {
             products
         } = this.props
 
-        let i= this.props.params.listId
+        let i = this.props.params.listId
         let list =shoppingList[i];
         return (
             <div>
@@ -25,21 +25,13 @@ class ProductsToBuy extends React.Component {
                     <div>Tu wyświetli się twoja lista produktów</div> :
                     <ListGroup>
                         {shoppingList.length > 0 ?
+
                             list
-                                .map(function (prod) {
-                                return prod})
-                                .map(function (item) {
-                                console.log(item.quantity, item.productId)
-                                return item.productId})
-                                .map(function (productid) {
-                                    (console.log(productid.quantity))
+                                .map((product) => (product.productId))
+                                .map(function (productId) {
                                     var result = products
-                                        .filter(function (prod) {
-                                            return prod.productId === productid})
-                                            .map(function (item) {
-                                             console.log(item.productName)
-                                             return item.productName
-                                            })
+                                        .filter((product) => product.productId === productId)
+                                            .map((item) => item.productName)
                                     return(
                                         <ListGroupItem>
                                             {result}
@@ -47,6 +39,7 @@ class ProductsToBuy extends React.Component {
                                     )
                             }) : ''}
                     </ListGroup>}
+
                 </div>
         )
     }
