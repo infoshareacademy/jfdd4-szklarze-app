@@ -54,7 +54,7 @@ html body p {
 
 .jumbotron {
     text-align: center;
-    height: 100%;
+    height: 100vh;
     padding-top: 100px;
     padding-left: 10%;
     padding-right: 10%;

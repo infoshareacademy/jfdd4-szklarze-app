@@ -10,6 +10,7 @@ span {
 
 .intro-logo {
     background: white url('./../images/icon-blue-janusz.svg') no-repeat center;
+    border: 5px solid #ffc10e;
     box-sizing: border-box;
     width: 200px;
     height: 200px;
