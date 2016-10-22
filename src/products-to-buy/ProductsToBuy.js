@@ -2,6 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {ListGroupItem,
         ListGroup,
+        Col,
+        Row
         } from 'react-bootstrap'
 
 const mapStateToProps = (state) => ({
@@ -27,14 +29,22 @@ class ProductsToBuy extends React.Component {
                         {shoppingList.length > 0 ?
 
                             list
-                                .map((product) => (product.productId))
+                                .map((product) => ([product.productId, product.quantity]))
                                 .map(function (productId) {
-                                    var result = products
-                                        .filter((product) => product.productId === productId)
+                                    var quantity = productId[1],
+                                    result = products
+                                        .filter((product) => product.productId === productId[0])
                                             .map((item) => item.productName)
                                     return(
                                         <ListGroupItem>
-                                            {result}
+                                            <Row>
+                                                <Col md={8}>
+                                                    {result}
+                                                </Col>
+                                                <Col md={4}>
+                                                    {quantity +' ' + 'sztuki'}
+                                                    </Col>
+                                                </Row>
                                             </ListGroupItem>
                                     )
                             }) : ''}
