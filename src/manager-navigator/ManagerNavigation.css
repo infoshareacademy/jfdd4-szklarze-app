@@ -47,4 +47,14 @@
     background-color: #dda20e;
 }
 
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: none;
+}
 
+.navbar-default .navbar-toggle {
+    border: 2px solid white;
+}
+
+.navbar-default .navbar-toggle .icon-bar  {
+    background-color: white;
+}
