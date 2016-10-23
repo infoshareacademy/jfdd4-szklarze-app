@@ -1,8 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {ListGroupItem,
-        ListGroup,
-        } from 'react-bootstrap'
+import {
+    ListGroupItem,
+    ListGroup,
+} from 'react-bootstrap'
+import ListDeleter from '../list-creator/list-deleter/ListDeleter'
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.allProducts.shoppingLists,
@@ -38,16 +40,15 @@ class ProductsToBuy extends React.Component {
                     <div>Tu wyświetli się twoja lista produktów</div> :
                     <ListGroup>
                         <h2>{printListName(list, listId)}</h2>
+                        <ListDeleter listId={listId}/>
                         {shoppingLists.length > 0 ?
                             list
                                 .filter(function (product, index) {
                                     return didUserSetListName(list, index)
                                 })
                                 .map(function (item) {
-                                    console.log(item.quantity, item.productId)
                                     return item.productId})
                                 .map(function (productid) {
-                                    (console.log(productid.quantity))
                                     return(
                                         <div>
                                             <ListGroupItem>
@@ -55,7 +56,6 @@ class ProductsToBuy extends React.Component {
                                                     .filter(function (prod) {
                                                         return prod.productId === productid})
                                                     .map(function (item) {
-                                                        console.log(item.productName)
                                                         return item.productName
                                                     })}
                                             </ListGroupItem>
