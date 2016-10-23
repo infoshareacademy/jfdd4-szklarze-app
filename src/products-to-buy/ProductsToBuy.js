@@ -5,6 +5,7 @@ import {
     ListGroup,
 } from 'react-bootstrap'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
+import './ProductsToBuy.css'
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.allProducts.shoppingLists,
@@ -34,37 +35,37 @@ class ProductsToBuy extends React.Component {
         let listId= this.props.params.listId
         let list =shoppingLists[listId];
         return (
-            <div>
-                <h1>ProductsToBuy</h1>
+            <div className="panel panel-default">
+                <div className="panel-heading">Lista produktów:</div>
                 {listId === undefined ?
-                    <div>Tu wyświetli się twoja lista produktów</div> :
-                    <ListGroup>
-                        <h2>{printListName(list, listId)}</h2>
-                        <ListDeleter listId={listId}/>
+                    <div><p>Kliknij w wybraną listę zakupów aby wyświetlić jej zawartość</p></div>
+                    : <div className="panel-body">
+                    <div className="well well-sm">{printListName(list, listId)}</div>
+                    <ListDeleter listId={listId}/>
+                    <ul className="list-group">
                         {shoppingLists.length > 0 ?
+
                             list
                                 .filter(function (product, index) {
                                     return didUserSetListName(list, index)
                                 })
+                                .map((product) => ([product.productId, product.quantity]))
                                 .map(function (item) {
-                                    return item.productId})
-                                .map(function (productid) {
-                                    return(
-                                        <div>
-                                            <ListGroupItem>
-                                                {products
-                                                    .filter(function (prod) {
-                                                        return prod.productId === productid})
-                                                    .map(function (item) {
-                                                        return item.productName
-                                                    })}
-                                            </ListGroupItem>
-                                        </div>
+                                    var id = item[0],
+                                        quantity = item[1],
+                                        result = products
+                                            .filter((product) => product.productId === item[0])
+                                            .map((item) => item.productName)
+                                    return (
+                                        <li className="list-group-item" key={id}>
+                                            <span className="badge">{quantity + ' ' + 'szt.'}</span>
+                                            {result}
+                                        </li>
                                     )
-                                }) : ''
-                        }
-                    </ListGroup>}
-                </div>
+                                }) : ''}
+                    </ul>
+                </div>}
+            </div>
         )
     }
 }
