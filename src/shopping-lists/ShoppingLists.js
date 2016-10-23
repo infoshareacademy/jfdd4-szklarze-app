@@ -1,22 +1,21 @@
 import React from 'react'
-import ProductsToBuy from'../products-to-buy/ProductsToBuy'
+import ProductsToBuy from '../products-to-buy/ProductsToBuy'
+import ShoppingListsButtons from './shopping-lists-buttons/ShoppingListsButtons'
 import {Grid,
         Col,
-        Row,
-        Button,
-        ButtonGroup} from 'react-bootstrap'
+        Row
+} from 'react-bootstrap'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
 
 const mapStateToProps = (state) => ({
-    shoppingList: state.allProducts.shoppingLists
+    shoppingLists: state.allProducts.shoppingLists
 })
 
 class ShoppingLists extends React.Component {
 
     render(){
         var {
-            shoppingList
+            shoppingLists
         } = this.props
 
         return(
@@ -26,20 +25,12 @@ class ShoppingLists extends React.Component {
                     <Col xs={12} md={7}>
                         <div className="shopping-lists">
                             <h1>Shopping Lists</h1>
-                            {shoppingList.length > 0 ? ''
+                            {shoppingLists.length > 0 ? ''
                                 : 'Nie stowrzyłeś jeszcze listy zakupów' }
                         </div>
-                        <ButtonGroup vertical block>
-                            {console.log(shoppingList)}
-                            {shoppingList.filter(list => list.length >0).map(
-                                    (list, index) => <div>
-                                        <Link to={`/shopping-lists/`+ index}>
-                                            <Button>
-                                                Lista zakupów nr {index +1}
-                                            </Button>
-                                        </Link>
-                                                    </div>)}
-                        </ButtonGroup>
+
+                        <ShoppingListsButtons shoppingLists={shoppingLists}/>
+
                     </Col>
 
                     <Col xs={12} md={5}>
