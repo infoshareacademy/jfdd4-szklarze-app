@@ -1,4 +1,13 @@
-.favorite-button {
+.favorite-button > .btn-default {
     display: inline-block;
     border-radius: 50%;
+    margin: 0;
 }
+
+.favorite-button > .btn-success {
+    background-color: #ffc10e;
+    border: none;
+    margin: 0;
+
+}
+

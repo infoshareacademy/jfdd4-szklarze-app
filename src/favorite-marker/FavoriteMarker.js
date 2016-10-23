@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
 const FavoriteMarker = ({markFavoriteProduct, favorites, productId}) => (
         <Button
             className="favorite-button"
-            bsStyle={favorites.indexOf(productId) !== -1 ? 'danger' : 'default'}
+            bsStyle={favorites.indexOf(productId) !== -1 ? 'success' : 'default'}
             onClick={() => markFavoriteProduct(productId)}>
             <FaHeartO/>
         </Button>
