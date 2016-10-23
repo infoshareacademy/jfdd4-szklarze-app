@@ -1,11 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {ListGroupItem,
-        ListGroup,
-        Col,
-        Row
-        } from 'react-bootstrap'
-
+import './ProductsToBuy.css'
 const mapStateToProps = (state) => ({
     shoppingList: state.allProducts.shoppingLists,
     products: state.products
@@ -21,11 +16,12 @@ class ProductsToBuy extends React.Component {
         let i = this.props.params.listId
         let list =shoppingList[i];
         return (
-            <div>
-                <h1>ProductsToBuy</h1>
+            <div className="panel panel-default">
+                <div className="panel-heading">Lista zakupów:</div>
                 {i === undefined ?
-                    <div>Tu wyświetli się twoja lista produktów</div> :
-                    <ListGroup>
+                    <div><p>Kliknij w wybraną listę zakupów aby wyświetlić jej zawartość</p></div>
+                    : <div className="panel-body">
+                    <ul className="list-group">
                         {shoppingList.length > 0 ?
 
                             list
@@ -37,20 +33,14 @@ class ProductsToBuy extends React.Component {
                                             .filter((product) => product.productId === item[0])
                                             .map((item) => item.productName)
                                     return(
-                                        <ListGroupItem key={id}>
-                                            <Row>
-                                                <Col md={8}>
+                                        <li className="list-group-item" key={id}>
+                                            <span className="badge">{quantity +' ' + 'szt.'}</span>
                                                     {result}
-                                                </Col>
-                                                <Col md={4}>
-                                                    {quantity +' ' + 'szt.'}
-                                                    </Col>
-                                                </Row>
-                                            </ListGroupItem>
+                                        </li>
                                     )
                             }) : ''}
-                    </ListGroup>}
-
+                    </ul>
+                    </div>}
                 </div>
         )
     }
