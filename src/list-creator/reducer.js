@@ -1,4 +1,10 @@
-import {INCREASE_AMOUNT, DECREASE_AMOUNT, SAVE_NEW_LIST, SET_CURRENT_LIST_NAME } from './actionTypes'
+import {
+    INCREASE_AMOUNT,
+    DECREASE_AMOUNT,
+    SAVE_NEW_LIST,
+    SET_CURRENT_LIST_NAME,
+    DELETE_LIST
+} from './actionTypes'
 
 const initialState = {
     itemsToBuy: [],
@@ -36,6 +42,12 @@ export default (state = initialState, action) => {
         case SET_CURRENT_LIST_NAME:
             return Object.assign({}, state, {
                 currentListName: action.listName
+            })
+        case DELETE_LIST:
+            console.log(state, action.listId)
+            return Object.assign({}, state, {
+                shoppingLists: state.shoppingLists
+                    .filter((list, index) => index !== Number(action.listId))
             })
         default:
             return state

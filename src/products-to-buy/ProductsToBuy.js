@@ -1,6 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {
+    ListGroupItem,
+    ListGroup,
+} from 'react-bootstrap'
+import ListDeleter from '../list-creator/list-deleter/ListDeleter'
 import './ProductsToBuy.css'
+
 const mapStateToProps = (state) => ({
     shoppingLists: state.allProducts.shoppingLists,
     products: state.products
@@ -57,6 +63,7 @@ class ProductsToBuy extends React.Component {
                                     )
                                 }) : ''}
                     </ul>
+                    <ListDeleter listId={listId}/>
                 </div>}
             </div>
         )
