@@ -1,5 +1,6 @@
 import React from 'react'
 import Filters from '../filters/Filters'
+import ListCreator from '../list-creator/ListCreator'
 import './AllProducts.css'
 
 
@@ -12,10 +13,9 @@ import AllProductsItem from './all-products-item/AllProductsItem'
 
 import {
     increaseAmount,
-    decreaseAmount,
-    saveNewList
-} from './actionCreators'
-import {connect} from 'react-redux'
+    decreaseAmount
+} from '../list-creator/actionCreators'
+import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
     categoryFilterArray: state.filters.categoryFilter,
@@ -33,7 +33,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     increaseAmount: (productId) => dispatch(increaseAmount(productId)),
     decreaseAmount: (productId) => dispatch(decreaseAmount(productId)),
-    saveNewList: () => dispatch(saveNewList())
 })
 
 function generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy) {
@@ -65,7 +64,9 @@ const AllProducts = ({
     <div className="background">
             <div className="all-products">
                 <h1>Wybór produktów</h1>
+
                 <Filters />
+
                 <ListGroup>
                     {categoryFilterArray.indexOf('none') !== -1 ?
                         productsToDisplay
@@ -79,14 +80,9 @@ const AllProducts = ({
                                 generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
                     }
                 </ListGroup>
-                <div>
-                    <button onClick={() =>
-                        itemsToBuy.length === 0 ?
-                            alert('Wybierz produkt, aby stworzyć listę') :
-                            saveNewList()}>
-                        Stwórz nową listę
-                    </button>
-                </div>
+
+                <ListCreator />
+
             </div>
     </div>
 )

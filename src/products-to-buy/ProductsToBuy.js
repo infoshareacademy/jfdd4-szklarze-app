@@ -2,27 +2,40 @@ import React from 'react'
 import {connect} from 'react-redux'
 import './ProductsToBuy.css'
 const mapStateToProps = (state) => ({
-    shoppingList: state.allProducts.shoppingLists,
+    shoppingLists: state.allProducts.shoppingLists,
     products: state.products
 })
+
+const didUserSetListName = (list, index) => (
+    typeof list[list.length-1] === 'string' ?
+        index !== list.length-1 :
+        true
+)
+
+function printListName(list, listId) {
+    const listNumber = Number(listId)+1;
+    return typeof list[list.length-1] !== 'object' ?
+        list[list.length-1] :
+        'Lista zakupów nr '+ listNumber
+}
 
 class ProductsToBuy extends React.Component {
     render() {
         var {
-            shoppingList,
+            shoppingLists,
             products
         } = this.props
 
-        let i = this.props.params.listId
-        let list =shoppingList[i];
+        let listId= this.props.params.listId
+        let list =shoppingLists[listId];
         return (
             <div className="panel panel-default">
-                <div className="panel-heading">Lista zakupów:</div>
-                {i === undefined ?
+                <div className="panel-heading">Lista zakupów: {printListName(list, listId)}</div>
+                {listId === undefined ?
                     <div><p>Kliknij w wybraną listę zakupów aby wyświetlić jej zawartość</p></div>
                     : <div className="panel-body">
                     <ul className="list-group">
-                        {shoppingList.length > 0 ?
+                        {shoppingLists.length > 0 ?
 
                             list
                                 .map((product) => ([product.productId, product.quantity]))

@@ -5,3 +5,32 @@
     background: #f5f5f5;
     margin: 0;
 }
+
+.panel {
+    margin-bottom: 21px;
+    background-color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.panel-default {
+    border-color: #ecf0f1;
+}
+.panel-default > .panel-heading {
+    color: #2c3e50;
+    background-color: #ecf0f1;
+    border-color: #ecf0f1;
+}
+.list-group {
+    margin-bottom: 20px;
+    padding-left: 0;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #ffffff;
+    border: 1px solid #ecf0f1;
+}
