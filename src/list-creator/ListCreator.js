@@ -1,6 +1,7 @@
 import React from 'react'
 import { saveNewList, setCurrentListName } from './actionCreators'
 import { connect } from 'react-redux'
+import './ListCreator.css'
 
 const mapStateToProps = (state) => ({
     itemsToBuy: state.allProducts.itemsToBuy,
@@ -19,13 +20,14 @@ const ListCreator = ({
     itemsToBuy,
     currentListName
 }) => (
-    <div>
+    <div className="list-creator">
         <input
             onChange={(event) => setCurrentListName(event.target.value)}
             value={currentListName}
             placeholder="Wpisz nazwę listy..."
         />
-        <button onClick={() =>
+        <button className="blue-button"
+                onClick={() =>
             itemsToBuy.length === 0 ?
                 alert('Wybierz produkt, aby stworzyć listę') :
                 saveNewList()}>

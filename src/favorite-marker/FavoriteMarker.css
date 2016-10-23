@@ -1,4 +1,4 @@
 .favorite-button {
-background-color: #dda20e;
     display: inline-block;
+    border-radius: 50%;
 }

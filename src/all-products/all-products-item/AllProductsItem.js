@@ -25,23 +25,23 @@ let AllProductsItem = (props) =>(
             <p>
                 Kategoria: {props.product.category}</p>
         </div>
-        <div className="add-button">
-            <button
-                onClick={() => props.decreaseAmount(props.product.productId)}>
-                -
-            </button>
-            <span>
+        <div className="product-item-all-buttons">
+            <div className="add-button">
+                <button
+                    onClick={() => props.decreaseAmount(props.product.productId)}>
+                    -
+                </button>
+                <span>
                 &nbsp;&nbsp;{props.currentCounterValue}&nbsp;&nbsp;
             </span>
-            <button
-                onClick={() => props.increaseAmount(props.product.productId)}>
-                +
-            </button>
-        </div>
-        <p className="favorite_marker">
+                <button
+                    onClick={() => props.increaseAmount(props.product.productId)}>
+                    +
+                </button>
+            </div>
             <FavoriteMarker
                 productId={props.product.productId}/>
-        </p>
+        </div>
     </Thumbnail>
 )
 

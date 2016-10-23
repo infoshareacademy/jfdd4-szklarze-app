@@ -18,7 +18,6 @@ const FavoriteMarker = ({markFavoriteProduct, favorites, productId}) => (
         <Button
             className="favorite-button"
             bsStyle={favorites.indexOf(productId) !== -1 ? 'danger' : 'default'}
-            bsSize="xsmall"
             onClick={() => markFavoriteProduct(productId)}>
             <FaHeartO/>
         </Button>
