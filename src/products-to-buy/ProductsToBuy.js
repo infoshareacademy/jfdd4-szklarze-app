@@ -6,10 +6,16 @@ import {
 } from 'react-bootstrap'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
 import './ProductsToBuy.css'
+import { markProductAsPurchased } from './actionCreators'
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.allProducts.shoppingLists,
     products: state.products
+})
+
+const mapDispatchToProps = (dispatch) => ({
+   markProductAsPurchased: (productId) => dispatch(markProductAsPurchased(productId))
+
 })
 
 const didUserSetListName = (list, index) => (
@@ -29,7 +35,8 @@ class ProductsToBuy extends React.Component {
     render() {
         var {
             shoppingLists,
-            products
+            products,
+            markProductAsPurchased
         } = this.props
 
         let listId= this.props.params.listId
@@ -56,9 +63,10 @@ class ProductsToBuy extends React.Component {
                                             .filter((product) => product.productId === item[0])
                                             .map((item) => item.productName)
                                     return (
-                                        <li className="list-group-item" key={id}>
+                                        <li className="list-group-item" key={id} onClick={() => markProductAsPurchased({id})}>
                                             <span className="badge">{quantity + ' ' + 'szt.'}</span>
                                             {result}
+                                            <button onClick={() => markProductAsPurchased({id})}>Mark as favorite</button>
                                         </li>
                                     )
                                 }) : ''}
@@ -70,4 +78,4 @@ class ProductsToBuy extends React.Component {
     }
 }
 
-export default connect(mapStateToProps)(ProductsToBuy)
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsToBuy)
