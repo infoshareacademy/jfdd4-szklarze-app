@@ -8,10 +8,10 @@ export default (props) =>
         <h1>Janusz wie lepiej, zawsze.</h1>
         <ul className="intro-caption">
             <p>W zakładce
-                <Link to={`/all-products`}><div className="blue-button">Stwórz listę</div></Link>
+                <Link to={`/all-products`}><span className="blue-button">Stwórz listę</span></Link>
                 wybierz jakie produkty chcesz kupić</p>
             <p>W zakładce
-                <Link to={`/shopping-lists`}><div className="blue-button">Twoje listy zakupów</div></Link>
+                <Link to={`/shopping-lists`}><span className="blue-button">Twoje listy zakupów</span></Link>
                 obejrzyj swoje listy</p>
             <p>Wyświetl wybraną listę na telefonie i ruszaj do sklepu!</p>
         </ul>
