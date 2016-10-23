@@ -1,5 +1,6 @@
 .product-item {
     text-align: left;
+    min-height: 35vh;
 }
 
 .add-button {

@@ -16,17 +16,16 @@ import {
     increaseAmount,
     decreaseAmount
 } from '../list-creator/actionCreators'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
     categoryFilterArray: state.filters.categoryFilter,
     favoriteProductsIds: state.favorites.favoriteProductIds,
-    productsToDisplay:
-        state.filters.favoritesFilter ?
-            state.products
-                .filter(product =>
-                state.favorites.favoriteProductIds.indexOf(product.productId) !== -1) :
-            state.products,
+    productsToDisplay: state.filters.favoritesFilter ?
+        state.products
+            .filter(product =>
+            state.favorites.favoriteProductIds.indexOf(product.productId) !== -1) :
+        state.products,
     itemsToBuy: state.allProducts.itemsToBuy,
 
 })
@@ -67,23 +66,27 @@ const AllProducts = ({
     <div className="background">
         <div className="all-products">
             <h1>Co chcesz kupić?</h1>
+            <div className="filters">
             <Filters />
+                </div>
             <Grid>
                 <Row>
                     {categoryFilterArray.indexOf('none') !== -1 ?
                         productsToDisplay
-                            .map( product =>
+                            .map(product =>
                                 generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
                         :
                         productsToDisplay
-                            .filter( product =>
+                            .filter(product =>
                                 (categoryFilterArray.indexOf(product.category) !== -1))
-                            .map( product =>
+                            .map(product =>
                                 generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
                     }
                 </Row>
             </Grid>
-            <ListCreator />
+
+                <ListCreator />
+
         </div>
     </div>
 )
