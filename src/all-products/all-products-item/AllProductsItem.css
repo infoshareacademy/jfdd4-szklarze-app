@@ -1,4 +1,42 @@
-.product-item ul > li {
-    list-style-type: none;
+.product-item {
     text-align: left;
+    min-height: 35vh;
 }
+
+.add-button {
+    display: inline-block;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    border: none;
+}
+
+.add-button > button {
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 1.3em;
+    border-radius: 50%;
+    box-sizing: border-box;
+
+}
+
+.product-item-caption {
+    margin-bottom: 20%;
+}
+
+.product-item-price > p > span {
+    color: #757575;
+    font-size: 0.7em;
+}
+
+.product-item-category {
+    color: #757575;
+    font-size: 0.7em;
+}
+
+.product-item-all-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+

@@ -1,40 +1,48 @@
 import React from 'react'
-import {Row, Col} from 'react-bootstrap'
 import FavoriteMarker from '../../favorite-marker/FavoriteMarker'
+import {
+    Grid,
+    Row,
+    Col,
+    Thumbnail,
+    Button
+} from 'react-bootstrap'
 import './AllProductsItem.css'
 
 
 let AllProductsItem = (props) =>(
-    <Row>
-        <div className="product-item">
-            <Col md={8}>
-                <ul>
-                    <li> {props.product.productName} </li>
-                    <li> {props.product.price} zł</li>
-                    <li> {props.product.category} </li>
-                </ul>
-            </Col>
-            <Col md={2}>
-                <div>
-                    <button onClick={() => props.decreaseAmount(props.product.productId)}>
-                        -
-                    </button>
-                    <div>
-                        {props.currentCounterValue}
-                    </div>
-                    <button onClick={() => props.increaseAmount(props.product.productId)}>
-                        +
-                    </button>
-                </div>
-            </Col>
-            <Col md={2}>
-                <div className="favorite_marker">
-                    <FavoriteMarker productId={props.product.productId}/>
-                </div>
-            </Col>
-
+    <Thumbnail
+        className="product-item">
+        <div className="product-item-caption">
+            <h4>{props.product.productName}</h4>
         </div>
-    </Row>
+        <div className="product-item-price">
+            <p>
+                <span>Cena:</span><br/> {props.product.price}&nbsp;
+                zł</p>
+        </div>
+        <div className="product-item-category">
+            <p>
+                Kategoria: {props.product.category}</p>
+        </div>
+        <div className="product-item-all-buttons">
+            <div className="add-button">
+                <button
+                    onClick={() => props.decreaseAmount(props.product.productId)}>
+                    -
+                </button>
+                <span>
+                &nbsp;&nbsp;{props.currentCounterValue}&nbsp;&nbsp;
+            </span>
+                <button
+                    onClick={() => props.increaseAmount(props.product.productId)}>
+                    +
+                </button>
+            </div>
+            <FavoriteMarker
+                productId={props.product.productId}/>
+        </div>
+    </Thumbnail>
 )
 
 export default AllProductsItem
