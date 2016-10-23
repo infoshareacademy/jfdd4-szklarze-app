@@ -11,22 +11,22 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-   markProductAsPurchased: (productId) => dispatch(markProductAsPurchased(productId))
+    markProductAsPurchased: (productId) => dispatch(markProductAsPurchased(productId))
 
 })
 
 const didUserSetListName = (list, index) => (
-    typeof list[list.length-1] === 'string' ?
-        index !== list.length-1 :
+    typeof list[list.length - 1] === 'string' ?
+    index !== list.length - 1 :
         true
 )
 
 
 function printListName(list, listId) {
-    const listNumber = Number(listId)+1;
-    return typeof list[list.length-1] !== 'object' ?
-        list[list.length-1] :
-        'Lista zakupów nr '+ listNumber
+    const listNumber = Number(listId) + 1;
+    return typeof list[list.length - 1] !== 'object' ?
+        list[list.length - 1] :
+    'Lista zakupów nr ' + listNumber
 }
 
 class ProductsToBuy extends React.Component {
@@ -38,9 +38,9 @@ class ProductsToBuy extends React.Component {
             purchasedProductsIds
         } = this.props
 
-        let listId= this.props.params.listId
-        let list =shoppingLists[listId];
+        let listId = this.props.params.listId;
         let purchased = purchasedProductsIds;
+        let list = shoppingLists[listId];
         return (
             <div className="panel panel-default">
                 <div className="panel-heading">Lista produktów:</div>
@@ -60,7 +60,7 @@ class ProductsToBuy extends React.Component {
                                     var id = item[0],
                                         quantity = item[1],
                                         result = products
-                                            .filter((product) => product.productId === item[0])
+                                            .filter((product) => product.productId === id)
                                             .map((item) => item.productName)
                                     return (
                                         <li className="list-group-item" key={id}
@@ -75,14 +75,15 @@ class ProductsToBuy extends React.Component {
                     <ListDeleter listId={listId}/>
                 </div>}
                 <div className="panel-body">
+                    <div className="well well-sm">Produkty kupione:</div>
                     <div>
                         {purchased.purchasedProductsIds.map(function (item) {
                             return item.id
                         })
-                                 .map(function (item) {
+                            .map(function (item) {
                                 var result = products
-                                        .filter((product) => product.productId === item)
-                                        .map((item) => item.productName)
+                                    .filter((product) => product.productId === item)
+                                    .map((item) => item.productName)
                                 return (
                                     <li className="list-group-item, purchased" key={item}>
                                         {result}
@@ -90,7 +91,7 @@ class ProductsToBuy extends React.Component {
                                 )
                             })}
                     </div>
-                    </div>
+                </div>
             </div>
         )
     }
