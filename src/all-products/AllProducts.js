@@ -11,7 +11,10 @@ import {
 
 import AllProductsItem from './all-products-item/AllProductsItem'
 
-import { increaseAmount, decreaseAmount} from '../list-creator/actionCreators'
+import {
+    increaseAmount,
+    decreaseAmount
+} from '../list-creator/actionCreators'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
@@ -58,6 +61,7 @@ const AllProducts = ({
     itemsToBuy,
     saveNewList
 }) => (
+    <div className="background">
             <div className="all-products">
                 <h1>Wybór produktów</h1>
 
@@ -80,6 +84,7 @@ const AllProducts = ({
                 <ListCreator />
 
             </div>
+    </div>
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)

@@ -20,8 +20,8 @@ class ShoppingLists extends React.Component {
         } = this.props
 
         return(
-
-            <Grid>
+            <div className="background-shopping-lists">
+                <Grid>
                 <Row className="show-grid">
                     <Col xs={12} md={7}>
                         <div className="shopping-lists">
@@ -49,6 +49,7 @@ class ShoppingLists extends React.Component {
                     </Col>
                 </Row>
             </Grid>
+            </div>
 
 
     )
