@@ -37,7 +37,6 @@ class ListCreator extends React.Component {
                     placeholder="Wpisz nazwę listy..."
                 />
                 <MenuItem
-                    bsClass="blue-button"
                     onClick={() =>
                         itemsToBuy.length === 0 ?
                             alert('Wybierz produkt, aby stworzyć listę') :
