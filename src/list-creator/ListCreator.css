@@ -9,4 +9,38 @@
 
 .list-creator {
     align-content: center;
+    position: fixed;
+    bottom: 3%;
+    right: 2%;
+    background: #465676;
+    padding: 1em;
+    border-radius: 3em;
+}
+
+.list-creator li {
+    display: inline-block;
+    list-style-type: none;
+    border-radius: 27px;
+    background-color: #262e3e;
+    cursor: pointer;
+    font-weight: normal;
+    padding: 0.2em 0.7em;
+    font-size: 0.8em;
+    box-shadow: none;
+    border: solid 1px #262e3e;
+    margin: 0 0.4em;
+}
+
+.list-creator li:hover {
+    background-color: #465676;
+    text-decoration: none;
+    color: white;
+}
+
+.list-creator a {
+    color: #fff;
+}
+
+.list-creator a:hover, .list-creator a:focus, .list-creator a:visited {
+    text-decoration: none;
 }

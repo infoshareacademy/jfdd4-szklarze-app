@@ -39,42 +39,42 @@ const Filters = ({
 }) => (
 
     <Row>
-        <Col xs={8}>
-                <p className="show-favorite-caption">
-                    Pokaż produkty:</p>
-                <ButtonToolbar>
-                    <Button
-                        onClick={() => toggleFavoriteFilter()}
-                        disabled={!isFavoriteFilterActive}
-                        bsStyle={!isFavoriteFilterActive ? 'success' : 'default'}>
-                        Wszystkie
+        <Col xs={10}>
+            <p className="show-favorite-caption">
+                Pokaż produkty:</p>
+            <ButtonToolbar>
+                <Button
+                    onClick={() => toggleFavoriteFilter()}
+                    disabled={!isFavoriteFilterActive}
+                    bsStyle={!isFavoriteFilterActive ? 'success' : 'default'}>
+                    Wszystkie
+                </Button>
+                <Button
+                    onClick={() => toggleFavoriteFilter()}
+                    disabled={isFavoriteFilterActive}
+                    bsStyle={isFavoriteFilterActive ? 'success' : 'default'}>
+                    Ulubione
+                </Button>
+            </ButtonToolbar>
+            <p className="show-filtered-caption">
+                Filtruj:</p>
+            <ButtonToolbar>
+                {categories.map((category, index) =>
+                    <Button key={index}
+                            onClick={() => setCategoryFilter(category)}
+                            active={CategoryFilterArray.indexOf(category) !== -1}
+                            bsStyle={CategoryFilterArray.indexOf(category) !== -1 ? 'primary' : 'default'}>
+                        {category}
                     </Button>
-                    <Button
-                        onClick={() => toggleFavoriteFilter()}
-                        disabled={isFavoriteFilterActive}
-                        bsStyle={isFavoriteFilterActive ? 'success' : 'default'}>
-                        Ulubione
-                    </Button>
-                </ButtonToolbar>
-                <p className="show-favorite-caption">
-                    Filtruj:</p>
-                <ButtonToolbar>
-                    {categories.map((category, index) =>
-                        <Button key={index}
-                                onClick={() => setCategoryFilter(category)}
-                                active={CategoryFilterArray.indexOf(category) !== -1}
-                                bsStyle={CategoryFilterArray.indexOf(category) !== -1 ? 'primary' : 'default'}>
-                            {category}
-                        </Button>
-                    )}
-                </ButtonToolbar>
-                <ButtonToolbar>
-                    <Button
-                        onClick={() => removeCategoryFilter()}
-                        bsStyle='danger'>
-                        Usuń filtry
-                    </Button>
-                </ButtonToolbar>
+                )}
+            </ButtonToolbar>
+            <ButtonToolbar>
+                <Button
+                    onClick={() => removeCategoryFilter()}
+                    bsStyle='danger'>
+                    Usuń filtry
+                </Button>
+            </ButtonToolbar>
         </Col>
     </Row>
 

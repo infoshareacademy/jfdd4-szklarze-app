@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
-import { connect } from 'react-redux'
-import { markFavoriteProduct } from './actionCreators'
+import {Button} from 'react-bootstrap'
+import {connect} from 'react-redux'
+import {markFavoriteProduct} from './actionCreators'
 import FaHeartO from 'react-icons/lib/fa/heart-o'
 import './FavoriteMarker.css'
 
@@ -15,12 +15,13 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const FavoriteMarker = ({markFavoriteProduct, favorites, productId}) => (
+    <div className="favorite-marker">
         <Button
-            className="favorite-button"
-            bsStyle={favorites.indexOf(productId) !== -1 ? 'danger' : 'default'}
+            bsStyle={favorites.indexOf(productId) !== -1 ? 'success' : 'default'}
             onClick={() => markFavoriteProduct(productId)}>
             <FaHeartO/>
         </Button>
+    </div>
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavoriteMarker)

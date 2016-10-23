@@ -1,8 +1,10 @@
 .show-favorite-caption {
     text-align: left;
+    margin-bottom: 2%;
 }
 
-.filter-caption {
+.show-filtered-caption {
     text-align: left;
+    margin-top: 4%;
+    margin-bottom: 2%;
 }
-
