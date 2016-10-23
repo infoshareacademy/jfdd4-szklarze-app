@@ -1,5 +1,6 @@
 import React from 'react'
 import Filters from '../filters/Filters'
+import ListCreator from '../list-creator/ListCreator'
 import './AllProducts.css'
 
 
@@ -13,20 +14,19 @@ import AllProductsItem from './all-products-item/AllProductsItem'
 
 import {
     increaseAmount,
-    decreaseAmount,
-    saveNewList
-} from './actionCreators'
-import {connect} from 'react-redux'
-
+    decreaseAmount
+} from '../list-creator/actionCreators'
+import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
     categoryFilterArray: state.filters.categoryFilter,
     favoriteProductsIds: state.favorites.favoriteProductIds,
-    productsToDisplay: state.filters.favoritesFilter ?
-        state.products
-            .filter(product =>
-            state.favorites.favoriteProductIds.indexOf(product.productId) !== -1) :
-        state.products,
+    productsToDisplay:
+        state.filters.favoritesFilter ?
+            state.products
+                .filter(product =>
+                state.favorites.favoriteProductIds.indexOf(product.productId) !== -1) :
+            state.products,
     itemsToBuy: state.allProducts.itemsToBuy,
 
 })
@@ -34,7 +34,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     increaseAmount: (productId) => dispatch(increaseAmount(productId)),
     decreaseAmount: (productId) => dispatch(decreaseAmount(productId)),
-    saveNewList: () => dispatch(saveNewList())
 })
 
 function generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy) {
@@ -73,25 +72,18 @@ const AllProducts = ({
                 <Row>
                     {categoryFilterArray.indexOf('none') !== -1 ?
                         productsToDisplay
-                            .map(product =>
+                            .map( product =>
                                 generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
                         :
                         productsToDisplay
-                            .filter(product =>
+                            .filter( product =>
                                 (categoryFilterArray.indexOf(product.category) !== -1))
-                            .map(product =>
+                            .map( product =>
                                 generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
                     }
                 </Row>
             </Grid>
-            <div>
-                <button onClick={() =>
-                    itemsToBuy.length === 0 ?
-                        alert('Wybierz produkt, aby stworzyć listę') :
-                        saveNewList()}>
-                    Stwórz nową listę
-                </button>
-            </div>
+            <ListCreator />
         </div>
     </div>
 )
