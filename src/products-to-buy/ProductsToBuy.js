@@ -41,7 +41,6 @@ class ProductsToBuy extends React.Component {
                     <div><p>Kliknij w wybraną listę zakupów aby wyświetlić jej zawartość</p></div>
                     : <div className="panel-body">
                     <div className="well well-sm">{printListName(list, listId)}</div>
-                    <ListDeleter listId={listId}/>
                     <ul className="list-group">
                         {shoppingLists.length > 0 ?
 
@@ -64,6 +63,7 @@ class ProductsToBuy extends React.Component {
                                     )
                                 }) : ''}
                     </ul>
+                    <ListDeleter listId={listId}/>
                 </div>}
             </div>
         )
