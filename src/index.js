@@ -20,7 +20,9 @@ ReactDOM.render(
                 <Route path="/all-products" component={AllProducts} />
                 <Route path="/shopping-lists" component={ShoppingLists}>
                     <Route path="/shopping-lists/:listId" component={ProductsToBuy}/>
+                    <Route path="*" component={Introduction} />
                 </Route>
+                <Route path="*" component={Introduction} />
             </Route>
         </Router>
     </Provider>,
