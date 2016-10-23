@@ -1,4 +1,3 @@
-.product-item ul > li {
-    list-style-type: none;
+.product-item {
     text-align: left;
 }

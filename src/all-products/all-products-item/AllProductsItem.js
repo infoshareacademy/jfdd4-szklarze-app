@@ -13,8 +13,9 @@ import './AllProductsItem.css'
 let AllProductsItem = (props) =>(
     <Thumbnail
         src="/assets/thumbnaildiv.png"
-        alt="242x200">
-        <h3>{props.product.productName}</h3>
+        alt="242x200"
+        className="product-item">
+        <h4>{props.product.productName}</h4>
         <p>{props.product.price}
             zł</p>
         <p>{props.product.category}</p>
@@ -23,9 +24,9 @@ let AllProductsItem = (props) =>(
                 onClick={() => props.decreaseAmount(props.product.productId)}>
                 -
             </button>
-            <div>
-                {props.currentCounterValue}
-            </div>
+            <span>
+                &nbsp;&nbsp;{props.currentCounterValue}&nbsp;&nbsp;
+            </span>
             <button
                 onClick={() => props.increaseAmount(props.product.productId)}>
                 +

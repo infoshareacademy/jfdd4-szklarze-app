@@ -67,7 +67,7 @@ const AllProducts = ({
 }) => (
     <div className="background">
         <div className="all-products">
-            <h1>Wybór produktów</h1>
+            <h1>Co chcesz kupić?</h1>
             <Filters />
             <Grid>
                 <Row>
