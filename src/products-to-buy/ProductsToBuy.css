@@ -10,17 +10,23 @@
     margin-bottom: 21px;
     background-color: #ffffff;
     border: 1px solid transparent;
-    border-radius: 4px;
+    solidborder-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .panel-default {
     border-color: #ecf0f1;
 }
-.panel-default > .panel-heading {
-    color: #2c3e50;
-    background-color: #ecf0f1;
+div > .panel-default > .panel-heading {
+    color: #fff;
+    background-color: #262e3e;
     border-color: #ecf0f1;
+}
+div  > .panel-heading {
+    color: #fff;
+    background-color: #262e3e !important;
+    border-color: #ecf0f1;
+
 }
 .panel-body {
     padding: 15px;
@@ -74,3 +80,10 @@
     padding: 9px;
     border-radius: 3px;
 }
+.purchased {
+    text-decoration: line-through;
+}
+.intro {
+    padding: 3%;
+    text-align: justify;
+ }

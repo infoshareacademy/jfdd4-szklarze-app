@@ -3,3 +3,8 @@ a.list-group-item.active:hover,
 a.list-group-item.active:focus {
     border-color: #ecf0f1;
 }
+.intro {
+    padding: 3%;
+    text-align: center;
+
+}
