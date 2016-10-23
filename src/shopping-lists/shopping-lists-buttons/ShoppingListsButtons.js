@@ -1,9 +1,9 @@
 import React from 'react'
 import {
-    Button,
     ButtonGroup
 } from 'react-bootstrap'
 import {Link} from 'react-router'
+import './ShoppingListsButtons.css'
 
 const ShoppingListsButtons = ({shoppingLists}) => (
     <ButtonGroup vertical block>
@@ -12,12 +12,12 @@ const ShoppingListsButtons = ({shoppingLists}) => (
             .map((list, index) =>
                 <div>
                     <Link to={`/shopping-lists/` + index}>
-                        <Button>
+                        <a className="list-group-item">
                             {typeof list[list.length-1] === 'string' ?
                                 list[list.length-1] :
                                 'Lista zakupów nr '+(index + 1)
                             }
-                        </Button>
+                        </a>
                     </Link>
                 </div>
             )}
@@ -25,3 +25,4 @@ const ShoppingListsButtons = ({shoppingLists}) => (
 )
 
 export default ShoppingListsButtons
+

@@ -21,28 +21,25 @@ class ShoppingLists extends React.Component {
         return(
             <div className="background-shopping-lists">
                 <Grid>
-                <Row className="show-grid">
-                    <Col xs={12} md={7}>
-                        <div className="shopping-lists">
-                            <h1>Shopping Lists</h1>
-                            {shoppingLists.length > 0 ? ''
-                                : 'Nie stowrzyłeś jeszcze listy zakupów' }
-                        </div>
+                    <Row className="show-grid">
+                        <Col xs={12} md={7}>
+                            <div className="panel panel-default">
 
-                        <ShoppingListsButtons shoppingLists={shoppingLists}/>
+                                <div className="panel-heading">Listy zakupów:</div>
+                                {shoppingLists.length > 0 ? ''
+                                    : 'Nie stowrzyłeś jeszcze listy zakupów' }
+                                <ShoppingListsButtons shoppingLists={shoppingLists}/>
+                            </div>
+                        </Col>
 
-                    </Col>
-
-                    <Col xs={12} md={5}>
-                        <div className="shopping-lists">
-                            <ProductsToBuy{...this.props}/>
-                        </div>
-                    </Col>
-                </Row>
-            </Grid>
+                        <Col xs={12} md={5}>
+                            <div className="shopping-lists">
+                                <ProductsToBuy{...this.props}/>
+                            </div>
+                        </Col>
+                    </Row>
+                </Grid>
             </div>
-
-
     )
     }
 }
