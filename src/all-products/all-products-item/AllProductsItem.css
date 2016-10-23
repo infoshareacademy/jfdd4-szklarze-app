@@ -1,3 +1,22 @@
 .product-item {
     text-align: left;
 }
+
+.add-button {
+    display: inline-block;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    border-radius: 33%;
+    border: none;
+}
+
+.add-button > button {
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    color: #ffc10e;
+    font-size: 1.3em;
+    border-radius: 50%;
+    box-sizing: border-box;
+
+}

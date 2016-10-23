@@ -19,7 +19,7 @@ let AllProductsItem = (props) =>(
         <p>{props.product.price}
             zł</p>
         <p>{props.product.category}</p>
-        <p>
+        <div className="add-button">
             <button
                 onClick={() => props.decreaseAmount(props.product.productId)}>
                 -
@@ -31,7 +31,7 @@ let AllProductsItem = (props) =>(
                 onClick={() => props.increaseAmount(props.product.productId)}>
                 +
             </button>
-        </p>
+        </div>
         <p className="favorite_marker">
             <FavoriteMarker
                 productId={props.product.productId}/>
