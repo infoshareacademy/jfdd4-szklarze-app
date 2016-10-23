@@ -12,13 +12,19 @@ import './AllProductsItem.css'
 
 let AllProductsItem = (props) =>(
     <Thumbnail
-        src="/assets/thumbnaildiv.png"
-        alt="242x200"
         className="product-item">
-        <h4>{props.product.productName}</h4>
-        <p>{props.product.price}
-            zł</p>
-        <p>{props.product.category}</p>
+        <div className="product-item-caption">
+            <h4>{props.product.productName}</h4>
+        </div>
+        <div className="product-item-price">
+            <p>
+                <span>Cena:</span><br/> {props.product.price}&nbsp;
+                zł</p>
+        </div>
+        <div className="product-item-category">
+            <p>
+                Kategoria: {props.product.category}</p>
+        </div>
         <div className="add-button">
             <button
                 onClick={() => props.decreaseAmount(props.product.productId)}>
