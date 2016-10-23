@@ -67,16 +67,13 @@ const AllProducts = ({
         <div className="all-products">
             <h1>Co chcesz kupić?</h1>
             <Grid>
-            <div className="filters">
-
+                <div className="filters">
                     <Row>
                         <Col xs={10}>
-            <Filters />
-                            </Col>
-                        </Row>
-
+                            <Filters />
+                        </Col>
+                    </Row>
                 </div>
-
                 <Row>
                     {categoryFilterArray.indexOf('none') !== -1 ?
                         productsToDisplay
@@ -92,7 +89,7 @@ const AllProducts = ({
                 </Row>
             </Grid>
 
-                <ListCreator />
+            <ListCreator />
 
         </div>
     </div>
