@@ -27,7 +27,7 @@ class ShoppingLists extends React.Component {
 
                                 <div className="panel-heading">Listy zakupów:</div>
                                 {shoppingLists.length > 0 ? ''
-                                    : 'Nie stowrzyłeś jeszcze listy zakupów' }
+                                    : 'Nie stworzyłeś jeszcze listy zakupów' }
                                 <ShoppingListsButtons shoppingLists={shoppingLists}/>
                             </div>
                         </Col>
