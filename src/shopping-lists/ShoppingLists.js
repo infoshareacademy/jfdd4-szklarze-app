@@ -13,22 +13,23 @@ const mapStateToProps = (state) => ({
 
 class ShoppingLists extends React.Component {
 
-    render(){
+    render() {
         var {
             shoppingLists
         } = this.props
 
-        return(
+        return (
             <div className="background-shopping-lists">
                 <Grid>
                     <Row className="show-grid">
                         <Col xs={12} md={7}>
                             <div className="panel panel-default">
-
                                 <div className="panel-heading">Listy zakupów:</div>
                                 {shoppingLists.length > 0 ? ''
-                                    : 'Nie stworzyłeś jeszcze listy zakupów' }
-                                <ShoppingListsButtons shoppingLists={shoppingLists}/>
+                                    : <p className="intro">Nie stworzyłeś jeszcze listy zakupów</p>}
+                                <div className="panel-body">
+                                    <ShoppingListsButtons shoppingLists={shoppingLists}/>
+                                </div>
                             </div>
                         </Col>
 
@@ -40,7 +41,7 @@ class ShoppingLists extends React.Component {
                     </Row>
                 </Grid>
             </div>
-    )
+        )
     }
 }
 export default connect(mapStateToProps)(ShoppingLists)

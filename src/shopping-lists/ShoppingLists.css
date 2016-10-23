@@ -14,8 +14,10 @@
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
-.panel-default {
+.panel.panel-default {
     border-color: #ecf0f1;
+    border: none !important;
+    margin-bottom: 5% ;
 }
 .panel-default > .panel-heading {
     color: #2c3e50;
@@ -51,7 +53,7 @@
     padding: 3px 7px;
     font-size: 13px;
     font-weight: bold;
-    color: #262e3e !important;
+    color: #465676 !important;
     line-height: 1;
     vertical-align: middle;
     white-space: nowrap;
