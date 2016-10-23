@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
 import './ProductsToBuy.css'
-import { markProductAsPurchased } from './actionCreators'
+import {markProductAsPurchased} from './actionCreators'
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.allProducts.shoppingLists,
@@ -63,9 +63,11 @@ class ProductsToBuy extends React.Component {
                                             .filter((product) => product.productId === item[0])
                                             .map((item) => item.productName)
                                     return (
-                                        <li className="list-group-item" key={id} onClick={() => markProductAsPurchased({id})}>
+                                        <li className="list-group-item" key={id}
+                                            onClick={() => markProductAsPurchased({id})}>
                                             <span className="badge">{quantity + ' ' + 'szt.'}</span>
                                             {result}
+
                                         </li>
                                     )
                                 }) : ''}
