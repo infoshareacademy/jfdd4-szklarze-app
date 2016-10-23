@@ -13,7 +13,10 @@ const ShoppingListsButtons = ({shoppingLists}) => (
                 <div>
                     <Link to={`/shopping-lists/` + index}>
                         <Button>
-                            Lista zakupów nr {index + 1}
+                            {typeof list[list.length-1] === 'string' ?
+                                list[list.length-1] :
+                                'Lista zakupów nr '+(index + 1)
+                            }
                         </Button>
                     </Link>
                 </div>

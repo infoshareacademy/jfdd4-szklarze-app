@@ -27,7 +27,9 @@ class ProductsToBuy extends React.Component {
                         {shoppingLists.length > 0 ?
                             list
                                 .filter(function (product, index) {
-                                    return index !== list.length-1
+                                    return typeof list[list.length-1] === 'string' ?
+                                        index !== list.length-1 :
+                                        true
                                 })
                                 .map(function (item) {
                                 console.log(item.quantity, item.productId)
