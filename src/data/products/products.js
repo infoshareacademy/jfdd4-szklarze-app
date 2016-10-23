@@ -18,7 +18,7 @@ var products = [
         productId: 3
     },
     {
-        productName: "Chlep żytni",
+        productName: "Chleb żytni",
         price: 0.4,
         category: "Pieczywo",
         productId: 4
@@ -42,7 +42,7 @@ var products = [
         productId: 7
     },
     {
-        productName: "Sol pomarańczowy",
+        productName: "Sok pomarańczowy",
         price: 2.99,
         category: "Napoje",
         productId: 8
