@@ -22,6 +22,9 @@
     background-color: #ecf0f1;
     border-color: #ecf0f1;
 }
+.panel-body {
+    padding: 15px;
+}
 .list-group {
     margin-bottom: 20px;
     padding-left: 0;
@@ -33,4 +36,41 @@
     margin-bottom: -1px;
     background-color: #ffffff;
     border: 1px solid #ecf0f1;
+}
+.list-group-item.active,
+.list-group-item.active:hover,
+.list-group-item.active:focus {
+    z-index: 2;
+    color: #ffffff;
+    background-color: #2c3e50;
+    border-color: #2c3e50;
+}
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #262e3e !important;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #ffc10e !important;
+    border-radius: 10px;
+}
+
+.well {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #ecf0f1;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.well-sm {
+    padding: 9px;
+    border-radius: 3px;
 }

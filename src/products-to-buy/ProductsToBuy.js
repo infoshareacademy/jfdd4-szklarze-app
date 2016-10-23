@@ -30,7 +30,7 @@ class ProductsToBuy extends React.Component {
         let list =shoppingLists[listId];
         return (
             <div className="panel panel-default">
-                <div className="panel-heading">Lista zakupów:</div>
+                <div className="panel-heading">Lista produktów:</div>
                 {listId === undefined ?
                     <div><p>Kliknij w wybraną listę zakupów aby wyświetlić jej zawartość</p></div>
                     : <div className="panel-body">
@@ -44,22 +44,21 @@ class ProductsToBuy extends React.Component {
                                 })
                                 .map((product) => ([product.productId, product.quantity]))
                                 .map(function (item) {
-                                    var id=item[0],
+                                    var id = item[0],
                                         quantity = item[1],
                                         result = products
                                             .filter((product) => product.productId === item[0])
                                             .map((item) => item.productName)
-                                    return(
+                                    return (
                                         <li className="list-group-item" key={id}>
-                                            <span className="badge">{quantity +' ' + 'szt.'}</span>
-                                                    {result}
-
+                                            <span className="badge">{quantity + ' ' + 'szt.'}</span>
+                                            {result}
                                         </li>
                                     )
-                            }) : ''}
+                                }) : ''}
                     </ul>
-                    </div>}
-                </div>
+                </div>}
+            </div>
         )
     }
 }
