@@ -42,7 +42,10 @@ class ListCreator extends React.Component {
                             alert('Wybierz produkt, aby stworzyć listę') :
                             saveNewList()}
                     eventKey="/shopping-lists"
-                    onSelect={this.handleSelect}>
+                    onSelect={
+                        itemsToBuy.length === 0 ?
+                            '' :
+                            this.handleSelect}>
                     Stwórz nową listę
                 </MenuItem>
             </div>
