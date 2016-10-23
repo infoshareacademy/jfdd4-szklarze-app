@@ -15,13 +15,6 @@ const didUserSetListName = (list, index) => (
         true
 )
 
-// const printListName = (list, listId) => (
-//     const listNumber = listId+1
-//     return typeof list[list.length-1] !== 'object' ?
-//     list.length-1 :
-//     'Lista zakupów nr '+ listNumber
-// )
-
 function printListName(list, listId) {
     const listNumber = Number(listId)+1;
     return typeof list[list.length-1] !== 'object' ?
