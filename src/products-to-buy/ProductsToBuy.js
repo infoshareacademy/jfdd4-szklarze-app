@@ -9,6 +9,26 @@ const mapStateToProps = (state) => ({
     products: state.products
 })
 
+const didUserSetListName = (list, index) => (
+    typeof list[list.length-1] === 'string' ?
+        index !== list.length-1 :
+        true
+)
+
+// const printListName = (list, listId) => (
+//     const listNumber = listId+1
+//     return typeof list[list.length-1] !== 'object' ?
+//     list.length-1 :
+//     'Lista zakupów nr '+ listNumber
+// )
+
+function printListName(list, listId) {
+    const listNumber = Number(listId)+1;
+    return typeof list[list.length-1] !== 'object' ?
+        list[list.length-1] :
+        'Lista zakupów nr '+ listNumber
+}
+
 class ProductsToBuy extends React.Component {
     render() {
         var {
@@ -16,39 +36,40 @@ class ProductsToBuy extends React.Component {
             products
         } = this.props
 
-        let i= this.props.params.listId
-        let list =shoppingLists[i];
+        let listId= this.props.params.listId
+        let list =shoppingLists[listId];
         return (
             <div>
                 <h1>ProductsToBuy</h1>
-                {i === undefined ?
+                {listId === undefined ?
                     <div>Tu wyświetli się twoja lista produktów</div> :
                     <ListGroup>
+                        <h2>{printListName(list, listId)}</h2>
                         {shoppingLists.length > 0 ?
                             list
                                 .filter(function (product, index) {
-                                    return typeof list[list.length-1] === 'string' ?
-                                        index !== list.length-1 :
-                                        true
+                                    return didUserSetListName(list, index)
                                 })
                                 .map(function (item) {
-                                console.log(item.quantity, item.productId)
-                                return item.productId})
+                                    console.log(item.quantity, item.productId)
+                                    return item.productId})
                                 .map(function (productid) {
                                     (console.log(productid.quantity))
-                                    var result = products
-                                        .filter(function (prod) {
-                                            return prod.productId === productid})
-                                            .map(function (item) {
-                                             console.log(item.productName)
-                                             return item.productName
-                                            })
                                     return(
-                                        <ListGroupItem>
-                                            {result}
+                                        <div>
+                                            <ListGroupItem>
+                                                {products
+                                                    .filter(function (prod) {
+                                                        return prod.productId === productid})
+                                                    .map(function (item) {
+                                                        console.log(item.productName)
+                                                        return item.productName
+                                                    })}
                                             </ListGroupItem>
+                                        </div>
                                     )
-                            }) : ''}
+                                }) : ''
+                        }
                     </ListGroup>}
                 </div>
         )
