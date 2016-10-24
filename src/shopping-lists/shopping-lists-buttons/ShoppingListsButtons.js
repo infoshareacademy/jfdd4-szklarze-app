@@ -33,4 +33,3 @@ const ShoppingListsButtons = ({shoppingLists, resetPurchased}) => (
 )
 
 export default connect (mapStateToProps, mapDispatchToProps)(ShoppingListsButtons)
-
