@@ -22,7 +22,7 @@
 }
 
 .product-item-caption {
-    margin-bottom: 20%;
+    /*margin-bottom: 20%;*/
 }
 
 .product-item-price > p > span {
@@ -40,4 +40,8 @@
     justify-content: space-between;
 }
 
-
+@media (max-width: 375px) {
+    .product-item-all-buttons {
+        display: block;
+    }
+}
