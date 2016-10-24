@@ -69,7 +69,7 @@ const AllProducts = ({
             <Grid>
                 <div className="filters">
                     <Row>
-                        <Col xs={10}>
+                        <Col xs={12}>
                             <Filters />
                         </Col>
                     </Row>
