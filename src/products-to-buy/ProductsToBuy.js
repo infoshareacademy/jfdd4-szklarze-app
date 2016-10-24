@@ -2,8 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
 import './ProductsToBuy.css'
-import {markProductAsPurchased, updateProductsToBuy} from '../list-creator/actionCreators'
-import {markProductAsPurchased, resetPurchased} from './actionCreators'
+import {markProductAsPurchased, updateProductsToBuy, resetPurchased} from '../list-creator/actionCreators'
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.allProducts.shoppingLists,
@@ -13,7 +12,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     markProductAsPurchased: (productId) => dispatch(markProductAsPurchased(productId)),
-    updateProductsToBuy: (productId, listId) => dispatch(updateProductsToBuy(productId, listId))
+    updateProductsToBuy: (productId, listId) => dispatch(updateProductsToBuy(productId, listId)),
     resetPurchased: ()=> dispatch(resetPurchased())
 
 })
@@ -39,7 +38,7 @@ class ProductsToBuy extends React.Component {
             products,
             purchasedProductsIds,
             markProductAsPurchased,
-            updateProductsToBuy
+            updateProductsToBuy,
             resetPurchased
         } = this.props
 

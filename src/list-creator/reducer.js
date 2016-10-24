@@ -5,7 +5,8 @@ import {
     SET_CURRENT_LIST_NAME,
     DELETE_LIST,
     MARK_PRODUCT_AS_PURCHASED,
-    UPDATE_PRODUCTS_TO_BUY
+    UPDATE_PRODUCTS_TO_BUY,
+    RESET_PURCHASED
 } from './actionTypes'
 
 const initialState = {
@@ -62,6 +63,10 @@ export default (state = initialState, action) => {
                     .map((list, index) => index === Number(action.listId) ?
                         list.filter((product) => product.productId !== action.productId) :
                         list)
+            })
+        case RESET_PURCHASED:
+            return Object.assign({}, state, {
+                purchasedProductsIds: []
             })
         default:
             return state

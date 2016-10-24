@@ -5,7 +5,8 @@ import {
     SET_CURRENT_LIST_NAME,
     DELETE_LIST,
     MARK_PRODUCT_AS_PURCHASED,
-    UPDATE_PRODUCTS_TO_BUY
+    UPDATE_PRODUCTS_TO_BUY,
+    RESET_PURCHASED
 } from './actionTypes'
 
 export function saveNewList(){
@@ -53,5 +54,11 @@ export function updateProductsToBuy(productId, listId) {
         type: UPDATE_PRODUCTS_TO_BUY,
         productId: productId,
         listId: listId
+    }
+}
+
+export function resetPurchased() {
+    return{
+        type: RESET_PURCHASED
     }
 }
