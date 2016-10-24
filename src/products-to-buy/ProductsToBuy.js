@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
 import './ProductsToBuy.css'
 import {markProductAsPurchased, updateProductsToBuy} from '../list-creator/actionCreators'
+import {markProductAsPurchased, resetPurchased} from './actionCreators'
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.allProducts.shoppingLists,
@@ -13,6 +14,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     markProductAsPurchased: (productId) => dispatch(markProductAsPurchased(productId)),
     updateProductsToBuy: (productId, listId) => dispatch(updateProductsToBuy(productId, listId))
+    resetPurchased: ()=> dispatch(resetPurchased())
+
 })
 
 const didUserSetListName = (list, index) => (
@@ -37,6 +40,7 @@ class ProductsToBuy extends React.Component {
             purchasedProductsIds,
             markProductAsPurchased,
             updateProductsToBuy
+            resetPurchased
         } = this.props
 
         function markAndUpdate(productId, listId) {
@@ -52,7 +56,7 @@ class ProductsToBuy extends React.Component {
                 {listId === undefined ?
                     <div><p className="intro">Kliknij w wybraną listę zakupów aby wyświetlić jej zawartość</p></div>
                     : <div className="panel-body">
-                    <div className="well well-sm">{printListName(list, listId)}</div>
+                    <h4>{printListName(list, listId)}</h4>
                     <ul className="list-group">
                         {shoppingLists.length > 0 ?
 
@@ -77,9 +81,9 @@ class ProductsToBuy extends React.Component {
                                     )
                                 }) : ''}
                     </ul>
-                    <ListDeleter listId={listId}/>
+                    <p onClick={() => resetPurchased()}><ListDeleter listId={listId}/></p>
                 </div>}
-                    <div className="well well-sm">Produkty kupione:</div>
+                <div className="panel-heading">Produkty kupione:</div>
                     <div>
                         {purchasedProductsIds
                             .map(function (item) {
