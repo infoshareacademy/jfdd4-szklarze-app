@@ -8,7 +8,7 @@
     box-sizing: border-box;
     background-color: #e6e6e6;
     border: none;
-    font-size: 1.4em;
+    font-size: 1.2em;
     padding: 0 8px;
     border-radius: 27px;
 }
@@ -19,6 +19,7 @@
     font-weight: bold;
     border-radius: 50%;
     box-sizing: border-box;
+    outline: none;
 }
 
 .product-item-caption {
