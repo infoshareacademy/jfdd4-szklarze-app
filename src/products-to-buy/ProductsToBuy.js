@@ -74,7 +74,7 @@ class ProductsToBuy extends React.Component {
                                     )
                                 }) : ''}
                     </ul>
-                    <ListDeleter listId={listId}/>
+                    <p onClick={() => resetPurchased()}><ListDeleter listId={listId}/></p>
                 </div>}
                 <div className="panel-heading">Produkty kupione:</div>
                     <div>
