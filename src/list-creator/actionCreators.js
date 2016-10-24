@@ -3,7 +3,8 @@ import {
     DECREASE_AMOUNT,
     SAVE_NEW_LIST,
     SET_CURRENT_LIST_NAME,
-    DELETE_LIST
+    DELETE_LIST,
+    MARK_PRODUCT_AS_PURCHASED
 } from './actionTypes'
 
 export function saveNewList(){
@@ -36,6 +37,14 @@ export function setCurrentListName(listName) {
 export function deleteList(listId) {
     return {
         type: DELETE_LIST,
+        listId: listId
+    }
+}
+
+export function markProductAsPurchased(productId, listId) {
+    return{
+        type: MARK_PRODUCT_AS_PURCHASED,
+        productId: productId,
         listId: listId
     }
 }

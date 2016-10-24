@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
 import './ProductsToBuy.css'
-import {markProductAsPurchased} from './actionCreators'
+import {markProductAsPurchased} from '../products-to-buy/actionCreators'
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.allProducts.shoppingLists,
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    markProductAsPurchased: (productId) => dispatch(markProductAsPurchased(productId))
+    markProductAsPurchased: (productId, listId) => dispatch(markProductAsPurchased(productId, listId))
 
 })
 
@@ -30,6 +30,7 @@ function printListName(list, listId) {
 }
 
 class ProductsToBuy extends React.Component {
+
     render() {
         var {
             shoppingLists,
@@ -39,7 +40,6 @@ class ProductsToBuy extends React.Component {
         } = this.props
 
         let listId = this.props.params.listId;
-        let purchased = purchasedProductsIds;
         let list = shoppingLists[listId];
         return (
             <div className="panel panel-default">
@@ -63,11 +63,11 @@ class ProductsToBuy extends React.Component {
                                             .filter((product) => product.productId === id)
                                             .map((item) => item.productName)
                                     return (
-                                        <li className="list-group-item" key={id}
-                                            onClick={() => markProductAsPurchased({id})}>
+                                        <li className="list-group-item"
+                                            key={id}
+                                            onClick={() => markProductAsPurchased(id, listId)}>
                                             <span className="badge">{quantity + ' ' + 'szt.'}</span>
                                             {result}
-
                                         </li>
                                     )
                                 }) : ''}
@@ -76,7 +76,7 @@ class ProductsToBuy extends React.Component {
                 </div>}
                     <div className="well well-sm">Produkty kupione:</div>
                     <div>
-                        {purchased.purchasedProductsIds.map(function (item) {
+                        {purchasedProductsIds.map(function (item) {
                             return item.id
                         })
                             .map(function (item) {

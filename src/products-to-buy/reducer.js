@@ -7,6 +7,7 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case MARK_PRODUCT_AS_PURCHASED:
+            console.log(state, action)
             return Object.assign({}, state, {
                 purchasedProductsIds: state.purchasedProductsIds.concat([action.productId])
             })

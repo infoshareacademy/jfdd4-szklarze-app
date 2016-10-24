@@ -3,13 +3,15 @@ import {
     DECREASE_AMOUNT,
     SAVE_NEW_LIST,
     SET_CURRENT_LIST_NAME,
-    DELETE_LIST
+    DELETE_LIST,
+    MARK_PRODUCT_AS_PURCHASED
 } from './actionTypes'
 
 const initialState = {
     itemsToBuy: [],
     shoppingLists: [],
-    currentListName: []
+    currentListName: [],
+    purchasedProductsIds: []
 }
 
 export default (state = initialState, action) => {
@@ -48,6 +50,11 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 shoppingLists: state.shoppingLists
                     .filter((list, index) => index !== Number(action.listId))
+            })
+        case MARK_PRODUCT_AS_PURCHASED:
+            console.log(state, action)
+            return Object.assign({}, state, {
+                purchasedProductsIds: state.purchasedProductsIds.concat([action.productId])
             })
         default:
             return state
