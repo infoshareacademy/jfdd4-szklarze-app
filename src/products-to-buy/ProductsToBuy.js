@@ -74,7 +74,7 @@ class ProductsToBuy extends React.Component {
                                         <li className="list-group-item"
                                             key={id}
                                             onClick={() => markAndUpdate(id, listId)}>
-                                            <span className="badge">{quantity + ' ' + 'szt.'}</span>
+                                            <span className="badge">{quantity + ' szt.'}</span>
                                             {result}
                                         </li>
                                     )

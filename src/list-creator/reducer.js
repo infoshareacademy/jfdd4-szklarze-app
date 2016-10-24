@@ -48,7 +48,6 @@ export default (state = initialState, action) => {
                 currentListName: action.listName
             })
         case DELETE_LIST:
-            console.log(state, action.listId)
             return Object.assign({}, state, {
                 shoppingLists: state.shoppingLists
                     .filter((list, index) => index !== Number(action.listId))
