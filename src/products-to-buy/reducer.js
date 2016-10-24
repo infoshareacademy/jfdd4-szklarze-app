@@ -1,4 +1,4 @@
-import { MARK_PRODUCT_AS_PURCHASED } from './actionTypes'
+import { MARK_PRODUCT_AS_PURCHASED, RESET_PURCHASED } from './actionTypes'
 
 const initialState = {
     purchasedProductsIds: []
@@ -10,6 +10,8 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 purchasedProductsIds: state.purchasedProductsIds.concat([action.productId])
             })
+        case RESET_PURCHASED:
+            return initialState
 
         default:
             return state

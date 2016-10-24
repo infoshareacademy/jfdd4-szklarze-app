@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
 import './ProductsToBuy.css'
-import {markProductAsPurchased} from './actionCreators'
+import {markProductAsPurchased, resetPurchased} from './actionCreators'
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.allProducts.shoppingLists,
@@ -11,7 +11,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    markProductAsPurchased: (productId) => dispatch(markProductAsPurchased(productId))
+    markProductAsPurchased: (productId) => dispatch(markProductAsPurchased(productId)),
+    resetPurchased: ()=> dispatch(resetPurchased())
 
 })
 
@@ -35,7 +36,8 @@ class ProductsToBuy extends React.Component {
             shoppingLists,
             products,
             markProductAsPurchased,
-            purchasedProductsIds
+            purchasedProductsIds,
+            resetPurchased
         } = this.props
 
         let listId = this.props.params.listId;
@@ -47,7 +49,7 @@ class ProductsToBuy extends React.Component {
                 {listId === undefined ?
                     <div><p className="intro">Kliknij w wybraną listę zakupów aby wyświetlić jej zawartość</p></div>
                     : <div className="panel-body">
-                    <div className="well well-sm">{printListName(list, listId)}</div>
+                    <h4>{printListName(list, listId)}</h4>
                     <ul className="list-group">
                         {shoppingLists.length > 0 ?
 
@@ -74,7 +76,7 @@ class ProductsToBuy extends React.Component {
                     </ul>
                     <ListDeleter listId={listId}/>
                 </div>}
-                    <div className="well well-sm">Produkty kupione:</div>
+                <div className="panel-heading">Produkty kupione:</div>
                     <div>
                         {purchased.purchasedProductsIds.map(function (item) {
                             return item.id
