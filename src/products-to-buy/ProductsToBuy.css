@@ -93,6 +93,24 @@ div > .panel-heading {
     padding: 9px;
     border-radius: 3px;
 }
+div.well.well-sm {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #465676;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    background-image: none;
+}
+
+div.well.well-sm {
+    padding: 9px;
+    border-radius: 30px;
+    background-image: none;
+    color: #fff
+}
 
 .purchased {
     text-decoration: line-through;

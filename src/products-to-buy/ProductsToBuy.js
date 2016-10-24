@@ -74,7 +74,6 @@ class ProductsToBuy extends React.Component {
                     </ul>
                     <ListDeleter listId={listId}/>
                 </div>}
-                <div className="panel-body">
                     <div className="well well-sm">Produkty kupione:</div>
                     <div>
                         {purchased.purchasedProductsIds.map(function (item) {
@@ -91,7 +90,6 @@ class ProductsToBuy extends React.Component {
                                 )
                             })}
                     </div>
-                </div>
             </div>
         )
     }
