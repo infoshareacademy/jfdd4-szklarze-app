@@ -1,11 +1,7 @@
 import React from 'react'
 import FavoriteMarker from '../../favorite-marker/FavoriteMarker'
 import {
-    Grid,
-    Row,
-    Col,
-    Thumbnail,
-    Button
+    Thumbnail
 } from 'react-bootstrap'
 import './AllProductsItem.css'
 import thumbnail from './thumbnails/thumbnail-1.jpg'
