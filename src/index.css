@@ -72,6 +72,7 @@ html body p {
     border: none;
     display: inline-block;
     margin: 0 0.4em;
+    outline: none;
 }
 
 .blue-button:hover {
@@ -93,6 +94,7 @@ html body p {
     margin: 0 0.4em;
     border-radius: 27px;
     text-shadow: none;
+    outline: none;
 }
 
 .btn-default {
@@ -108,6 +110,7 @@ html body p {
     border-radius: 27px;
     color: #262e3e;
     text-shadow: none;
+    outline: none;
 }
 
 .btn-primary:active, .btn-primary.active {
@@ -123,6 +126,7 @@ html body p {
     margin: 0 0.4em;
     border-radius: 27px;
     text-shadow: none;
+    outline: none;
 }
 
 .btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus {
@@ -138,6 +142,7 @@ html body p {
     margin: 0 0.4em;
     border-radius: 27px;
     text-shadow: none;
+    outline: none;
 }
 
 .btn-danger {
@@ -150,9 +155,9 @@ html body p {
     box-shadow: none;
     border: none;
     display: inline-block;
-    margin: 0 0.4em;
+    margin: 2% 0.4em;
     border-radius: 27px;
     text-shadow: none;
-    margin-top: 2%;
+    outline: none;
 }
 
