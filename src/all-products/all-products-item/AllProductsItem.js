@@ -8,12 +8,14 @@ import {
     Button
 } from 'react-bootstrap'
 import './AllProductsItem.css'
-import thumbnail from './thumbnails/thumbnail-1.jpg'
+// import thumbnail from './thumbnails/thumbnail-1.jpg'
+
 
 
 let AllProductsItem = (props) =>(
     <Thumbnail
-        Thumbnail src={thumbnail} alt="242x200"
+        src={`${process.env.PUBLIC_URL}` + `${props.product.imageUrl}`}
+        alt="242x200"
         className="product-item">
         <div className="product-item-caption">
           <h6>{props.product.productName}</h6>

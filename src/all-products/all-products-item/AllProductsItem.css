@@ -1,9 +1,6 @@
 .product-item {
     text-align: left;
-    min-height: 70vh;
 }
-
-
 
 .add-button {
     display: inline-block;
@@ -44,12 +41,17 @@
     justify-content: space-between;
 }
 
+.thumbnail > img, .thumbnail a > img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+
 @media (max-width: 375px) {
     .product-item-all-buttons {
         display: block;
     }
 
     .product-item {
-        min-height: 75vh;
     }
 }
