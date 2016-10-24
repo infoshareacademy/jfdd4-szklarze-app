@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
 import './ProductsToBuy.css'
-import {markProductAsPurchased} from '../products-to-buy/actionCreators'
+import {markProductAsPurchased, updateProductsToBuy} from '../list-creator/actionCreators'
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.allProducts.shoppingLists,
@@ -11,8 +11,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    markProductAsPurchased: (productId, listId) => dispatch(markProductAsPurchased(productId, listId))
-
+    markProductAsPurchased: (productId) => dispatch(markProductAsPurchased(productId)),
+    updateProductsToBuy: (productId, listId) => dispatch(updateProductsToBuy(productId, listId))
 })
 
 const didUserSetListName = (list, index) => (
@@ -20,7 +20,6 @@ const didUserSetListName = (list, index) => (
     index !== list.length - 1 :
         true
 )
-
 
 function printListName(list, listId) {
     const listNumber = Number(listId) + 1;
@@ -35,9 +34,15 @@ class ProductsToBuy extends React.Component {
         var {
             shoppingLists,
             products,
+            purchasedProductsIds,
             markProductAsPurchased,
-            purchasedProductsIds
+            updateProductsToBuy
         } = this.props
+
+        function markAndUpdate(productId, listId) {
+            markProductAsPurchased(productId);
+            updateProductsToBuy(productId, listId);
+        }
 
         let listId = this.props.params.listId;
         let list = shoppingLists[listId];
@@ -65,7 +70,7 @@ class ProductsToBuy extends React.Component {
                                     return (
                                         <li className="list-group-item"
                                             key={id}
-                                            onClick={() => markProductAsPurchased(id, listId)}>
+                                            onClick={() => markAndUpdate(id, listId)}>
                                             <span className="badge">{quantity + ' ' + 'szt.'}</span>
                                             {result}
                                         </li>

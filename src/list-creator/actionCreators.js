@@ -4,7 +4,8 @@ import {
     SAVE_NEW_LIST,
     SET_CURRENT_LIST_NAME,
     DELETE_LIST,
-    MARK_PRODUCT_AS_PURCHASED
+    MARK_PRODUCT_AS_PURCHASED,
+    UPDATE_PRODUCTS_TO_BUY
 } from './actionTypes'
 
 export function saveNewList(){
@@ -41,9 +42,15 @@ export function deleteList(listId) {
     }
 }
 
-export function markProductAsPurchased(productId, listId) {
+export function markProductAsPurchased(productId) {
     return{
         type: MARK_PRODUCT_AS_PURCHASED,
+        productId: productId,
+    }
+}
+export function updateProductsToBuy(productId, listId) {
+    return{
+        type: UPDATE_PRODUCTS_TO_BUY,
         productId: productId,
         listId: listId
     }

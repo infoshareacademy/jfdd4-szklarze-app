@@ -4,7 +4,8 @@ import {
     SAVE_NEW_LIST,
     SET_CURRENT_LIST_NAME,
     DELETE_LIST,
-    MARK_PRODUCT_AS_PURCHASED
+    MARK_PRODUCT_AS_PURCHASED,
+    UPDATE_PRODUCTS_TO_BUY
 } from './actionTypes'
 
 const initialState = {
@@ -54,10 +55,13 @@ export default (state = initialState, action) => {
         case MARK_PRODUCT_AS_PURCHASED:
             return Object.assign({}, state, {
                 purchasedProductsIds: state.purchasedProductsIds.concat([action.productId]),
+            })
+        case UPDATE_PRODUCTS_TO_BUY:
+            return Object.assign({}, state, {
                 shoppingLists: state.shoppingLists
                     .map((list, index) => index === Number(action.listId) ?
-                                            list.filter((product, id) => id !== action.productId) :
-                                            list)
+                        list.filter((product) => product.productId !== action.productId) :
+                        list)
             })
         default:
             return state
