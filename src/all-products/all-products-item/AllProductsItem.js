@@ -16,7 +16,7 @@ let AllProductsItem = (props) =>(
         Thumbnail src={thumbnail} alt="242x200"
         className="product-item">
         <div className="product-item-caption">
-          <h3>{props.product.productName}</h3>
+          <h6>{props.product.productName}</h6>
         </div>
         <div className="product-item-price">
             <p>

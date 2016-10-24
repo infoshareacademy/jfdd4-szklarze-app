@@ -1,7 +1,9 @@
 .product-item {
     text-align: left;
-    min-height: 35vh;
+    min-height: 70vh;
 }
+
+
 
 .add-button {
     display: inline-block;
@@ -11,6 +13,7 @@
     font-size: 1.2em;
     padding: 0 8px;
     border-radius: 27px;
+    margin: 0 0 5px;
 }
 
 .add-button > button {
