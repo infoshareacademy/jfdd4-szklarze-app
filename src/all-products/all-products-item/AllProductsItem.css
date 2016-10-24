@@ -51,7 +51,10 @@
     .product-item-all-buttons {
         display: block;
     }
+}
 
+@media (max-width: 320px) {
     .product-item {
+    min-height: 70vh;
     }
 }
