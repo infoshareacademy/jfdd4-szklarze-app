@@ -48,4 +48,8 @@
     .product-item-all-buttons {
         display: block;
     }
+
+    .product-item {
+        min-height: 75vh;
+    }
 }

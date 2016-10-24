@@ -99,7 +99,7 @@ html body p {
     outline: none;
 }
 
-.btn-default {
+.btn-default, .btn-default:active:focus {
     background: #e6e6e6;
     cursor: pointer;
     font-weight: normal;
@@ -115,23 +115,7 @@ html body p {
     outline: none;
 }
 
-.btn-primary:active, .btn-primary.active {
-    background-color: #ffc10e;
-    color: white;
-    cursor: pointer;
-    font-weight: normal;
-    padding: 0.2em 0.7em;
-    font-size: 1em;
-    box-shadow: none;
-    border: none;
-    display: inline-block;
-    margin: 0 0.4em;
-    border-radius: 27px;
-    text-shadow: none;
-    outline: none;
-}
-
-.btn-primary:active:hover, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus {
+.btn-primary:active:hover, .btn-primary:active, .btn-primary.active, .btn-primary.active:hover, .open > .dropdown-toggle.btn-primary:hover, .btn-primary:active:focus, .btn-primary.active:focus, .open > .dropdown-toggle.btn-primary:focus, .btn-primary:active.focus, .btn-primary.active.focus, .open > .dropdown-toggle.btn-primary.focus {
     background-color: #ffc10e;
     color: white;
     cursor: pointer;
