@@ -5,7 +5,7 @@ import {
 import {Link} from 'react-router'
 import './ShoppingListsButtons.css'
 import {connect} from 'react-redux'
-import {resetPurchased} from '../../products-to-buy/actionCreators'
+import {resetPurchased} from '../../list-creator/actionCreators'
 
 const mapDispatchToProps = (dispatch) => ({
     resetPurchased: ()=> dispatch(resetPurchased())
