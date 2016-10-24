@@ -58,10 +58,10 @@ export default (state = initialState, action) => {
             })
         case UPDATE_PRODUCTS_TO_BUY:
             return Object.assign({}, state, {
-                shoppingLists: state.shoppingLists
+               /* shoppingLists: state.shoppingLists
                     .map((list, index) => index === Number(action.listId) ?
                         list.filter((product) => product.productId !== action.productId) :
-                        list)
+                        list)*/
             })
         case RESET_PURCHASED:
             return Object.assign({}, state, {
