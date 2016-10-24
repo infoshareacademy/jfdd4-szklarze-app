@@ -13,9 +13,9 @@ const ShoppingListsButtons = ({shoppingLists}) => (
                 <div>
                     <Link to={`/shopping-lists/` + index}>
                         <a className="list-group-item">
-                            {typeof list[list.length-1] === 'string' ?
-                                list[list.length-1] :
-                                'Lista zakupów nr '+(index + 1)
+                            {typeof list[list.length - 1] === 'string' ?
+                                list[list.length - 1] :
+                            'Lista zakupów nr ' + (index + 1)
                             }
                         </a>
                     </Link>
