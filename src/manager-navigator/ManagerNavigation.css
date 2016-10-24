@@ -58,3 +58,7 @@
 .navbar-default .navbar-toggle .icon-bar  {
     background-color: white;
 }
+
+.container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse {
+    margin: 0 -15px;
+}
