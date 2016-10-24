@@ -52,9 +52,12 @@ export default (state = initialState, action) => {
                     .filter((list, index) => index !== Number(action.listId))
             })
         case MARK_PRODUCT_AS_PURCHASED:
-            console.log(state, action)
             return Object.assign({}, state, {
-                purchasedProductsIds: state.purchasedProductsIds.concat([action.productId])
+                purchasedProductsIds: state.purchasedProductsIds.concat([action.productId]),
+                shoppingLists: state.shoppingLists
+                    .map((list, index) => index === Number(action.listId) ?
+                                            list.filter((product, id) => id !== action.productId) :
+                                            list)
             })
         default:
             return state

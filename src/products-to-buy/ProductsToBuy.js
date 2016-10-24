@@ -7,7 +7,7 @@ import {markProductAsPurchased} from '../products-to-buy/actionCreators'
 const mapStateToProps = (state) => ({
     shoppingLists: state.allProducts.shoppingLists,
     products: state.products,
-    purchasedProductsIds: state.purchasedProductsIds
+    purchasedProductsIds: state.allProducts.purchasedProductsIds
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -76,9 +76,7 @@ class ProductsToBuy extends React.Component {
                 </div>}
                     <div className="well well-sm">Produkty kupione:</div>
                     <div>
-                        {purchasedProductsIds.map(function (item) {
-                            return item.id
-                        })
+                        {purchasedProductsIds
                             .map(function (item) {
                                 var result = products
                                     .filter((product) => product.productId === item)
