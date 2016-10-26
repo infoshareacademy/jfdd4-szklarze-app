@@ -2,19 +2,17 @@ import React from 'react'
 import {connect} from 'react-redux'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
 import './ProductsToBuy.css'
-import {markProductAsPurchased, updateProductsToBuy, resetPurchased} from '../list-creator/actionCreators'
+import {markProductAsPurchased, resetPurchased} from './actionCreators'
 
 const mapStateToProps = (state) => ({
-    shoppingLists: state.allProducts.shoppingLists,
+    shoppingLists: state.listCreator.shoppingLists,
     products: state.products,
-    purchasedProductsIds: state.allProducts.purchasedProductsIds
+    purchasedProductsIds: state.purchases.purchasedProductsIds
 })
 
 const mapDispatchToProps = (dispatch) => ({
     markProductAsPurchased: (productId) => dispatch(markProductAsPurchased(productId)),
-    updateProductsToBuy: (productId, listId) => dispatch(updateProductsToBuy(productId, listId)),
-    resetPurchased: ()=> dispatch(resetPurchased())
-
+    resetPurchased: () => dispatch(resetPurchased())
 })
 
 const didUserSetListName = (list, index) => (
@@ -38,16 +36,11 @@ class ProductsToBuy extends React.Component {
             products,
             purchasedProductsIds,
             markProductAsPurchased,
-            updateProductsToBuy,
             resetPurchased
         } = this.props
 
-        function markAndUpdate(productId, listId) {
-            markProductAsPurchased(productId);
-            updateProductsToBuy(productId, listId);
-        }
-
         let listId = this.props.params.listId;
+        console.debug('Aktualna lista list', shoppingLists)
         let list = shoppingLists[listId];
         return (
             <div className="panel panel-default">
@@ -73,7 +66,7 @@ class ProductsToBuy extends React.Component {
                                     return (
                                         <li className="list-group-item"
                                             key={id}
-                                            onClick={() => markAndUpdate(id, listId)}>
+                                            onClick={() => markProductAsPurchased(id)}>
                                             <span className="badge">{quantity + ' szt.'}</span>
                                             {result}
                                         </li>

@@ -8,7 +8,7 @@ import {Grid,
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
-    shoppingLists: state.allProducts.shoppingLists
+    shoppingLists: state.listCreator.shoppingLists
 })
 
 class ShoppingLists extends React.Component {
