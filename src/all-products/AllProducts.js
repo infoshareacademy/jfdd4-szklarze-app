@@ -15,7 +15,7 @@ import AllProductsItem from './all-products-item/AllProductsItem'
 import {
     increaseAmount,
     decreaseAmount
-} from '../list-creator/actionCreators'
+} from './actionCreators'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
@@ -26,7 +26,7 @@ const mapStateToProps = (state) => ({
             .filter(product =>
             state.favorites.favoriteProductIds.indexOf(product.productId) !== -1) :
         state.products,
-    itemsToBuy: state.allProducts.itemsToBuy,
+    itemsToBuy: state.itemsToBuy.itemsToBuy,
 
 })
 
