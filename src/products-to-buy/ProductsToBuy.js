@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
 import './ProductsToBuy.css'
 import {markProductAsPurchased, resetPurchased} from './actionCreators'
+import TiEdit from 'react-icons/lib/ti/edit'
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.listCreator.shoppingLists,
@@ -40,15 +41,28 @@ class ProductsToBuy extends React.Component {
         } = this.props
 
         let listId = this.props.params.listId;
-        console.debug('Aktualna lista list', shoppingLists)
         let list = shoppingLists[listId];
+
         return (
             <div className="panel panel-default">
                 <div className="panel-heading">Lista produktów:</div>
                 {listId === undefined ?
-                    <div><p className="intro">Kliknij w wybraną listę zakupów aby wyświetlić jej zawartość</p></div>
-                    : <div className="panel-body">
-                    <h4>{printListName(list, listId)}</h4>
+                    <div>
+                        <p className="intro">
+                            Kliknij w wybraną listę zakupów aby wyświetlić jej zawartość
+                        </p>
+                    </div> :
+                    <div className="panel-body">
+
+                    <div className="list-name-container">
+                        <h4>{printListName(list, listId)}</h4>
+                        <button
+                            className="list-name-edit-button"
+                            title="Edytuj nazwę listy...">
+                                <TiEdit />
+                        </button>
+                    </div>
+
                     <ul className="list-group">
                         {shoppingLists.length > 0 ?
 
@@ -73,7 +87,11 @@ class ProductsToBuy extends React.Component {
                                     )
                                 }) : ''}
                     </ul>
-                    <p onClick={() => resetPurchased()}><ListDeleter listId={listId}/></p>
+
+                    <p onClick={() => resetPurchased()}>
+                        <ListDeleter listId={listId}/>
+                    </p>
+
                 </div>}
                 <div className="panel-heading">Produkty kupione:</div>
                     <div>
