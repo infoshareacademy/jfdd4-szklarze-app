@@ -9,6 +9,8 @@ import {
     RESET_PURCHASED
 } from './actionTypes'
 
+
+
 const initialState = {
     itemsToBuy: [],
     shoppingLists: [],
