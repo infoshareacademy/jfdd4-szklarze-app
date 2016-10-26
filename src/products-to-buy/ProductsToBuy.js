@@ -5,7 +5,7 @@ import './ProductsToBuy.css'
 import {markProductAsPurchased, resetPurchased} from './actionCreators'
 
 const mapStateToProps = (state) => ({
-    shoppingLists: state.allProducts.shoppingLists,
+    shoppingLists: state.listCreator.shoppingLists,
     products: state.products,
     purchasedProductsIds: state.purchases.purchasedProductsIds
 })
