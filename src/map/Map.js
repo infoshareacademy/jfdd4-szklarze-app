@@ -6,9 +6,8 @@ import './Map.css'
 export default (props) =>
     <div className="map-container">
         <GoogleMap
-            center={[59.938043, 30.337157]}
+            center={[54.4416, 18.5601]}
             zoom={9}>
-            <Place lat={59.955413} lng={30.337844} text={'A'}/>
-            <Place lat={60.955420} lng={30.337860} text={'B'}/>
+            <Place lat={54.4416} lng={18.5601} text={'A'}/>
         </GoogleMap>
     </div>
