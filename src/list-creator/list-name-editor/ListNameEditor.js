@@ -9,17 +9,24 @@ import {
     FormControl,
     Button
 } from 'react-bootstrap'
-import { openEditField, hideEditField, updateListName} from './actionCreators'
+import {
+    openEditField,
+    hideEditField,
+    updateListName,
+    storeNewListName
+} from './actionCreators'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
-    isEditFieldActive: state.listNameEditor.isEditFieldActive
+    isEditFieldActive: state.listNameEditor.isEditFieldActive,
+    newListName: state.listNameEditor.changedListName
 })
 
 const mapDispatchToProps = (dispatch) => ({
     openEditField: () => dispatch(openEditField()),
     hideEditField: () => dispatch(hideEditField()),
-    updateListName: (newListName) => dispatch(updateListName(newListName))
+    storeNewListName: (changedListName) => dispatch(storeNewListName(changedListName)),
+    updateListName: (newListName, listId) => dispatch(updateListName(newListName, listId))
 })
 
 function printListName(list, listId) {
@@ -29,6 +36,8 @@ function printListName(list, listId) {
     'Lista zakupów nr ' + listNumber
 }
 
+
+
 const ListNameEditor = ({
     list,
     listId,
@@ -36,8 +45,22 @@ const ListNameEditor = ({
     hideEditField,
     updateListName,
     isEditFieldActive,
-    ...props
-}) => (
+    storeNewListName,
+    newListName
+}) => {
+
+    const handleSubmit = (event) => {
+
+        event.preventDefault();
+        console.debug('HANDLE SUBMIT',newListName, list, listId)
+        updateListName(newListName, listId)
+    }
+
+    const handleChange = (event) => {
+        storeNewListName(event.target.value)
+    }
+
+    return (
 
     <div className="list-name-container">
         <h4>{printListName(list, listId)}</h4>
@@ -53,14 +76,20 @@ const ListNameEditor = ({
                 <Modal.Title>Zmień nazwę listy...</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form inline>
+                <Form
+                    inline
+                    onSubmit={handleSubmit}>
                     <FormGroup controlId="newListName">
                         <ControlLabel>Nowa nazwa listy: </ControlLabel>
                         {' '}
-                        <FormControl type="text" placeholder="Moja nowa lista" />
+                        <FormControl
+                            type="text"
+                            defaultValue={printListName(list, listId)}
+                            onChange={handleChange}
+                        />
                     </FormGroup>
                     {' '}
-                    <Button onClick={updateListName}>
+                    <Button type="submit">
                         Zapisz
                     </Button>
                 </Form>
@@ -68,7 +97,7 @@ const ListNameEditor = ({
         </Modal>
 
     </div>
-)
+)}
 
 export default connect(mapStateToProps,mapDispatchToProps)(ListNameEditor)
 

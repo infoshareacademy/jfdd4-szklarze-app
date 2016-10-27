@@ -1,23 +1,28 @@
 import {
-    UPDATE_LIST_NAME,
     OPEN_EDIT_FIELD,
-    HIDE_EDIT_FIELD
+    HIDE_EDIT_FIELD,
+    STORE_NEW_LIST_NAME
 } from './actionTypes'
 
 const initialState = {
-    isEditFieldActive: false
+    isEditFieldActive: false,
+    changedListName: ""
 }
 
 export default (state=initialState, action) => {
     switch (action.type) {
         case OPEN_EDIT_FIELD:
-            return {
+            return Object.assign({}, state, {
                 isEditFieldActive: true
-            }
+            })
         case HIDE_EDIT_FIELD:
-            return {
+            return Object.assign({}, state, {
                 isEditFieldActive: false
-            }
+            })
+        case STORE_NEW_LIST_NAME:
+            return Object.assign({}, state, {
+                changedListName: action.changedListName
+            })
         default:
             return state
     }

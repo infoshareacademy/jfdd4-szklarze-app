@@ -13,25 +13,29 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
 })
 
-const ShoppingListsButtons = ({shoppingLists, resetPurchased}) => (
-    <ButtonGroup vertical block>
-        {shoppingLists
-            .filter(list => list.length > 0)
-            .map((list, index) =>
-                <div>
-                    <Link to={`/shopping-lists/` + index}
-                          onClick={() => {
-                              resetPurchased();
-                          }}
-                          className="list-group-item">
+const ShoppingListsButtons = ({shoppingLists, resetPurchased}) => {
+    console.log(shoppingLists)
+
+    return (
+        <ButtonGroup vertical block>
+            {shoppingLists
+                .filter(list => list.length > 0)
+                .map((list, index) =>
+                    <div>
+                        <Link to={`/shopping-lists/` + index}
+                              onClick={() => {
+                                  resetPurchased();
+                              }}
+                              className="list-group-item">
                             {typeof list[list.length - 1] === 'string' ?
                                 list[list.length - 1] :
                             'Lista zakupów nr ' + (index + 1)
                             }
-                    </Link>
-                </div>
-            )}
-    </ButtonGroup>
-)
+                        </Link>
+                    </div>
+                )}
+        </ButtonGroup>
+    )
+}
 
 export default connect (mapStateToProps, mapDispatchToProps)(ShoppingListsButtons)
