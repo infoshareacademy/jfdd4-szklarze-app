@@ -23,6 +23,7 @@ export default class ManagerNavigator extends React.Component {
                 <Nav onSelect={this.handleSelect}>
                     <NavItem eventKey="/all-products">Stwórz listę</NavItem>
                     <NavItem eventKey="/shopping-lists">Twoje listy zakupów</NavItem>
+                    <NavItem eventKey="/msp">Mapa promocji</NavItem>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
