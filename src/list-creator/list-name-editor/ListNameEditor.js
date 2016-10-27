@@ -13,8 +13,7 @@ import { openEditField, hideEditField, updateListName} from './actionCreators'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
-    isEditFieldActive: true
-
+    isEditFieldActive: state.listNameEditor.isEditFieldActive
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -51,12 +50,12 @@ const ListNameEditor = ({
 
         <Modal show={isEditFieldActive} onHide={hideEditField}>
             <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Title>Zmień nazwę listy...</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form inline>
                     <FormGroup controlId="newListName">
-                        <ControlLabel>Nowa nazwa listy</ControlLabel>
+                        <ControlLabel>Nowa nazwa listy: </ControlLabel>
                         {' '}
                         <FormControl type="text" placeholder="Moja nowa lista" />
                     </FormGroup>
