@@ -1,5 +1,6 @@
 import React from 'react'
 import TiEdit from 'react-icons/lib/ti/edit'
+import './ListNameEditor.css'
 
 function printListName(list, listId) {
     const listNumber = Number(listId) + 1;
