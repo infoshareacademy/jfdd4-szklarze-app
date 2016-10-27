@@ -1,14 +1,13 @@
 import React from 'react'
 import TiEdit from 'react-icons/lib/ti/edit'
-import './ListNameEditor.css'
 import {
-    Modal,
-    Form,
-    FormGroup,
-    ControlLabel,
-    FormControl,
-    Button
+Modal,
+Form,
+FormGroup,
+FormControl,
+Button
 } from 'react-bootstrap'
+import './ListNameEditor.css'
 import {
     openEditField,
     hideEditField,

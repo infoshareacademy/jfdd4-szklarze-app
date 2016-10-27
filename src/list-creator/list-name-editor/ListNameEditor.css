@@ -14,3 +14,32 @@
 .list-name-edit-button:hover {
     opacity: 1.0;
 }
+
+.btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled.focus, .btn-default[disabled].focus, fieldset[disabled] .btn-default.focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default[disabled].active, fieldset[disabled] .btn-default.active {
+    background-color: #262e3e;
+    color: #ffffff;
+}
+
+form .btn-default, form .btn-default:active:focus {
+    background: #262e3e;
+    color: #e6e6e6;
+    padding: 0.3em 1em;
+}
+
+form .btn-default:hover {
+    background-color: #ffc10e;
+}
+
+.form-control {
+    border-radius: 2em;
+
+}
+
+@media (min-width: 768px) {
+    form .form-group {
+        width: 70%;
+    }
+    form .form-group .form-control {
+        width: 100%;
+    }
+}
