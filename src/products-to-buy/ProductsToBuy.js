@@ -1,9 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
+import ListNameEditor from  '../list-creator/list-name-editor/ListNameEditor'
 import './ProductsToBuy.css'
 import {markProductAsPurchased, resetPurchased} from './actionCreators'
-import TiEdit from 'react-icons/lib/ti/edit'
+
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.listCreator.shoppingLists,
@@ -21,13 +22,6 @@ const didUserSetListName = (list, index) => (
     index !== list.length - 1 :
         true
 )
-
-function printListName(list, listId) {
-    const listNumber = Number(listId) + 1;
-    return typeof list[list.length - 1] !== 'object' ?
-        list[list.length - 1] :
-    'Lista zakupów nr ' + listNumber
-}
 
 class ProductsToBuy extends React.Component {
 
@@ -54,14 +48,10 @@ class ProductsToBuy extends React.Component {
                     </div> :
                     <div className="panel-body">
 
-                    <div className="list-name-container">
-                        <h4>{printListName(list, listId)}</h4>
-                        <button
-                            className="list-name-edit-button"
-                            title="Edytuj nazwę listy...">
-                                <TiEdit />
-                        </button>
-                    </div>
+                    <ListNameEditor
+                        list={list}
+                        listId={listId}
+                    />
 
                     <ul className="list-group">
                         {shoppingLists.length > 0 ?
