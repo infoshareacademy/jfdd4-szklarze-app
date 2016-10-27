@@ -80,8 +80,6 @@ const ListNameEditor = ({
                     inline
                     onSubmit={handleSubmit}>
                     <FormGroup controlId="newListName">
-                        <ControlLabel>Nowa nazwa listy: </ControlLabel>
-                        {' '}
                         <FormControl
                             type="text"
                             defaultValue={printListName(list, listId)}
@@ -89,7 +87,9 @@ const ListNameEditor = ({
                         />
                     </FormGroup>
                     {' '}
-                    <Button type="submit">
+                    <Button
+                        type="submit"
+                        disabled={newListName === ""}>
                         Zapisz
                     </Button>
                 </Form>
