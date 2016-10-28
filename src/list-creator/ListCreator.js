@@ -6,12 +6,12 @@ import {browserHistory} from 'react-router'
 import './ListCreator.css'
 
 const mapStateToProps = (state) => ({
-    itemsToBuy: state.allProducts.itemsToBuy,
-    currentListName: state.allProducts.currentListName
+    itemsToBuy: state.allProductsCounter.itemsToBuy,
+    currentListName: state.listCreator.currentListName
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    saveNewList: () => dispatch(saveNewList()),
+    saveNewList: (itemsToBuy) => dispatch(saveNewList(itemsToBuy)),
     setCurrentListName: (listName) => dispatch(setCurrentListName(listName))
 })
 
@@ -40,11 +40,11 @@ class ListCreator extends React.Component {
                     onClick={() =>
                         itemsToBuy.length === 0 ?
                             alert('Wybierz produkt, aby stworzyć listę') :
-                            saveNewList()}
+                            saveNewList(itemsToBuy)}
                     eventKey="/shopping-lists"
                     onSelect={
                         itemsToBuy.length === 0 ?
-                            '' :
+                            null :
                             this.handleSelect}>
                     Stwórz nową listę
                 </MenuItem>

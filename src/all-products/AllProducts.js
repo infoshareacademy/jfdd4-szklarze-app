@@ -15,7 +15,7 @@ import AllProductsItem from './all-products-item/AllProductsItem'
 import {
     increaseAmount,
     decreaseAmount
-} from '../list-creator/actionCreators'
+} from './actionCreators'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
@@ -26,7 +26,7 @@ const mapStateToProps = (state) => ({
             .filter(product =>
             state.favorites.favoriteProductIds.indexOf(product.productId) !== -1) :
         state.products,
-    itemsToBuy: state.allProducts.itemsToBuy,
+    itemsToBuy: state.allProductsCounter.itemsToBuy,
 
 })
 
@@ -40,8 +40,11 @@ function generateProductItems(product, increaseAmount, decreaseAmount, itemsToBu
         itemsToBuy
             .filter(item => item.productId === product.productId).length > 0 ?
             itemsToBuy
-                .map(item => (item.productId === product.productId ? item.quantity : null)) :
+                .map(item =>
+                    (item.productId === product.productId ?
+                        item.quantity : null)) :
             0;
+
     return (
         <Col xs={6} md={3}
              key={product.productId}>
@@ -78,13 +81,15 @@ const AllProducts = ({
                     {categoryFilterArray.indexOf('none') !== -1 ?
                         productsToDisplay
                             .map(product =>
-                                generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
+                                generateProductItems(
+                                    product, increaseAmount, decreaseAmount, itemsToBuy))
                         :
                         productsToDisplay
                             .filter(product =>
                                 (categoryFilterArray.indexOf(product.category) !== -1))
                             .map(product =>
-                                generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy))
+                                generateProductItems(
+                                    product, increaseAmount, decreaseAmount, itemsToBuy))
                     }
                 </Row>
             </Grid>
@@ -96,3 +101,5 @@ const AllProducts = ({
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)
+
+
