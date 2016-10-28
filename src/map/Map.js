@@ -30,8 +30,8 @@ const Map = (props) =>
             bootstrapURLKeys={{
                 key: 'AIzaSyCmKq7BbW9E8wkMALYHdjMHo6D839_cstk'
             }}
-            center={[54.4416, 18.5601]}
-            zoom={7}
+            center={[52.2297, 21.0122]}
+            zoom={6}
             yesIWantToUseGoogleMapApiInternals
             onClick={console.log}>
             {props.points.map(point => <Place lat={point.lat} lng={point.lng} text={point.label}/>)}
