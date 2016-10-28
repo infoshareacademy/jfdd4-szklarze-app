@@ -19,8 +19,6 @@ class ShoppingLists extends React.Component {
             ...props
         } = this.props
 
-        console.log(shoppingLists)
-
         return (
             <div className="background-shopping-lists">
                 <p className="intro-caption">

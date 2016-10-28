@@ -14,7 +14,6 @@ const mapStateToProps = (state) => ({
 })
 
 const ShoppingListsButtons = ({shoppingLists, resetPurchased}) => {
-    console.log(shoppingLists)
 
     return (
         <ButtonGroup vertical block>

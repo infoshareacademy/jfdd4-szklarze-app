@@ -49,9 +49,7 @@ const ListNameEditor = ({
 }) => {
 
     const handleSubmit = (event) => {
-
         event.preventDefault();
-        console.debug('HANDLE SUBMIT',newListName, list, listId)
         updateListName(newListName, listId)
     }
 
