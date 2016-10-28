@@ -34,7 +34,7 @@ const Map = (props) =>
             zoom={6}
             yesIWantToUseGoogleMapApiInternals
             onClick={console.log}>
-            {props.points.map(point => <Place lat={point.lat} lng={point.lng} text={point.label}/>)}
+            {props.points.map(point => <Place {...point}/>)}
         </GoogleMap>
     </div>
 
