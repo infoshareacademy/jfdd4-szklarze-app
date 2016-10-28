@@ -2,6 +2,7 @@ import React from 'react'
 import GoogleMap from 'google-map-react'
 import Place from './place/Place'
 import './Map.css'
+import { connect } from 'react-redux'
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -17,16 +18,24 @@ function showPosition(position) {
 
 getLocation();
 
-export default (props) =>
+
+const mapStateToProps = (state) => ({
+    points: state.map.points
+})
+
+
+const Map = (props) =>
     <div className="map-container">
         <GoogleMap
             bootstrapURLKeys={{
                 key: 'AIzaSyCmKq7BbW9E8wkMALYHdjMHo6D839_cstk'
             }}
             center={[54.4416, 18.5601]}
-            zoom={9}
+            zoom={7}
             yesIWantToUseGoogleMapApiInternals
             onClick={console.log}>
-            <Place lat={54.4416} lng={18.5601} text={'A'}/>
+            {props.points.map(point => <Place lat={point.lat} lng={point.lng} text={point.label}/>)}
         </GoogleMap>
     </div>
+
+export default connect(mapStateToProps)(Map)
