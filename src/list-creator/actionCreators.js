@@ -9,6 +9,7 @@ import {
     UPDATE_SHOPPING_LISTS_END
 } from './actionTypes'
 import fetch from 'isomorphic-fetch'
+import store from '../store'
 
 export function saveNewList(itemsToBuy, currentListName, shoppingLists){
 
@@ -103,7 +104,10 @@ function updateExternalShoppingListsEnd() {
     }
 }
 
-export function updateExternalShoppingLists(shoppingLists){
+export function updateExternalShoppingLists(){
+
+    const state = store.getState();
+    const shoppingLists = state.listCreator.shoppingLists;
 
     return function (dispatch) {
         dispatch(updateExternalShoppingListsBegin())
@@ -121,9 +125,6 @@ export function updateExternalShoppingLists(shoppingLists){
             .then(response => response.json())
             .then(shoppingList => {
                 dispatch(updateExternalShoppingListsEnd())
-            })
-            .then(shoppingList => {
-                dispatch(fetchShoppingLists())
             })
     }
 }

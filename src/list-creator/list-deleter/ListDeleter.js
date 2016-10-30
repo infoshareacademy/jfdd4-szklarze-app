@@ -5,12 +5,11 @@ import { deleteList, updateExternalShoppingLists }from '../actionCreators'
 import {browserHistory} from 'react-router'
 
 const mapStateToProps = (state) => ({
-    shoppingLists: state.listCreator.shoppingLists
 })
 
 const mapDispatchToProps = (dispatch) => ({
     deleteList: (listId) => dispatch(deleteList(listId)),
-    updateExternalShoppingLists: (shoppingLists) => dispatch(updateExternalShoppingLists(shoppingLists))
+    updateExternalShoppingLists: () => dispatch(updateExternalShoppingLists())
 })
 
 class ListDeleter extends React.Component {
@@ -24,18 +23,12 @@ class ListDeleter extends React.Component {
         const {
             deleteList,
             listId,
-            shoppingLists,
             updateExternalShoppingLists
         } = this.props
 
         const handleDelete = (listId) => {
-            deleteList(listId);
-            updateLists();
-        }
-
-        const updateLists = () => {
-            console.log(shoppingLists)
-            updateExternalShoppingLists(shoppingLists);
+            deleteList(listId)
+            updateExternalShoppingLists();
         }
 
         return (

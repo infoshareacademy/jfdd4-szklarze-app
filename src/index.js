@@ -26,8 +26,12 @@ ReactDOM.render(
                        onEnter={() => store.dispatch(fetchFavorites())}/>
                 <Route path="/shopping-lists"
                        component={ShoppingLists}
-                       onEnter={() => store.dispatch(fetchShoppingLists())}>
-                    <Route path="/shopping-lists/:listId" component={ProductsToBuy}/>
+                       onEnter={() => store.dispatch(fetchShoppingLists())}
+                       >
+                    <Route
+                        path="/shopping-lists/:listId"
+                        component={ProductsToBuy}
+                    />
                     <Route path="*" component={Introduction}/>
                 </Route>
                 <Route path="/map" component={Map}/>
