@@ -53,7 +53,8 @@ function generateProductItems(product, increaseAmount, decreaseAmount, itemsToBu
                 decreaseAmount={decreaseAmount}
                 currentCounterValue={currentCounterValue}
                 itemsToBuy={itemsToBuy}
-                product={product}/>
+                product={product}
+            />
         </Col>
     )
 }

@@ -13,12 +13,16 @@ import ProductsToBuy from './products-to-buy/ProductsToBuy'
 import Map from './map/Map'
 import './index.css';
 
+import { fetchFavorites } from './favorite-marker/actionCreators'
+
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={App}>
                 <IndexRoute component={Introduction}/>
-                <Route path="/all-products" component={AllProducts}/>
+                <Route path="/all-products"
+                       component={AllProducts}
+                       onEnter={() => store.dispatch(fetchFavorites())}/>
                 <Route path="/shopping-lists" component={ShoppingLists}>
                     <Route path="/shopping-lists/:listId" component={ProductsToBuy}/>
                     <Route path="*" component={Introduction}/>
