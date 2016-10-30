@@ -2,8 +2,6 @@ import React from 'react'
 import Filters from '../filters/Filters'
 import ListCreator from '../list-creator/ListCreator'
 import './AllProducts.css'
-
-
 import {
     Grid,
     Row,
@@ -78,7 +76,9 @@ const AllProducts = ({
                 <div className="filters">
                     <Row>
                         <Col xs={12}>
+
                             <Filters />
+
                         </Col>
                     </Row>
                 </div>
@@ -106,5 +106,3 @@ const AllProducts = ({
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)
-
-

@@ -5,7 +5,6 @@ import {markFavoriteProduct} from './actionCreators'
 import FaHeartO from 'react-icons/lib/fa/heart-o'
 import './FavoriteMarker.css'
 
-
 const mapStateToProps = (state) => ({
     favorites: state.favorites.favoriteProductsIds
 })

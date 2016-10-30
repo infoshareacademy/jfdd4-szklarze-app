@@ -5,7 +5,6 @@ import ListNameEditor from  '../list-creator/list-name-editor/ListNameEditor'
 import './ProductsToBuy.css'
 import {markProductAsPurchased, resetPurchased} from './actionCreators'
 
-
 const mapStateToProps = (state) => ({
     shoppingLists: state.listCreator.shoppingLists,
     products: state.products,
@@ -71,7 +70,9 @@ class ProductsToBuy extends React.Component {
                                         <li className="list-group-item"
                                             key={id}
                                             onClick={() => markProductAsPurchased(id)}>
-                                            <span className="badge">{quantity + ' szt.'}</span>
+                                            <span className="badge">
+                                                {quantity + ' szt.'}
+                                            </span>
                                             {result}
                                         </li>
                                     )

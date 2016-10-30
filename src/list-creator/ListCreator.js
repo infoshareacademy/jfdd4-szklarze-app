@@ -12,7 +12,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    saveNewList: (itemsToBuy, listName, shoppingLists) => dispatch(saveNewList(itemsToBuy, listName, shoppingLists)),
+    saveNewList: (itemsToBuy, listName, shoppingLists) =>
+        dispatch(saveNewList(itemsToBuy, listName, shoppingLists)),
     setCurrentListName: (listName) => dispatch(setCurrentListName(listName))
 })
 

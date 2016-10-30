@@ -5,8 +5,6 @@ import {
 } from 'react-bootstrap'
 import './AllProductsItem.css'
 
-
-
 let AllProductsItem = (props) =>(
     <Thumbnail
         src={`${process.env.PUBLIC_URL}` + `${props.product.imageUrl}`}
