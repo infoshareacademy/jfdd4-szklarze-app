@@ -7,11 +7,12 @@ import './ListCreator.css'
 
 const mapStateToProps = (state) => ({
     itemsToBuy: state.allProductsCounter.itemsToBuy,
-    currentListName: state.listCreator.currentListName
+    currentListName: state.listCreator.currentListName,
+    shoppingLists: state.listCreator.shoppingLists
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    saveNewList: (itemsToBuy) => dispatch(saveNewList(itemsToBuy)),
+    saveNewList: (itemsToBuy, listName, shoppingLists) => dispatch(saveNewList(itemsToBuy, listName, shoppingLists)),
     setCurrentListName: (listName) => dispatch(setCurrentListName(listName))
 })
 
@@ -27,7 +28,8 @@ class ListCreator extends React.Component {
             saveNewList,
             setCurrentListName,
             itemsToBuy,
-            currentListName
+            currentListName,
+            shoppingLists
         } = this.props
         return (
             <div className="list-creator">
@@ -40,7 +42,7 @@ class ListCreator extends React.Component {
                     onClick={() =>
                         itemsToBuy.length === 0 ?
                             alert('Wybierz produkt, aby stworzyć listę') :
-                            saveNewList(itemsToBuy)}
+                            saveNewList(itemsToBuy, currentListName, shoppingLists)}
                     eventKey="/shopping-lists"
                     onSelect={
                         itemsToBuy.length === 0 ?

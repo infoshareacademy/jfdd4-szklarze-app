@@ -1,5 +1,6 @@
 import {
-    SAVE_NEW_LIST,
+    SAVE_NEW_LIST_BEGIN,
+    SAVE_NEW_LIST_END,
     SET_CURRENT_LIST_NAME,
     DELETE_LIST
 } from './actionTypes'
@@ -16,11 +17,8 @@ export default (state = initialState, action) => {
 
     switch (action.type) {
 
-        case SAVE_NEW_LIST:
-            let shoppingListWithName = action.itemsToBuy.concat(state.currentListName)
+        case SAVE_NEW_LIST_END:
             return Object.assign({}, state, {
-                shoppingLists: state.shoppingLists
-                                .concat([shoppingListWithName]),
                 currentListName: []
             })
         case SET_CURRENT_LIST_NAME:
