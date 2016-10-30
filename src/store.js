@@ -6,6 +6,7 @@ import favoritesReducer from './favorite-marker/reducer'
 import mapReducer from './map/reducer'
 import purchasesReducer from './products-to-buy/reducer'
 import counterReducer from './all-products/reducer'
+import listNameEditorReducer from './list-creator/list-name-editor/reducer'
 
 let reducer = combineReducers({
     products: productsReducer,
@@ -14,6 +15,7 @@ let reducer = combineReducers({
     favorites: favoritesReducer,
     purchases: purchasesReducer,
     allProductsCounter: counterReducer,
+    listNameEditor: listNameEditorReducer,
     map: mapReducer
 });
 
