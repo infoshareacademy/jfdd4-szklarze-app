@@ -1,8 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
+import ListNameEditor from  '../list-creator/list-name-editor/ListNameEditor'
 import './ProductsToBuy.css'
 import {markProductAsPurchased, resetPurchased} from './actionCreators'
+
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.listCreator.shoppingLists,
@@ -21,13 +23,6 @@ const didUserSetListName = (list, index) => (
         true
 )
 
-function printListName(list, listId) {
-    const listNumber = Number(listId) + 1;
-    return typeof list[list.length - 1] !== 'object' ?
-        list[list.length - 1] :
-    'Lista zakupów nr ' + listNumber
-}
-
 class ProductsToBuy extends React.Component {
 
     render() {
@@ -40,15 +35,24 @@ class ProductsToBuy extends React.Component {
         } = this.props
 
         let listId = this.props.params.listId;
-        console.debug('Aktualna lista list', shoppingLists)
         let list = shoppingLists[listId];
+
         return (
             <div className="panel panel-default">
                 <div className="panel-heading">Lista produktów:</div>
                 {listId === undefined ?
-                    <div><p className="intro">Kliknij w wybraną listę zakupów aby wyświetlić jej zawartość</p></div>
-                    : <div className="panel-body">
-                    <h4>{printListName(list, listId)}</h4>
+                    <div>
+                        <p className="intro">
+                            Kliknij w wybraną listę zakupów aby wyświetlić jej zawartość
+                        </p>
+                    </div> :
+                    <div className="panel-body">
+
+                    <ListNameEditor
+                        list={list}
+                        listId={listId}
+                    />
+
                     <ul className="list-group">
                         {shoppingLists.length > 0 ?
 
@@ -73,7 +77,11 @@ class ProductsToBuy extends React.Component {
                                     )
                                 }) : ''}
                     </ul>
-                    <p onClick={() => resetPurchased()}><ListDeleter listId={listId}/></p>
+
+                    <p onClick={() => resetPurchased()}>
+                        <ListDeleter listId={listId}/>
+                    </p>
+
                 </div>}
                 <div className="panel-heading">Produkty kupione:</div>
                     <div>

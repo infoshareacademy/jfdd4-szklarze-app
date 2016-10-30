@@ -6,6 +6,7 @@ import productsReducer from './data/products/reducer'
 import favoritesReducer from './favorite-marker/reducer'
 import purchasesReducer from './products-to-buy/reducer'
 import counterReducer from './all-products/reducer'
+import listNameEditorReducer from './list-creator/list-name-editor/reducer'
 
 let reducer = combineReducers({
     products: productsReducer,
@@ -13,7 +14,8 @@ let reducer = combineReducers({
     listCreator: listCreatorReducer,
     favorites: favoritesReducer,
     purchases: purchasesReducer,
-    allProductsCounter: counterReducer
+    allProductsCounter: counterReducer,
+    listNameEditor: listNameEditorReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
