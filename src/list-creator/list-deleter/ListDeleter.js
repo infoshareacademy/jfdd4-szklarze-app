@@ -27,7 +27,7 @@ class ListDeleter extends React.Component {
         } = this.props
 
         const handleDelete = (listId) => {
-            deleteList(listId)
+            deleteList(listId);
             updateExternalShoppingLists();
         }
 

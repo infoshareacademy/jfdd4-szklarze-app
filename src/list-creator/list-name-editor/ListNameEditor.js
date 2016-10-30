@@ -14,6 +14,7 @@ import {
     updateListName,
     storeNewListName
 } from './actionCreators'
+import { updateExternalShoppingLists }from '../actionCreators'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
@@ -25,7 +26,8 @@ const mapDispatchToProps = (dispatch) => ({
     openEditField: () => dispatch(openEditField()),
     hideEditField: () => dispatch(hideEditField()),
     storeNewListName: (changedListName) => dispatch(storeNewListName(changedListName)),
-    updateListName: (newListName, listId) => dispatch(updateListName(newListName, listId))
+    updateListName: (newListName, listId) => dispatch(updateListName(newListName, listId)),
+    updateExternalShoppingLists: () => dispatch(updateExternalShoppingLists())
 })
 
 function printListName(list, listId) {
@@ -35,8 +37,6 @@ function printListName(list, listId) {
     'Lista zakupów nr ' + listNumber
 }
 
-
-
 const ListNameEditor = ({
     list,
     listId,
@@ -45,12 +45,14 @@ const ListNameEditor = ({
     updateListName,
     isEditFieldActive,
     storeNewListName,
-    newListName
+    newListName,
+    updateExternalShoppingLists
 }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        updateListName(newListName, listId)
+        updateListName(newListName, listId);
+        updateExternalShoppingLists();
     }
 
     const handleChange = (event) => {
