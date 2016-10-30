@@ -5,16 +5,17 @@
     margin: 0 auto;
     padding: 0.2em 0.7em;
     font-size: 0.8em;
+    width: 50%;
 }
 
 .list-creator {
     align-content: center;
     position: fixed;
-    bottom: 3%;
-    right: 2%;
+    bottom: 1%;
+    right: 1%;
     background: #465676;
     padding: 1em;
-    border-radius: 3em;
+    border-radius: 5em;
 }
 
 .list-creator li {
@@ -43,4 +44,27 @@
 
 .list-creator a:hover, .list-creator a:focus, .list-creator a:visited {
     text-decoration: none;
+}
+
+.list-creator .form-field {
+    display: inline-block;
+    padding: 0;
+}
+
+.list-creator .create-budget li {
+    display: inline-block;
+    padding: 0.2em 0.5em 0.2em 0.7em;
+}
+
+.list-creator .create-list li {
+    display: inline-block;
+    padding: 0.2em 0.7em 0.2em 0.5em;
+}
+
+.list-creator .budget-panel {
+    width: 95%;
+    background-color: #ffc10e;
+    border-radius: inherit;
+    margin: 0 auto 1em;
+    padding: 0.7em 0;
 }

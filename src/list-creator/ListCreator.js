@@ -31,23 +31,39 @@ class ListCreator extends React.Component {
         } = this.props
         return (
             <div className="list-creator">
-                <input
-                    onChange={(event) => setCurrentListName(event.target.value)}
-                    value={currentListName}
-                    placeholder="Wpisz nazwę listy..."
-                />
-                <MenuItem
-                    onClick={() =>
-                        itemsToBuy.length === 0 ?
-                            alert('Wybierz produkt, aby stworzyć listę') :
-                            saveNewList(itemsToBuy)}
-                    eventKey="/shopping-lists"
-                    onSelect={
-                        itemsToBuy.length === 0 ?
-                            null :
-                            this.handleSelect}>
-                    Stwórz nową listę
-                </MenuItem>
+                <div className="budget-panel">
+                    Suma: 28.90 zł   :-)  Stać cię na zakupy!
+                </div>
+
+                <div className="form-field create-budget">
+                    <input
+                        placeholder="Podaj swój budżet..."
+                    />
+                    <MenuItem>
+                        Zapisz budżet
+                    </MenuItem>
+                </div>
+
+                <div className="form-field crate-list">
+                    <input
+                        onChange={(event) => setCurrentListName(event.target.value)}
+                        value={currentListName}
+                        placeholder="Wpisz nazwę listy..."
+                    />
+                    <MenuItem
+                        onClick={() =>
+                            itemsToBuy.length === 0 ?
+                                alert('Wybierz produkt, aby stworzyć listę') :
+                                saveNewList(itemsToBuy)}
+                        eventKey="/shopping-lists"
+                        onSelect={
+                            itemsToBuy.length === 0 ?
+                                null :
+                                this.handleSelect}>
+                        Stwórz listę
+                    </MenuItem>
+                </div>
+
             </div>
         )
     }
