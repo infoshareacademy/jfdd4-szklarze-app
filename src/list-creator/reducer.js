@@ -1,6 +1,7 @@
 import {
     SAVE_NEW_LIST_BEGIN,
     SAVE_NEW_LIST_END,
+    RECEIVE_SHOPPING_LISTS,
     SET_CURRENT_LIST_NAME,
     DELETE_LIST
 } from './actionTypes'
@@ -20,6 +21,10 @@ export default (state = initialState, action) => {
         case SAVE_NEW_LIST_END:
             return Object.assign({}, state, {
                 currentListName: []
+            })
+        case RECEIVE_SHOPPING_LISTS:
+            return Object.assign({}, state, {
+                shoppingLists: action.shoppingLists
             })
         case SET_CURRENT_LIST_NAME:
             return Object.assign({}, state, {

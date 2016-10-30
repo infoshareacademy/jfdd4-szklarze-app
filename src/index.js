@@ -14,6 +14,7 @@ import Map from './map/Map'
 import './index.css';
 
 import { fetchFavorites } from './favorite-marker/actionCreators'
+import { fetchShoppingLists } from './list-creator/actionCreators'
 
 ReactDOM.render(
     <Provider store={store}>
@@ -23,7 +24,9 @@ ReactDOM.render(
                 <Route path="/all-products"
                        component={AllProducts}
                        onEnter={() => store.dispatch(fetchFavorites())}/>
-                <Route path="/shopping-lists" component={ShoppingLists}>
+                <Route path="/shopping-lists"
+                       component={ShoppingLists}
+                       onEnter={() => store.dispatch(fetchShoppingLists())}>
                     <Route path="/shopping-lists/:listId" component={ProductsToBuy}/>
                     <Route path="*" component={Introduction}/>
                 </Route>

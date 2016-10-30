@@ -2,7 +2,9 @@ import {
     SAVE_NEW_LIST_BEGIN,
     SAVE_NEW_LIST_END,
     SET_CURRENT_LIST_NAME,
-    DELETE_LIST
+    DELETE_LIST,
+    RECEIVE_SHOPPING_LISTS,
+    REQUEST_SHOPPING_LISTS
 } from './actionTypes'
 import fetch from 'isomorphic-fetch'
 
@@ -42,6 +44,32 @@ function saveNewListBegin() {
 function saveNewListEnd() {
     return {
         type: SAVE_NEW_LIST_END
+    }
+}
+
+function requestShoppingLists() {
+    return {
+        type: REQUEST_SHOPPING_LISTS
+    }
+}
+
+function receiveShoppingLists(shoppingLists) {
+    return {
+        type: RECEIVE_SHOPPING_LISTS,
+        shoppingLists: shoppingLists
+    }
+}
+
+export function fetchShoppingLists() {
+
+    let userId = 5 //TODO: static user id, change it when logging with SM is provided
+
+    return function (dispatch) {
+        dispatch(requestShoppingLists())
+        return fetch('https://jfdd4-szklarze-app-janusz.herokuapp.com/api/users/'+userId+
+            '?filter[fields][shoppingLists]=true')
+            .then(response => response.json())
+            .then(shoppingLists => dispatch(receiveShoppingLists(shoppingLists.shoppingLists)))
     }
 }
 
