@@ -3,7 +3,6 @@ import {
     MARK_FAVORITE_PRODUCT_END,
     RECEIVE_FAVORITES
 } from './actionTypes'
-import store from '../store'
 
 const initialState = {
     favoriteProductsIds: [],

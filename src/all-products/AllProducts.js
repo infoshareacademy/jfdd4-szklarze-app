@@ -20,14 +20,13 @@ import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
     categoryFilterArray: state.filters.categoryFilter,
-    favoriteProductsIds: state.favorites.favoriteProductIds,
+    favoriteProductsIds: state.favorites.favoriteProductsIds,
     productsToDisplay: state.filters.favoritesFilter ?
         state.products
             .filter(product =>
-            state.favorites.favoriteProductIds.indexOf(product.productId) !== -1) :
+            state.favorites.favoriteProductsIds.indexOf(product.productId) !== -1) :
         state.products,
-    itemsToBuy: state.allProductsCounter.itemsToBuy,
-
+    itemsToBuy: state.allProductsCounter.itemsToBuy
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -35,7 +34,12 @@ const mapDispatchToProps = (dispatch) => ({
     decreaseAmount: (productId) => dispatch(decreaseAmount(productId)),
 })
 
-function generateProductItems(product, increaseAmount, decreaseAmount, itemsToBuy) {
+function generateProductItems(
+    product,
+    increaseAmount,
+    decreaseAmount,
+    itemsToBuy) {
+
     var currentCounterValue =
         itemsToBuy
             .filter(item => item.productId === product.productId).length > 0 ?

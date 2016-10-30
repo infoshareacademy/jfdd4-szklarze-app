@@ -26,8 +26,6 @@ export function markFavoriteProduct(productId, oldFavoriteProductIds) {
 
     return function (dispatch) {
 
-        console.debug('Sprawdzene ulubionych', oldFavoriteProductIds, newFavoriteProductIds, productId)
-
         dispatch(markFavoriteProductBegin())
         return fetch('https://jfdd4-szklarze-app-janusz.herokuapp.com/api/users', {
             method: 'PUT',
