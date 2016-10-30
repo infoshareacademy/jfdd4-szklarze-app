@@ -30,7 +30,7 @@ export function saveNewList(itemsToBuy, currentListName, shoppingLists){
             .then(response => response.json())
             .then(shoppingList => {
                 dispatch(saveNewListEnd())
-                // dispatch(fetchFavorites())
+                dispatch(fetchShoppingLists())
             })
     }
 }
