@@ -1,14 +1,16 @@
 import React from 'react'
 import { NavItem, Nav } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { deleteList }from '../actionCreators'
+import { deleteList, updateExternalShoppingLists }from '../actionCreators'
 import {browserHistory} from 'react-router'
 
 const mapStateToProps = (state) => ({
+    shoppingLists: state.listCreator.shoppingLists
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    deleteList: (listId) => dispatch(deleteList(listId))
+    deleteList: (listId) => dispatch(deleteList(listId)),
+    updateExternalShoppingLists: (shoppingLists) => dispatch(updateExternalShoppingLists(shoppingLists))
 })
 
 class ListDeleter extends React.Component {
@@ -21,15 +23,27 @@ class ListDeleter extends React.Component {
     render() {
         const {
             deleteList,
-            listId
+            listId,
+            shoppingLists,
+            updateExternalShoppingLists
         } = this.props
+
+        const handleDelete = (listId) => {
+            deleteList(listId);
+            updateLists();
+        }
+
+        const updateLists = () => {
+            console.log(shoppingLists)
+            updateExternalShoppingLists(shoppingLists);
+        }
 
         return (
             <Nav
                 onSelect={this.handleSelect}
                 bsStyle="pills">
                 <NavItem
-                    onClick={() => deleteList(listId)}
+                    onClick={() => handleDelete(listId)}
                     eventKey="/shopping-lists">
                         USUŃ LISTĘ
                 </NavItem>

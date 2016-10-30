@@ -4,7 +4,9 @@ import {
     SET_CURRENT_LIST_NAME,
     DELETE_LIST,
     RECEIVE_SHOPPING_LISTS,
-    REQUEST_SHOPPING_LISTS
+    REQUEST_SHOPPING_LISTS,
+    UPDATE_SHOPPING_LISTS_BEGIN,
+    UPDATE_SHOPPING_LISTS_END
 } from './actionTypes'
 import fetch from 'isomorphic-fetch'
 
@@ -86,5 +88,42 @@ export function deleteList(listId) {
     return {
         type: DELETE_LIST,
         listId: listId
+    }
+}
+
+function updateExternalShoppingListsBegin() {
+    return {
+        type: UPDATE_SHOPPING_LISTS_BEGIN
+    }
+}
+
+function updateExternalShoppingListsEnd() {
+    return {
+        type: UPDATE_SHOPPING_LISTS_END
+    }
+}
+
+export function updateExternalShoppingLists(shoppingLists){
+
+    return function (dispatch) {
+        dispatch(updateExternalShoppingListsBegin())
+        return fetch('https://jfdd4-szklarze-app-janusz.herokuapp.com/api/users', {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                shoppingLists: shoppingLists,
+                id: 5 //TODO: this is static user id, change it when logging with SM is
+            })
+        })
+            .then(response => response.json())
+            .then(shoppingList => {
+                dispatch(updateExternalShoppingListsEnd())
+            })
+            .then(shoppingList => {
+                dispatch(fetchShoppingLists())
+            })
     }
 }
