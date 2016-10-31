@@ -1,5 +1,5 @@
 import React from 'react'
-import { saveNewList, setCurrentListName } from './actionCreators'
+import { saveNewList, setCurrentListName, updateExternalShoppingLists } from './actionCreators'
 import { connect } from 'react-redux'
 import { MenuItem } from 'react-bootstrap'
 import {browserHistory} from 'react-router'
@@ -12,26 +12,31 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    saveNewList: (itemsToBuy, listName, shoppingLists) =>
-        dispatch(saveNewList(itemsToBuy, listName, shoppingLists)),
-    setCurrentListName: (listName) => dispatch(setCurrentListName(listName))
+    saveNewList: (itemsToBuy) =>
+        dispatch(saveNewList(itemsToBuy)),
+    setCurrentListName: (listName) => dispatch(setCurrentListName(listName)),
+    updateExternalShoppingLists: () => dispatch(updateExternalShoppingLists())
 })
 
 class ListCreator extends React.Component {
 
-    handleSelect(eventKey) {
-        event.preventDefault();
-        browserHistory.push(eventKey);
-    }
-
     render() {
+
         const {
             saveNewList,
             setCurrentListName,
             itemsToBuy,
             currentListName,
-            shoppingLists
+            shoppingLists,
+            updateExternalShoppingLists
         } = this.props
+
+        const handleSelect = (eventKey) => {
+            event.preventDefault();
+            browserHistory.push(eventKey);
+            updateExternalShoppingLists()
+        }
+
         return (
             <div className="list-creator">
                 <input
@@ -48,7 +53,7 @@ class ListCreator extends React.Component {
                     onSelect={
                         itemsToBuy.length === 0 ?
                             null :
-                            this.handleSelect}>
+                            handleSelect}>
                     Stwórz nową listę
                 </MenuItem>
             </div>

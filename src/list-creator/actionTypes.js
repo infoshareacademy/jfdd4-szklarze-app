@@ -1,5 +1,4 @@
-export const SAVE_NEW_LIST_BEGIN = 'list-creator/SAVE_NEW_LIST_BEGIN';
-export const SAVE_NEW_LIST_END = 'list-creator/SAVE_NEW_LIST_END';
+export const SAVE_NEW_LIST = 'list-creator/SAVE_NEW_LIST';
 
 export const REQUEST_SHOPPING_LISTS = 'list-creator/REQUEST_SHOPPING_LISTS';
 export const RECEIVE_SHOPPING_LISTS = 'list-creator/RECEIVE_SHOPPING_LISTS';

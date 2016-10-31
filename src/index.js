@@ -16,17 +16,22 @@ import './index.css';
 import { fetchFavorites } from './favorite-marker/actionCreators'
 import { fetchShoppingLists } from './list-creator/actionCreators'
 
+function handleEnter() {
+    store.dispatch(fetchFavorites())
+    store.dispatch(fetchShoppingLists())
+}
+
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory}>
-            <Route path="/" component={App}>
+            <Route path="/"
+                   component={App}
+                   onEnter={() => handleEnter()}>
                 <IndexRoute component={Introduction}/>
                 <Route path="/all-products"
-                       component={AllProducts}
-                       onEnter={() => store.dispatch(fetchFavorites())}/>
+                       component={AllProducts}/>
                 <Route path="/shopping-lists"
-                       component={ShoppingLists}
-                       onEnter={() => store.dispatch(fetchShoppingLists())}>
+                       component={ShoppingLists}>
                     <Route
                         path="/shopping-lists/:listId"
                         component={ProductsToBuy}/>

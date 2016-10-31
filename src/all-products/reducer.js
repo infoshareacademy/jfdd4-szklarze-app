@@ -4,7 +4,7 @@ import {
 } from './actionTypes'
 
 import {
-    SAVE_NEW_LIST_END
+    SAVE_NEW_LIST
 } from '../list-creator/actionTypes'
 
 const initialState = {
@@ -55,7 +55,7 @@ export default (state = initialState, action) => {
                 itemsToBuy: itemsToBuy.filter( item => item.quantity > 0)
             })
 
-        case SAVE_NEW_LIST_END:
+        case SAVE_NEW_LIST:
             return Object.assign({}, state, {
                 itemsToBuy: []
             })
