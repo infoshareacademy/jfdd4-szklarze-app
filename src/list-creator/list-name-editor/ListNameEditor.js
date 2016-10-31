@@ -88,7 +88,8 @@ const ListNameEditor = ({
                     {' '}
                     <Button
                         type="submit"
-                        disabled={newListName === ""}>
+                        disabled={newListName === ""}
+                        onClick={hideEditField}>
                         Zapisz
                     </Button>
                 </Form>
