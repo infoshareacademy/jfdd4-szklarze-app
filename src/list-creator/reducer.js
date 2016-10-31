@@ -1,7 +1,6 @@
 import {
     SAVE_NEW_LIST,
     RECEIVE_SHOPPING_LISTS,
-    SET_CURRENT_LIST_NAME,
     DELETE_LIST
 } from './actionTypes'
 import {
