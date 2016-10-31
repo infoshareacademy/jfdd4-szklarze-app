@@ -9,8 +9,7 @@ import {
 } from './list-name-editor/actionTypes'
 
 const initialState = {
-    shoppingLists: [],
-    currentListName: []
+    shoppingLists: []
 }
 
 export default (state = initialState, action) => {
@@ -18,19 +17,14 @@ export default (state = initialState, action) => {
     switch (action.type) {
 
         case SAVE_NEW_LIST:
-            let shoppingListWithName = action.itemsToBuy.concat(state.currentListName)
+            let shoppingListWithName = action.itemsToBuy.concat(action.listName)
             return Object.assign({}, state, {
                 shoppingLists: state.shoppingLists
-                    .concat([shoppingListWithName]),
-                currentListName: []
+                    .concat([shoppingListWithName])
             })
         case RECEIVE_SHOPPING_LISTS:
             return Object.assign({}, state, {
                 shoppingLists: action.shoppingLists
-            })
-        case SET_CURRENT_LIST_NAME:
-            return Object.assign({}, state, {
-                currentListName: action.listName
             })
         case UPDATE_LIST_NAME:
             return Object.assign({}, state, {

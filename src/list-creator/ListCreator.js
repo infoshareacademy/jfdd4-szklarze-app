@@ -1,5 +1,5 @@
 import React from 'react'
-import { saveNewList, setCurrentListName, updateExternalShoppingLists } from './actionCreators'
+import { saveNewList, updateExternalShoppingLists } from './actionCreators'
 import { connect } from 'react-redux'
 import { MenuItem } from 'react-bootstrap'
 import {browserHistory} from 'react-router'
@@ -12,22 +12,26 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    saveNewList: (itemsToBuy) =>
-        dispatch(saveNewList(itemsToBuy)),
-    setCurrentListName: (listName) => dispatch(setCurrentListName(listName)),
+    saveNewList: (itemsToBuy, listName) =>
+        dispatch(saveNewList(itemsToBuy, listName)),
     updateExternalShoppingLists: () => dispatch(updateExternalShoppingLists())
 })
 
 class ListCreator extends React.Component {
 
+    constructor () {
+        super();
+
+        this.state = {
+            listName: ''
+        }
+    }
+
     render() {
 
         const {
             saveNewList,
-            setCurrentListName,
             itemsToBuy,
-            currentListName,
-            shoppingLists,
             updateExternalShoppingLists
         } = this.props
 
@@ -40,15 +44,17 @@ class ListCreator extends React.Component {
         return (
             <div className="list-creator">
                 <input
-                    onChange={(event) => setCurrentListName(event.target.value)}
-                    value={currentListName}
+                    onChange={(event) => this.setState({
+                        listName: event.target.value
+                    })}
+                    value={this.state.listName}
                     placeholder="Wpisz nazwę listy..."
                 />
                 <MenuItem
                     onClick={() =>
                         itemsToBuy.length === 0 ?
                             alert('Wybierz produkt, aby stworzyć listę') :
-                            saveNewList(itemsToBuy, currentListName, shoppingLists)}
+                            saveNewList(itemsToBuy, this.state.listName)}
                     eventKey="/shopping-lists"
                     onSelect={
                         itemsToBuy.length === 0 ?

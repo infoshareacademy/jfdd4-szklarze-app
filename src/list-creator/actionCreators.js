@@ -10,10 +10,11 @@ import {
 import fetch from 'isomorphic-fetch'
 import store from '../store'
 
-export function saveNewList(itemsToBuy){
+export function saveNewList(itemsToBuy, listName){
     return {
         type: SAVE_NEW_LIST,
-        itemsToBuy: itemsToBuy
+        itemsToBuy: itemsToBuy,
+        listName: listName
     }
 }
 
@@ -40,13 +41,6 @@ export function fetchShoppingLists() {
             '?filter[fields][shoppingLists]=true')
             .then(response => response.json())
             .then(shoppingLists => dispatch(receiveShoppingLists(shoppingLists.shoppingLists)))
-    }
-}
-
-export function setCurrentListName(listName) {
-    return {
-        type: SET_CURRENT_LIST_NAME,
-        listName: listName
     }
 }
 
