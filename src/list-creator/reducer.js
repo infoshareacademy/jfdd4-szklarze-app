@@ -64,8 +64,17 @@ export default (state = initialState, action) => {
         case CLONE_LIST:
             return Object.assign({}, state, {
                 shoppingLists: state.shoppingLists
-                    .concat(state.shoppingLists.filter((list, index) => index === Number(action.listId)))
-
+                    .concat(state.shoppingLists
+                        .filter((list, index) => index === Number(action.listId))
+                        .map(list =>
+                            list.map((listItem, index) =>
+                                index === list.length-1 ?
+                                    listItem
+                                        .concat(
+                                            '(Kopia listy nr '+
+                                            (Number(action.listId)+1)+')') :
+                                    listItem
+                            )))
             })
         default:
             return state

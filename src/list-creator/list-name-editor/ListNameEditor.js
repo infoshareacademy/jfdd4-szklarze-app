@@ -63,21 +63,16 @@ class ListNameEditor extends React.Component {
             updateExternalShoppingLists();
         }
 
-        const tooltipEdit = (
-            <Tooltip id="tooltip">Edytuj nazwę listy</Tooltip>
-        );
-
         return (
 
             <div className="list-name-container">
                 <h6>{printListName(list, listId)}</h6>
-                <OverlayTrigger placement="bottom" overlay={tooltipEdit} delayShow={800}>
                     <button
                         className="list-name-edit-button"
-                        onClick={openEditField}>
+                        onClick={openEditField}
+                        title="Edytuj nazwę listy...">
                         <TiEdit />
                     </button>
-                </OverlayTrigger>
                 <Modal show={isEditFieldActive} onHide={hideEditField}>
                     <Modal.Header closeButton>
                         <Modal.Title>Zmień nazwę listy...</Modal.Title>

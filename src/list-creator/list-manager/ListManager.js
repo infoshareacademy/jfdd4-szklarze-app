@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
     updateExternalShoppingLists: () => dispatch(updateExternalShoppingLists())
 })
 
-class ListDeleter extends React.Component {
+class ListManager extends React.Component {
 
     handleSelect(eventKey) {
         event.preventDefault();
@@ -42,34 +42,26 @@ class ListDeleter extends React.Component {
             updateExternalShoppingLists();
         }
 
-        const tooltipDelete = (
-            <Tooltip id="tooltip"><strong>Usuń listę</strong></Tooltip>
-        );
-        const tooltipClone = (
-            <Tooltip id="tooltip">Kopiuj listę</Tooltip>
-        );
-
         return (
             <Nav
                 onSelect={this.handleSelect}
                 bsStyle="pills">
-                <OverlayTrigger placement="bottom" overlay={tooltipClone} delayShow={800}>
                     <NavItem
                         onClick={() => handleClone(listId)}
-                        eventKey="/shopping-lists">
+                        eventKey={"/shopping-lists/"+listId}
+                        title="Kopiuj listę...">
                             <FaClone />
                     </NavItem>
-                </OverlayTrigger>
-                <OverlayTrigger placement="bottom" overlay={tooltipDelete} delayShow={800}>
                     <NavItem
                         onClick={() => handleDelete(listId)}
-                        eventKey="/shopping-lists">
+                        eventKey="/shopping-lists"
+                        title="Usuń listę...">
                             <FaClose />
                     </NavItem>
-                </OverlayTrigger>
+
             </Nav>
         )
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(ListDeleter)
+export default connect(mapStateToProps,mapDispatchToProps)(ListManager)
