@@ -15,17 +15,18 @@ import './index.css';
 
 import { fetchFavorites, updateExternalFavorites } from './favorite-marker/actionCreators'
 import { fetchShoppingLists } from './list-creator/actionCreators'
+import { fetchProducts } from './data/products/actionCreators'
 
 function handleEnter() {
     store.dispatch(fetchFavorites())
     store.dispatch(fetchShoppingLists())
+    store.dispatch(fetchProducts())
 }
 
 function updateFavorites() {
     store.dispatch(updateExternalFavorites(store.getState()
         .favorites.favoriteProductsIds))
 }
-
 
 ReactDOM.render(
     <Provider store={store}>
