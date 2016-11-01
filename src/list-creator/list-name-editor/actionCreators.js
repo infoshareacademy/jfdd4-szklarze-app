@@ -1,8 +1,7 @@
 import {
     UPDATE_LIST_NAME,
     OPEN_EDIT_FIELD,
-    HIDE_EDIT_FIELD,
-    STORE_NEW_LIST_NAME
+    HIDE_EDIT_FIELD
 } from './actionTypes'
 
 export function openEditField () {
@@ -22,12 +21,5 @@ export function updateListName (newListName, listId) {
         type: UPDATE_LIST_NAME,
         newListName: newListName,
         listId: listId
-    }
-}
-
-export function storeNewListName (changedListName) {
-    return {
-        type: STORE_NEW_LIST_NAME,
-        changedListName: changedListName
     }
 }

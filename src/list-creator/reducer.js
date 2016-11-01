@@ -1,6 +1,6 @@
 import {
     SAVE_NEW_LIST,
-    SET_CURRENT_LIST_NAME,
+    RECEIVE_SHOPPING_LISTS,
     DELETE_LIST
 } from './actionTypes'
 import {
@@ -8,8 +8,7 @@ import {
 } from './list-name-editor/actionTypes'
 
 const initialState = {
-    shoppingLists: [],
-    currentListName: []
+    shoppingLists: []
 }
 
 export default (state = initialState, action) => {
@@ -17,15 +16,14 @@ export default (state = initialState, action) => {
     switch (action.type) {
 
         case SAVE_NEW_LIST:
-            let shoppingListWithName = action.itemsToBuy.concat(state.currentListName)
+            let shoppingListWithName = action.itemsToBuy.concat(action.listName)
             return Object.assign({}, state, {
                 shoppingLists: state.shoppingLists
-                                .concat([shoppingListWithName]),
-                currentListName: []
+                    .concat([shoppingListWithName])
             })
-        case SET_CURRENT_LIST_NAME:
+        case RECEIVE_SHOPPING_LISTS:
             return Object.assign({}, state, {
-                currentListName: action.listName
+                shoppingLists: action.shoppingLists
             })
         case UPDATE_LIST_NAME:
             return Object.assign({}, state, {
@@ -49,6 +47,3 @@ export default (state = initialState, action) => {
             return state
     }
 }
-
-
-

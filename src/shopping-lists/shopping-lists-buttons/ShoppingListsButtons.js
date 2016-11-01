@@ -26,7 +26,8 @@ const ShoppingListsButtons = ({shoppingLists, resetPurchased}) => {
                                   resetPurchased();
                               }}
                               className="list-group-item">
-                            {typeof list[list.length - 1] === 'string' ?
+                            {list[list.length - 1] !== '' &&
+                            typeof list[list.length - 1] === 'string'?
                                 list[list.length - 1] :
                             'Lista zakupów nr ' + (index + 1)
                             }
