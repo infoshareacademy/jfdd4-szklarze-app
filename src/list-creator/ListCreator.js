@@ -2,13 +2,14 @@ import React from 'react'
 import { saveNewList, updateExternalShoppingLists } from './actionCreators'
 import { connect } from 'react-redux'
 import { MenuItem } from 'react-bootstrap'
+import TiShoppingCart from 'react-icons/lib/ti/shopping-cart'
 import {browserHistory} from 'react-router'
 import './ListCreator.css'
 
 const mapStateToProps = (state) => ({
     itemsToBuy: state.allProductsCounter.itemsToBuy,
     currentListName: state.listCreator.currentListName,
-    shoppingLists: state.listCreator.shoppingLists
+    shoppingLists: state.listCreator.shoppingLists,
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -44,8 +45,9 @@ class ListCreator extends React.Component {
         return (
             <div className="list-creator">
                 <div className="budget-panel">
-                    <div className="sum">Suma: 28.90 zł</div>
-                    <div className="budget-indicator">:-)</div>
+                    <div className="sum"><TiShoppingCart/> 28.90 zł</div>
+                    <div className="budget">Budżet: 50.00 zł</div>
+                    <div className="budget-indicator no-money"></div>
                     <div className="message">Stać cię na zakupy!</div>
                 </div>
 

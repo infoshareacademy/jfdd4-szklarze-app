@@ -63,14 +63,40 @@
 
 .list-creator .budget-panel {
     width: 95%;
+    height: 2.5em;
     background-color: #ffc10e;
     border-radius: inherit;
     margin: 0 auto 1em;
-    padding: 0.7em 0;
+    padding: 0.2em 0;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    font-size: 1.2em;
 }
 
-.list-creator .budget-panel .sum { flex-grow: 3 }
-.list-creator .budget-panel .budget-indicator { flex-grow: 1 }
-.list-creator .budget-panel .message { flex-grow: 3 }
+.list-creator .budget-panel .sum {
+    flex-grow: 2;
+    font-weight: bold;
+    font-size: 1.2em
+}
+
+.list-creator .budget-panel .budget {
+    flex-grow: 2
+}
+
+.list-creator .budget-panel .budget-indicator {
+    flex-grow: 5;
+    background: #99CA3B url("../images/icon-blue-janusz.svg") no-repeat center;
+    background-size: contain;
+    height: 2em;
+    border-radius: 15px;
+}
+
+.list-creator .budget-panel .budget-indicator.no-money {
+    background: #ca4434 url("../images/icon-blue-skull.svg") no-repeat center;
+    background-size: contain;
+}
+
+.list-creator .budget-panel .message {
+    flex-grow: 2
+}
