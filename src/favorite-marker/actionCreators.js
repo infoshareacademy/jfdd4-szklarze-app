@@ -18,6 +18,15 @@ function markFavoriteProductEnd() {
     }
 }
 
+// import { MARK_FAVORITE_PRODUCT } from './actionTypes'
+//
+// export function markFavoriteProduct(productId) {
+//     return {
+//         type: MARK_FAVORITE_PRODUCT,
+//         productId: productId
+//     }
+// }
+
 export function markFavoriteProduct(productId, oldFavoriteProductIds) {
 
     let newFavoriteProductIds = oldFavoriteProductIds.indexOf(productId) === -1 ?
