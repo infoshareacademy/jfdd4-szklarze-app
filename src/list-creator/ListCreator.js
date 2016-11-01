@@ -3,6 +3,7 @@ import { saveNewList, updateExternalShoppingLists } from './actionCreators'
 import { connect } from 'react-redux'
 import { MenuItem } from 'react-bootstrap'
 import TiShoppingCart from 'react-icons/lib/ti/shopping-cart'
+import MdAttachMoney from 'react-icons/lib/md/attach-money'
 import {browserHistory} from 'react-router'
 import './ListCreator.css'
 
@@ -24,7 +25,9 @@ class ListCreator extends React.Component {
         super();
 
         this.state = {
-            listName: ''
+            listName: '',
+            budgetToSave: '',
+            savedBudget: 0
         }
     }
 
@@ -47,21 +50,43 @@ class ListCreator extends React.Component {
                 <div className="budget-panel">
                     <div className="sum">
                         <TiShoppingCart/>
-                        {' '}{itemsToBuy
+                        <span>
+                            {' '}{itemsToBuy
                             .map(item => item.price*item.quantity)
                             .reduce( (prev, next) => prev + next, 0).toFixed(2)}
-                        {' zł'}
+                            {' zł'}
+                        </span>
                     </div>
-                    <div className="budget">Budżet: 50.00 zł</div>
+                    <div className="budget">
+                        <MdAttachMoney />
+                        <span>
+                            {' '}
+                            {Number(this.state.savedBudget).toFixed(2)}
+                            {' zł'}
+                        </span>
+                    </div>
                     <div className="budget-indicator no-money"></div>
                     <div className="message">Stać cię na zakupy!</div>
                 </div>
 
                 <div className="form-field create-budget">
                     <input
+                        onChange={(event) => this.setState({
+                            budgetToSave: event.target.value
+                        })}
+                        value={this.state.budgetToSave}
                         placeholder="Podaj swój budżet..."
                     />
-                    <MenuItem>
+                    <MenuItem
+                        onClick={() =>
+                            isNaN(Number(this.state.budgetToSave)) ||
+                            this.state.budgetToSave < 0 ?
+                                alert('Wpisana wartość musi być liczbą dodatnią.' +
+                                    ' Części ułamkowe należy podać po kropce') :
+                                this.setState({
+                                    budgetToSave: '',
+                                    savedBudget: this.state.budgetToSave
+                                })}>
                         Zapisz budżet
                     </MenuItem>
                 </div>
@@ -77,7 +102,7 @@ class ListCreator extends React.Component {
                     <MenuItem
                         onClick={() =>
                             itemsToBuy.length === 0 ?
-                                alert('Wybierz produkt, aby stworzyć listę') :
+                                alert('Wybierz produkt, aby stworzyć listę...') :
                                 saveNewList(itemsToBuy, this.state.listName)}
                         eventKey="/shopping-lists"
                         onSelect={

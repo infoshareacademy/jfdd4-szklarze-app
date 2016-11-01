@@ -77,11 +77,15 @@
 .list-creator .budget-panel .sum {
     flex-grow: 2;
     font-weight: bold;
-    font-size: 1.2em
+    font-size: 1.2em;
 }
 
 .list-creator .budget-panel .budget {
     flex-grow: 2
+}
+
+.list-creator .budget-panel .sum span, .list-creator .budget-panel .budget span {
+   vertical-align: middle;
 }
 
 .list-creator .budget-panel .budget-indicator {
