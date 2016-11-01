@@ -12,6 +12,9 @@ function getLocation() {
     }
 }
 function showPosition(position) {
+    return {
+
+    }
     console.log("Latitude: " + position.coords.latitude +
         "<br>Longitude: " + position.coords.longitude);
 }
