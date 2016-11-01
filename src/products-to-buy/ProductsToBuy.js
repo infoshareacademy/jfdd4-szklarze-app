@@ -5,7 +5,6 @@ import ListNameEditor from  '../list-creator/list-name-editor/ListNameEditor'
 import './ProductsToBuy.css'
 import {markProductAsPurchased, resetPurchased} from './actionCreators'
 
-
 const mapStateToProps = (state) => ({
     shoppingLists: state.listCreator.shoppingLists,
     products: state.products,
@@ -17,7 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
     resetPurchased: () => dispatch(resetPurchased())
 })
 
-const didUserSetListName = (list, index) => (
+const removeStringsFromList = (list, index) => (
     typeof list[list.length - 1] === 'string' ?
     index !== list.length - 1 :
         true
@@ -58,7 +57,7 @@ class ProductsToBuy extends React.Component {
 
                             list
                                 .filter(function (product, index) {
-                                    return didUserSetListName(list, index)
+                                    return removeStringsFromList(list, index)
                                 })
                                 .map((product) => ([product.productId, product.quantity]))
                                 .map(function (item) {
@@ -71,7 +70,9 @@ class ProductsToBuy extends React.Component {
                                         <li className="list-group-item"
                                             key={id}
                                             onClick={() => markProductAsPurchased(id)}>
-                                            <span className="badge">{quantity + ' szt.'}</span>
+                                            <span className="badge">
+                                                {quantity + ' szt.'}
+                                            </span>
                                             {result}
                                         </li>
                                     )

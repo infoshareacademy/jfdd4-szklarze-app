@@ -1,5 +1,5 @@
 import React from 'react'
-import { saveNewList, setCurrentListName } from './actionCreators'
+import { saveNewList, updateExternalShoppingLists } from './actionCreators'
 import { connect } from 'react-redux'
 import { MenuItem } from 'react-bootstrap'
 import {browserHistory} from 'react-router'
@@ -7,63 +7,61 @@ import './ListCreator.css'
 
 const mapStateToProps = (state) => ({
     itemsToBuy: state.allProductsCounter.itemsToBuy,
-    currentListName: state.listCreator.currentListName
+    currentListName: state.listCreator.currentListName,
+    shoppingLists: state.listCreator.shoppingLists
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    saveNewList: (itemsToBuy) => dispatch(saveNewList(itemsToBuy)),
-    setCurrentListName: (listName) => dispatch(setCurrentListName(listName))
+    saveNewList: (itemsToBuy, listName) =>
+        dispatch(saveNewList(itemsToBuy, listName)),
+    updateExternalShoppingLists: () => dispatch(updateExternalShoppingLists())
 })
 
 class ListCreator extends React.Component {
 
-    handleSelect(eventKey) {
-        event.preventDefault();
-        browserHistory.push(eventKey);
+    constructor () {
+        super();
+
+        this.state = {
+            listName: ''
+        }
     }
 
     render() {
+
         const {
             saveNewList,
-            setCurrentListName,
             itemsToBuy,
-            currentListName
+            updateExternalShoppingLists
         } = this.props
+
+        const handleSelect = (eventKey) => {
+            event.preventDefault();
+            browserHistory.push(eventKey);
+            updateExternalShoppingLists()
+        }
+
         return (
             <div className="list-creator">
-                <div className="budget-panel">
-                    Suma: 28.90 zł   :-)  Stać cię na zakupy!
-                </div>
-
-                <div className="form-field create-budget">
-                    <input
-                        placeholder="Podaj swój budżet..."
-                    />
-                    <MenuItem>
-                        Zapisz budżet
-                    </MenuItem>
-                </div>
-
-                <div className="form-field crate-list">
-                    <input
-                        onChange={(event) => setCurrentListName(event.target.value)}
-                        value={currentListName}
-                        placeholder="Wpisz nazwę listy..."
-                    />
-                    <MenuItem
-                        onClick={() =>
-                            itemsToBuy.length === 0 ?
-                                alert('Wybierz produkt, aby stworzyć listę') :
-                                saveNewList(itemsToBuy)}
-                        eventKey="/shopping-lists"
-                        onSelect={
-                            itemsToBuy.length === 0 ?
-                                null :
-                                this.handleSelect}>
-                        Stwórz listę
-                    </MenuItem>
-                </div>
-
+                <input
+                    onChange={(event) => this.setState({
+                        listName: event.target.value
+                    })}
+                    value={this.state.listName}
+                    placeholder="Wpisz nazwę listy..."
+                />
+                <MenuItem
+                    onClick={() =>
+                        itemsToBuy.length === 0 ?
+                            alert('Wybierz produkt, aby stworzyć listę') :
+                            saveNewList(itemsToBuy, this.state.listName)}
+                    eventKey="/shopping-lists"
+                    onSelect={
+                        itemsToBuy.length === 0 ?
+                            null :
+                            handleSelect}>
+                    Stwórz nową listę
+                </MenuItem>
             </div>
         )
     }

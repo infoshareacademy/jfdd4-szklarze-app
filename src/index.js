@@ -13,14 +13,37 @@ import ProductsToBuy from './products-to-buy/ProductsToBuy'
 import Map from './map/Map'
 import './index.css';
 
+import { fetchFavorites, updateExternalFavorites } from './favorite-marker/actionCreators'
+import { fetchShoppingLists } from './list-creator/actionCreators'
+import { fetchProducts } from './data/products/actionCreators'
+
+function handleEnter() {
+    store.dispatch(fetchFavorites())
+    store.dispatch(fetchShoppingLists())
+    store.dispatch(fetchProducts())
+}
+
+function updateFavorites() {
+    store.dispatch(updateExternalFavorites(store.getState()
+        .favorites.favoriteProductsIds))
+}
+
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory}>
-            <Route path="/" component={App}>
+            <Route path="/"
+                   component={App}
+                   onEnter={() => handleEnter()}>
                 <IndexRoute component={Introduction}/>
-                <Route path="/all-products" component={AllProducts}/>
-                <Route path="/shopping-lists" component={ShoppingLists}>
-                    <Route path="/shopping-lists/:listId" component={ProductsToBuy}/>
+                <Route
+                    path="/all-products"
+                    component={AllProducts}
+                    onLeave={() => updateFavorites()}/>
+                <Route path="/shopping-lists"
+                       component={ShoppingLists}>
+                    <Route
+                        path="/shopping-lists/:listId"
+                        component={ProductsToBuy}/>
                     <Route path="*" component={Introduction}/>
                 </Route>
                 <Route path="/map" component={Map}/>
