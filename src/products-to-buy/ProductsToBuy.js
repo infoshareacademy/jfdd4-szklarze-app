@@ -49,7 +49,7 @@ class ProductsToBuy extends React.Component {
                         </p>
                     </div> :
                     <div className="panel-body">
-                       {/* <ListNameEditor list={list} listId={listId}/>*/}
+                       <ListNameEditor list={list} listId={listId}/>
 
                         <Table responsive>
                             <tbody>
