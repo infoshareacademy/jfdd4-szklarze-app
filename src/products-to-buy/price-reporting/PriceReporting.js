@@ -4,6 +4,7 @@ import {
     Form,
     FormGroup,
     FormControl,
+    ControlLabel,
     Button
 } from 'react-bootstrap'
 
@@ -19,33 +20,42 @@ const mapDispatchToProps = (dispatch) => ({
     hidePriceReportField: () => dispatch(hidePriceReportField()),
 })
 
-const PriceReporting = (props) => (
-    <div>
-        <button onClick={openPriceReportField}>
-            Kupiłem taniej!
-        </button>
+class PriceReporting extends React.Component {
 
-        <Modal show={props.isPriceReportFieldActive} onHide={hidePriceReportField}>
-            <Modal.Header closeButton>
-                <Modal.Title>Kupiłeś jeszcze taniej?</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <Form inline>
-                    <FormGroup>
-                        <FormControl
-                            type="text"
-                        />
-                    </FormGroup>
-                    {' '}
-                    <Button
-                        type="submit"
-                        onClick={hidePriceReportField}>
-                        Zapisz
-                    </Button>
-                </Form>
-            </Modal.Body>
-        </Modal>
-    </div>
-)
 
-export default connect(mapStateToProps, mapDispatchToProps)(PriceReporting)
+    render() {
+        const {
+            isPriceReportFieldActive,
+            openPriceReportField,
+            hidePriceReportField
+        } = this.props
+
+        return (
+            <div>
+                <button onClick={openPriceReportField}>
+                    Kupiłem taniej!
+                </button>
+
+                <Modal show={isPriceReportFieldActive} onHide={hidePriceReportField}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Kupiłeś taniej?</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Form
+                            inline>
+                            <FormGroup>
+                                <ControlLabel>Moja cena:</ControlLabel>
+                                <FormControl
+                                    type="text"/>
+                            </FormGroup>
+                            <Button onClick={hidePriceReportField}>
+                                Zgłoś
+                            </Button>
+                        </Form>
+                    </Modal.Body>
+                </Modal>
+            </div>
+        )
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(PriceReporting)

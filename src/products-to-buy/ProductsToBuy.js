@@ -69,14 +69,15 @@ class ProductsToBuy extends React.Component {
                                             .map((item) => item.productName)
                                     return (
                                         <li className="list-group-item"
-                                            key={id}
-                                            onClick={() => markProductAsPurchased(id)}>
+                                            key={id}>
+                                            <button onClick={() => markProductAsPurchased(id)}>Kupione</button>
                                             <span className="badge">
                                                 {quantity + ' szt.'}
                                             </span>
                                             {result}
                                             <PriceReporting/>
                                         </li>
+
                                     )
                                 }) : ''}
                     </ul>
