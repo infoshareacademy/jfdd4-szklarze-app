@@ -1,33 +1,26 @@
-import { MARK_FAVORITE_PRODUCT } from './actionTypes'
-import store from '../store'
+import {
+    MARK_FAVORITE_PRODUCT,
+} from './actionTypes'
+
+const localStorageData = JSON.parse(localStorage.getItem('redux'))
 
 const initialState = {
-    favoriteProductIds:
-        typeof localStorage.getItem('favoriteProductIds') !== 'undefined' &&
-        localStorage.getItem('favoriteProductIds') !== null ?
-            JSON.parse(localStorage.getItem('favoriteProductIds')) :
+    favoriteProductsIds:
+        typeof localStorageData !== 'undefined' && localStorageData !== null ?
+            localStorageData.favorites.favoriteProductsIds :
             []
 }
 
 export default (state = initialState, action) => {
-    let productIds = state.favoriteProductIds,
-        favoriteProductIds = productIds.indexOf(action.productId) === -1 ?
+    let productIds = state.favoriteProductsIds,
+        favoriteProductsIds = productIds.indexOf(action.productId) === -1 ?
             productIds.concat([action.productId]) :
             productIds.filter((id) => id !== action.productId);
 
     switch (action.type) {
         case MARK_FAVORITE_PRODUCT:
-            store.subscribe(() => {
-                localStorage
-                    .setItem(
-                        'favoriteProductIds',
-                        JSON.stringify(
-                            store.getState().favorites.favoriteProductIds || []
-                        )
-                    )
-            })
             return Object.assign({}, state, {
-                favoriteProductIds: favoriteProductIds
+                favoriteProductsIds: favoriteProductsIds
             })
         default:
             return state

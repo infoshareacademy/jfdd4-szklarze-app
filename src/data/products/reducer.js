@@ -1,3 +1,12 @@
-import products from './products'
+import { RECEIVE_PRODUCTS } from './actionTypes'
 
-export default (state=products, action) => state
+const initialState = []
+
+export default (state=initialState, action) => {
+    switch (action.type) {
+        case RECEIVE_PRODUCTS:
+            return state = action.products
+        default:
+            return state
+    }
+}
