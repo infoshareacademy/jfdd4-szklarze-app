@@ -91,7 +91,7 @@ class ProductsToBuy extends React.Component {
                                                 </td>
                                                 <td style={{textDecoration: purchased ? 'line-through' : 'none'}}>{quantity + ' szt.'}</td>
                                                 <td style={{display: purchased ? '' : ''}}><MdInfoOutline/>
-                                                    {productPrices
+                                                     {productPrices
                                                     .reduce(function(prev, next) {
                                                         let sum = prev + next,
                                                             avg = sum/Number(productPrices.length),
