@@ -1,6 +1,5 @@
 import {
     SAVE_NEW_LIST,
-    DELETE_LIST,
     RECEIVE_SHOPPING_LISTS,
     REQUEST_SHOPPING_LISTS,
     UPDATE_SHOPPING_LISTS_BEGIN,
@@ -40,13 +39,6 @@ export function fetchShoppingLists() {
             '?filter[fields][shoppingLists]=true')
             .then(response => response.json())
             .then(shoppingLists => dispatch(receiveShoppingLists(shoppingLists.shoppingLists)))
-    }
-}
-
-export function deleteList(listId) {
-    return {
-        type: DELETE_LIST,
-        listId: listId
     }
 }
 

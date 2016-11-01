@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import ListDeleter from '../list-creator/list-deleter/ListDeleter'
+import ListManager from '../list-creator/list-manager/ListManager'
 import ListNameEditor from  '../list-creator/list-name-editor/ListNameEditor'
 import './ProductsToBuy.css'
 import {markProductAsPurchased} from './actionCreators'
@@ -90,7 +90,7 @@ class ProductsToBuy extends React.Component {
                             <tr><MdInfoOutline/> - Srednia cena produktu w sklepach </tr>
                             <tr><MdEventAvailable/> - Data zakupu</tr>
                             <tr><MdAddLocation/> - Kupiłeś taniej? Udostępnij lokalizację innym użytkownikom</tr>
-                            <tr><ListDeleter listId={listId}/></tr>
+                            <tr><ListManager listId={listId}/></tr>
                             </tbody>
                         </Table>
                     </div>}
