@@ -7,8 +7,8 @@ import {
     ControlLabel,
     Button
 } from 'react-bootstrap'
-import GoogleMap from 'google-map-react'
-import Place from './../../map/place/Place'
+
+import CurrentLocation from './../../current-location/CurrentLocation'
 
 import {openPriceReportField, hidePriceReportField} from './actionCreators'
 import {connect} from 'react-redux'
@@ -50,17 +50,7 @@ class PriceReporting extends React.Component {
                                 <FormControl
                                     type="text"/>
                             </FormGroup>
-                        <div style={{width: '300px', height: '300px'}}>
-                            <GoogleMap
-                                bootstrapURLKeys={{
-                                    key: 'AIzaSyCmKq7BbW9E8wkMALYHdjMHo6D839_cstk'
-                                }}
-                                center={[52.2297, 21.0122]}
-                                zoom={6}
-                                yesIWantToUseGoogleMapApiInternals>
-                                <Place lat={52.2297} lng={21.0122} text={'A'}/>
-                            </GoogleMap>
-                        </div>
+                            <CurrentLocation />
                             <Button onClick={hidePriceReportField}>
                                 Zgłoś promocję
                             </Button>

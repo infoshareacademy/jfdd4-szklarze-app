@@ -4,22 +4,19 @@ import Place from './place/Place'
 import './Map.css'
 import { connect } from 'react-redux'
 
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        console.log("Geolocation is not supported by this browser.");
-    }
-}
-function showPosition(position) {
-    return {
-
-    }
-    console.log("Latitude: " + position.coords.latitude +
-        "<br>Longitude: " + position.coords.longitude);
-}
-
-getLocation();
+// function getLocation() {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(showPosition);
+//     } else {
+//         console.log("Geolocation is not supported by this browser.");
+//     }
+// }
+// function showPosition(position) {
+//     console.log("Latitude: " + position.coords.latitude +
+//         "<br>Longitude: " + position.coords.longitude);
+// }
+//
+// getLocation();
 
 
 const mapStateToProps = (state) => ({
