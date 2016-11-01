@@ -112,3 +112,44 @@
     background-origin: content-box;
     width: 10%;
 }
+
+@media screen and (max-width: 460px) {
+    .list-creator .budget-panel {
+        width: 95%;
+        height: auto;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 1em;
+        margin-bottom: 5px;
+    }
+
+
+    .list-creator .budget-panel .budget,
+    .list-creator .budget-panel .sum {
+        width: 100%;
+        padding: 0;
+        margin: .2em 0;
+    }
+
+    .list-creator .budget-panel .budget-indicator,
+    .list-creator .budget-panel .budget-indicator.no-money {
+        width: 30%;
+        padding: 0;
+        height: 2em;
+        margin: .2em 0;
+    }
+
+    .list-creator .form-fields {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .list-creator .form-fields .divider {
+        display: none;
+    }
+
+    .list-creator .form-fields input, .list-creator .form-fields li {
+        width: 48%;
+    }
+}
