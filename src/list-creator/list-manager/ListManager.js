@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavItem, Nav } from 'react-bootstrap'
+import { NavItem, Nav, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import FaClone from 'react-icons/lib/fa/clone'
 import FaClose from 'react-icons/lib/fa/close'
 import { connect } from 'react-redux'
@@ -38,20 +38,31 @@ class ListDeleter extends React.Component {
             updateExternalShoppingLists();
         }
 
+        const tooltipDelete = (
+            <Tooltip id="tooltip"><strong>Usuń listę</strong></Tooltip>
+        );
+        const tooltipClone = (
+            <Tooltip id="tooltip">Kopiuj listę</Tooltip>
+        );
+
         return (
             <Nav
                 onSelect={this.handleSelect}
                 bsStyle="pills">
-                <NavItem
-                    onClick={() => handleClone(listId)}
-                    eventKey="/shopping-lists">
-                        <FaClone />
-                </NavItem>
-                <NavItem
-                    onClick={() => handleDelete(listId)}
-                    eventKey="/shopping-lists">
-                        <FaClose />
-                </NavItem>
+                <OverlayTrigger placement="bottom" overlay={tooltipClone} delayShow={800}>
+                    <NavItem
+                        onClick={() => handleClone(listId)}
+                        eventKey="/shopping-lists">
+                            <FaClone />
+                    </NavItem>
+                </OverlayTrigger>
+                <OverlayTrigger placement="bottom" overlay={tooltipDelete} delayShow={800}>
+                    <NavItem
+                        onClick={() => handleDelete(listId)}
+                        eventKey="/shopping-lists">
+                            <FaClose />
+                    </NavItem>
+                </OverlayTrigger>
             </Nav>
         )
     }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import TiEdit from 'react-icons/lib/ti/edit'
 import {
 Modal,
@@ -62,17 +63,21 @@ class ListNameEditor extends React.Component {
             updateExternalShoppingLists();
         }
 
+        const tooltipEdit = (
+            <Tooltip id="tooltip">Edytuj nazwę listy</Tooltip>
+        );
+
         return (
 
             <div className="list-name-container">
                 <h6>{printListName(list, listId)}</h6>
-                <button
-                    className="list-name-edit-button"
-                    title="Edytuj nazwę listy..."
-                    onClick={openEditField}>
-                    <TiEdit />
-                </button>
-
+                <OverlayTrigger placement="bottom" overlay={tooltipEdit} delayShow={800}>
+                    <button
+                        className="list-name-edit-button"
+                        onClick={openEditField}>
+                        <TiEdit />
+                    </button>
+                </OverlayTrigger>
                 <Modal show={isEditFieldActive} onHide={hideEditField}>
                     <Modal.Header closeButton>
                         <Modal.Title>Zmień nazwę listy...</Modal.Title>
