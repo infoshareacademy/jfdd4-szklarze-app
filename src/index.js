@@ -10,6 +10,7 @@ import AllProducts from './all-products/AllProducts'
 import ShoppingLists from './shopping-lists/ShoppingLists'
 import Introduction from './introduction/Introduction'
 import ProductsToBuy from './products-to-buy/ProductsToBuy'
+import {fetchPrices} from './products-to-buy/actionCreators'
 import Map from './map/Map'
 import './index.css';
 
@@ -43,7 +44,7 @@ ReactDOM.render(
                        component={ShoppingLists}>
                     <Route
                         path="/shopping-lists/:listId"
-                        component={ProductsToBuy}/>
+                        component={ProductsToBuy} onEnter={() => store.dispatch(fetchPrices())}/>
                     <Route path="*" component={Introduction}/>
                 </Route>
                 <Route path="/map" component={Map}/>

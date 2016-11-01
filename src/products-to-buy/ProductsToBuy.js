@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
 import ListNameEditor from  '../list-creator/list-name-editor/ListNameEditor'
 import './ProductsToBuy.css'
-import {markProductAsPurchased} from './actionCreators'
+import {markProductAsPurchased, fetchPrices} from './actionCreators'
 import MdEventAvailable from 'react-icons/lib/md/event-available'
 import MdCheckBoxOutlineBlank from 'react-icons/lib/md/check-box-outline-blank'
 import MdCheckBox from 'react-icons/lib/md/check-box'
@@ -14,11 +14,13 @@ import  {Table, responsive} from 'react-bootstrap'
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.listCreator.shoppingLists,
-    products: state.products
+    products: state.products,
+    prices: state.pricesData.prices
 })
 
 const mapDispatchToProps = (dispatch) => ({
     markProductAsPurchased: (productId, listId) => dispatch(markProductAsPurchased(productId, listId)),
+    fetchPrices: () => dispatch(fetchPrices())
 })
 
 const removeStringsFromList = (list, index) => (
@@ -34,6 +36,7 @@ class ProductsToBuy extends React.Component {
             shoppingLists,
             products,
             markProductAsPurchased,
+            prices,
         } = this.props
 
         let listId = this.props.params.listId;
@@ -77,7 +80,7 @@ class ProductsToBuy extends React.Component {
                                                     {result}
                                                 </td>
                                                 <td style={{textDecoration: purchased ? 'line-through' : 'none'}}>{quantity + ' szt.'}</td>
-                                                <td style={{display: purchased ? '' : ''}}><MdInfoOutline/> 3,69zł</td>
+                                                <td style={{display: purchased ? '' : ''}}><MdInfoOutline/> 3,26 zł</td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdEventAvailable/> {purchaseDate}</td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdAddLocation/></td>
                                             </tr>

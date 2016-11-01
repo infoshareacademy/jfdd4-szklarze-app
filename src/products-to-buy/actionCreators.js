@@ -11,13 +11,11 @@ export function markProductAsPurchased(productId, listId) {
     }
 }
 
-import { REQUEST_NOTES, RECEIVE_NOTES } from './actionTypes'
-
 import fetch from 'isomorphic-fetch'
 
-export function fetchPrices(productId) {
+export function fetchPrices() {
     return function (dispatch) {
-        return fetch('https://jfdd4-szklarze-app-janusz.herokuapp.com/api/price-markers/?filter[where][productId]=' + productId +'&filter[fields][price]=true')
+        return fetch('https://jfdd4-szklarze-app-janusz.herokuapp.com/api/price-markers/?filter[fields][price]=true&filter[fields][productId]=true')
             .then(response => response.json())
             .then(prices => dispatch({
                 type: RECEIVE_PRICES,
