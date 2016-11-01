@@ -32,7 +32,9 @@ class ListCreator extends React.Component {
         return (
             <div className="list-creator">
                 <div className="budget-panel">
-                    Suma: 28.90 zł   :-)  Stać cię na zakupy!
+                    <div className="sum">Suma: 28.90 zł</div>
+                    <div className="budget-indicator">:-)</div>
+                    <div className="message">Stać cię na zakupy!</div>
                 </div>
 
                 <div className="form-field create-budget">

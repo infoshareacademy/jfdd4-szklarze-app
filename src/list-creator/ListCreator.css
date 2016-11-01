@@ -67,4 +67,10 @@
     border-radius: inherit;
     margin: 0 auto 1em;
     padding: 0.7em 0;
+    display: flex;
+    justify-content: space-around;
 }
+
+.list-creator .budget-panel .sum { flex-grow: 3 }
+.list-creator .budget-panel .budget-indicator { flex-grow: 1 }
+.list-creator .budget-panel .message { flex-grow: 3 }
