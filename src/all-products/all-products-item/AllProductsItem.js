@@ -15,7 +15,7 @@ let AllProductsItem = (props) =>(
         </div>
         <div className="product-item-price">
             <p>
-                <span>Cena:</span><br/> {props.product.price}&nbsp;
+                <span>Cena:</span><br/> {props.product.price.toFixed(2)}&nbsp;
                 zł</p>
         </div>
         <div className="product-item-category">
