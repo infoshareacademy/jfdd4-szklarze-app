@@ -1,22 +1,11 @@
 import {
     MARK_FAVORITE_PRODUCT,
     REQUEST_FAVORITES,
-    RECEIVE_FAVORITES
+    RECEIVE_FAVORITES,
+    UPDATE_EXTERNAL_FAVORITES_BEGIN,
+    UPDATE_EXTERNAL_FAVORITES_END
 } from './actionTypes'
 import fetch from 'isomorphic-fetch'
-
-// function markFavoriteProductBegin() {
-//     return {
-//         type: MARK_FAVORITE_PRODUCT_BEGIN
-//     }
-// }
-//
-// function markFavoriteProductEnd() {
-//     return {
-//         type: MARK_FAVORITE_PRODUCT_END
-//     }
-// }
-
 
 export function markFavoriteProduct(productId) {
     return {
@@ -25,34 +14,41 @@ export function markFavoriteProduct(productId) {
     }
 }
 
-// export function markFavoriteProduct(productId, oldFavoriteProductIds) {
-//
-//     let newFavoriteProductIds = oldFavoriteProductIds.indexOf(productId) === -1 ?
-//             oldFavoriteProductIds.concat([productId]) :
-//             oldFavoriteProductIds.filter((id) => id !== productId);
-//
-//     return function (dispatch) {
-//
-//         dispatch(markFavoriteProductBegin())
-//         return fetch('https://jfdd4-szklarze-app-janusz.herokuapp.com/api/users', {
-//             method: 'PUT',
-//             headers: {
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify({
-//                 favoriteProductsIds: newFavoriteProductIds,
-//                 id: 5 //TODO: this is static user id, change it when logging with SM is
-//                 // provided
-//             })
-//         })
-//             .then(response => response.json())
-//             .then(favorites => {
-//                 dispatch(markFavoriteProductEnd())
-//                 dispatch(fetchFavorites())
-//             })
-//     }
-// }
+function updateExternalFavoritesBegin() {
+    return {
+        type: UPDATE_EXTERNAL_FAVORITES_BEGIN
+    }
+}
+
+function updateExternalFavoritesEnd() {
+    return {
+        type: UPDATE_EXTERNAL_FAVORITES_END
+    }
+}
+
+export function updateExternalFavorites(favorites) {
+
+    return function (dispatch) {
+
+        dispatch(updateExternalFavoritesBegin())
+        return fetch('https://jfdd4-szklarze-app-janusz.herokuapp.com/api/users', {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                favoriteProductsIds: favorites,
+                id: 5 //TODO: this is static user id, change it when logging with SM is
+                // provided
+            })
+        })
+            .then(response => response.json())
+            .then(favorites => {
+                dispatch(updateExternalFavoritesEnd())
+            })
+    }
+}
 
 function requestFavorites() {
     return {

@@ -13,13 +13,19 @@ import ProductsToBuy from './products-to-buy/ProductsToBuy'
 import Map from './map/Map'
 import './index.css';
 
-import { fetchFavorites } from './favorite-marker/actionCreators'
+import { fetchFavorites, updateExternalFavorites } from './favorite-marker/actionCreators'
 import { fetchShoppingLists } from './list-creator/actionCreators'
 
 function handleEnter() {
     store.dispatch(fetchFavorites())
     store.dispatch(fetchShoppingLists())
 }
+
+function updateFavorites() {
+    store.dispatch(updateExternalFavorites(store.getState()
+        .favorites.favoriteProductsIds))
+}
+
 
 ReactDOM.render(
     <Provider store={store}>
@@ -28,8 +34,10 @@ ReactDOM.render(
                    component={App}
                    onEnter={() => handleEnter()}>
                 <IndexRoute component={Introduction}/>
-                <Route path="/all-products"
-                       component={AllProducts}/>
+                <Route
+                    path="/all-products"
+                    component={AllProducts}
+                    onLeave={() => updateFavorites()}/>
                 <Route path="/shopping-lists"
                        component={ShoppingLists}>
                     <Route
