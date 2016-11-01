@@ -61,7 +61,7 @@ class ListCreator extends React.Component {
                         </span>
                     </div>
                     <div className="budget">
-                        <span>{'BUDŻET: '}</span>
+                        <span>{'Budżet: '}</span>
                         <MdAttachMoney />
                         <span>
                             {' '}
