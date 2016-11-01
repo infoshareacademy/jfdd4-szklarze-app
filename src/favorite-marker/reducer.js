@@ -1,61 +1,29 @@
 import {
-    MARK_FAVORITE_PRODUCT_BEGIN,
-    MARK_FAVORITE_PRODUCT_END,
-    RECEIVE_FAVORITES
+    MARK_FAVORITE_PRODUCT,
 } from './actionTypes'
 
+const localStorageData = JSON.parse(localStorage.getItem('redux'))
+
 const initialState = {
-    favoriteProductsIds: [],
-    markingFavoriteProduct: false
+    favoriteProductsIds:
+        typeof localStorageData.favorites.favoriteProductsIds !== 'undefined' &&
+        localStorageData.favorites.favoriteProductsIds !== null ?
+            localStorageData.favorites.favoriteProductsIds :
+            []
 }
 
 export default (state = initialState, action) => {
+    let productIds = state.favoriteProductsIds,
+        favoriteProductsIds = productIds.indexOf(action.productId) === -1 ?
+            productIds.concat([action.productId]) :
+            productIds.filter((id) => id !== action.productId);
 
     switch (action.type) {
-        case RECEIVE_FAVORITES:
-            return Object.assign({}, state, action.favoriteProductsIds)
-        case MARK_FAVORITE_PRODUCT_BEGIN:
+        case MARK_FAVORITE_PRODUCT:
             return Object.assign({}, state, {
-                markingFavoriteProduct: true
-            })
-        case MARK_FAVORITE_PRODUCT_END:
-            return Object.assign({}, state, {
-                markingFavoriteProduct: false
+                favoriteProductsIds: favoriteProductsIds
             })
         default:
             return state
     }
 }
-
-// const initialState = {
-//     favoriteProductIds:
-//         typeof localStorage.getItem('favoriteProductIds') !== 'undefined' &&
-//         localStorage.getItem('favoriteProductIds') !== null ?
-//             JSON.parse(localStorage.getItem('favoriteProductIds')) :
-//             []
-// }
-//
-// export default (state = initialState, action) => {
-//     let productIds = state.favoriteProductIds,
-//         favoriteProductIds = productIds.indexOf(action.productId) === -1 ?
-//             productIds.concat([action.productId]) :
-//             productIds.filter((id) => id !== action.productId);
-//
-//     switch (action.type) {
-//         case MARK_FAVORITE_PRODUCT:
-//             store.subscribe(() => {
-//                 localStorage
-//                     .setItem(
-//                         'favoriteProductIds',
-//                         JSON.stringify(
-//                             store.getState().favorites.favoriteProductIds || []
-//                         )
-//                     )
-//             })
-//             return Object.assign({}, state, {
-//                 favoriteProductIds: favoriteProductIds
-//             })
-//         default:
-//             return state
-//     }
-// }
