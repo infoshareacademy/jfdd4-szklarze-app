@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import ListDeleter from '../list-creator/list-deleter/ListDeleter'
+import ListDeleter from '../list-creator/list-manager/ListManager'
 import ListNameEditor from  '../list-creator/list-name-editor/ListNameEditor'
 import './ProductsToBuy.css'
 import {markProductAsPurchased} from './actionCreators'

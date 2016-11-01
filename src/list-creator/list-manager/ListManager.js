@@ -1,8 +1,11 @@
 import React from 'react'
 import { NavItem, Nav } from 'react-bootstrap'
+import FaClone from 'react-icons/lib/fa/clone'
+import FaClose from 'react-icons/lib/fa/close'
 import { connect } from 'react-redux'
 import { deleteList, updateExternalShoppingLists }from '../actionCreators'
 import {browserHistory} from 'react-router'
+import './ListManager.css'
 
 const mapStateToProps = (state) => ({
 })
@@ -31,14 +34,23 @@ class ListDeleter extends React.Component {
             updateExternalShoppingLists();
         }
 
+        const handleClone = (listId) => {
+            updateExternalShoppingLists();
+        }
+
         return (
             <Nav
                 onSelect={this.handleSelect}
                 bsStyle="pills">
                 <NavItem
+                    onClick={() => handleClone(listId)}
+                    eventKey="/shopping-lists">
+                        <FaClone />
+                </NavItem>
+                <NavItem
                     onClick={() => handleDelete(listId)}
                     eventKey="/shopping-lists">
-                        USUŃ LISTĘ
+                        <FaClose />
                 </NavItem>
             </Nav>
         )
