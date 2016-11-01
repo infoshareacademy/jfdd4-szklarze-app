@@ -22,9 +22,6 @@ const ShoppingListsButtons = ({shoppingLists, resetPurchased}) => {
                 .map((list, index) =>
                     <div>
                         <Link to={`/shopping-lists/` + index}
-                              onClick={() => {
-                                  resetPurchased();
-                              }}
                               className="list-group-item">
                             {list[list.length - 1] !== '' &&
                             typeof list[list.length - 1] === 'string'?

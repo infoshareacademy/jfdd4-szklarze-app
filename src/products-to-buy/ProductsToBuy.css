@@ -49,7 +49,7 @@ div > .panel-heading {
     display: block;
     padding: 10px 15px;
     margin-bottom: -1px;
-    background-color: #ffffff;
+    background-color: transparent !important;
     border: 1px solid #ecf0f1;
 }
 
@@ -128,4 +128,10 @@ div.well.well-sm {
     padding: 3%;
     text-align: justify;
 }
+.purchase-info {
+    color: #18c575;
 
+}
+.legend {
+    font-size: 0.8em;
+}
