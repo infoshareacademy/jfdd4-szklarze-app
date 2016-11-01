@@ -1,6 +1,5 @@
 import {
-    MARK_PRODUCT_AS_PURCHASED,
-    RESET_PURCHASED
+    MARK_PRODUCT_AS_PURCHASED
 } from './actionTypes'
 
 export function markProductAsPurchased(productId, listId) {
@@ -8,11 +7,5 @@ export function markProductAsPurchased(productId, listId) {
         type: MARK_PRODUCT_AS_PURCHASED,
         productId: productId,
         listId: listId
-    }
-}
-
-export function resetPurchased() {
-    return{
-        type: RESET_PURCHASED
     }
 }
