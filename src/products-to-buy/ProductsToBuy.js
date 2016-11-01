@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
 import ListNameEditor from  '../list-creator/list-name-editor/ListNameEditor'
+import PriceReporting from './price-reporting/PriceReporting'
 import './ProductsToBuy.css'
 import {markProductAsPurchased, resetPurchased} from './actionCreators'
 
@@ -74,6 +75,7 @@ class ProductsToBuy extends React.Component {
                                                 {quantity + ' szt.'}
                                             </span>
                                             {result}
+                                            <PriceReporting/>
                                         </li>
                                     )
                                 }) : ''}
