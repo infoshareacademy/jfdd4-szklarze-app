@@ -9,6 +9,7 @@ import mapReducer from './map/reducer'
 import purchasesReducer from './products-to-buy/reducer'
 import counterReducer from './all-products/reducer'
 import listNameEditorReducer from './list-creator/list-name-editor/reducer'
+import priceReportingReducer from './products-to-buy/price-reporting/reducer'
 
 let reducer = combineReducers({
     products: productsReducer,
@@ -18,7 +19,8 @@ let reducer = combineReducers({
     purchases: purchasesReducer,
     allProductsCounter: counterReducer,
     listNameEditor: listNameEditorReducer,
-    map: mapReducer
+    map: mapReducer,
+    priceReporting: priceReportingReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
