@@ -12,6 +12,14 @@ const initialState = {
     shoppingLists: []
 }
 
+function date(){
+    var Today = new Date();
+    var Month = Today.getMonth()+1;
+    var Day = Today.getDate();
+    var Year = Today.getFullYear();
+    return  Day + "-" + Month + "-" + Year;
+}
+
 export default (state = initialState, action) => {
 
     switch (action.type) {
