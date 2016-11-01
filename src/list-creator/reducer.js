@@ -6,9 +6,18 @@ import {
 import {
     UPDATE_LIST_NAME
 } from './list-name-editor/actionTypes'
+import {MARK_PRODUCT_AS_PURCHASED} from '../products-to-buy/actionTypes'
 
 const initialState = {
     shoppingLists: []
+}
+
+function date(){
+    var Today = new Date();
+    var Month = Today.getMonth()+1;
+    var Day = Today.getDate();
+    var Year = Today.getFullYear();
+    return  Day + "-" + Month + "-" + Year;
 }
 
 export default (state = initialState, action) => {
@@ -37,6 +46,18 @@ export default (state = initialState, action) => {
                                     .concat(action.newListName) :
                             list
                     ))
+            })
+        case MARK_PRODUCT_AS_PURCHASED:
+            return Object.assign({}, state, {
+                shoppingLists: state.shoppingLists.map(
+                    (shoppingList, index) =>
+                        index === parseInt(action.listId) ?
+                            shoppingList.map(
+                                shoppingListItem =>
+                                    shoppingListItem.productId === action.productId ?
+                                    {...shoppingListItem, purchased: !shoppingListItem.purchased, purchaseDate: date()} : shoppingListItem
+                            ) : shoppingList
+                )
             })
         case DELETE_LIST:
             return Object.assign({}, state, {

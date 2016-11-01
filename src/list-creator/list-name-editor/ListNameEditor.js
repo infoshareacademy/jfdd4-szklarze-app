@@ -65,7 +65,7 @@ class ListNameEditor extends React.Component {
         return (
 
             <div className="list-name-container">
-                <h4>{printListName(list, listId)}</h4>
+                <h6>{printListName(list, listId)}</h6>
                 <button
                     className="list-name-edit-button"
                     title="Edytuj nazwę listy..."
