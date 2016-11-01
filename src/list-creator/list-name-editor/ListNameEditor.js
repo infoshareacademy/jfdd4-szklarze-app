@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 function printListName(list, listId) {
     const listNumber = Number(listId) + 1;
-    return typeof list[list.length - 1] !== 'object' ?
+    return typeof list[list.length - 1] !== 'object' && list[list.length - 1] !== '' ?
         list[list.length - 1] :
     'Lista zakupów nr ' + listNumber
 }

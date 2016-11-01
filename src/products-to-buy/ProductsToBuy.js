@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
     resetPurchased: () => dispatch(resetPurchased())
 })
 
-const didUserSetListName = (list, index) => (
+const removeStringsFromList = (list, index) => (
     typeof list[list.length - 1] === 'string' ?
     index !== list.length - 1 :
         true
@@ -57,7 +57,7 @@ class ProductsToBuy extends React.Component {
 
                             list
                                 .filter(function (product, index) {
-                                    return didUserSetListName(list, index)
+                                    return removeStringsFromList(list, index)
                                 })
                                 .map((product) => ([product.productId, product.quantity]))
                                 .map(function (item) {
