@@ -27,6 +27,8 @@ export default (state = initialState, action) => {
                                     productId: item.productId,
                                     quantity: item.quantity + 1,
                                     price: item.price
+                                    purchased: false,
+
                                 } :
                                 item)
                         ) :
@@ -35,6 +37,8 @@ export default (state = initialState, action) => {
                             productId: action.productId,
                             quantity: 1,
                             price: action.price
+                            purchased: false,
+
                         }]);
 
             return Object.assign({}, state, {
