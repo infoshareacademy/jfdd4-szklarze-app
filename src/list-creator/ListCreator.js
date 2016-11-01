@@ -42,22 +42,26 @@ class ListCreator extends React.Component {
         const handleSelect = (eventKey) => {
             event.preventDefault();
             browserHistory.push(eventKey);
-            updateExternalShoppingLists()
+            updateExternalShoppingLists();
         }
+
+        const basketValue = itemsToBuy
+            .map(item => item.price*item.quantity)
+            .reduce( (prev, next) => prev + next, 0).toFixed(2);
 
         return (
             <div className="list-creator">
+
                 <div className="budget-panel">
                     <div className="sum">
                         <TiShoppingCart/>
                         <span>
-                            {' '}{itemsToBuy
-                            .map(item => item.price*item.quantity)
-                            .reduce( (prev, next) => prev + next, 0).toFixed(2)}
+                            {' '}{basketValue}
                             {' zł'}
                         </span>
                     </div>
                     <div className="budget">
+                        <span>{'BUDŻET: '}</span>
                         <MdAttachMoney />
                         <span>
                             {' '}
@@ -65,11 +69,13 @@ class ListCreator extends React.Component {
                             {' zł'}
                         </span>
                     </div>
-                    <div className="budget-indicator no-money"></div>
-                    <div className="message">Stać cię na zakupy!</div>
+                    <div
+                        className={Number(this.state.savedBudget) >= Number(basketValue) ?
+                            "budget-indicator" : "budget-indicator no-money"}>
+                    </div>
                 </div>
 
-                <div className="form-field create-budget">
+                <div className="form-fields">
                     <input
                         onChange={(event) => this.setState({
                             budgetToSave: event.target.value
@@ -78,6 +84,7 @@ class ListCreator extends React.Component {
                         placeholder="Podaj swój budżet..."
                     />
                     <MenuItem
+                        bsClass="button"
                         onClick={() =>
                             isNaN(Number(this.state.budgetToSave)) ||
                             this.state.budgetToSave < 0 ?
@@ -89,9 +96,7 @@ class ListCreator extends React.Component {
                                 })}>
                         Zapisz budżet
                     </MenuItem>
-                </div>
-
-                <div className="form-field crate-list">
+                    <div className="divider"></div>
                     <input
                         onChange={(event) => this.setState({
                             listName: event.target.value
@@ -100,6 +105,7 @@ class ListCreator extends React.Component {
                         placeholder="Wpisz nazwę listy..."
                     />
                     <MenuItem
+                        bsClass="button"
                         onClick={() =>
                             itemsToBuy.length === 0 ?
                                 alert('Wybierz produkt, aby stworzyć listę...') :
@@ -111,8 +117,8 @@ class ListCreator extends React.Component {
                                 handleSelect}>
                         Stwórz nową listę
                     </MenuItem>
-                </div>
 
+                </div>
             </div>
         )
     }

@@ -15,7 +15,7 @@
     right: 1%;
     background: #465676;
     padding: 1em;
-    border-radius: 5em;
+    border-radius: 3em;
 }
 
 .list-creator li {
@@ -46,28 +46,30 @@
     text-decoration: none;
 }
 
-.list-creator .form-field {
-    display: inline-block;
-    padding: 0;
+.list-creator .form-fields {
+    display: flex;
+    justify-content: space-between;
 }
 
-.list-creator .create-budget li {
-    display: inline-block;
-    padding: 0.2em 0.5em 0.2em 0.7em;
+.list-creator .form-fields input {
+    width: 25%;
+    height: 1em;
+    padding: 1.2em 0.7em;
 }
 
-.list-creator .create-list li {
-    display: inline-block;
-    padding: 0.2em 0.7em 0.2em 0.5em;
+.list-creator .form-fields .button {
+    width: 15%;
+    height: 1em;
+}
+
+.list-creator .form-fields .divider {
+    width: 5%;
 }
 
 .list-creator .budget-panel {
     width: 95%;
     height: 2.5em;
-    background-color: #ffc10e;
-    border-radius: inherit;
     margin: 0 auto 1em;
-    padding: 0.2em 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -75,13 +77,19 @@
 }
 
 .list-creator .budget-panel .sum {
-    flex-grow: 2;
     font-weight: bold;
     font-size: 1.2em;
+    width: 30%;
 }
 
 .list-creator .budget-panel .budget {
-    flex-grow: 2
+    width: 40%;
+}
+
+.list-creator .budget-panel .budget, .list-creator .budget-panel .sum {
+    background-color: #ffc10e;
+    border-radius: 2em;
+    padding: 0.5em 0;
 }
 
 .list-creator .budget-panel .sum span, .list-creator .budget-panel .budget span {
@@ -89,18 +97,18 @@
 }
 
 .list-creator .budget-panel .budget-indicator {
-    flex-grow: 5;
     background: #99CA3B url("../images/icon-blue-janusz.svg") no-repeat center;
     background-size: contain;
-    height: 2em;
-    border-radius: 15px;
+    background-origin: content-box;
+    height: 2.7em;
+    padding: 0.3em;
+    border-radius: .5em;
+    width: 10%;
 }
 
 .list-creator .budget-panel .budget-indicator.no-money {
     background: #ca4434 url("../images/icon-blue-skull.svg") no-repeat center;
     background-size: contain;
-}
-
-.list-creator .budget-panel .message {
-    flex-grow: 2
+    background-origin: content-box;
+    width: 10%;
 }
