@@ -49,7 +49,7 @@ class ProductsToBuy extends React.Component {
                         </p>
                     </div> :
                     <div className="panel-body">
-                        {/*<ListNameEditor list={list} listId={listId}/>*/}
+                       {/* <ListNameEditor list={list} listId={listId}/>*/}
 
                         <Table responsive>
                             <tbody>
@@ -90,7 +90,7 @@ class ProductsToBuy extends React.Component {
                             <tr><MdInfoOutline/> - Srednia cena produktu w sklepach </tr>
                             <tr><MdEventAvailable/> - Data zakupu</tr>
                             <tr><MdAddLocation/> - Kupiłeś taniej? Udostępnij lokalizację innym użytkownikom</tr>
-                            <tr><button><ListDeleter listId={listId}/></button></tr>
+                            <tr><ListDeleter listId={listId}/></tr>
                             </tbody>
                         </Table>
                     </div>}
