@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavItem, Nav, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { NavItem, Nav } from 'react-bootstrap'
 import FaClone from 'react-icons/lib/fa/clone'
 import FaClose from 'react-icons/lib/fa/close'
 import { connect } from 'react-redux'
@@ -58,7 +58,6 @@ class ListManager extends React.Component {
                         title="Usuń listę...">
                             <FaClose />
                     </NavItem>
-
             </Nav>
         )
     }

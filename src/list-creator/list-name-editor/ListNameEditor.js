@@ -1,5 +1,4 @@
 import React from 'react'
-import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import TiEdit from 'react-icons/lib/ti/edit'
 import {
 Modal,
