@@ -6,8 +6,7 @@ const localStorageData = JSON.parse(localStorage.getItem('redux'))
 
 const initialState = {
     favoriteProductsIds:
-        typeof localStorageData.favorites.favoriteProductsIds !== 'undefined' &&
-        localStorageData.favorites.favoriteProductsIds !== null ?
+        typeof localStorageData !== 'undefined' && localStorageData !== null ?
             localStorageData.favorites.favoriteProductsIds :
             []
 }
