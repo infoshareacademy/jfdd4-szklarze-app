@@ -3,7 +3,8 @@ import { NavItem, Nav, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import FaClone from 'react-icons/lib/fa/clone'
 import FaClose from 'react-icons/lib/fa/close'
 import { connect } from 'react-redux'
-import { deleteList, updateExternalShoppingLists }from '../actionCreators'
+import { updateExternalShoppingLists } from '../actionCreators'
+import { deleteList, cloneList }from './actionCreators'
 import {browserHistory} from 'react-router'
 import './ListManager.css'
 
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     deleteList: (listId) => dispatch(deleteList(listId)),
+    cloneList: (listId) => dispatch(cloneList(listId)),
     updateExternalShoppingLists: () => dispatch(updateExternalShoppingLists())
 })
 
@@ -26,7 +28,8 @@ class ListDeleter extends React.Component {
         const {
             deleteList,
             listId,
-            updateExternalShoppingLists
+            updateExternalShoppingLists,
+            cloneList
         } = this.props
 
         const handleDelete = (listId) => {
@@ -35,6 +38,7 @@ class ListDeleter extends React.Component {
         }
 
         const handleClone = (listId) => {
+            cloneList(listId);
             updateExternalShoppingLists();
         }
 
