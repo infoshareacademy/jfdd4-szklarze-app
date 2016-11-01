@@ -5,15 +5,13 @@ import {
 import {Link} from 'react-router'
 import './ShoppingListsButtons.css'
 import {connect} from 'react-redux'
-import {resetPurchased} from '../../products-to-buy/actionCreators'
 
 const mapDispatchToProps = (dispatch) => ({
-    resetPurchased: ()=> dispatch(resetPurchased())
 })
 const mapStateToProps = (state) => ({
 })
 
-const ShoppingListsButtons = ({shoppingLists, resetPurchased}) => {
+const ShoppingListsButtons = ({shoppingLists}) => {
 
     return (
         <ButtonGroup vertical block>
@@ -22,9 +20,6 @@ const ShoppingListsButtons = ({shoppingLists, resetPurchased}) => {
                 .map((list, index) =>
                     <div>
                         <Link to={`/shopping-lists/` + index}
-                              onClick={() => {
-                                  resetPurchased();
-                              }}
                               className="list-group-item">
                             {list[list.length - 1] !== '' &&
                             typeof list[list.length - 1] === 'string'?

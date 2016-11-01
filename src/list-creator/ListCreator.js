@@ -45,7 +45,11 @@ class ListCreator extends React.Component {
         return (
             <div className="list-creator">
                 <div className="budget-panel">
-                    <div className="sum"><TiShoppingCart/> 28.90 zł</div>
+                    <div className="sum">
+                        <TiShoppingCart/>
+                        {' '}{itemsToBuy === [] ? '0,00' :
+                        itemsToBuy.map(item => item.price * item.quantity)}{' zł'}
+                    </div>
                     <div className="budget">Budżet: 50.00 zł</div>
                     <div className="budget-indicator no-money"></div>
                     <div className="message">Stać cię na zakupy!</div>

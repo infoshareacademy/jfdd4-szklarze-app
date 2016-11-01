@@ -25,14 +25,20 @@ let AllProductsItem = (props) =>(
         <div className="product-item-all-buttons">
             <div className="add-button">
                 <button
-                    onClick={() => props.decreaseAmount(props.product.productId)}>
+                    onClick={() =>
+                        props.decreaseAmount(
+                            props.product.productId,
+                            props.product.price)}>
                     -
                 </button>
                 <span>
                 &nbsp;&nbsp;{props.currentCounterValue}&nbsp;&nbsp;
             </span>
                 <button
-                    onClick={() => props.increaseAmount(props.product.productId)}>
+                    onClick={() =>
+                        props.increaseAmount(
+                            props.product.productId,
+                            props.product.price)}>
                     +
                 </button>
             </div>

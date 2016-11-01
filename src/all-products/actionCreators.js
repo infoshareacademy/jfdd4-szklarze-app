@@ -3,16 +3,18 @@ import {
     DECREASE_AMOUNT
 } from './actionTypes'
 
-export function increaseAmount(productId) {
+export function increaseAmount(productId, price) {
     return {
         type: INCREASE_AMOUNT,
-        productId: productId
+        productId: productId,
+        price: price
     }
 }
 
-export function decreaseAmount(productId) {
+export function decreaseAmount(productId, price) {
     return {
         type: DECREASE_AMOUNT,
-        productId: productId
+        productId: productId,
+        price: price
     }
 }
