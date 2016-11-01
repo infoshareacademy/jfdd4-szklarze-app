@@ -7,6 +7,8 @@ import {
     ControlLabel,
     Button
 } from 'react-bootstrap'
+import GoogleMap from 'google-map-react'
+import Place from './../../map/place/Place'
 
 import {openPriceReportField, hidePriceReportField} from './actionCreators'
 import {connect} from 'react-redux'
@@ -44,12 +46,23 @@ class PriceReporting extends React.Component {
                         <Form
                             inline>
                             <FormGroup>
-                                <ControlLabel>Moja cena:</ControlLabel>
+                                <ControlLabel>Twoja cena:</ControlLabel>
                                 <FormControl
                                     type="text"/>
                             </FormGroup>
+                        <div style={{width: '300px', height: '300px'}}>
+                            <GoogleMap
+                                bootstrapURLKeys={{
+                                    key: 'AIzaSyCmKq7BbW9E8wkMALYHdjMHo6D839_cstk'
+                                }}
+                                center={[52.2297, 21.0122]}
+                                zoom={6}
+                                yesIWantToUseGoogleMapApiInternals>
+                                <Place lat={52.2297} lng={21.0122} text={'A'}/>
+                            </GoogleMap>
+                        </div>
                             <Button onClick={hidePriceReportField}>
-                                Zgłoś
+                                Zgłoś promocję
                             </Button>
                         </Form>
                     </Modal.Body>
@@ -58,4 +71,4 @@ class PriceReporting extends React.Component {
         )
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(PriceReporting)
+export default connect(mapStateToProps, mapDispatchToProps)(PriceReporting)
