@@ -68,7 +68,17 @@ class ProductsToBuy extends React.Component {
                                             quantity = item[1],
                                             purchased = Boolean(item[2]),
                                             purchaseDate = item[3],
+
+
+                                            productPrices = prices
+                                                .filter(function (product) {
+                                                return id == product.productId})
+                                                .map(function (item) {
+                                                    let values= Number(item.price);
+                                                    return values
+                                            }),
                                             result = products
+
                                                 .filter((product) => product.productId === id)
                                                 .map((item) => item.productName)
                                         return (
@@ -80,7 +90,15 @@ class ProductsToBuy extends React.Component {
                                                     {result}
                                                 </td>
                                                 <td style={{textDecoration: purchased ? 'line-through' : 'none'}}>{quantity + ' szt.'}</td>
-                                                <td style={{display: purchased ? '' : ''}}><MdInfoOutline/> 3,26 zł</td>
+                                                <td style={{display: purchased ? '' : ''}}><MdInfoOutline/>
+                                                    {productPrices
+                                                    .reduce(function(prev, next) {
+                                                        let sum = prev + next,
+                                                            avg = sum/Number(productPrices.length),
+                                                            result = (((avg).toFixed(2))/1);
+
+                                                    return   result
+                                                }, 0) + ' ' + 'zł'} </td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdEventAvailable/> {purchaseDate}</td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdAddLocation/></td>
                                             </tr>
