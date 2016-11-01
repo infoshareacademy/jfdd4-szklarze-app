@@ -1,1 +1,7 @@
-export const MARK_FAVORITE_PRODUCT = 'favorite-marker/ADD_PRODUCT_ID_TO_FAVORITES'
+export const MARK_FAVORITE_PRODUCT = 'favorite-marker/MARK_FAVORITE_PRODUCT'
+
+export const REQUEST_FAVORITES = 'favorite-marker/REQUEST_FAVORITES'
+export const RECEIVE_FAVORITES = 'favorite-marker/RECEIVE_FAVORITES'
+
+export const UPDATE_EXTERNAL_FAVORITES_BEGIN = 'favorite-marker/UPDATE_EXTERNAL_FAVORITES_BEGIN'
+export const UPDATE_EXTERNAL_FAVORITES_END = 'favorite-marker/UPDATE_EXTERNAL_FAVORITES_END'

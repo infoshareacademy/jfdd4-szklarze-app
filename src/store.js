@@ -1,4 +1,6 @@
-import { combineReducers, createStore} from 'redux'
+import { combineReducers, createStore, compose, applyMiddleware} from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import persistState from 'redux-localstorage'
 import filterReducer from  './filters/reducer'
 import listCreatorReducer from './list-creator/reducer'
 import productsReducer from './data/products/reducer'
@@ -19,6 +21,17 @@ let reducer = combineReducers({
     map: mapReducer
 });
 
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const enhancer = compose(
+    composeEnhancers(
+        applyMiddleware(
+            thunkMiddleware, // lets us dispatch() functions
+        ),
+    persistState('favorites', 'listCreator')
+))
+
+let store = createStore(reducer, enhancer)
+
 
 export default store

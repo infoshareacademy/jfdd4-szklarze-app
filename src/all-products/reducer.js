@@ -64,9 +64,3 @@ export default (state = initialState, action) => {
             return state
     }
 }
-
-// shoppingLists: state.shoppingLists
-//     .concat([itemsToBuy]),
-//     ,
-
-// let itemsToBuy = state.itemsToBuy.itemsToBuy.concat(state.currentListName);

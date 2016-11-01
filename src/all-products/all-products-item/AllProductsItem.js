@@ -4,9 +4,6 @@ import {
     Thumbnail
 } from 'react-bootstrap'
 import './AllProductsItem.css'
-// import thumbnail from './thumbnails/thumbnail-1.jpg'
-
-
 
 let AllProductsItem = (props) =>(
     <Thumbnail
