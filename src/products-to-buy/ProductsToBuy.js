@@ -3,17 +3,15 @@ import {connect} from 'react-redux'
 import ListDeleter from '../list-creator/list-deleter/ListDeleter'
 import ListNameEditor from  '../list-creator/list-name-editor/ListNameEditor'
 import './ProductsToBuy.css'
-import {markProductAsPurchased, resetPurchased} from './actionCreators'
+import {markProductAsPurchased} from './actionCreators'
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.listCreator.shoppingLists,
     products: state.products,
-    purchasedProductsIds: state.purchases.purchasedProductsIds
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    markProductAsPurchased: (productId) => dispatch(markProductAsPurchased(productId)),
-    resetPurchased: () => dispatch(resetPurchased())
+    markProductAsPurchased: (productId, listId) => dispatch(markProductAsPurchased(productId, listId))
 })
 
 const removeStringsFromList = (list, index) => (
@@ -28,9 +26,7 @@ class ProductsToBuy extends React.Component {
         var {
             shoppingLists,
             products,
-            purchasedProductsIds,
             markProductAsPurchased,
-            resetPurchased
         } = this.props
 
         let listId = this.props.params.listId;
@@ -69,7 +65,7 @@ class ProductsToBuy extends React.Component {
                                     return (
                                         <li className="list-group-item"
                                             key={id}
-                                            onClick={() => markProductAsPurchased(id)}>
+                                            onClick={() => markProductAsPurchased(id, listId)}>
                                             <span className="badge">
                                                 {quantity + ' szt.'}
                                             </span>
@@ -78,26 +74,8 @@ class ProductsToBuy extends React.Component {
                                     )
                                 }) : ''}
                     </ul>
-
-                    <p onClick={() => resetPurchased()}>
                         <ListDeleter listId={listId}/>
-                    </p>
-
                 </div>}
-                <div className="panel-heading">Produkty kupione:</div>
-                    <div>
-                        {purchasedProductsIds
-                            .map(function (item) {
-                                var result = products
-                                    .filter((product) => product.productId === item)
-                                    .map((item) => item.productName)
-                                return (
-                                    <li className="list-group-item, purchased" key={item}>
-                                        {result}
-                                    </li>
-                                )
-                            })}
-                    </div>
             </div>
         )
     }

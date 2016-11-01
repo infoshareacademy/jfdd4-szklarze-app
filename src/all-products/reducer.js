@@ -25,14 +25,18 @@ export default (state = initialState, action) => {
                         (item.productId === action.productId ?
                                 {
                                     productId: item.productId,
-                                    quantity: item.quantity + 1
+                                    quantity: item.quantity + 1,
+                                    purchased: false,
+
                                 } :
                                 item)
                         ) :
                 state.itemsToBuy.concat([
                         {
                             productId: action.productId,
-                            quantity: 1
+                            quantity: 1,
+                            purchased: false,
+
                         }]);
 
             return Object.assign({}, state, {
