@@ -9,6 +9,7 @@ import {
 } from 'react-bootstrap'
 
 import CurrentLocation from '../../current-location-map/CurrentLocationMap'
+import './PriceReporting.css'
 
 import {openPriceReportField, hidePriceReportField} from './actionCreators'
 import {connect} from 'react-redux'

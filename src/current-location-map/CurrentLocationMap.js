@@ -7,9 +7,7 @@ class CurrentLocation extends React.Component {
 
     constructor() {
         super()
-
         this.state = {}
-
     }
 
     componentWillMount() {
