@@ -66,13 +66,12 @@ class ListNameEditor extends React.Component {
 
             <div className="list-name-container">
                 <h6>{printListName(list, listId)}</h6>
-                <button
-                    className="list-name-edit-button"
-                    title="Edytuj nazwę listy..."
-                    onClick={openEditField}>
-                    <TiEdit />
-                </button>
-
+                    <button
+                        className="list-name-edit-button"
+                        onClick={openEditField}
+                        title="Edytuj nazwę listy...">
+                        <TiEdit />
+                    </button>
                 <Modal show={isEditFieldActive} onHide={hideEditField}>
                     <Modal.Header closeButton>
                         <Modal.Title>Zmień nazwę listy...</Modal.Title>

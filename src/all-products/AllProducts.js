@@ -28,8 +28,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    increaseAmount: (productId) => dispatch(increaseAmount(productId)),
-    decreaseAmount: (productId) => dispatch(decreaseAmount(productId)),
+    increaseAmount: (productId, price) => dispatch(increaseAmount(productId, price)),
+    decreaseAmount: (productId, price) => dispatch(decreaseAmount(productId, price)),
 })
 
 function generateProductItems(

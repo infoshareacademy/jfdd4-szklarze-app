@@ -26,6 +26,7 @@ export default (state = initialState, action) => {
                                 {
                                     productId: item.productId,
                                     quantity: item.quantity + 1,
+                                    price: item.price,
                                     purchased: false,
 
                                 } :
@@ -35,6 +36,7 @@ export default (state = initialState, action) => {
                         {
                             productId: action.productId,
                             quantity: 1,
+                            price: action.price,
                             purchased: false,
 
                         }]);
@@ -50,7 +52,8 @@ export default (state = initialState, action) => {
                         (item.productId === action.productId ?
                             {
                                 productId: item.productId,
-                                quantity: item.quantity - 1
+                                quantity: item.quantity - 1,
+                                price: item.price
                             } : item)
                     ) :
                 state.itemsToBuy;

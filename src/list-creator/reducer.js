@@ -1,11 +1,6 @@
-import {
-    SAVE_NEW_LIST,
-    RECEIVE_SHOPPING_LISTS,
-    DELETE_LIST
-} from './actionTypes'
-import {
-    UPDATE_LIST_NAME
-} from './list-name-editor/actionTypes'
+import { SAVE_NEW_LIST, RECEIVE_SHOPPING_LISTS } from './actionTypes'
+import { UPDATE_LIST_NAME } from './list-name-editor/actionTypes'
+import { DELETE_LIST, CLONE_LIST } from './list-manager/actionTypes'
 import {MARK_PRODUCT_AS_PURCHASED} from '../products-to-buy/actionTypes'
 
 const initialState = {
@@ -55,14 +50,31 @@ export default (state = initialState, action) => {
                             shoppingList.map(
                                 shoppingListItem =>
                                     shoppingListItem.productId === action.productId ?
-                                    {...shoppingListItem, purchased: !shoppingListItem.purchased, purchaseDate: date()} : shoppingListItem
-                            ) : shoppingList
+                                    {...shoppingListItem,
+                                        purchased: !shoppingListItem.purchased,
+                                        purchaseDate: date()} : shoppingListItem) :
+                            shoppingList
                 )
             })
         case DELETE_LIST:
             return Object.assign({}, state, {
                 shoppingLists: state.shoppingLists
                     .filter((list, index) => index !== Number(action.listId))
+            })
+        case CLONE_LIST:
+            return Object.assign({}, state, {
+                shoppingLists: state.shoppingLists
+                    .concat(state.shoppingLists
+                        .filter((list, index) => index === Number(action.listId))
+                        .map(list =>
+                            list.map((listItem, index) =>
+                                index === list.length-1 ?
+                                    listItem
+                                        .concat(
+                                            '(Kopia listy nr '+
+                                            (Number(action.listId)+1)+')') :
+                                    listItem
+                            )))
             })
         default:
             return state
