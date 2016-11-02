@@ -23,7 +23,6 @@ class CurrentLocation extends React.Component {
         })
     }
 
-
     render() {
         return (
             <div style={{width: '300px', height: '300px'}}>
