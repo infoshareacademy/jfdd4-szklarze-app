@@ -4,6 +4,7 @@ import {
     Thumbnail
 } from 'react-bootstrap'
 import './AllProductsItem.css'
+import { addPriceMarker } from'../actionCreators'
 
 let AllProductsItem = (props) =>(
     <Thumbnail
@@ -22,6 +23,12 @@ let AllProductsItem = (props) =>(
             <p>
                 Kategoria: {props.product.category}</p>
         </div>
+
+        <button
+        onClick={() => addPriceMarker(props.product.price,props.product.productId)}>
+            PRICE-MARKER
+        </button>
+
         <div className="product-item-all-buttons">
             <div className="add-button">
                 <button
