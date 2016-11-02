@@ -2,6 +2,7 @@ import {
     MARK_PRODUCT_AS_PURCHASED,
     RECEIVE_PRICES
 } from './actionTypes'
+import fetch from 'isomorphic-fetch'
 
 export function markProductAsPurchased(productId, listId) {
     return{
@@ -10,8 +11,6 @@ export function markProductAsPurchased(productId, listId) {
         listId: listId
     }
 }
-
-import fetch from 'isomorphic-fetch'
 
 export function fetchPrices() {
     return function (dispatch) {

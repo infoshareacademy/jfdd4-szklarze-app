@@ -5,7 +5,13 @@ import {
 } from 'react-bootstrap'
 import './AllProductsItem.css'
 
-let AllProductsItem = (props) =>(
+let AllProductsItem = (props) => {
+
+    const productPrices = props.productPrices
+        .filter(price => props.product.productId === price.productId)
+        .map(item => Number(item.price));
+
+    return (
     <Thumbnail
         src={`${process.env.PUBLIC_URL}` + `${props.product.imageUrl}`}
         alt="242x200"
@@ -15,8 +21,10 @@ let AllProductsItem = (props) =>(
         </div>
         <div className="product-item-price">
             <p>
-                <span>Cena:</span><br/> {props.product.price.toFixed(2)}&nbsp;
-                zł</p>
+                <span>Cena:</span><br/>
+                {(productPrices.reduce(((prev, next) => prev+next), 0) /
+                productPrices.length).toFixed(2)}&nbsp;zł
+            </p>
         </div>
         <div className="product-item-category">
             <p>
@@ -46,6 +54,6 @@ let AllProductsItem = (props) =>(
                 productId={props.product.productId}/>
         </div>
     </Thumbnail>
-)
+)}
 
 export default AllProductsItem
