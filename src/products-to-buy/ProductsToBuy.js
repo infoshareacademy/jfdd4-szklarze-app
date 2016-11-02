@@ -46,8 +46,7 @@ const FacebookIcon = generateShareIcon('facebook');
 class ProductsToBuy extends React.Component {
 
     render() {
-        const shareUrl = 'http://app.szklarze.jfdd4.is-academy.pl/';
-        const title = 'Zakupy z Januszem';
+        const shareUrl = 'http://app.szklarze.jfdd4.is-academy.pl/map';
 
         var {
             shoppingLists,
@@ -115,7 +114,7 @@ class ProductsToBuy extends React.Component {
                                                 }, 0)/productPrices.length).toFixed(2) + ' ' + 'zł'} </td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdEventAvailable/> {purchaseDate}</td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdAddLocation/></td>
-                                                <td style={{display: purchased ? '' : 'none'}}><FacebookShareButton  url={shareUrl}><FacebookIcon round size={20}/>
+                                                <td style={{display: purchased ? '' : 'none'}}><FacebookShareButton  url={shareUrl} title={result + ' '+ '- kup taniej! Janusz poleca!'}><FacebookIcon round size={20}/>
                                                 </FacebookShareButton></td>
                                             </tr>
                                         )
