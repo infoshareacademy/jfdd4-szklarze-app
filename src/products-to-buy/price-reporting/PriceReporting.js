@@ -8,7 +8,7 @@ import {
     Button
 } from 'react-bootstrap'
 
-import CurrentLocation from './../../current-location/CurrentLocation'
+import CurrentLocation from '../../current-location-map/CurrentLocationMap'
 
 import {openPriceReportField, hidePriceReportField} from './actionCreators'
 import {connect} from 'react-redux'

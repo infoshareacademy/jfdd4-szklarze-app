@@ -3,37 +3,42 @@ import GoogleMap from 'google-map-react'
 import Place from './place/Place'
 
 
-const CurrentLocation = (props) => {
+class CurrentLocation extends React.Component {
 
-    let bla = {};
+    constructor() {
+        super()
 
-    function getLocation() {
+        this.state = {}
+
+    }
+
+    componentWillMount() {
+        var context = this;
         navigator.geolocation.getCurrentPosition(function (position) {
-            console.log("Latitude: " + position.coords.latitude +
-            "<br>Longitude: " + position.coords.longitude);
-            bla.lat = position.coords.latitude;
-            bla.lng = position.coords.longitude;
+            context.setState({
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            })
+            console.log(context.state);
         })
     }
 
-    getLocation();
 
-    console.log(bla);
-
+    render() {
         return (
             <div style={{width: '300px', height: '300px'}}>
-                {console.log(bla)}
                 <GoogleMap
                     bootstrapURLKeys={{
                         key: 'AIzaSyCmKq7BbW9E8wkMALYHdjMHo6D839_cstk'
                     }}
-                    center={[bla.lat, bla.lng]}
-                    zoom={6}
+                    center={[this.state.lat, this.state.lng]}
+                    zoom={13}
                     yesIWantToUseGoogleMapApiInternals>
-                    <Place lat={bla.lat} lng={bla.lng} label={'AMMMM'}/>
+                    <Place lat={this.state.lat} lng={this.state.lng} label={'A'}/>
                 </GoogleMap>
             </div>
         )
+    }
 }
 
 export default CurrentLocation
