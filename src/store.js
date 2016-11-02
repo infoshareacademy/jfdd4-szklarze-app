@@ -10,6 +10,7 @@ import purchasesReducer from './products-to-buy/reducer'
 import counterReducer from './all-products/reducer'
 import listNameEditorReducer from './list-creator/list-name-editor/reducer'
 import priceReportingReducer from './products-to-buy/price-reporting/reducer'
+import currentLocationMapReducer from './products-to-buy/price-reporting/current-location-map/reducer'
 
 let reducer = combineReducers({
     products: productsReducer,
@@ -20,7 +21,8 @@ let reducer = combineReducers({
     allProductsCounter: counterReducer,
     listNameEditor: listNameEditorReducer,
     map: mapReducer,
-    priceReporting: priceReportingReducer
+    priceReporting: priceReportingReducer,
+    currentLocationMap: currentLocationMapReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

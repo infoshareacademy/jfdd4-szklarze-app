@@ -12,3 +12,4 @@ export function hidePriceReportField () {
         type: HIDE_PRICE_REPORT_FIELD
     }
 }
+

@@ -75,7 +75,7 @@ class ProductsToBuy extends React.Component {
                                                 {quantity + ' szt.'}
                                             </span>
                                             {result}
-                                            <PriceReporting/>
+                                            <PriceReporting />
                                         </li>
 
                                     )

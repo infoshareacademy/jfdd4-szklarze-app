@@ -8,7 +8,7 @@ import {
     Button
 } from 'react-bootstrap'
 
-import CurrentLocation from '../../current-location-map/CurrentLocationMap'
+import CurrentLocation from './current-location-map/CurrentLocationMap'
 import './PriceReporting.css'
 
 import {openPriceReportField, hidePriceReportField} from './actionCreators'
@@ -44,9 +44,8 @@ class PriceReporting extends React.Component {
                         <Modal.Title>Kupiłeś taniej?</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form
-                            inline>
-                            <FormGroup>
+                        <Form inline>
+                            <FormGroup inline>
                                 <ControlLabel>Twoja cena:</ControlLabel>
                                 <FormControl
                                     type="text"/>
