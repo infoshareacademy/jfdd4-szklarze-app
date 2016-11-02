@@ -115,6 +115,8 @@ class ProductsToBuy extends React.Component {
                                                 }, 0)/productPrices.length).toFixed(2) + ' ' + 'zł'} </td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdEventAvailable/> {purchaseDate}</td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdAddLocation/></td>
+                                                <td style={{display: purchased ? '' : 'none'}}><FacebookShareButton  url={shareUrl}><FacebookIcon round size={20}/>
+                                                </FacebookShareButton></td>
                                             </tr>
                                         )
                                     }) : ''}
@@ -122,10 +124,6 @@ class ProductsToBuy extends React.Component {
                         </Table>
                         <Table responsive>
                             <tbody className="legend">
-                            <tr><FacebookShareButton  url={shareUrl}><FacebookIcon
-                                size={32}
-                                round />
-                            </FacebookShareButton></tr>
                             <tr><MdInfoOutline/> - Srednia cena produktu w sklepach </tr>
                             <tr><MdEventAvailable/> - Data zakupu</tr>
                             <tr><MdAddLocation/> - Kupiłeś taniej? Udostępnij lokalizację innym użytkownikom</tr>
