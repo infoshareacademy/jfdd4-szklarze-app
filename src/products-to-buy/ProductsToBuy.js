@@ -91,14 +91,11 @@ class ProductsToBuy extends React.Component {
                                                 </td>
                                                 <td style={{textDecoration: purchased ? 'line-through' : 'none'}}>{quantity + ' szt.'}</td>
                                                 <td style={{display: purchased ? '' : ''}}><MdInfoOutline/>
-                                                     {productPrices
+                                                     {(productPrices
                                                     .reduce(function(prev, next) {
-                                                        let sum = prev + next,
-                                                            avg = sum/Number(productPrices.length),
-                                                            result = (((avg).toFixed(2))/1);
-
-                                                    return   result
-                                                }, 0) + ' ' + 'zł'} </td>
+                                                        let sum = prev+next;
+                                                            return sum;
+                                                }, 0)/productPrices.length).toFixed(2) + ' ' + 'zł'} </td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdEventAvailable/> {purchaseDate}</td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdAddLocation/></td>
                                             </tr>
