@@ -53,7 +53,7 @@ class ProductsToBuy extends React.Component {
             products,
             markProductAsPurchased,
             prices,
-        } = this.props
+        } = this.props;
 
         let listId = this.props.params.listId;
         let list = shoppingLists[listId];
