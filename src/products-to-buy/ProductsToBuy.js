@@ -10,6 +10,11 @@ import MdCheckBox from 'react-icons/lib/md/check-box'
 import MdInfoOutline from 'react-icons/lib/md/info-outline'
 import MdAddLocation from 'react-icons/lib/md/add-location'
 import  {Table, responsive} from 'react-bootstrap'
+import {
+    ShareButtons,
+    ShareCounts,
+    generateShareIcon
+} from 'react-share';
 
 
 const mapStateToProps = (state) => ({
@@ -28,10 +33,22 @@ const removeStringsFromList = (list, index) => (
     index !== list.length - 1 :
         true
 )
+const {
+    FacebookShareButton
+} = ShareButtons;
+
+const {
+    FacebookShareCount,
+} = ShareCounts;
+
+const FacebookIcon = generateShareIcon('facebook');
 
 class ProductsToBuy extends React.Component {
 
     render() {
+        const shareUrl = 'http://app.szklarze.jfdd4.is-academy.pl/';
+        const title = 'Zakupy z Januszem';
+
         var {
             shoppingLists,
             products,
@@ -105,6 +122,10 @@ class ProductsToBuy extends React.Component {
                         </Table>
                         <Table responsive>
                             <tbody className="legend">
+                            <tr><FacebookShareButton  url={shareUrl}><FacebookIcon
+                                size={32}
+                                round />
+                            </FacebookShareButton></tr>
                             <tr><MdInfoOutline/> - Srednia cena produktu w sklepach </tr>
                             <tr><MdEventAvailable/> - Data zakupu</tr>
                             <tr><MdAddLocation/> - Kupiłeś taniej? Udostępnij lokalizację innym użytkownikom</tr>
