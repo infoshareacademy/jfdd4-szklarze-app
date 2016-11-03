@@ -24,7 +24,8 @@ const mapStateToProps = (state) => ({
             .filter(product =>
             state.favorites.favoriteProductsIds.indexOf(product.productId) !== -1) :
         state.products,
-    itemsToBuy: state.allProductsCounter.itemsToBuy
+    itemsToBuy: state.allProductsCounter.itemsToBuy,
+    productPrices: state.pricesData.prices
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -36,7 +37,8 @@ function generateProductItems(
     product,
     increaseAmount,
     decreaseAmount,
-    itemsToBuy) {
+    itemsToBuy,
+    productPrices) {
 
     var currentCounterValue =
         itemsToBuy
@@ -56,6 +58,7 @@ function generateProductItems(
                 currentCounterValue={currentCounterValue}
                 itemsToBuy={itemsToBuy}
                 product={product}
+                productPrices={productPrices}
             />
         </Col>
     )
@@ -67,7 +70,8 @@ const AllProducts = ({
     increaseAmount,
     decreaseAmount,
     itemsToBuy,
-    saveNewList
+    saveNewList,
+    productPrices
 }) => (
     <div className="background">
         <div className="all-products">
@@ -87,14 +91,22 @@ const AllProducts = ({
                         productsToDisplay
                             .map(product =>
                                 generateProductItems(
-                                    product, increaseAmount, decreaseAmount, itemsToBuy))
+                                    product,
+                                    increaseAmount,
+                                    decreaseAmount,
+                                    itemsToBuy,
+                                    productPrices))
                         :
                         productsToDisplay
                             .filter(product =>
                                 (categoryFilterArray.indexOf(product.category) !== -1))
                             .map(product =>
                                 generateProductItems(
-                                    product, increaseAmount, decreaseAmount, itemsToBuy))
+                                    product,
+                                    increaseAmount,
+                                    decreaseAmount,
+                                    itemsToBuy,
+                                    productPrices))
                     }
                 </Row>
             </Grid>

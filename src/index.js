@@ -22,6 +22,7 @@ function handleEnter() {
     store.dispatch(fetchFavorites())
     store.dispatch(fetchShoppingLists())
     store.dispatch(fetchProducts())
+    store.dispatch(fetchPrices())
 }
 
 function updateFavorites() {
@@ -34,6 +35,28 @@ function updateShoppingLists() {
         .listCreator.shoppingLists))
 }
 
+let priceReceiverAllProducts;
+
+function handleAllProductsEnter() {
+    priceReceiverAllProducts = setInterval(() => store.dispatch(fetchPrices()), 2000);
+}
+
+function handleAllProductsLeave() {
+    clearInterval(priceReceiverAllProducts);
+    updateFavorites();
+}
+
+let priceReceiverShoppingList;
+
+function handleShoppingListEnter() {
+    priceReceiverShoppingList = setInterval(() => store.dispatch(fetchPrices()), 2000);
+}
+
+function handleShoppingListLeave() {
+    updateShoppingLists();
+    clearInterval(priceReceiverShoppingList);
+}
+
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory}>
@@ -44,14 +67,15 @@ ReactDOM.render(
                 <Route
                     path="/all-products"
                     component={AllProducts}
-                    onLeave={() => updateFavorites()}/>
+                    onEnter={() => handleAllProductsEnter()}
+                    onLeave={() => handleAllProductsLeave()}/>
                 <Route path="/shopping-lists"
                        component={ShoppingLists}>
                     <Route
                         path="/shopping-lists/:listId"
                         component={ProductsToBuy}
-                        onEnter={() => store.dispatch(fetchPrices())}
-                        onLeave={() => updateShoppingLists()}/>
+                        onEnter={() => handleShoppingListEnter()}
+                        onLeave={() => handleShoppingListLeave()}/>
                     <Route path="*" component={Introduction}/>
                 </Route>
                 <Route path="/map" component={Map}/>
