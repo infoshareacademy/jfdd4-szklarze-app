@@ -7,6 +7,7 @@ import {Grid,
 } from 'react-bootstrap'
 import {connect} from 'react-redux'
 
+
 const mapStateToProps = (state) => ({
     shoppingLists: state.listCreator.shoppingLists
 })
@@ -26,7 +27,7 @@ class ShoppingLists extends React.Component {
                 </p>
                 <Grid>
                     <Row className="show-grid">
-                        <Col xs={12} md={6}>
+                        <Col xs={12} md={4}>
                             <div className="panel panel-default">
                                 <div className="panel-heading">Listy zakupów:</div>
                                 {shoppingLists.length > 0 ?
@@ -40,7 +41,7 @@ class ShoppingLists extends React.Component {
                                 </div>
                         </Col>
 
-                        <Col xs={12} md={6}>
+                        <Col xs={12} md={8}>
                             <div className="shopping-lists">
                                 <ProductsToBuy{...props}/>
                             </div>

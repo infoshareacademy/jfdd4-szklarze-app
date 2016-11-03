@@ -13,6 +13,7 @@ import ProductsToBuy from './products-to-buy/ProductsToBuy'
 import {fetchPrices} from './products-to-buy/actionCreators'
 import Map from './map/Map'
 import './index.css';
+import Chart from './chart/Chart'
 
 import { fetchFavorites, updateExternalFavorites } from './favorite-marker/actionCreators'
 import { fetchShoppingLists, updateExternalShoppingLists } from './list-creator/actionCreators'
@@ -79,6 +80,7 @@ ReactDOM.render(
                     <Route path="*" component={Introduction}/>
                 </Route>
                 <Route path="/map" component={Map}/>
+                <Route path="/chart" component={Chart}/>
                 <Route path="*" component={Introduction}/>
             </Route>
         </Router>
