@@ -1,0 +1,23 @@
+.nav-pills > li > a {
+    font-size: 3em;
+    color: #262e3e;
+    opacity: 0.3;
+    transform: none;
+    transition:
+            opacity .2s ease-in-out,
+            color .2s ease-in-out,
+            transform .2s ease-in-out;
+}
+
+.nav-pills > li > a:hover {
+    opacity: 1;
+}
+
+.nav-pills > li:last-child > a:hover {
+    color: #bd2121;
+    transform: scale(1.15, 1.15);
+}
+
+ul.nav-pills {
+    margin-top: 20px;
+}

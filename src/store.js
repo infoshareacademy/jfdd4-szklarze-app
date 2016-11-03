@@ -10,14 +10,15 @@ import purchasesReducer from './products-to-buy/reducer'
 import counterReducer from './all-products/reducer'
 import listNameEditorReducer from './list-creator/list-name-editor/reducer'
 import priceReportingReducer from './products-to-buy/price-reporting/reducer'
+import pricesReducer from './products-to-buy/reducer'
 
 let reducer = combineReducers({
     products: productsReducer,
     filters: filterReducer,
     listCreator: listCreatorReducer,
     favorites: favoritesReducer,
-    purchases: purchasesReducer,
     allProductsCounter: counterReducer,
+    pricesData: pricesReducer
     listNameEditor: listNameEditorReducer,
     map: mapReducer,
     priceReporting: priceReportingReducer

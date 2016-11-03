@@ -5,13 +5,14 @@
     margin: 0 auto;
     padding: 0.2em 0.7em;
     font-size: 0.8em;
+    width: 50%;
 }
 
 .list-creator {
     align-content: center;
     position: fixed;
-    bottom: 3%;
-    right: 2%;
+    bottom: 1%;
+    right: 1%;
     background: #465676;
     padding: 1em;
     border-radius: 3em;
@@ -43,4 +44,112 @@
 
 .list-creator a:hover, .list-creator a:focus, .list-creator a:visited {
     text-decoration: none;
+}
+
+.list-creator .form-fields {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-creator .form-fields input {
+    width: 25%;
+    height: 1em;
+    padding: 1.2em 0.7em;
+}
+
+.list-creator .form-fields .button {
+    width: 15%;
+    height: 1em;
+}
+
+.list-creator .form-fields .divider {
+    width: 5%;
+}
+
+.list-creator .budget-panel {
+    width: 95%;
+    height: 2.5em;
+    margin: 0 auto 1em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.list-creator .budget-panel .sum {
+    font-weight: bold;
+    font-size: 1.2em;
+    width: 30%;
+}
+
+.list-creator .budget-panel .budget {
+    width: 40%;
+}
+
+.list-creator .budget-panel .budget, .list-creator .budget-panel .sum {
+    background-color: #ffc10e;
+    border-radius: 2em;
+    padding: 0.5em 0;
+}
+
+.list-creator .budget-panel .sum span, .list-creator .budget-panel .budget span {
+   vertical-align: middle;
+}
+
+.list-creator .budget-panel .budget-indicator {
+    background: #99CA3B url("../images/icon-blue-janusz.svg") no-repeat center;
+    background-size: contain;
+    background-origin: content-box;
+    height: 2.7em;
+    padding: 0.3em;
+    border-radius: .5em;
+    width: 10%;
+}
+
+.list-creator .budget-panel .budget-indicator.no-money {
+    background: #ca4434 url("../images/icon-blue-skull.svg") no-repeat center;
+    background-size: contain;
+    background-origin: content-box;
+    width: 10%;
+}
+
+@media screen and (max-width: 460px) {
+    .list-creator .budget-panel {
+        width: 95%;
+        height: auto;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 1em;
+        margin-bottom: 5px;
+    }
+
+
+    .list-creator .budget-panel .budget,
+    .list-creator .budget-panel .sum {
+        width: 100%;
+        padding: 0;
+        margin: .2em 0;
+    }
+
+    .list-creator .budget-panel .budget-indicator,
+    .list-creator .budget-panel .budget-indicator.no-money {
+        width: 30%;
+        padding: 0;
+        height: 2em;
+        margin: .2em 0;
+    }
+
+    .list-creator .form-fields {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .list-creator .form-fields .divider {
+        display: none;
+    }
+
+    .list-creator .form-fields input, .list-creator .form-fields li {
+        width: 48%;
+    }
 }
