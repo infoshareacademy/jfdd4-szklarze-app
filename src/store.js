@@ -6,20 +6,20 @@ import listCreatorReducer from './list-creator/reducer'
 import productsReducer from './data/products/reducer'
 import favoritesReducer from './favorite-marker/reducer'
 import mapReducer from './map/reducer'
-import purchasesReducer from './products-to-buy/reducer'
 import counterReducer from './all-products/reducer'
 import listNameEditorReducer from './list-creator/list-name-editor/reducer'
 import priceReportingReducer from './products-to-buy/price-reporting/reducer'
 import currentLocationMapReducer from './products-to-buy/price-reporting/current-location-map/reducer'
+import pricesReducer from './products-to-buy/reducer'
 
 let reducer = combineReducers({
     products: productsReducer,
     filters: filterReducer,
     listCreator: listCreatorReducer,
     favorites: favoritesReducer,
-    purchases: purchasesReducer,
     allProductsCounter: counterReducer,
     listNameEditor: listNameEditorReducer,
+    pricesData: pricesReducer,
     map: mapReducer,
     priceReporting: priceReportingReducer,
     currentLocationMap: currentLocationMapReducer

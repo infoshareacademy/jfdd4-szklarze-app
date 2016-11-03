@@ -10,11 +10,12 @@ import AllProducts from './all-products/AllProducts'
 import ShoppingLists from './shopping-lists/ShoppingLists'
 import Introduction from './introduction/Introduction'
 import ProductsToBuy from './products-to-buy/ProductsToBuy'
+import {fetchPrices} from './products-to-buy/actionCreators'
 import Map from './map/Map'
 import './index.css';
 
 import { fetchFavorites, updateExternalFavorites } from './favorite-marker/actionCreators'
-import { fetchShoppingLists } from './list-creator/actionCreators'
+import { fetchShoppingLists, updateExternalShoppingLists } from './list-creator/actionCreators'
 import { fetchProducts } from './data/products/actionCreators'
 
 function handleEnter() {
@@ -26,6 +27,11 @@ function handleEnter() {
 function updateFavorites() {
     store.dispatch(updateExternalFavorites(store.getState()
         .favorites.favoriteProductsIds))
+}
+
+function updateShoppingLists() {
+    store.dispatch(updateExternalShoppingLists(store.getState()
+        .listCreator.shoppingLists))
 }
 
 ReactDOM.render(
@@ -43,7 +49,9 @@ ReactDOM.render(
                        component={ShoppingLists}>
                     <Route
                         path="/shopping-lists/:listId"
-                        component={ProductsToBuy}/>
+                        component={ProductsToBuy}
+                        onEnter={() => store.dispatch(fetchPrices())}
+                        onLeave={() => updateShoppingLists()}/>
                     <Route path="*" component={Introduction}/>
                 </Route>
                 <Route path="/map" component={Map}/>
