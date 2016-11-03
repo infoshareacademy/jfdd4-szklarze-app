@@ -40,10 +40,6 @@ const {
     FacebookShareButton
 } = ShareButtons;
 
-const {
-    FacebookShareCount,
-} = ShareCounts;
-
 const FacebookIcon = generateShareIcon('facebook');
 
 class ProductsToBuy extends React.Component {
