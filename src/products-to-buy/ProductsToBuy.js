@@ -16,7 +16,6 @@ import {
     generateShareIcon
 } from 'react-share';
 
-
 const mapStateToProps = (state) => ({
     shoppingLists: state.listCreator.shoppingLists,
     products: state.products,

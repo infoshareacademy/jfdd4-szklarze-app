@@ -5,8 +5,7 @@ import {connect} from 'react-redux'
 const mapStateToProps = (state) => ({
     shoppingLists: state.listCreator.shoppingLists,
     products: state.products,
-    prices: state.pricesData.prices,
-    date: state.pricesData.date
+    productsData: state.pricesData.prices
 })
 const mapDispatchToProps = (dispatch) => ({
 })
@@ -18,21 +17,20 @@ class Chart extends React.Component {
 
     render() {
         var {
-            prices
+            productsData,
         } = this.props;
 
-        const dataPrices= prices.filter(function (product) {
-            return 1 == product.productId})
-            .map(function (item) {
-                let values= Number(item.price);
-                return values
-            });
+        const prices = productsData.filter(product => 2 == product.productId)
+            .map(product => product.price);
+
+        const dates = productsData.filter(product => 2 == product.productId)
+            .map(product => product.date);
+
 
         const data = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: dates,
             datasets: [
-                {
-                    label: 'Wykres zmiany ceny produktu',
+                {   label: 'Wyres zmian ceny produktu',
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: 'rgba(75,192,192,0.4)',
@@ -50,17 +48,16 @@ class Chart extends React.Component {
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
-                    data: dataPrices
+                    data: prices
                 }
             ]
         };
 
         return (
             <div>
-                <h2>Line Example</h2>
+                <h2>Wykres Janusza</h2>
                 <Line data={data}/>
-                {console.log(dataPrices)}
-
+                {console.log(dates)}
             </div>
         );
     }

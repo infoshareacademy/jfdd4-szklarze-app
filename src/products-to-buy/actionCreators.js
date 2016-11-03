@@ -15,7 +15,7 @@ import fetch from 'isomorphic-fetch'
 
 export function fetchPrices() {
     return function (dispatch) {
-        return fetch('https://jfdd4-szklarze-app-janusz.herokuapp.com/api/price-markers/?filter[fields][price]=true&filter[fields][productId]=true&filter[fields][date]=true&filter&filter[order]=date%20DESC&filter[limit]=31')
+        return fetch('https://jfdd4-szklarze-app-janusz.herokuapp.com/api/price-markers/?filter[fields][price]=true&filter[fields][productId]=true&filter[fields][date]=true')
             .then(response => response.json())
             .then(prices => dispatch({
                 type: RECEIVE_PRICES,
