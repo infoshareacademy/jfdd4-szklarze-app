@@ -23,6 +23,7 @@ function handleEnter() {
     store.dispatch(fetchFavorites())
     store.dispatch(fetchShoppingLists())
     store.dispatch(fetchProducts())
+    store.dispatch(fetchPrices())
 }
 
 function updateFavorites() {
