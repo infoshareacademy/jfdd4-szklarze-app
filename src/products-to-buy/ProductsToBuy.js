@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import ListManager from '../list-creator/list-manager/ListManager'
 import ListNameEditor from  '../list-creator/list-name-editor/ListNameEditor'
+import PriceReporter from './price-reporter/PriceReporter'
 import './ProductsToBuy.css'
 import {markProductAsPurchased, fetchPrices, showProductPricesTrend} from './actionCreators'
 import MdEventAvailable from 'react-icons/lib/md/event-available'
@@ -115,7 +116,13 @@ class ProductsToBuy extends React.Component {
                                                 }, 0)/productPrices.length).toFixed(2) + ' ' + 'zł'} </td>
                                                 <td onClick={() => showProductPricesTrend(id)}><MdTrendingUp/></td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdEventAvailable/> {purchaseDate}</td>
-                                                <td style={{display: purchased ? '' : 'none'}}><FacebookShareButton  url={shareUrl} title={result + ' '+ '- kup taniej! Janusz poleca!'}><FacebookIcon round size={20}/>
+                                                <td style={{display: purchased ? '' : 'none'}}><PriceReporter
+                                                                                                    productName={result}
+                                                                                                    productId={id}
+                                                                                                    purchaseDate={purchaseDate}
+                                                                                                />
+                                                </td>
+                                                <td style={{display: purchased ? '' : 'none'}}><FacebookShareButton url={shareUrl} title={result + ' ' + '- kup taniej! Janusz poleca!'}><FacebookIcon round size={20}/>
                                                 </FacebookShareButton></td>
                                             </tr>
                                         )
