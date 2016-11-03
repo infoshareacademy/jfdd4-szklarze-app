@@ -11,6 +11,7 @@ const mapStateToProps = (state) => ({
     itemsToBuy: state.allProductsCounter.itemsToBuy,
     currentListName: state.listCreator.currentListName,
     shoppingLists: state.listCreator.shoppingLists,
+    pricesData: state.pricesData.prices
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -36,7 +37,8 @@ class ListCreator extends React.Component {
         const {
             saveNewList,
             itemsToBuy,
-            updateExternalShoppingLists
+            updateExternalShoppingLists,
+            pricesData
         } = this.props
 
         const handleSelect = (eventKey) => {
@@ -45,9 +47,17 @@ class ListCreator extends React.Component {
             updateExternalShoppingLists();
         }
 
+        const getItemsAvgPrice = (item) => {
+            let productPrices = pricesData
+                .filter(marker => marker.productId === item.productId)
+                .map(marker => marker.price)
+            return (productPrices
+                .reduce((prev, next) => prev + next)/productPrices.length).toFixed(2)
+        }
+
         const basketValue = itemsToBuy
-            .map(item => item.price*item.quantity)
-            .reduce( (prev, next) => prev + next, 0).toFixed(2);
+            .map(item => getItemsAvgPrice(item)*item.quantity)
+            .reduce( (prev, next) => prev + next, 0);
 
         return (
             <div className="list-creator">
@@ -56,7 +66,7 @@ class ListCreator extends React.Component {
                     <div className="sum">
                         <TiShoppingCart/>
                         <span>
-                            {' '}{basketValue}
+                            {' '}{basketValue.toFixed(2)}
                             {' zł'}
                         </span>
                     </div>

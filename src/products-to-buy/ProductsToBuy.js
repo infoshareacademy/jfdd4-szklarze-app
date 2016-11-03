@@ -4,28 +4,31 @@ import ListManager from '../list-creator/list-manager/ListManager'
 import ListNameEditor from  '../list-creator/list-name-editor/ListNameEditor'
 import PriceReporter from './price-reporter/PriceReporter'
 import './ProductsToBuy.css'
-import {markProductAsPurchased, fetchPrices} from './actionCreators'
+import {markProductAsPurchased, fetchPrices, showProductPricesTrend} from './actionCreators'
 import MdEventAvailable from 'react-icons/lib/md/event-available'
 import MdCheckBoxOutlineBlank from 'react-icons/lib/md/check-box-outline-blank'
 import MdCheckBox from 'react-icons/lib/md/check-box'
 import MdInfoOutline from 'react-icons/lib/md/info-outline'
 import MdAddLocation from 'react-icons/lib/md/add-location'
+import MdTrendingUp from 'react-icons/lib/md/trending-up'
 import  {Table, responsive} from 'react-bootstrap'
 import {
     ShareButtons,
     ShareCounts,
     generateShareIcon
 } from 'react-share';
-
+import Chart from '../chart/Chart'
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.listCreator.shoppingLists,
     products: state.products,
-    prices: state.pricesData.prices
+    prices: state.pricesData.prices,
+    activeProduct: state.pricesData.activeProduct,
 })
 
 const mapDispatchToProps = (dispatch) => ({
     markProductAsPurchased: (productId, listId) => dispatch(markProductAsPurchased(productId, listId)),
+    showProductPricesTrend: (productId) => dispatch(showProductPricesTrend(productId)),
     fetchPrices: () => dispatch(fetchPrices())
 })
 
@@ -37,10 +40,6 @@ const removeStringsFromList = (list, index) => (
 const {
     FacebookShareButton
 } = ShareButtons;
-
-const {
-    FacebookShareCount,
-} = ShareCounts;
 
 const FacebookIcon = generateShareIcon('facebook');
 
@@ -54,6 +53,8 @@ class ProductsToBuy extends React.Component {
             products,
             markProductAsPurchased,
             prices,
+            showProductPricesTrend,
+            activeProduct
         } = this.props;
 
         let listId = this.props.params.listId;
@@ -69,7 +70,7 @@ class ProductsToBuy extends React.Component {
                         </p>
                     </div> :
                     <div className="panel-body">
-                        <ListNameEditor list={list} listId={listId}/>
+                       <ListNameEditor list={list} listId={listId}/>
 
                         <Table responsive>
                             <tbody>
@@ -89,12 +90,11 @@ class ProductsToBuy extends React.Component {
 
                                             productPrices = prices
                                                 .filter(function (product) {
-                                                    return id == product.productId
-                                                })
+                                                return id == product.productId})
                                                 .map(function (item) {
-                                                    let values = Number(item.price);
+                                                    let values= Number(item.price);
                                                     return values
-                                                }),
+                                            }),
                                             result = products
 
                                                 .filter((product) => product.productId === id)
@@ -109,11 +109,12 @@ class ProductsToBuy extends React.Component {
                                                 </td>
                                                 <td style={{textDecoration: purchased ? 'line-through' : 'none'}}>{quantity + ' szt.'}</td>
                                                 <td style={{display: purchased ? '' : ''}}><MdInfoOutline/>
-                                                    {(productPrices
-                                                        .reduce(function (prev, next) {
-                                                            let sum = prev + next;
+                                                     {(productPrices
+                                                    .reduce(function(prev, next) {
+                                                        let sum = prev+next;
                                                             return sum;
-                                                        }, 0) / productPrices.length).toFixed(2) + ' ' + 'zł'} </td>
+                                                }, 0)/productPrices.length).toFixed(2) + ' ' + 'zł'} </td>
+                                                <td onClick={() => showProductPricesTrend(id)}><MdTrendingUp/></td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdEventAvailable/> {purchaseDate}</td>
                                                 <td style={{display: purchased ? '' : 'none'}}><PriceReporter
                                                                                                     productName={result}
@@ -123,8 +124,6 @@ class ProductsToBuy extends React.Component {
                                                 </td>
                                                 <td style={{display: purchased ? '' : 'none'}}><FacebookShareButton url={shareUrl} title={result + ' ' + '- kup taniej! Janusz poleca!'}><FacebookIcon round size={20}/>
                                                 </FacebookShareButton></td>
-                                                {console.log(result, id, purchaseDate)}
-
                                             </tr>
                                         )
                                     }) : ''}
@@ -132,10 +131,11 @@ class ProductsToBuy extends React.Component {
                         </Table>
                         <Table responsive>
                             <tbody className="legend">
-                            <tr><MdInfoOutline/> - Srednia cena produktu w sklepach</tr>
+                            <tr><MdInfoOutline/> - Srednia cena produktu w sklepach </tr>
                             <tr><MdEventAvailable/> - Data zakupu</tr>
                             <tr><MdAddLocation/> - Kupiłeś taniej? Udostępnij lokalizację innym użytkownikom</tr>
                             <tr><ListManager listId={listId}/></tr>
+                            <tr><Chart productId={activeProduct}/></tr>
                             </tbody>
                         </Table>
                     </div>}
