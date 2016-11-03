@@ -25,11 +25,9 @@
     background-color: #262e3e;
     cursor: pointer;
     font-weight: normal;
-    padding: 0.2em 0.7em;
     font-size: 0.8em;
     box-shadow: none;
     border: solid 1px #262e3e;
-    margin: 0 0.4em;
 }
 
 .list-creator li:hover {
@@ -40,6 +38,10 @@
 
 .list-creator a {
     color: #fff;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0.2em 0.7em;
 }
 
 .list-creator a:hover, .list-creator a:focus, .list-creator a:visited {
