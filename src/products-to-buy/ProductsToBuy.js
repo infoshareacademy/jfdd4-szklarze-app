@@ -9,6 +9,7 @@ import MdCheckBoxOutlineBlank from 'react-icons/lib/md/check-box-outline-blank'
 import MdCheckBox from 'react-icons/lib/md/check-box'
 import MdInfoOutline from 'react-icons/lib/md/info-outline'
 import MdAddLocation from 'react-icons/lib/md/add-location'
+import MdTrendingUp from 'react-icons/lib/md/trending-up'
 import  {Table, responsive} from 'react-bootstrap'
 import {
     ShareButtons,
@@ -116,8 +117,8 @@ class ProductsToBuy extends React.Component {
                                                         let sum = prev+next;
                                                             return sum;
                                                 }, 0)/productPrices.length).toFixed(2) + ' ' + 'zł'} </td>
+                                                <td onClick={() => showProductPricesTrend(id)}><MdTrendingUp/></td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdEventAvailable/> {purchaseDate}</td>
-                                                <td style={{display: purchased ? '' : 'none'}} onClick={() => showProductPricesTrend(id)}><MdAddLocation/></td>
                                                 <td style={{display: purchased ? '' : 'none'}}><FacebookShareButton  url={shareUrl} title={result + ' '+ '- kup taniej! Janusz poleca!'}><FacebookIcon round size={20}/>
                                                 </FacebookShareButton></td>
                                             </tr>
