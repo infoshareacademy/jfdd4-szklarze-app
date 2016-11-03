@@ -9,7 +9,7 @@ import {
 } from 'react-bootstrap'
 import MdAddLocation from 'react-icons/lib/md/add-location'
 import CurrentLocation from './current-location-map/CurrentLocationMap'
-import './PriceReporting.css'
+import './PriceReporter.css'
 
 import {openPriceReportField, hidePriceReportField} from './actionCreators'
 import {connect} from 'react-redux'

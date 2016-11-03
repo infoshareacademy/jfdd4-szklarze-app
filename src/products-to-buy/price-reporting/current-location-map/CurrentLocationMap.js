@@ -24,7 +24,6 @@ class CurrentLocationMap extends React.Component {
 
         return (
             <div style={{width: '300px', height: '300px'}}>
-                {getLocation}
                 <GoogleMap
                     bootstrapURLKeys={{
                         key: 'AIzaSyCmKq7BbW9E8wkMALYHdjMHo6D839_cstk'
