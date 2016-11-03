@@ -61,7 +61,6 @@ class Chart extends React.Component {
         return (
             <div>
                 <Line data={data}/>
-                {console.log(dates)}
             </div>
         );
     }
