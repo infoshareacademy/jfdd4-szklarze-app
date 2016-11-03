@@ -85,8 +85,6 @@ class ProductsToBuy extends React.Component {
                                             quantity = item[1],
                                             purchased = Boolean(item[2]),
                                             purchaseDate = item[3],
-
-
                                             productPrices = prices
                                                 .filter(function (product) {
                                                 return id == product.productId})
@@ -95,7 +93,6 @@ class ProductsToBuy extends React.Component {
                                                     return values
                                             }),
                                             result = products
-
                                                 .filter((product) => product.productId === id)
                                                 .map((item) => item.productName)
                                         return (
@@ -117,7 +114,12 @@ class ProductsToBuy extends React.Component {
                                                 <td style={{display: purchased ? '' : 'none'}}><MdAddLocation/></td>
                                                 <td style={{display: purchased ? '' : 'none'}}><FacebookShareButton  url={shareUrl} title={result + ' '+ '- kup taniej! Janusz poleca!'}><FacebookIcon round size={20}/>
                                                 </FacebookShareButton></td>
-                                                <PriceReporting/>
+                                                {console.log(result, id, purchaseDate)}
+                                                <PriceReporting
+                                                    productName={result}
+                                                    productId={id}
+                                                    purchaseDate={purchaseDate}
+                                                />
                                             </tr>
                                         )
                                     }) : ''}

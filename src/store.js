@@ -18,7 +18,7 @@ let reducer = combineReducers({
     listCreator: listCreatorReducer,
     favorites: favoritesReducer,
     allProductsCounter: counterReducer,
-    pricesData: pricesReducer
+    pricesData: pricesReducer,
     listNameEditor: listNameEditorReducer,
     map: mapReducer,
     priceReporting: priceReportingReducer
