@@ -3,6 +3,7 @@ import {
     SHOW_PRODUCT_PRICES_TREND,
     RECEIVE_PRICES
 } from './actionTypes'
+import fetch from 'isomorphic-fetch'
 
 export function markProductAsPurchased(productId, listId) {
     return{
@@ -18,7 +19,6 @@ export function showProductPricesTrend(productId) {
         productId: productId,
     }
 }
-import fetch from 'isomorphic-fetch'
 
 export function fetchPrices() {
     return function (dispatch) {
