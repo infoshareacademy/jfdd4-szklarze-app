@@ -3,14 +3,10 @@ import GoogleMap from 'google-map-react'
 import Place from './place/Place'
 import './Map.css'
 import {connect} from 'react-redux'
-import {fetchPriceMarkers} from './actionCreators'
+
 
 const mapStateToProps = (state) => ({
     priceMarkers: state.mapData.priceMarkers
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    fetchPriceMarkers: () => dispatch(fetchPriceMarkers)
 })
 
 
@@ -35,4 +31,4 @@ class Map extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Map)
+export default connect(mapStateToProps)(Map)

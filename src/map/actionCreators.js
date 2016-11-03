@@ -19,9 +19,7 @@ export function fetchPriceMarkers() {
         dispatch(requestPriceMarkers())
         return fetch('https://jfdd4-szklarze-app-janusz.herokuapp.com/api/price-markers')
             .then(response => response.json())
-            .then(priceMarkers => dispatch({
-                type: RECEIVE_PRICE_MARKERS,
-                priceMarkers: priceMarkers
-            }))
+            .then(priceMarkers => dispatch(receivePriceMarkers(priceMarkers)
+            ))
     }
 }
