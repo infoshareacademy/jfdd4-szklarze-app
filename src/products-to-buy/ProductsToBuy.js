@@ -114,7 +114,7 @@ class ProductsToBuy extends React.Component {
                                                             return sum;
                                                 }, 0)/productPrices.length).toFixed(2) + ' ' + 'zł'} </td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdEventAvailable/> {purchaseDate}</td>
-                                                <td style={{display: purchased ? '' : 'none'}}><MdAddLocation/></td>
+                                                <td style={{display: purchased ? '' : 'none'}}><PriceReporting /></td>
                                                 <td style={{display: purchased ? '' : 'none'}}><FacebookShareButton  url={shareUrl} title={result + ' '+ '- kup taniej! Janusz poleca!'}><FacebookIcon round size={20}/>
                                                 </FacebookShareButton></td>
                                             </tr>
