@@ -14,6 +14,8 @@ class Map extends React.Component {
 
  render() {
 
+        let priceMarkers = this.props.priceMarkers;
+
         return (
             <div className="map-container">
                 <GoogleMap
@@ -21,10 +23,10 @@ class Map extends React.Component {
                         key: 'AIzaSyCmKq7BbW9E8wkMALYHdjMHo6D839_cstk'
                     }}
                     center={[54.360765, 18.633659]}
-                    zoom={11}
+                    zoom={14}
                     yesIWantToUseGoogleMapApiInternals
                     onClick={console.log}>
-                    {this.props.priceMarkers.map(point => <Place {...point}/>)}
+                    {priceMarkers.map(priceMarker => <Place lat={priceMarker.shopPosition.lat} lng={priceMarker.shopPosition.lng}/>)}
                 </GoogleMap>
             </div>
         )
