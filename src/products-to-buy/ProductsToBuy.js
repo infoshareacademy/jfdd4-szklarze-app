@@ -132,7 +132,6 @@ class ProductsToBuy extends React.Component {
                             <tr><MdEventAvailable/> - Data zakupu</tr>
                             <tr><MdAddLocation/> - Kupiłeś taniej? Udostępnij lokalizację innym użytkownikom</tr>
                             <tr><ListManager listId={listId}/></tr>
-                            {console.log('aktywny' +  activeProduct)}
                             <tr><Chart productId={activeProduct}/></tr>
                             </tbody>
                         </Table>
