@@ -1,16 +1,16 @@
+import { RECEIVE_PRICE_MARKERS } from './actionTypes'
+
+
 const initialState = {
-    points: [
-        {
-            lat: 52.2297,
-            lng: 21.0122,
-            label: 'A'
-        },
-        {lat: 54.3520, lng: 18.6466, label: 'B'}
-    ]
+    priceMarkers: []
 }
 
 export default (state = initialState, action = {}) => {
     switch (action.type) {
+        case RECEIVE_PRICE_MARKERS:
+            return Object.assign({}, state, {
+                priceMarkers: action.priceMarkers
+        })
         default:
             return state
     }

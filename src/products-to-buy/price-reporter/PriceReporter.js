@@ -23,18 +23,21 @@ const mapDispatchToProps = (dispatch) => ({
     hidePriceReportField: () => dispatch(hidePriceReportField()),
 })
 
-class PriceReporting extends React.Component {
+class PriceReporter extends React.Component {
 
 
     render() {
         const {
             isPriceReportFieldActive,
             openPriceReportField,
-            hidePriceReportField
+            hidePriceReportField,
+            productName,
+            productId,
+            purchaseDate
         } = this.props
 
         return (
-            <div>
+            <div className="priceReporter">
                 <MdAddLocation onClick={openPriceReportField}/>
 
                 <Modal show={isPriceReportFieldActive} onHide={hidePriceReportField}>
@@ -42,6 +45,8 @@ class PriceReporting extends React.Component {
                         <Modal.Title>Kupiłeś taniej?</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                        {productName}
+                        {console.log(productName, productId, purchaseDate)}
                         <Form inline>
                             <FormGroup inline>
                                 <ControlLabel>Twoja cena:</ControlLabel>
@@ -59,4 +64,4 @@ class PriceReporting extends React.Component {
         )
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(PriceReporting)
+export default connect(mapStateToProps, mapDispatchToProps)(PriceReporter)

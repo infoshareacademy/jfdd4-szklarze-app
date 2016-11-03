@@ -116,10 +116,11 @@ class ProductsToBuy extends React.Component {
                                                         }, 0) / productPrices.length).toFixed(2) + ' ' + 'zł'} </td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdEventAvailable/> {purchaseDate}</td>
                                                 <td style={{display: purchased ? '' : 'none'}}><PriceReporter
-                                                    productName={result}
-                                                    productId={id}
-                                                    purchaseDate={purchaseDate}
-                                                /></td>
+                                                                                                    productName={result}
+                                                                                                    productId={id}
+                                                                                                    purchaseDate={purchaseDate}
+                                                                                                />
+                                                </td>
                                                 <td style={{display: purchased ? '' : 'none'}}><FacebookShareButton url={shareUrl} title={result + ' ' + '- kup taniej! Janusz poleca!'}><FacebookIcon round size={20}/>
                                                 </FacebookShareButton></td>
                                                 {console.log(result, id, purchaseDate)}

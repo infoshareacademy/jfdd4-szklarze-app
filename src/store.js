@@ -19,7 +19,7 @@ let reducer = combineReducers({
     allProductsCounter: counterReducer,
     pricesData: pricesReducer,
     listNameEditor: listNameEditorReducer,
-    map: mapReducer,
+    mapData: mapReducer,
     priceReporting: priceReportingReducer,
 
 });
