@@ -69,7 +69,7 @@ class ProductsToBuy extends React.Component {
                         </p>
                     </div> :
                     <div className="panel-body">
-                       <ListNameEditor list={list} listId={listId}/>
+                        <ListNameEditor list={list} listId={listId}/>
 
                         <Table responsive>
                             <tbody>
@@ -89,11 +89,12 @@ class ProductsToBuy extends React.Component {
 
                                             productPrices = prices
                                                 .filter(function (product) {
-                                                return id == product.productId})
+                                                    return id == product.productId
+                                                })
                                                 .map(function (item) {
-                                                    let values= Number(item.price);
+                                                    let values = Number(item.price);
                                                     return values
-                                            }),
+                                                }),
                                             result = products
 
                                                 .filter((product) => product.productId === id)
@@ -108,21 +109,21 @@ class ProductsToBuy extends React.Component {
                                                 </td>
                                                 <td style={{textDecoration: purchased ? 'line-through' : 'none'}}>{quantity + ' szt.'}</td>
                                                 <td style={{display: purchased ? '' : ''}}><MdInfoOutline/>
-                                                     {(productPrices
-                                                    .reduce(function(prev, next) {
-                                                        let sum = prev+next;
+                                                    {(productPrices
+                                                        .reduce(function (prev, next) {
+                                                            let sum = prev + next;
                                                             return sum;
-                                                }, 0)/productPrices.length).toFixed(2) + ' ' + 'zł'} </td>
+                                                        }, 0) / productPrices.length).toFixed(2) + ' ' + 'zł'} </td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdEventAvailable/> {purchaseDate}</td>
-                                                <td style={{display: purchased ? '' : 'none'}}><MdAddLocation/></td>
-                                                <td style={{display: purchased ? '' : 'none'}}><FacebookShareButton  url={shareUrl} title={result + ' '+ '- kup taniej! Janusz poleca!'}><FacebookIcon round size={20}/>
-                                                </FacebookShareButton></td>
-                                                {console.log(result, id, purchaseDate)}
-                                                <PriceReporter
+                                                <td style={{display: purchased ? '' : 'none'}}><PriceReporter
                                                     productName={result}
                                                     productId={id}
                                                     purchaseDate={purchaseDate}
-                                                />
+                                                /></td>
+                                                <td style={{display: purchased ? '' : 'none'}}><FacebookShareButton url={shareUrl} title={result + ' ' + '- kup taniej! Janusz poleca!'}><FacebookIcon round size={20}/>
+                                                </FacebookShareButton></td>
+                                                {console.log(result, id, purchaseDate)}
+
                                             </tr>
                                         )
                                     }) : ''}
@@ -130,7 +131,7 @@ class ProductsToBuy extends React.Component {
                         </Table>
                         <Table responsive>
                             <tbody className="legend">
-                            <tr><MdInfoOutline/> - Srednia cena produktu w sklepach </tr>
+                            <tr><MdInfoOutline/> - Srednia cena produktu w sklepach</tr>
                             <tr><MdEventAvailable/> - Data zakupu</tr>
                             <tr><MdAddLocation/> - Kupiłeś taniej? Udostępnij lokalizację innym użytkownikom</tr>
                             <tr><ListManager listId={listId}/></tr>

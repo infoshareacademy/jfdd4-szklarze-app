@@ -1,6 +1,7 @@
 import React from 'react'
 import GoogleMap from 'google-map-react'
-import Place from './place/Place'
+import Place from './../../../map/place/Place'
+import './CurrentLocationMap.css'
 
 
 class CurrentLocation extends React.Component {
@@ -25,7 +26,7 @@ class CurrentLocation extends React.Component {
 
     render() {
         return (
-            <div style={{width: '300px', height: '300px'}}>
+            <div className="mapContainer">
                 <GoogleMap
                     bootstrapURLKeys={{
                         key: 'AIzaSyCmKq7BbW9E8wkMALYHdjMHo6D839_cstk'
