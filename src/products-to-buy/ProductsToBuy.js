@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import ListManager from '../list-creator/list-manager/ListManager'
 import ListNameEditor from  '../list-creator/list-name-editor/ListNameEditor'
-import PriceReporting from './price-reporting/PriceReporter'
+import PriceReporter from './price-reporter/PriceReporter'
 import './ProductsToBuy.css'
 import {markProductAsPurchased, fetchPrices} from './actionCreators'
 import MdEventAvailable from 'react-icons/lib/md/event-available'
@@ -114,9 +114,15 @@ class ProductsToBuy extends React.Component {
                                                             return sum;
                                                 }, 0)/productPrices.length).toFixed(2) + ' ' + 'zł'} </td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdEventAvailable/> {purchaseDate}</td>
-                                                <td style={{display: purchased ? '' : 'none'}}><PriceReporting /></td>
+                                                <td style={{display: purchased ? '' : 'none'}}><MdAddLocation/></td>
                                                 <td style={{display: purchased ? '' : 'none'}}><FacebookShareButton  url={shareUrl} title={result + ' '+ '- kup taniej! Janusz poleca!'}><FacebookIcon round size={20}/>
                                                 </FacebookShareButton></td>
+                                                {console.log(result, id, purchaseDate)}
+                                                <PriceReporter
+                                                    productName={result}
+                                                    productId={id}
+                                                    purchaseDate={purchaseDate}
+                                                />
                                             </tr>
                                         )
                                     }) : ''}

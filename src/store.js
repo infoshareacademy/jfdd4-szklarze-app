@@ -8,8 +8,7 @@ import favoritesReducer from './favorite-marker/reducer'
 import mapReducer from './map/reducer'
 import counterReducer from './all-products/reducer'
 import listNameEditorReducer from './list-creator/list-name-editor/reducer'
-import priceReportingReducer from './products-to-buy/price-reporting/reducer'
-import currentLocationMapReducer from './products-to-buy/price-reporting/current-location-map/reducer'
+import priceReportingReducer from './products-to-buy/price-reporter/reducer'
 import pricesReducer from './products-to-buy/reducer'
 
 let reducer = combineReducers({
@@ -18,11 +17,11 @@ let reducer = combineReducers({
     listCreator: listCreatorReducer,
     favorites: favoritesReducer,
     allProductsCounter: counterReducer,
-    listNameEditor: listNameEditorReducer,
     pricesData: pricesReducer,
+    listNameEditor: listNameEditorReducer,
     map: mapReducer,
     priceReporting: priceReportingReducer,
-    currentLocationMap: currentLocationMapReducer
+
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
