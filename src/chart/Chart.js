@@ -24,11 +24,12 @@ class Chart extends React.Component {
         let id = this.props.productId;
         var moment = require('moment');
 
+
         const prices = productsData.filter(product => id == product.productId)
             .map(product => product.price);
 
         const dates = productsData.filter(product => id == product.productId)
-            .map(product => moment(product.date).format('ll'));
+            .map(product => moment(product.date).lang("pl").format('ll'));
 
 
         const data = {
