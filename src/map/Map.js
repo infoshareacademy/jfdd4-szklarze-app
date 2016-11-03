@@ -20,8 +20,8 @@ class Map extends React.Component {
                     bootstrapURLKeys={{
                         key: 'AIzaSyCmKq7BbW9E8wkMALYHdjMHo6D839_cstk'
                     }}
-                    center={[52.2297, 21.0122]}
-                    zoom={6}
+                    center={[54.360765, 18.633659]}
+                    zoom={11}
                     yesIWantToUseGoogleMapApiInternals
                     onClick={console.log}>
                     {this.props.priceMarkers.map(point => <Place {...point}/>)}
