@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import ListManager from '../list-creator/list-manager/ListManager'
 import ListNameEditor from  '../list-creator/list-name-editor/ListNameEditor'
 import './ProductsToBuy.css'
-import {markProductAsPurchased, fetchPrices} from './actionCreators'
+import {markProductAsPurchased, fetchPrices, showProductPricesTrend} from './actionCreators'
 import MdEventAvailable from 'react-icons/lib/md/event-available'
 import MdCheckBoxOutlineBlank from 'react-icons/lib/md/check-box-outline-blank'
 import MdCheckBox from 'react-icons/lib/md/check-box'
@@ -15,15 +15,18 @@ import {
     ShareCounts,
     generateShareIcon
 } from 'react-share';
+import Chart from '../chart/Chart'
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.listCreator.shoppingLists,
     products: state.products,
-    prices: state.pricesData.prices
+    prices: state.pricesData.prices,
+    activeProduct: state.pricesData.activeProduct,
 })
 
 const mapDispatchToProps = (dispatch) => ({
     markProductAsPurchased: (productId, listId) => dispatch(markProductAsPurchased(productId, listId)),
+    showProductPricesTrend: (productId) => dispatch(showProductPricesTrend(productId)),
     fetchPrices: () => dispatch(fetchPrices())
 })
 
@@ -52,6 +55,8 @@ class ProductsToBuy extends React.Component {
             products,
             markProductAsPurchased,
             prices,
+            showProductPricesTrend,
+            activeProduct
         } = this.props;
 
         let listId = this.props.params.listId;
@@ -112,7 +117,7 @@ class ProductsToBuy extends React.Component {
                                                             return sum;
                                                 }, 0)/productPrices.length).toFixed(2) + ' ' + 'zł'} </td>
                                                 <td style={{display: purchased ? '' : 'none'}}><MdEventAvailable/> {purchaseDate}</td>
-                                                <td style={{display: purchased ? '' : 'none'}}><MdAddLocation/></td>
+                                                <td style={{display: purchased ? '' : 'none'}} onClick={() => showProductPricesTrend(id)}><MdAddLocation/></td>
                                                 <td style={{display: purchased ? '' : 'none'}}><FacebookShareButton  url={shareUrl} title={result + ' '+ '- kup taniej! Janusz poleca!'}><FacebookIcon round size={20}/>
                                                 </FacebookShareButton></td>
                                             </tr>
@@ -126,6 +131,8 @@ class ProductsToBuy extends React.Component {
                             <tr><MdEventAvailable/> - Data zakupu</tr>
                             <tr><MdAddLocation/> - Kupiłeś taniej? Udostępnij lokalizację innym użytkownikom</tr>
                             <tr><ListManager listId={listId}/></tr>
+                            {console.log('aktywny' +  activeProduct)}
+                            <tr><Chart productId={activeProduct}/></tr>
                             </tbody>
                         </Table>
                     </div>}

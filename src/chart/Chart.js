@@ -13,6 +13,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 
+
 class Chart extends React.Component {
 
     render() {
@@ -20,11 +21,14 @@ class Chart extends React.Component {
             productsData,
         } = this.props;
 
-        const prices = productsData.filter(product => 2 == product.productId)
+        let id = this.props.productId;
+        var moment = require('moment');
+
+        const prices = productsData.filter(product => id == product.productId)
             .map(product => product.price);
 
-        const dates = productsData.filter(product => 2 == product.productId)
-            .map(product => product.date);
+        const dates = productsData.filter(product => id == product.productId)
+            .map(product => moment(product.date).format('ll'));
 
 
         const data = {
@@ -55,7 +59,6 @@ class Chart extends React.Component {
 
         return (
             <div>
-                <h2>Wykres Janusza</h2>
                 <Line data={data}/>
                 {console.log(dates)}
             </div>

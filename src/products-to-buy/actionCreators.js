@@ -1,5 +1,6 @@
 import {
     MARK_PRODUCT_AS_PURCHASED,
+    SHOW_PRODUCT_PRICES_TREND,
     RECEIVE_PRICES
 } from './actionTypes'
 
@@ -11,6 +12,12 @@ export function markProductAsPurchased(productId, listId) {
     }
 }
 
+export function showProductPricesTrend(productId) {
+    return{
+        type: SHOW_PRODUCT_PRICES_TREND,
+        productId: productId,
+    }
+}
 import fetch from 'isomorphic-fetch'
 
 export function fetchPrices() {
