@@ -1,13 +1,3 @@
-.list-creator input {
-    border-radius: 27px;
-    border: solid 1px #757575;
-    box-shadow: none;
-    margin: 0 auto;
-    padding: 0.2em 0.7em;
-    font-size: 0.8em;
-    width: 50%;
-}
-
 .list-creator {
     align-content: center;
     position: fixed;
@@ -48,24 +38,33 @@
     text-decoration: none;
 }
 
-.list-creator .form-fields {
+.list-creator .form-fields, .list-creator .form-fields div {
     display: flex;
     justify-content: space-between;
 }
 
-.list-creator .form-fields input {
-    width: 25%;
-    height: 1em;
-    padding: 1.2em 0.7em;
+.list-creator .form-fields div {
+    justify-content: center;
 }
 
-.list-creator .form-fields .button {
+.list-creator .form-fields div input {
+    width: 50%;
+    height: 1em;
+    padding: 1.2em 0.7em;
+    border-radius: 27px;
+    border: solid 1px #757575;
+    box-shadow: none;
+    margin: 0;
+    font-size: 0.8em;
+}
+
+.list-creator .form-fields div .button {
     width: 15%;
     height: 1em;
 }
 
-.list-creator .form-fields .divider {
-    width: 5%;
+.list-creator .form-fields div {
+    width: 49%;
 }
 
 .list-creator .budget-panel {
@@ -115,7 +114,7 @@
     width: 10%;
 }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 470px) {
     .list-creator .budget-panel {
         width: 95%;
         height: auto;
@@ -142,16 +141,12 @@
         margin: .2em 0;
     }
 
-    .list-creator .form-fields {
-        justify-content: space-between;
-        flex-wrap: wrap;
+    .list-creator .form-fields div{
+        flex-direction: column;
     }
 
-    .list-creator .form-fields .divider {
-        display: none;
+    .list-creator .form-fields div li, .list-creator .form-fields div input{
+        width: 100%;
     }
 
-    .list-creator .form-fields input, .list-creator .form-fields li {
-        width: 48%;
-    }
 }

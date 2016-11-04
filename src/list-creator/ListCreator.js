@@ -75,8 +75,6 @@ class ListCreator extends React.Component {
                             Zapisz budżet
                     </FormField>
 
-                    <div className="divider"></div>
-
                     <FormField
                         handleChange={(event) => this.setState({
                             listName: event.target.value
@@ -90,7 +88,7 @@ class ListCreator extends React.Component {
                         eventKey="/shopping-lists"
                         handleButtonSelect={itemsToBuy.length === 0 ?
                             null : handleSelect}>
-                            Stwórz nową listę
+                            Zapisz listę
                     </FormField>
 
                 </div>
