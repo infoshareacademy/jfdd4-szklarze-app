@@ -8,11 +8,13 @@ import {
 import fetch from 'isomorphic-fetch'
 import store from '../store'
 
-export function saveNewList(itemsToBuy, listName){
+export function saveNewList(itemsToBuy, listName, savedBudget, basketValue){
     return {
         type: SAVE_NEW_LIST,
         itemsToBuy: itemsToBuy,
-        listName: listName
+        listName: listName,
+        savedBudget: savedBudget,
+        basketValue: basketValue
     }
 }
 

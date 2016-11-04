@@ -25,7 +25,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 class PriceReporter extends React.Component {
 
-
     render() {
         const {
             isPriceReportFieldActive,
@@ -46,7 +45,6 @@ class PriceReporter extends React.Component {
                     </Modal.Header>
                     <Modal.Body>
                         {productName}
-                        {console.log(productName, productId, purchaseDate)}
                         <Form inline>
                             <FormGroup inline>
                                 <ControlLabel>Twoja cena:</ControlLabel>

@@ -1,11 +1,12 @@
 import React from 'react'
 import ListRow from '../list-row/ListRow'
 import ListManager from '../../list-creator/list-manager/ListManager'
+import BudgetPanel from '../../list-creator/budget-panel/BudgetPanel'
 import Chart from '../../chart/Chart'
 import MdEventAvailable from 'react-icons/lib/md/event-available'
 import MdInfoOutline from 'react-icons/lib/md/info-outline'
 import MdAddLocation from 'react-icons/lib/md/add-location'
-import  {Table} from 'react-bootstrap'
+import {Table} from 'react-bootstrap'
 
 const shareUrl = 'http://app.szklarze.jfdd4.is-academy.pl/map';
 
@@ -81,3 +82,9 @@ const ListTable = ({
 )
 
 export default ListTable
+
+// <BudgetPanel
+// pricesData={pricesData}
+// savedBudget={this.state.savedBudget}
+// itemsToBuy={itemsToBuy}
+//     />

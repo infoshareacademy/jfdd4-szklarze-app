@@ -20,7 +20,11 @@ export default (state = initialState, action) => {
     switch (action.type) {
 
         case SAVE_NEW_LIST:
-            let shoppingListWithName = action.itemsToBuy.concat(action.listName)
+            let shoppingListWithName = action.itemsToBuy
+                .concat([[
+                    action.listName,
+                    action.savedBudget]])
+
             return Object.assign({}, state, {
                 shoppingLists: state.shoppingLists
                     .concat([shoppingListWithName])

@@ -14,8 +14,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    saveNewList: (itemsToBuy, listName) =>
-        dispatch(saveNewList(itemsToBuy, listName)),
+    saveNewList: (itemsToBuy, listName, savedBudget) =>
+        dispatch(saveNewList(itemsToBuy, listName, savedBudget)),
     updateExternalShoppingLists: () => dispatch(updateExternalShoppingLists())
 })
 
@@ -46,13 +46,25 @@ class ListCreator extends React.Component {
             updateExternalShoppingLists();
         }
 
+        const getItemsAvgPrice = (item) => {
+            let productPrices = pricesData
+                .filter(marker => marker.productId === item.productId)
+                .map(marker => marker.price)
+            return (productPrices
+                .reduce((prev, next) => prev + next)/productPrices.length).toFixed(2)
+        }
+
+        const basketValue = itemsToBuy
+            .map(item => getItemsAvgPrice(item)*item.quantity)
+            .reduce( (prev, next) => prev + next, 0);
+
         return (
             <div className="list-creator">
 
                 <BudgetPanel
                     pricesData={pricesData}
                     savedBudget={this.state.savedBudget}
-                    itemsToBuy={itemsToBuy}
+                    basketValue={basketValue}
                 />
 
                 <div className="form-fields">
@@ -82,7 +94,10 @@ class ListCreator extends React.Component {
                         handleClick={() =>
                             itemsToBuy.length === 0 ?
                                 alert('Wybierz produkt, aby stworzyć listę...') :
-                                saveNewList(itemsToBuy, this.state.listName)}
+                                saveNewList(
+                                    itemsToBuy,
+                                    this.state.listName,
+                                    this.state.savedBudget)}
                         value={this.state.listName}
                         placeholder="Wpisz nazwę listy..."
                         eventKey="/shopping-lists"
