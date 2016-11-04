@@ -5,6 +5,7 @@ import './Map.css'
 import {connect} from 'react-redux'
 
 
+
 const mapStateToProps = (state) => ({
     priceMarkers: state.mapData.priceMarkers
 })
@@ -12,7 +13,7 @@ const mapStateToProps = (state) => ({
 
 class Map extends React.Component {
 
- render() {
+    render() {
 
         let priceMarkers = this.props.priceMarkers;
 
@@ -23,9 +24,10 @@ class Map extends React.Component {
                         key: 'AIzaSyCmKq7BbW9E8wkMALYHdjMHo6D839_cstk'
                     }}
                     center={[54.360765, 18.633659]}
-                    zoom={14}
+                    zoom={15}
                     yesIWantToUseGoogleMapApiInternals
-                    onClick={console.log}>
+                    onClick={console.log}
+                    onChildClick={this._onChildClick}>
                     {priceMarkers.map(priceMarker => <Place lat={priceMarker.shopPosition.lat} lng={priceMarker.shopPosition.lng}/>)}
                 </GoogleMap>
             </div>
