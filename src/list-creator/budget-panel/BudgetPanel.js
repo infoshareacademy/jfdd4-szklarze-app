@@ -4,8 +4,7 @@ import MdAttachMoney from 'react-icons/lib/md/attach-money'
 
 const BudgetPanel = ({
     basketValue,
-    savedBudget,
-    pricesData
+    savedBudget
 }) => {
 
     return (

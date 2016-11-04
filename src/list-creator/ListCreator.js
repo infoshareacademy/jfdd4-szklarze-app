@@ -62,7 +62,6 @@ class ListCreator extends React.Component {
             <div className="list-creator">
 
                 <BudgetPanel
-                    pricesData={pricesData}
                     savedBudget={this.state.savedBudget}
                     basketValue={basketValue}
                 />
