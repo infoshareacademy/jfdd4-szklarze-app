@@ -18,6 +18,7 @@ import Chart from './chart/Chart'
 import { fetchFavorites, updateExternalFavorites } from './favorite-marker/actionCreators'
 import { fetchShoppingLists, updateExternalShoppingLists } from './list-creator/actionCreators'
 import { fetchProducts } from './data/products/actionCreators'
+import { fetchPriceMarkers } from  './map/actionCreators'
 
 function handleEnter() {
     store.dispatch(fetchFavorites())
@@ -79,8 +80,10 @@ ReactDOM.render(
                         onLeave={() => handleShoppingListLeave()}/>
                     <Route path="*" component={Introduction}/>
                 </Route>
-                <Route path="/map" component={Map}/>
                 <Route path="/chart" component={Chart}/>
+                <Route path="/map"
+                       component={Map}
+                       onEnter={() => store.dispatch(fetchPriceMarkers())}/>
                 <Route path="*" component={Introduction}/>
             </Route>
         </Router>
