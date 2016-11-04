@@ -44,10 +44,10 @@ const ListRow = ({
             </td>
             <td style={{display: purchased ? '' : ''}}>
                 <MdInfoOutline/>
-                {((productPrices
-                    .reduce((prev, next) =>
+                {(productPrices
+                    .reduce(((prev, next) =>
                         prev+next), 0)/productPrices.length)
-                    .toFixed(2) + ' ' + 'zł'}
+                    .toFixed(2) + ' zł'}
             </td>
             <td onClick={() => showProductPricesTrend(id)}>
                 <MdTrendingUp/>
