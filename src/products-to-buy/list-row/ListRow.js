@@ -49,7 +49,8 @@ const ListRow = ({
                         prev+next), 0)/productPrices.length)
                     .toFixed(2) + ' zł'}
             </td>
-            <td onClick={() => showProductPricesTrend(id)}>
+            <td onClick={() => showProductPricesTrend(id)}
+                colSpan={purchased ? "1" : "3"}>
                 <MdTrendingUp/>
             </td>
             <td style={{display: purchased ? '' : 'none'}}>
