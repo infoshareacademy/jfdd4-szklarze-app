@@ -4,6 +4,7 @@ import MdCheckBoxOutlineBlank from 'react-icons/lib/md/check-box-outline-blank'
 import MdCheckBox from 'react-icons/lib/md/check-box'
 import MdEventAvailable from 'react-icons/lib/md/event-available'
 import MdInfoOutline from 'react-icons/lib/md/info-outline'
+import PriceReporter from '../price-reporter/PriceReporter'
 import {
     ShareButtons,
     generateShareIcon
@@ -50,11 +51,17 @@ const ListRow = ({
                     .toFixed(2) + ' zł'}
             </td>
             <td onClick={() => showProductPricesTrend(id)}
-                colSpan={purchased ? "1" : "3"}>
+                colSpan={purchased ? "1" : "4"}>
                 <MdTrendingUp/>
             </td>
             <td style={{display: purchased ? '' : 'none'}}>
                 <MdEventAvailable/> {purchaseDate}
+            </td>
+            <td style={{display: purchased ? '' : 'none'}}>
+                <PriceReporter
+                    productName={result}
+                    productId={id}
+                    purchaseDate={purchaseDate}/>
             </td>
             <td style={{display: purchased ? '' : 'none'}}>
                 <FacebookShareButton

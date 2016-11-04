@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import ListNameEditor from  '../list-creator/list-name-editor/ListNameEditor'
 import ListTable from './list-table/ListTable'
-import PriceReporter from './price-reporter/PriceReporter'
 import './ProductsToBuy.css'
 import {
 markProductAsPurchased,
