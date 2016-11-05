@@ -23,8 +23,9 @@ class Place extends React.Component {
 
     render() {
 
-        let date = this.props.date
-        let formattedDate = date.substring(0, 10)
+        let date = this.props.date;
+        var moment = require('moment');
+        var formattedDate = moment(date).lang("pl").format('l')
 
         let priceMarkerId = this.props.priceMarkerId
         let products = this.props.products
