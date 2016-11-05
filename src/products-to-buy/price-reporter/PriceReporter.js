@@ -10,19 +10,18 @@ import {
 import CurrentLocation from './current-location-map/CurrentLocationMap'
 import './PriceReporter.css'
 
-import {openPriceReportField, hidePriceReportField} from './actionCreators'
+import { hidePriceReportField} from './actionCreators'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
     isPriceReportFieldActive: state.priceReporting.isPriceReportFieldActive,
-    activeProduct: state.priceReporting.activeProduct,
-    hello: state.priceReporting.productName
+    currentProductId: state.priceReporting.activeProduct,
+    currentProductName: state.priceReporting.productName,
+
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    openPriceReportField: (productId, purchaseDate, productName) =>
-        dispatch(openPriceReportField(productId, purchaseDate, productName)),
-    hidePriceReportField: () => dispatch(hidePriceReportField()),
+        hidePriceReportField: () => dispatch(hidePriceReportField()),
 })
 
 class PriceReporter extends React.Component {
@@ -32,19 +31,18 @@ class PriceReporter extends React.Component {
         const {
             isPriceReportFieldActive,
             hidePriceReportField,
-            productName,
-            productId,
-            purchaseDate,
-            activeProduct
+            currentProductId,
+            currentProductName
         } = this.props
 
         return (
             <div className="priceReporter">
                 <Modal show={isPriceReportFieldActive} onHide={hidePriceReportField}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Kupiłeś taniej? {activeProduct}</Modal.Title>
+                        <Modal.Title>Kupiłeś taniej?</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                        {currentProductName}
                         <Form inline>
                             <FormGroup inline>
                                 <ControlLabel>Twoja cena:</ControlLabel>

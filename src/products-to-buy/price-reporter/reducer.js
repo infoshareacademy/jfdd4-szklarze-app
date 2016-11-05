@@ -14,14 +14,14 @@ export default (state=initialState, action) => {
     switch (action.type) {
         case OPEN_PRICE_REPORT_FIELD:
             return Object.assign({}, state, {
-                isPriceReportFieldActive: true
-            })
-        case HIDE_PRICE_REPORT_FIELD:
-            return Object.assign({}, state, {
-                isPriceReportFieldActive: false,
+                isPriceReportFieldActive: true,
                 activeProduct: action.productId,
                 purchaseDate: action.purchaseDate,
                 productName: action.productName
+            })
+        case HIDE_PRICE_REPORT_FIELD:
+            return Object.assign({}, state, {
+                isPriceReportFieldActive: false
             })
         default:
             return state
