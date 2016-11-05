@@ -44,7 +44,7 @@ class PriceReporter extends React.Component {
                 {activeProduct}
                 <Modal show={isPriceReportFieldActive} onHide={hidePriceReportField}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Kupiłeś taniej?</Modal.Title>
+                        <Modal.Title>Kupiłeś taniej? {productName}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Form inline>
