@@ -12,16 +12,18 @@ const greatPlaceStyle = {
     top: -MARKER_SIZE / 2
 }
 
-const popoverTop = (
-    <Popover id="popover-positioned-scrolling-top" title="Popover top">
-        <strong>Holy guacamole!</strong> Check this info.
-    </Popover>
-);
 
 export default class Place extends React.Component {
 
 
     render() {
+
+        const popoverTop = (
+            <Popover id="popover-positioned-scrolling-top" title="Popover top">
+                <strong>Holy guacamole!</strong> {this.props.price} zł
+            </Popover>
+        );
+
         return (
             <OverlayTrigger container={this} trigger="click" placement="top" overlay={popoverTop}>
             <div style={greatPlaceStyle} className="place">

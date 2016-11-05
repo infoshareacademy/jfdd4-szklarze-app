@@ -28,7 +28,12 @@ class Map extends React.Component {
                     yesIWantToUseGoogleMapApiInternals
                     onClick={console.log}
                     onChildClick={this._onChildClick}>
-                    {priceMarkers.map(priceMarker => <Place lat={priceMarker.shopPosition.lat} lng={priceMarker.shopPosition.lng}/>)}
+                    {priceMarkers.map(priceMarker =>
+                        <Place
+                            lat={priceMarker.shopPosition.lat}
+                            lng={priceMarker.shopPosition.lng}
+                            price={priceMarker.price}
+                            />)}
                 </GoogleMap>
             </div>
         )
