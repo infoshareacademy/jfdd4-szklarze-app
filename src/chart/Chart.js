@@ -1,6 +1,8 @@
 import React from 'react';
-import {Line} from 'react-chartjs-2';
+import {Line, defaults} from 'react-chartjs-2';
 import {connect} from 'react-redux'
+
+defaults.global.animation = false;
 
 const mapStateToProps = (state) => ({
     shoppingLists: state.listCreator.shoppingLists,
