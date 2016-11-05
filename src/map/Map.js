@@ -33,6 +33,8 @@ class Map extends React.Component {
                             lat={priceMarker.shopPosition.lat}
                             lng={priceMarker.shopPosition.lng}
                             price={priceMarker.price}
+                            date={priceMarker.date}
+                            priceMarkerId={priceMarker.productId}
                             />)}
                 </GoogleMap>
             </div>
