@@ -13,7 +13,7 @@ const greatPlaceStyle = {
 }
 
 const popoverTop = (
-    <Popover id="popover-positioned-scrolling-top" title={}>
+    <Popover id="popover-positioned-scrolling-top" title="Popover top">
         <strong>Holy guacamole!</strong> Check this info.
     </Popover>
 );
