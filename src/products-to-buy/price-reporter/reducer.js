@@ -4,7 +4,10 @@ import {
 } from './actionTypes'
 
 const initialState = {
-    isPriceReportFieldActive: false
+    isPriceReportFieldActive: false,
+    activeProduct: '',
+    purchaseDate: '',
+    productName: ''
 }
 
 export default (state=initialState, action) => {
@@ -15,7 +18,10 @@ export default (state=initialState, action) => {
             })
         case HIDE_PRICE_REPORT_FIELD:
             return Object.assign({}, state, {
-                isPriceReportFieldActive: false
+                isPriceReportFieldActive: false,
+                activeProduct: action.productId,
+                purchaseDate: action.purchaseDate,
+                productName: action.productName
             })
         default:
             return state

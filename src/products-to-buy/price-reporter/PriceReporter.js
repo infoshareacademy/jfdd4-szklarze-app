@@ -15,11 +15,14 @@ import {openPriceReportField, hidePriceReportField} from './actionCreators'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
-    isPriceReportFieldActive: state.priceReporting.isPriceReportFieldActive
+    isPriceReportFieldActive: state.priceReporting.isPriceReportFieldActive,
+    activeProduct: state.priceReporting.activeProduct,
+    hello: state.priceReporting.productName
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    openPriceReportField: () => dispatch(openPriceReportField()),
+    openPriceReportField: (productId, purchaseDate, productName) =>
+        dispatch(openPriceReportField(productId, purchaseDate, productName)),
     hidePriceReportField: () => dispatch(hidePriceReportField()),
 })
 
@@ -33,20 +36,19 @@ class PriceReporter extends React.Component {
             hidePriceReportField,
             productName,
             productId,
-            purchaseDate
+            purchaseDate,
+            activeProduct
         } = this.props
 
         return (
             <div className="priceReporter">
-                <MdAddLocation onClick={openPriceReportField}/>
-
+                <MdAddLocation onClick={() => openPriceReportField(productId, purchaseDate, productName)}/>
+                {activeProduct}
                 <Modal show={isPriceReportFieldActive} onHide={hidePriceReportField}>
                     <Modal.Header closeButton>
                         <Modal.Title>Kupiłeś taniej?</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        {productName}
-                        {console.log(productName, productId, purchaseDate)}
                         <Form inline>
                             <FormGroup inline>
                                 <ControlLabel>Twoja cena:</ControlLabel>

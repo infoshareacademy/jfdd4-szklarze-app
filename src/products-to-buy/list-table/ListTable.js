@@ -62,7 +62,8 @@ const ListTable = ({
                                 purchaseDate={purchaseDate}
                                 shareUrl={shareUrl}
                                 showProductPricesTrend={showProductPricesTrend}
-                                markProductAsPurchased={markProductAsPurchased}/>
+                                markProductAsPurchased={markProductAsPurchased}
+                            />
                         )
                     }) : ''}
             </tbody>
