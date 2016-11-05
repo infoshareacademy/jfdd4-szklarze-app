@@ -7,7 +7,6 @@ import {
     ControlLabel,
     Button
 } from 'react-bootstrap'
-import MdAddLocation from 'react-icons/lib/md/add-location'
 import CurrentLocation from './current-location-map/CurrentLocationMap'
 import './PriceReporter.css'
 
@@ -32,7 +31,6 @@ class PriceReporter extends React.Component {
     render() {
         const {
             isPriceReportFieldActive,
-            openPriceReportField,
             hidePriceReportField,
             productName,
             productId,
@@ -42,7 +40,7 @@ class PriceReporter extends React.Component {
 
         return (
             <div className="priceReporter">
-                <MdAddLocation onClick={() => openPriceReportField(productId, purchaseDate, productName)}/>
+
                 {activeProduct}
                 <Modal show={isPriceReportFieldActive} onHide={hidePriceReportField}>
                     <Modal.Header closeButton>
