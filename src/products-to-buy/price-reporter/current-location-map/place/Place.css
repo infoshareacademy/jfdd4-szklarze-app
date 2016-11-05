@@ -1,0 +1,11 @@
+.place {
+    font-size: 15px;
+    color: #262e3e;
+    background-color: #ffc10e;
+    box-sizing: border-box;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

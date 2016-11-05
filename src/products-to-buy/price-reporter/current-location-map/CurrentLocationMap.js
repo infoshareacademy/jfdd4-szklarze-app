@@ -1,6 +1,6 @@
 import React from 'react'
 import GoogleMap from 'google-map-react'
-import Place from './../../../map/place/Place'
+import Place from './place/Place'
 import './CurrentLocationMap.css'
 
 
