@@ -19,7 +19,6 @@ import { fetchFavorites, updateExternalFavorites } from './favorite-marker/actio
 import { fetchShoppingLists, updateExternalShoppingLists } from './list-creator/actionCreators'
 import { fetchProducts } from './data/products/actionCreators'
 import { fetchPriceMarkers } from  './map/actionCreators'
-import { getCoordinates } from './products-to-buy/price-reporter/actionCreators'
 
 function handleEnter() {
     store.dispatch(fetchFavorites())

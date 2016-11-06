@@ -69,15 +69,18 @@ export function updateExternalPriceMarkers() {
 
                 productId: priceMarker.activeProduct,
                 price: priceMarker.reportedPrice,
-                date: priceMarker.purchaseDate
-
+                date: priceMarker.purchaseDate,
+                shopPosition: {
+                    lat: priceMarker.lat,
+                    lng: priceMarker.lng
+                }
             })
         })
-                .then(response => response.json())
-                .then(priceMarker => {
-                    dispatch(updateExternalPriceMarkerEnd())
+            .then(response => response.json())
+            .then(priceMarker => {
+                dispatch(updateExternalPriceMarkerEnd())
 
-        })
+            })
     }
 }
 

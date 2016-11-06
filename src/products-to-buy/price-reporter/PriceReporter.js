@@ -10,7 +10,7 @@ import {
 import CurrentLocation from './current-location-map/CurrentLocationMap'
 import './PriceReporter.css'
 
-import {hidePriceReportField, updatePriceMarker, updateExternalPriceMarkers} from './actionCreators'
+import {hidePriceReportField, updatePriceMarker, updateExternalPriceMarkers, getCoordinates} from './actionCreators'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
@@ -23,10 +23,28 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     hidePriceReportField: () => dispatch(hidePriceReportField()),
     updatePriceMarker: (reportedPrice) => dispatch(updatePriceMarker(reportedPrice)),
-    updateExternalPriceMarkers: () => dispatch(updateExternalPriceMarkers())
+    updateExternalPriceMarkers: () => dispatch(updateExternalPriceMarkers()),
+    getCoordinates: (lat, lng) => dispatch(getCoordinates(lat, lng))
+
 })
 
 class PriceReporter extends React.Component {
+
+    constructor() {
+        super()
+        this.state = {}
+    }
+
+    componentWillMount() {
+        var context = this;
+        navigator.geolocation.getCurrentPosition(function (position) {
+            context.setState({
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            })
+        })
+
+    }
 
 
     render() {
@@ -36,21 +54,24 @@ class PriceReporter extends React.Component {
             currentProductName,
             updatePriceMarker,
             updateExternalPriceMarkers,
-            reportedPrice
+            reportedPrice,
+            getCoordinates
         } = this.props
 
 
         const handleChange = function (event) {
-            updatePriceMarker(event.target.value)
-            console.log(reportedPrice)
+            updatePriceMarker(event.target.value);
         }
+
 
         const handleClick = () =>
             isNaN(Number(reportedPrice)) ||
             reportedPrice < 0 || reportedPrice.length === 0 ?
                 alert('Wpisana wartość musi być liczbą dodatnią.' +
                     ' Części ułamkowe należy podać po kropce') :
-                updateExternalPriceMarkers();
+                (getCoordinates(this.state.lat, this.state.lng),
+                    updateExternalPriceMarkers(),
+                    hidePriceReportField());
 
 
         return (
@@ -69,7 +90,8 @@ class PriceReporter extends React.Component {
                                 <FormControl
                                     type="text" onChange={handleChange}/>
                             </FormGroup>
-                            <CurrentLocation />
+                            <CurrentLocation latitude={this.state.lat}
+                                             longitude={this.state.lng}/>
                             <Button onClick={handleClick}>
                                 Zgłoś promocję
                             </Button>
