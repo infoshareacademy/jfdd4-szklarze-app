@@ -48,7 +48,7 @@ class PriceReporter extends React.Component {
         isNaN(Number(priceToSave)) ||
         priceToSave < 0 ?
             alert('Wpisana wartość musi być liczbą dodatnią.' +
-                ' Części ułamkowe należy podać po kropce') : alert('super')
+                ' Części ułamkowe należy podać po kropce') : hidePriceReportField()
 
 
         return (
