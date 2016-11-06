@@ -73,8 +73,7 @@ ReactDOM.render(
                     onEnter={() => handleAllProductsEnter()}
                     onLeave={() => handleAllProductsLeave()}/>
                 <Route path="/shopping-lists"
-                       component={ShoppingLists}
-                       onEnter={() => store.dispatch(getCoordinates())}>
+                       component={ShoppingLists}>
                     <Route
                         path="/shopping-lists/:listId"
                         component={ProductsToBuy}

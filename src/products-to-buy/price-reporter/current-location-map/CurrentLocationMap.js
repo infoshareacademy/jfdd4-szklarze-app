@@ -2,7 +2,12 @@ import React from 'react'
 import GoogleMap from 'google-map-react'
 import Place from './place/Place'
 import './CurrentLocationMap.css'
+import { connect } from 'react-redux'
+import { getCoordinates } from './../actionCreators'
 
+const mapDispatchToProps = (dispatch) => ({
+    getCoordinates: (lat,lng) => dispatch(getCoordinates(lat,lng))
+})
 
 class CurrentLocation extends React.Component {
 
@@ -22,9 +27,12 @@ class CurrentLocation extends React.Component {
             })
             console.log(context.state);
         })
+
+
     }
 
     render() {
+
         return (
             <div className="mapContainer">
                 <GoogleMap
@@ -41,5 +49,5 @@ class CurrentLocation extends React.Component {
     }
 }
 
-export default CurrentLocation
+export default connect (null, mapDispatchToProps)(CurrentLocation)
 

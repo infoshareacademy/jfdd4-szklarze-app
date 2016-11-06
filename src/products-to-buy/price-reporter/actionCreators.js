@@ -32,9 +32,11 @@ export function updatePriceMarker(reportedPrice) {
 
 }
 
-export function getCoordinates() {
+export function getCoordinates(lat, lng) {
     return {
-        type: GET_COORDINATES
+        type: GET_COORDINATES,
+        lat: lat,
+        lng: lng
     }
 }
 

@@ -33,11 +33,9 @@ export default (state=initialState, action) => {
                 reportedPrice: action.reportedPrice
             })
         case GET_COORDINATES:
-            const bla = navigator.geolocation.getCurrentPosition(position => position.coords.latitude),
-                    ble = navigator.geolocation.getCurrentPosition(position => position.coords.longitude)
             return Object.assign({}, state, {
-                    lat: bla,
-                    lng: ble
+                    lat: action.lat,
+                    lng: action.lng
                 })
         default:
             return state
