@@ -37,10 +37,11 @@ class PriceReporter extends React.Component {
             PurchaseDate
         } = this.props
 
-        var priceToSave = ''
+        var priceToSave = -1
 
         const handleChange = function (event) {
             priceToSave = event.target.value;
+            console.log(priceToSave)
 
         }
 
