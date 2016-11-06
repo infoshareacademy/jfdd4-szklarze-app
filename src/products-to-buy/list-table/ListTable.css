@@ -23,13 +23,13 @@ table.budget-panel-container.table {
 .budget-panel-container .budget-panel .budget,
 .budget-panel-container .budget-panel .sum {
     width: 40%;
-    color: #ffffff;
 }
 
 .budget-panel-container .budget-panel .budget,
 .budget-panel-container .budget-panel .sum {
-    background-color: #465676;
+    background: none;
     border-radius: 2em;
+    border: 1px solid #465676;
     padding: 0.2em 0;
     display: flex;
     justify-content: center;

@@ -25,11 +25,11 @@ const BudgetPanel = ({
                         '-.--' :
                         Number(savedBudget).toFixed(2)}
                     {' zł'}
-                        </span>
+                </span>
             </div>
             <div
                 className={Number(savedBudget) >= Number(basketValue) ||
-                Number(savedBudget) === (0 || isNaN(Number(savedBudget))) ?
+                Number(savedBudget) === 0 || isNaN(Number(savedBudget)) ?
                     "budget-indicator" : "budget-indicator no-money"}>
             </div>
         </div>
