@@ -15,9 +15,8 @@ import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
     isPriceReportFieldActive: state.priceReporting.isPriceReportFieldActive,
-    currentProductId: state.priceReporting.activeProduct,
     currentProductName: state.priceReporting.productName,
-    PurchaseDate: state.priceReporting.purchaseDate
+    reportedPrice: state.priceReporting.reportedPrice
 
 })
 
@@ -34,21 +33,24 @@ class PriceReporter extends React.Component {
         const {
             isPriceReportFieldActive,
             hidePriceReportField,
-            currentProductId,
             currentProductName,
-            PurchaseDate,
             updatePriceMarker,
-            updateExternalPriceMarkers
+            updateExternalPriceMarkers,
+            reportedPrice
         } = this.props
 
 
         const handleChange = function (event) {
             updatePriceMarker(event.target.value)
-            console.log(event.target.value)
+            console.log(reportedPrice)
         }
 
         const handleClick = () =>
-        updateExternalPriceMarkers();
+            isNaN(Number(reportedPrice)) ||
+            reportedPrice < 0 || reportedPrice.length === 0 ?
+                alert('Wpisana wartość musi być liczbą dodatnią.' +
+                    ' Części ułamkowe należy podać po kropce') :
+                updateExternalPriceMarkers();
 
 
         return (
