@@ -1,4 +1,4 @@
-import { OPEN_PRICE_REPORT_FIELD, HIDE_PRICE_REPORT_FIELD} from './actionTypes'
+import { OPEN_PRICE_REPORT_FIELD, HIDE_PRICE_REPORT_FIELD, UPDATE_PRICE_MARKER} from './actionTypes'
 
 
 export function openPriceReportField (productId, purchaseDate, productName) {
@@ -14,5 +14,13 @@ export function hidePriceReportField () {
     return {
         type: HIDE_PRICE_REPORT_FIELD
     }
+}
+
+export function updatePriceMarker(reportedPrice) {
+    return {
+        type: UPDATE_PRICE_MARKER,
+        reportedPrice: reportedPrice
+    }
+
 }
 

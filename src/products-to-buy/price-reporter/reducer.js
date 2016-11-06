@@ -1,6 +1,7 @@
 import {
     OPEN_PRICE_REPORT_FIELD,
-    HIDE_PRICE_REPORT_FIELD
+    HIDE_PRICE_REPORT_FIELD,
+    UPDATE_PRICE_MARKER
 } from './actionTypes'
 
 const initialState = {
@@ -23,6 +24,10 @@ export default (state=initialState, action) => {
         case HIDE_PRICE_REPORT_FIELD:
             return Object.assign({}, state, {
                 isPriceReportFieldActive: false
+            })
+        case UPDATE_PRICE_MARKER:
+            return Object.assign({}, state, {
+                reportedPrice: action.reportedPrice
             })
         default:
             return state
