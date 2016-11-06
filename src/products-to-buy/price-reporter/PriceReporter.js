@@ -10,7 +10,7 @@ import {
 import CurrentLocation from './current-location-map/CurrentLocationMap'
 import './PriceReporter.css'
 
-import {hidePriceReportField, updatePriceMarker} from './actionCreators'
+import {hidePriceReportField, updatePriceMarker, updateExternalPriceMarkers} from './actionCreators'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
@@ -23,7 +23,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     hidePriceReportField: () => dispatch(hidePriceReportField()),
-    updatePriceMarker: (reportedPrice) => dispatch(updatePriceMarker(reportedPrice))
+    updatePriceMarker: (reportedPrice) => dispatch(updatePriceMarker(reportedPrice)),
+    updateExternalPriceMarkers: () => dispatch(updateExternalPriceMarkers())
 })
 
 class PriceReporter extends React.Component {
@@ -36,7 +37,8 @@ class PriceReporter extends React.Component {
             currentProductId,
             currentProductName,
             PurchaseDate,
-            updatePriceMarker
+            updatePriceMarker,
+            updateExternalPriceMarkers
         } = this.props
 
 
@@ -46,10 +48,7 @@ class PriceReporter extends React.Component {
         }
 
         const handleClick = () =>
-        isNaN(Number(priceToSave)) ||
-        priceToSave < 0 ?
-            alert('Wpisana wartość musi być liczbą dodatnią.' +
-                ' Części ułamkowe należy podać po kropce') : alert('super')
+        updateExternalPriceMarkers();
 
 
         return (
