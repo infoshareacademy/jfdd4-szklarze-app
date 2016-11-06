@@ -22,7 +22,7 @@ export function showProductPricesTrend(productId) {
 
 export function fetchPrices() {
     return function (dispatch) {
-        return fetch('https://jfdd4-szklarze-app-janusz.herokuapp.com/api/price-markers/?filter[fields][price]=true&filter[fields][productId]=true&filter[fields][date]=true')
+        return fetch('https://jfdd4-szklarze-app-janusz.herokuapp.com/api/price-markers/?filter[fields][price]=true&filter[fields][productId]=true&filter[fields][date]=true&filter[order]=date%20ASC')
             .then(response => response.json())
             .then(prices => dispatch({
                 type: RECEIVE_PRICES,
