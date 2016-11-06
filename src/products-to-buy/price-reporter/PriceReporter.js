@@ -44,13 +44,11 @@ class PriceReporter extends React.Component {
 
         }
 
-        const handleClick = function () {
-            if (isNaN(Number(priceToSave)) || priceToSave < 0) {
-                return alert('Wpisana wartość musi być liczbą dodatnią.' +
-                    ' Części ułamkowe należy podać po kropce')
-            }
-
-        }
+        const handleClick = () =>
+        isNaN(Number(priceToSave)) ||
+        priceToSave < 0 ?
+            alert('Wpisana wartość musi być liczbą dodatnią.' +
+                ' Części ułamkowe należy podać po kropce') : null
 
 
         return (
