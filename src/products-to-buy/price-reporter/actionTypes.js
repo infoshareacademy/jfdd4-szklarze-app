@@ -1,2 +1,8 @@
-export const OPEN_PRICE_REPORT_FIELD = 'price-reporting/OPEN_PRICE_REPORT_FIELD'
-export const HIDE_PRICE_REPORT_FIELD = 'list-name-editor/HIDE_PRICE_REPORT_FIELD'
+export const OPEN_PRICE_REPORT_FIELD = 'price-reporter/OPEN_PRICE_REPORT_FIELD'
+export const HIDE_PRICE_REPORT_FIELD = 'price-reporter/HIDE_PRICE_REPORT_FIELD'
+export const UPDATE_PRICE_MARKER = 'price-reporter/UPDATE_PRICE_MARKER'
+
+export const UPDATE_EXTERNAL_PRICE_MARKER_BEGIN = 'price-reporter/UPDATE_EXTERNAL_PRICE_MARKER_BEGIN';
+export const UPDATE_EXTERNAL_PRICE_MARKER_END = 'price-reporter/UPDATE_EXTERNAL_PRICE_MARKER_END';
+
+export const GET_COORDINATES = 'price-reporter/GET_COORDINATES';
