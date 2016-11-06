@@ -10,7 +10,7 @@ import {
 import CurrentLocation from './current-location-map/CurrentLocationMap'
 import './PriceReporter.css'
 
-import { hidePriceReportField} from './actionCreators'
+import {hidePriceReportField} from './actionCreators'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
@@ -22,7 +22,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-        hidePriceReportField: () => dispatch(hidePriceReportField()),
+    hidePriceReportField: () => dispatch(hidePriceReportField()),
 })
 
 class PriceReporter extends React.Component {
@@ -37,6 +37,22 @@ class PriceReporter extends React.Component {
             PurchaseDate
         } = this.props
 
+        var priceToSave = ''
+
+        const handleChange = function (event) {
+            priceToSave = event.target.value;
+
+        }
+
+        const handleClick = function () {
+            if (isNaN(Number(priceToSave)) || priceToSave < 0) {
+                return alert('Wpisana wartość musi być liczbą dodatnią.' +
+                    ' Części ułamkowe należy podać po kropce')
+            }
+
+        }
+
+
         return (
             <div className="priceReporter">
                 <Modal show={isPriceReportFieldActive} onHide={hidePriceReportField}>
@@ -45,16 +61,16 @@ class PriceReporter extends React.Component {
                     </Modal.Header>
                     <Modal.Body>
                         <p className="productName">
-                        {currentProductName}
+                            {currentProductName}
                         </p>
                         <Form inline>
                             <FormGroup>
                                 <ControlLabel >Twoja cena:</ControlLabel>
                                 <FormControl
-                                    type="text" />
+                                    type="text" onChange={handleChange}/>
                             </FormGroup>
                             <CurrentLocation />
-                            <Button onClick={hidePriceReportField}>
+                            <Button onClick={handleClick}>
                                 Zgłoś promocję
                             </Button>
                         </Form>

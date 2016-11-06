@@ -7,7 +7,8 @@ const initialState = {
     isPriceReportFieldActive: false,
     activeProduct: '',
     purchaseDate: '',
-    productName: ''
+    productName: '',
+    reportedPrice: ''
 }
 
 export default (state=initialState, action) => {
