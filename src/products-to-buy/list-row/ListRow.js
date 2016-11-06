@@ -77,8 +77,7 @@ class ListRow extends React.Component {
                 <MdAddLocation onClick={() => openPriceReportField(id, purchaseDate, result)}/>
                 <PriceReporter
                     productName={result}
-                    productId={id}
-                    purchaseDate={purchaseDate}/>
+                    />
             </td>
             <td style={{display: purchased ? '' : 'none'}}>
                 <FacebookShareButton

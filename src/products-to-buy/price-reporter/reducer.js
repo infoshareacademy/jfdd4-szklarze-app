@@ -15,13 +15,16 @@ const initialState = {
     lng: ''
 }
 
+var moment = require('moment');
+
 export default (state=initialState, action) => {
     switch (action.type) {
+
         case OPEN_PRICE_REPORT_FIELD:
             return Object.assign({}, state, {
                 isPriceReportFieldActive: true,
                 activeProduct: action.productId,
-                purchaseDate: action.purchaseDate,
+                purchaseDate: moment(action.purchaseDate).lang("pl").format('l'),
                 productName: action.productName
             })
         case HIDE_PRICE_REPORT_FIELD:
