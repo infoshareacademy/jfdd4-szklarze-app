@@ -1,7 +1,8 @@
 import {
     OPEN_PRICE_REPORT_FIELD,
     HIDE_PRICE_REPORT_FIELD,
-    UPDATE_PRICE_MARKER
+    UPDATE_PRICE_MARKER,
+    GET_COORDINATES
 } from './actionTypes'
 
 const initialState = {
@@ -9,7 +10,9 @@ const initialState = {
     activeProduct: '',
     purchaseDate: '',
     productName: '',
-    reportedPrice: ''
+    reportedPrice: '',
+    lat: '',
+    lng: ''
 }
 
 export default (state=initialState, action) => {
@@ -29,6 +32,13 @@ export default (state=initialState, action) => {
             return Object.assign({}, state, {
                 reportedPrice: action.reportedPrice
             })
+        case GET_COORDINATES:
+            const bla = navigator.geolocation.getCurrentPosition(position => position.coords.latitude),
+                    ble = navigator.geolocation.getCurrentPosition(position => position.coords.longitude)
+            return Object.assign({}, state, {
+                    lat: bla,
+                    lng: ble
+                })
         default:
             return state
     }

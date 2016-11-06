@@ -3,7 +3,8 @@ import {
     HIDE_PRICE_REPORT_FIELD,
     UPDATE_PRICE_MARKER,
     UPDATE_EXTERNAL_PRICE_MARKER_BEGIN,
-    UPDATE_EXTERNAL_PRICE_MARKER_END
+    UPDATE_EXTERNAL_PRICE_MARKER_END,
+    GET_COORDINATES
 } from './actionTypes'
 import fetch from 'isomorphic-fetch'
 import store from './../../store'
@@ -29,6 +30,12 @@ export function updatePriceMarker(reportedPrice) {
         reportedPrice: reportedPrice
     }
 
+}
+
+export function getCoordinates() {
+    return {
+        type: GET_COORDINATES
+    }
 }
 
 function updateExternalPriceMarkerBegin() {

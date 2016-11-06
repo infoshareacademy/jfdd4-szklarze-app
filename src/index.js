@@ -19,6 +19,7 @@ import { fetchFavorites, updateExternalFavorites } from './favorite-marker/actio
 import { fetchShoppingLists, updateExternalShoppingLists } from './list-creator/actionCreators'
 import { fetchProducts } from './data/products/actionCreators'
 import { fetchPriceMarkers } from  './map/actionCreators'
+import { getCoordinates } from './products-to-buy/price-reporter/actionCreators'
 
 function handleEnter() {
     store.dispatch(fetchFavorites())
@@ -72,7 +73,8 @@ ReactDOM.render(
                     onEnter={() => handleAllProductsEnter()}
                     onLeave={() => handleAllProductsLeave()}/>
                 <Route path="/shopping-lists"
-                       component={ShoppingLists}>
+                       component={ShoppingLists}
+                       onEnter={() => store.dispatch(getCoordinates())}>
                     <Route
                         path="/shopping-lists/:listId"
                         component={ProductsToBuy}
