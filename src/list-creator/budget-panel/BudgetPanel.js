@@ -20,13 +20,16 @@ const BudgetPanel = ({
                 <span>{'Budżet: '}</span>
                 <MdAttachMoney />
                 <span>
-                            {' '}
-                    {Number(savedBudget).toFixed(2)}
+                    {' '}
+                    {isNaN(Number(savedBudget)) || Number(savedBudget) === 0 ?
+                        '-.--' :
+                        Number(savedBudget).toFixed(2)}
                     {' zł'}
                         </span>
             </div>
             <div
-                className={Number(savedBudget) >= Number(basketValue) ?
+                className={Number(savedBudget) >= Number(basketValue) ||
+                Number(savedBudget) === (0 || isNaN(Number(savedBudget))) ?
                     "budget-indicator" : "budget-indicator no-money"}>
             </div>
         </div>
