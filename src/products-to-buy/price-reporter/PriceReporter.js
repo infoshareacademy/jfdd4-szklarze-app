@@ -17,6 +17,7 @@ const mapStateToProps = (state) => ({
     isPriceReportFieldActive: state.priceReporting.isPriceReportFieldActive,
     currentProductId: state.priceReporting.activeProduct,
     currentProductName: state.priceReporting.productName,
+    PurchaseDate: state.priceReporting.purchaseDate
 
 })
 
@@ -32,7 +33,8 @@ class PriceReporter extends React.Component {
             isPriceReportFieldActive,
             hidePriceReportField,
             currentProductId,
-            currentProductName
+            currentProductName,
+            PurchaseDate
         } = this.props
 
         return (
@@ -42,12 +44,14 @@ class PriceReporter extends React.Component {
                         <Modal.Title>Kupiłeś taniej?</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                        <p className="productName">
                         {currentProductName}
+                        </p>
                         <Form inline>
-                            <FormGroup inline>
-                                <ControlLabel>Twoja cena:</ControlLabel>
+                            <FormGroup>
+                                <ControlLabel >Twoja cena:</ControlLabel>
                                 <FormControl
-                                    type="text"/>
+                                    type="text" />
                             </FormGroup>
                             <CurrentLocation />
                             <Button onClick={hidePriceReportField}>
