@@ -1,0 +1,87 @@
+table.budget-panel-container.table {
+    position: static;
+    background: none;
+}
+
+.budget-panel-container .budget-panel {
+    width: 100%;
+    height: 2.5em;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.budget-panel-container .budget-panel .sum {
+    font-size: 1em;
+}
+
+.budget-panel-container .budget-panel .sum:before {
+    content: 'Suma:\00a0';
+}
+
+.budget-panel-container .budget-panel .budget,
+.budget-panel-container .budget-panel .sum {
+    width: 40%;
+}
+
+.budget-panel-container .budget-panel .budget,
+.budget-panel-container .budget-panel .sum {
+    background: none;
+    border-radius: 2em;
+    border: 1px solid #465676;
+    padding: 0.2em 0;
+    display: flex;
+    justify-content: center;
+}
+
+.budget-panel-container .budget-panel .sum span,
+.budget-panel-container .budget-panel .sum:before,
+.budget-panel-container .budget-panel .budget span {
+    vertical-align: middle;
+    font-weight: 500;
+}
+
+.budget-panel-container .budget-panel .budget-indicator {
+    background: #99CA3B url("../../images/icon-blue-janusz.svg") no-repeat center;
+    background-size: contain;
+    background-origin: content-box;
+    height: 2.7em;
+    padding: 0.3em;
+    border-radius: .5em;
+    width: 10%;
+}
+
+.budget-panel-container .budget-panel .budget-indicator.no-money {
+    background: #ca4434 url("../../images/icon-blue-skull.svg") no-repeat center;
+    background-size: contain;
+    background-origin: content-box;
+    width: 10%;
+}
+
+@media screen and (max-width: 470px) {
+    .budget-panel-container .budget-panel {
+        width: 95%;
+        height: auto;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 1em;
+        margin-bottom: 5px;
+    }
+
+    .budget-panel-container .budget-panel .budget,
+    .budget-panel-container .budget-panel .sum {
+        width: 100%;
+        padding: 0;
+        margin: .2em 0;
+    }
+
+    .budget-panel-container .budget-panel .budget-indicator,
+    .budget-panel-container .budget-panel .budget-indicator.no-money {
+        width: 30%;
+        padding: 0;
+        height: 2em;
+        margin: .2em 0;
+    }
+}

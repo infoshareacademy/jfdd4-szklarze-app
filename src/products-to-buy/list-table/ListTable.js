@@ -7,6 +7,7 @@ import MdEventAvailable from 'react-icons/lib/md/event-available'
 import MdInfoOutline from 'react-icons/lib/md/info-outline'
 import MdAddLocation from 'react-icons/lib/md/add-location'
 import {Table} from 'react-bootstrap'
+import './ListTable.css'
 
 const shareUrl = 'http://app.szklarze.jfdd4.is-academy.pl/map';
 
@@ -75,10 +76,14 @@ const ListTable = ({
                 </tbody>
             </Table>
 
-            <BudgetPanel
-                savedBudget={Number(list[list.length-1][1]).toFixed(2)}
-                basketValue={basketValue}
-            />
+            <Table className="budget-panel-container">
+                <tbody>
+                    <BudgetPanel
+                        savedBudget={Number(list[list.length-1][1]).toFixed(2)}
+                        basketValue={basketValue}
+                    />
+                </tbody>
+            </Table>
 
             <Table responsive>
                 <tbody className="legend">
