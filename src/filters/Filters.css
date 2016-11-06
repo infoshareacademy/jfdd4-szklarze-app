@@ -8,3 +8,9 @@
     margin-top: 4%;
     margin-bottom: 2%;
 }
+
+.filters > .row > div > button {
+    width: 80%;
+    background-color: #ffc10e;
+    font-weight: bold;
+}
