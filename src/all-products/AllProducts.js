@@ -5,7 +5,9 @@ import './AllProducts.css'
 import {
     Grid,
     Row,
-    Col
+    Col,
+    Button,
+    Panel
 } from 'react-bootstrap';
 
 import AllProductsItem from './all-products-item/AllProductsItem'
@@ -64,57 +66,77 @@ function generateProductItems(
     )
 }
 
-const AllProducts = ({
-    categoryFilterArray,
-    productsToDisplay,
-    increaseAmount,
-    decreaseAmount,
-    itemsToBuy,
-    saveNewList,
-    productPrices
-}) => (
-    <div className="background">
-        <div className="all-products">
-            <h1>Co chcesz kupić?</h1>
-            <Grid>
-                <div className="filters">
-                    <Row>
-                        <Col xs={12}>
+class AllProducts extends React.Component {
 
-                            <Filters />
+    constructor(...args) {
+        super(...args);
+        this.state = {
+            open: false
+        };
+    }
 
-                        </Col>
-                    </Row>
+    render() {
+
+        const {
+            categoryFilterArray,
+            productsToDisplay,
+            increaseAmount,
+            decreaseAmount,
+            itemsToBuy,
+            productPrices
+        } = this.props
+
+        return (
+            <div className="background">
+                <div className="all-products">
+                    <h1>Co chcesz kupić?</h1>
+                    <Grid>
+                        <div className="filters">
+                            <Row>
+                                <Col xs={12}>
+
+                                    <Button
+                                        onClick={ ()=> this.setState({ open: !this.state.open })}>
+                                        Filtry produktów...
+                                    </Button>
+                                    <Panel collapsible expanded={this.state.open}>
+                                        <Filters />
+                                    </Panel>
+
+                                </Col>
+                            </Row>
+                        </div>
+                        <Row>
+                            {categoryFilterArray.indexOf('none') !== -1 ?
+                                productsToDisplay
+                                    .map(product =>
+                                        generateProductItems(
+                                            product,
+                                            increaseAmount,
+                                            decreaseAmount,
+                                            itemsToBuy,
+                                            productPrices))
+                                :
+                                productsToDisplay
+                                    .filter(product =>
+                                        (categoryFilterArray.indexOf(product.category) !== -1))
+                                    .map(product =>
+                                        generateProductItems(
+                                            product,
+                                            increaseAmount,
+                                            decreaseAmount,
+                                            itemsToBuy,
+                                            productPrices))
+                            }
+                        </Row>
+                    </Grid>
+
+                    <ListCreator />
+
                 </div>
-                <Row>
-                    {categoryFilterArray.indexOf('none') !== -1 ?
-                        productsToDisplay
-                            .map(product =>
-                                generateProductItems(
-                                    product,
-                                    increaseAmount,
-                                    decreaseAmount,
-                                    itemsToBuy,
-                                    productPrices))
-                        :
-                        productsToDisplay
-                            .filter(product =>
-                                (categoryFilterArray.indexOf(product.category) !== -1))
-                            .map(product =>
-                                generateProductItems(
-                                    product,
-                                    increaseAmount,
-                                    decreaseAmount,
-                                    itemsToBuy,
-                                    productPrices))
-                    }
-                </Row>
-            </Grid>
-
-            <ListCreator />
-
-        </div>
-    </div>
-)
+            </div>
+        )
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)
