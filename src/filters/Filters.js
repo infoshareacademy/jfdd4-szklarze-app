@@ -53,7 +53,7 @@ const Filters = ({
                     onClick={() => toggleFavoriteFilter()}
                     disabled={isFavoriteFilterActive}
                     bsStyle={isFavoriteFilterActive ? 'success' : 'default'}>
-                    Ulubione
+                    UlubioneTESTESTTEST
                 </Button>
             </ButtonToolbar>
             <p className="show-filtered-caption">
